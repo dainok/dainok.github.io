@@ -3,4 +3,5 @@ CacheDir: /proxydata/cache/apt-cacher-ng LogDir: /var/log/apt-cacher-ng SupportD
 Register a valid email address:
 certbot update_account --email andrea.dainese@example.com
 Register a new domain:
-certonly --webroot -w /var/www/html --preferred-challenges http -d www.</description></item></channel></rss>
+certonly --webroot -w /var/www/html --preferred-challenges http -d www.</description></item><item><title>Reinitialize a Git repository</title><link>/notes/reinitialize-a-git-repository/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/notes/reinitialize-a-git-repository/</guid><description>To reinitialize a git reporitory deleting old history:
+mv .git/config config.git rm -rf .git git init mv config.git .git/config git add . git commit -m &amp;quot;Initial commit&amp;quot; git push -u --force origin master</description></item></channel></rss>
