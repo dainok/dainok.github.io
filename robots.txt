@@ -1,0 +1,7 @@
+
+User-agent: *
+Allow: */$
+Allow: *.html
+Disallow: *
+
+Sitemap: https://www.adainese.it/sitemap.xml
