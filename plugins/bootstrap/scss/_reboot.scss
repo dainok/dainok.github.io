@@ -10,7 +10,7 @@
 
 // Document
 //
-// 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+// 1. Change from box-sizing: content-box so that width is not affected by padding or border.
 // 2. Change the default font family in all browsers.
 // 3. Correct the line height in all browsers.
 // 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
@@ -39,9 +39,9 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 // Body
 //
 // 1. Remove the margin in all browsers.
-// 2. As a best practice, apply a default `background-color`.
+// 2. As a best practice, apply a default background-color.
 // 3. Set an explicit initial text-align value so that we can later use
-//    the `inherit` value on things like `<th>` elements.
+//    the inherit value on things like <th> elements.
 
 body {
   margin: 0; // 1
@@ -86,7 +86,7 @@ hr {
 
 // Remove top margins from headings
 //
-// By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
+// By default, <h1>-<h6> all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
 // stylelint-disable-next-line selector-list-comma-newline-after
 h1, h2, h3, h4, h5, h6 {
@@ -96,8 +96,8 @@ h1, h2, h3, h4, h5, h6 {
 
 // Reset margins on paragraphs
 //
-// Similarly, the top margin on `<p>`s get reset. However, we also reset the
-// bottom margin to use `rem` units instead of `em`.
+// Similarly, the top margin on <p>s get reset. However, we also reset the
+// bottom margin to use rem units instead of em.
 p {
   margin-top: 0;
   margin-bottom: $paragraph-margin-bottom;
@@ -163,7 +163,7 @@ small {
 }
 
 //
-// Prevent `sub` and `sup` elements from affecting the line height in
+// Prevent sub and sup elements from affecting the line height in
 // all browsers.
 //
 
@@ -219,13 +219,13 @@ code,
 kbd,
 samp {
   font-family: $font-family-monospace;
-  @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
+  @include font-size(1em); // Correct the odd em font sizing in all browsers.
 }
 
 pre {
   // Remove browser default top margin
   margin-top: 0;
-  // Reset browser default of `1em` to use `rem`s
+  // Reset browser default of 1em to use rems
   margin-bottom: 1rem;
   // Don't allow content to break outside
   overflow: auto;
@@ -279,7 +279,7 @@ caption {
 }
 
 // 1. Removes font-weight bold by inheriting
-// 2. Matches default `<td>` alignment by inheriting `text-align`.
+// 2. Matches default <td> alignment by inheriting text-align.
 // 3. Fix alignment for Safari
 
 th {
@@ -294,12 +294,12 @@ th {
 //
 
 label {
-  // Allow labels to use `margin` for spacing.
+  // Allow labels to use margin for spacing.
   display: inline-block;
   margin-bottom: $label-margin-bottom;
 }
 
-// Remove the default `border-radius` that macOS Chrome adds.
+// Remove the default border-radius that macOS Chrome adds.
 //
 // Details at https://github.com/twbs/bootstrap/issues/24093
 button {
@@ -307,8 +307,8 @@ button {
   border-radius: 0;
 }
 
-// Work around a Firefox/IE bug where the transparent `button` background
-// results in a loss of the default `button` focus styles.
+// Work around a Firefox/IE bug where the transparent button background
+// results in a loss of the default button focus styles.
 //
 // Credit: https://github.com/suitcss/base/
 button:focus {
@@ -337,7 +337,7 @@ select {
   text-transform: none; // Remove the inheritance of text transform in Firefox
 }
 
-// Set the cursor for non-`<button>` buttons
+// Set the cursor for non-<button> buttons
 //
 // Details at https://github.com/twbs/bootstrap/pull/30562
 [role="button"] {
@@ -352,7 +352,7 @@ select {
 }
 
 
-// 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+// 1. Prevent a WebKit bug where (2) destroys native audio and video
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
 button,
@@ -397,8 +397,8 @@ textarea {
 }
 
 fieldset {
-  // Browsers set a default `min-width: min-content;` on fieldsets,
-  // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
+  // Browsers set a default min-width: min-content; on fieldsets,
+  // unlike e.g. <div>s, which have min-width: 0; by default.
   // So we reset that to ensure fieldsets behave more like a standard block element.
   // See https://github.com/twbs/bootstrap/issues/12359
   // and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
@@ -410,7 +410,7 @@ fieldset {
 }
 
 // 1. Correct the text wrapping in Edge and IE.
-// 2. Correct the color inheritance from `fieldset` elements in IE.
+// 2. Correct the color inheritance from fieldset elements in IE.
 legend {
   display: block;
   width: 100%;
@@ -435,8 +435,8 @@ progress {
 
 [type="search"] {
   // This overrides the extra rounded corners on search inputs in iOS so that our
-  // `.form-control` class can properly style them. Note that this cannot simply
-  // be added to `.form-control` as it's not specific enough. For details, see
+  // .form-control class can properly style them. Note that this cannot simply
+  // be added to .form-control as it's not specific enough. For details, see
   // https://github.com/twbs/bootstrap/issues/11586.
   outline-offset: -2px; // 2. Correct the outline style in Safari.
   -webkit-appearance: none;
@@ -452,7 +452,7 @@ progress {
 
 //
 // 1. Correct the inability to style clickable types in iOS and Safari.
-// 2. Change font properties to `inherit` in Safari.
+// 2. Change font properties to inherit in Safari.
 //
 
 ::-webkit-file-upload-button {
@@ -477,7 +477,7 @@ template {
   display: none; // Add the correct display in IE
 }
 
-// Always hide an element with the `hidden` HTML attribute (from PureCSS).
+// Always hide an element with the hidden HTML attribute (from PureCSS).
 // Needed for proper display in IE 10-.
 [hidden] {
   display: none !important;

@@ -70,7 +70,7 @@
   display: flex;
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
-  // This isn't needed for `.input-group-text` since it shares the same border-color
+  // This isn't needed for .input-group-text since it shares the same border-color
   // as our inputs.
   .btn {
     position: relative;
@@ -170,7 +170,7 @@
 //
 // These rulesets must come after the sizing ones to properly override sm and lg
 // border-radius values when extending. They're more specific than we'd like
-// with the `.input-group >` part, but without it, we cannot override the sizing.
+// with the .input-group > part, but without it, we cannot override the sizing.
 
 
 .input-group > .input-group-prepend > .btn,

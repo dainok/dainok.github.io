@@ -51,7 +51,7 @@
   }
 }
 
-// Future-proof disabling of clicks on `<a>` elements
+// Future-proof disabling of clicks on <a> elements
 a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none;

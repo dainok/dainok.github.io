@@ -13,7 +13,7 @@
     *,
     *::before,
     *::after {
-      // Bootstrap specific; comment out `color` and `background`
+      // Bootstrap specific; comment out color and background
       //color: $black !important; // Black prints faster
       text-shadow: none !important;
       //background: transparent !important;
@@ -38,7 +38,7 @@
     // Bootstrap specific; comment the following selector out
     //
     // Don't show links that are fragment identifiers,
-    // or use the `javascript:` pseudo protocol
+    // or use the javascript: pseudo protocol
     //
 
     //a[href^="#"]::after,
@@ -51,7 +51,7 @@
     }
     pre,
     blockquote {
-      border: $border-width solid $gray-500; // Bootstrap custom code; using `$border-width` instead of 1px
+      border: $border-width solid $gray-500; // Bootstrap custom code; using $border-width instead of 1px
       page-break-inside: avoid;
     }
 
@@ -84,8 +84,8 @@
     // Bootstrap specific changes start
 
     // Specify a size and min-width to make printing closer across browsers.
-    // We don't set margin here because it breaks `size` in Chrome. We also
-    // don't use `!important` on `size` as it breaks in Chrome.
+    // We don't set margin here because it breaks size in Chrome. We also
+    // don't use !important on size as it breaks in Chrome.
     @page {
       size: $print-page-size;
     }

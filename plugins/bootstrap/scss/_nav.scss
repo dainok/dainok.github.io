@@ -1,7 +1,7 @@
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with
-// `<nav>`s, `<ul>`s or `<ol>`s.
+// <nav>s, <ul>s or <ol>s.
 
 .nav {
   display: flex;
@@ -111,7 +111,7 @@
 
 // Tabbable tabs
 //
-// Hide tabbable panes to start, show them when `.active`
+// Hide tabbable panes to start, show them when .active
 
 .tab-content {
   > .tab-pane {

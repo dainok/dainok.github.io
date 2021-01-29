@@ -15,13 +15,13 @@
 
 // Interactive list items
 //
-// Use anchor or button elements instead of `li`s or `div`s to create interactive
-// list items. Includes an extra `.active` modifier class for selected items.
+// Use anchor or button elements instead of lis or divs to create interactive
+// list items. Includes an extra .active modifier class for selected items.
 
 .list-group-item-action {
-  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  width: 100%; // For <button>s (anchors become 100% by default though)
   color: $list-group-action-color;
-  text-align: inherit; // For `<button>`s (anchors inherit)
+  text-align: inherit; // For <button>s (anchors inherit)
 
   // Hover state
   @include hover-focus() {
@@ -40,7 +40,7 @@
 
 // Individual list items
 //
-// Use on `li`s or `div`s within the `.list-group` parent.
+// Use on lis or divs within the .list-group parent.
 
 .list-group-item {
   position: relative;
@@ -66,7 +66,7 @@
     background-color: $list-group-disabled-bg;
   }
 
-  // Include both here for `<a>`s and `<button>`s
+  // Include both here for <a>s and <button>s
   &.active {
     z-index: 2; // Place active items above their siblings for proper border styling
     color: $list-group-active-color;
@@ -147,7 +147,7 @@
 // Contextual variants
 //
 // Add modifier classes to change text and background color on individual items.
-// Organizationally, this must come after the `:hover` states.
+// Organizationally, this must come after the :hover states.
 
 @each $color, $value in $theme-colors {
   @include list-group-item-variant($color, theme-color-level($color, -9), theme-color-level($color, 6));
