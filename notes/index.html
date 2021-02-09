@@ -56,7 +56,8 @@ rm -f $ZIP
 </code></pre><p>Show Database-Specific Grants:</p><pre><code>SELECT * FROM mysql.db;
 </code></pre><p>Show Table-Specific Grants:</p><pre><code>SELECT * FROM mysql.tables_priv;
 </code></pre><p>Show Column-Specific Grants:</p><pre><code>SELECT * FROM mysql.columns_priv;
-</code></pre></p></div></div></div><div class="col-md-12 col-sm-12 col-xs-12 category-entry category-raspberry"><div class=single-blog><div class=blog-meta><span class=comments-type><i class="fa fa-folder"></i>Raspberry</span></div><div class=blog-text><h4><a href=/notes/pi-zero-w-headless-setup/>Pi Zero W headless setup</a></h4><p><p><a href=https://www.raspberrypi.org/software/ title="Raspberry Pi Imager">Burn</a> a Raspberry OS (Raspbian) image into a SD card.</p><p>Insert the SD card again and browse the first partition where config.txt file is located:</p><ul><li>add an empty file named ssh to start SSH daemon on boot;</li><li>add another file named wpa_supplicant.conf with the following content (replace country, ssid and psk):</li></ul><pre><code>country=IT
+</code></pre></p></div></div></div><div class="col-md-12 col-sm-12 col-xs-12 category-entry category-raspberry"><div class=single-blog><div class=blog-meta><span class=comments-type><i class="fa fa-folder"></i>Raspberry</span></div><div class=blog-text><h4><a href=/notes/pi-zero-w-headless-setup/>Pi Zero W headless setup</a></h4><p><p><a href=https://www.raspberrypi.org/software/ title="Raspberry Pi Imager" target=_blank rel=noopener>Burn</a>
+a Raspberry OS (Raspbian) image into a SD card.</p><p>Insert the SD card again and browse the first partition where config.txt file is located:</p><ul><li>add an empty file named ssh to start SSH daemon on boot;</li><li>add another file named wpa_supplicant.conf with the following content (replace country, ssid and psk):</li></ul><pre><code>country=IT
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
@@ -94,7 +95,7 @@ network={
       debug: 
         msg: &quot;{{ msg.split('\n') }}&quot;       
       tags: debug_info
-</code></pre><p>References:</p><ul><li><a href=https://gryzli.info/2017/12/21/ansible-debug-print-variables/ title="Printing all Ansible variables with debug purpose (inside a playbook)">Printing all Ansible variables with debug purpose (inside a playbook)</a></li></ul></p></div></div></div><div class="col-md-12 col-sm-12 col-xs-12 category-entry category-linux"><div class=single-blog><div class=blog-meta><span class=comments-type><i class="fa fa-folder"></i>Linux</span></div><div class=blog-text><h4><a href=/notes/reinitialize-a-git-repository/>Reinitialize a Git repository</a></h4><p><p>To reinitialize a git reporitory deleting old history:</p><pre><code>mv .git/config config.git
+</code></pre><p>References:</p><ul><li><a href=https://gryzli.info/2017/12/21/ansible-debug-print-variables/ title="Printing all Ansible variables with debug purpose (inside a playbook)" target=_blank rel=noopener>Printing all Ansible variables with debug purpose (inside a playbook)</a></li></ul></p></div></div></div><div class="col-md-12 col-sm-12 col-xs-12 category-entry category-linux"><div class=single-blog><div class=blog-meta><span class=comments-type><i class="fa fa-folder"></i>Linux</span></div><div class=blog-text><h4><a href=/notes/reinitialize-a-git-repository/>Reinitialize a Git repository</a></h4><p><p>To reinitialize a git reporitory deleting old history:</p><pre><code>mv .git/config config.git
 rm -rf .git
 git init
 mv config.git .git/config
