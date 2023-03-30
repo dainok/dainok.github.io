@@ -1,0 +1,11 @@
+
+User-agent: *
+Allow: */$
+Allow: *.html
+Allow: *.xml
+Disallow: *
+
+User-agent: archive.org_bot
+Disallow: /
+
+Sitemap: https://www.adainese.it/sitemap.xml
