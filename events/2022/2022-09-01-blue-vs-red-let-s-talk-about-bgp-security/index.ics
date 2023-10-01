@@ -155,7 +155,7 @@ BEGIN:VEVENT
 DTSTART;TZID=Europe/Rome:20220901T210000
 DTEND;TZID=Europe/Rome:20220901T230000
 SUMMARY:Blue Vs Red: let's talk about... BGP security
-DESCRIPTION:A follower asked me to go deep into BGP security from an attacker perspective. I&rsquo;m not a BGP expert, so I invited Mario Rosi. Together we are discussing eBGP best practices and RPKI.
+DESCRIPTION:A follower asked me to go deep into BGP security from an attacker perspective. I&rsquo;m not a BGP expert, so I invited Mario Rosi . Together we are discussing eBGP best practices and RPKI.
 
 LOCATION:Twitch
 BEGIN:VALARM

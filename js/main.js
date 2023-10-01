@@ -25,7 +25,7 @@
             $(this).addClass('category-filter btn-success');
         }
     })
-    
+
 
   /*--------------------------
   preloader
