@@ -57,30 +57,30 @@ può essere eseguita con:</p><div class=highlight><pre tabindex=0 style=color:#f
 </span></span><span style=display:flex><span> transport input ssh
 </span></span></code></pre></div><h2 id=accensione-e-verifica-del-processo-ztp>Accensione e verifica del processo ZTP</h2><p>Siamo giunti al passaggio finale ma più critico: accensione del dispositivo e verifica che il processo ZTP funzioni correttamente. Avviando un dispositivo
 <a href=https://www.cisco.com/go/iosxr title="Cisco IOS XR" target=_blank rel=noopener>Cisco XR</a>
-nuovo di fabbrica, il processo ZTP dovrebbe partire subito dopo la nota legale relativa alle feature crittografiche:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>This product contains cryptographic features and is subject to United 
-</span></span><span style=display:flex><span>States and local country laws governing import, export, transfer and 
-</span></span><span style=display:flex><span>use. Delivery of Cisco cryptographic products does not imply third-party 
-</span></span><span style=display:flex><span>authority to import, export, distribute or use encryption. Importers, 
-</span></span><span style=display:flex><span>exporters, distributors and users are responsible for compliance with 
-</span></span><span style=display:flex><span>U.S. and local country laws. By using this product you agree to comply 
-</span></span><span style=display:flex><span>with applicable laws and regulations. If you are unable to comply with 
-</span></span><span style=display:flex><span>U.S. and local laws, return this product immediately. 
+nuovo di fabbrica, il processo ZTP dovrebbe partire subito dopo la nota legale relativa alle feature crittografiche:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>This product contains cryptographic features and is subject to United
+</span></span><span style=display:flex><span>States and local country laws governing import, export, transfer and
+</span></span><span style=display:flex><span>use. Delivery of Cisco cryptographic products does not imply third-party
+</span></span><span style=display:flex><span>authority to import, export, distribute or use encryption. Importers,
+</span></span><span style=display:flex><span>exporters, distributors and users are responsible for compliance with
+</span></span><span style=display:flex><span>U.S. and local country laws. By using this product you agree to comply
+</span></span><span style=display:flex><span>with applicable laws and regulations. If you are unable to comply with
+</span></span><span style=display:flex><span>U.S. and local laws, return this product immediately.
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>A summary of U.S. laws governing Cisco cryptographic products may be 
+</span></span><span style=display:flex><span>A summary of U.S. laws governing Cisco cryptographic products may be
 </span></span><span style=display:flex><span>found at:
 </span></span><span style=display:flex><span>http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>If you require further assistance please contact us by sending email to 
+</span></span><span style=display:flex><span>If you require further assistance please contact us by sending email to
 </span></span><span style=display:flex><span>export@cisco.com.
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:22.659 UTC: ifmgr[363]: %PKT_INFRA-LINK-3-UPDOWN : Interface MgmtEth0/RP0/CPU0/0, changed state to Down 
-</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:22.661 UTC: ifmgr[363]: %PKT_INFRA-LINK-3-UPDOWN : Interface MgmtEth0/RP0/CPU0/0, changed state to Up 
-</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:29.975 UTC: pyztp2[330]: %INFRA-ZTP-4-CONFIG_INITIATED : ZTP has initiated config load and commit operations 
-</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:47.203 UTC: pyztp2[330]: %INFRA-ZTP-4-CONFIG_FINISHED : ZTP has finished config load and commit operations 
-</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:53.034 UTC: pyztp2[330]: %INFRA-ZTP-4-PROVISIONING_COMPLETED : ZTP has successfully completed the provisioning 
-</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:59.329 UTC: pyztp2[330]: %INFRA-ZTP-4-EXITED : ZTP exited 
+</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:22.659 UTC: ifmgr[363]: %PKT_INFRA-LINK-3-UPDOWN : Interface MgmtEth0/RP0/CPU0/0, changed state to Down
+</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:22.661 UTC: ifmgr[363]: %PKT_INFRA-LINK-3-UPDOWN : Interface MgmtEth0/RP0/CPU0/0, changed state to Up
+</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:29.975 UTC: pyztp2[330]: %INFRA-ZTP-4-CONFIG_INITIATED : ZTP has initiated config load and commit operations
+</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:47.203 UTC: pyztp2[330]: %INFRA-ZTP-4-CONFIG_FINISHED : ZTP has finished config load and commit operations
+</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:53.034 UTC: pyztp2[330]: %INFRA-ZTP-4-PROVISIONING_COMPLETED : ZTP has successfully completed the provisioning
+</span></span><span style=display:flex><span>RP/0/RP0/CPU0:Oct 18 08:11:59.329 UTC: pyztp2[330]: %INFRA-ZTP-4-EXITED : ZTP exited
 </span></span></code></pre></div><p>Se il processo ZTP ha funzionato correttamente, il server DHCP avrà rilasciato un IP:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>2023-10-18T11:32:42.306237+02:00 kali dnsmasq-dhcp[3818]: 548912439 vendor class: PXEClient:Arch:00009:UNDI:003010:PID:N540-ACC-SYS
 </span></span><span style=display:flex><span>2023-10-18T11:32:42.306699+02:00 kali dnsmasq-dhcp[3818]: 548912439 user class: xr-config
 </span></span><span style=display:flex><span>2023-10-18T11:32:42.306856+02:00 kali dnsmasq-dhcp[3818]: 548912439 DHCPDISCOVER(pnet9) 40:14:82:c1:11:11
