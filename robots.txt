@@ -1,10 +1,11 @@
 
 User-agent: *
-Allow: blog
-Allow: images
+Allow: /blog
+Allow: /images
 Allow: *.html
 Allow: *.xml
-Disallow: *
+
+Disallow: /files
 
 User-agent: archive.org_bot
 Disallow: /
