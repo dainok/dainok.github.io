@@ -4,8 +4,7 @@ Allow: /blog
 Allow: /images
 Allow: *.html
 Allow: *.xml
-
-Disallow: /files
+Disallow: /
 
 User-agent: archive.org_bot
 Disallow: /
