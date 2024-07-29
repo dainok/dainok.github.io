@@ -1,0 +1,58 @@
+---
+title: "UNetLab v3 development series"
+file: "UNetLab v3 development series"
+date: 2024-07-22
+author: Andrea Dainese
+toc: true
+images:
+- cover.png
+categories:
+- learning-paths
+- automation
+references:
+- patreon_ad
+- patreon_ad_nautobot
+- nautobot
+- ansible
+---
+Welcome to our series focused on **Ansible Automation**! In this comprehensive series, we'll delve into Ansible, an incredibly powerful tool designed to automate a wide range of IT tasks and streamline the management of complex deployments. From configuration management to application deployment, Ansible simplifies the orchestration of your IT infrastructure, allowing you to manage systems more efficiently and effectively.
+
+Throughout this journey, we'll start with the basics and gradually move towards advanced topics, providing you with hands-on examples, best practices, and expert insights. Whether you're new to automation or looking to enhance your existing skills, there's something here for everyone.
+
+Join us as we explore the world of Ansible and unlock the potential of automation together!
+
+## Ansible Workbook for DevNetOps
+
+1. Introduction to network automation with Ansible
+1. Preparing your Ansible environment
+1. Introduction to Ansible Automation
+1. Ansible inventory
+1. Configuration (Planned)
+1. Ad hoc commands (Planned)
+1. Playbooks (Planned)
+1. Statements (Planned)
+1. Troubleshooting (Planned)
+1. Handlers (Planned)
+1. Parsers and Filters (Planned)
+1. Passwords (Planned)
+1. Output (Planned)
+1. Performance (Planned)
+1. Bastion host (Planned)
+1. Development (Planned)
+1. Tools (Planned)
+1. Final lab (Planned, paid members only)
+1. Managing prompts (Planned, paid members only)
+1. Device reload and wait (Planned, paid members only)
+1. Event-Driven Ansible (ToDo, paid members only)
+1. ARA (ToDo, paid members only)
+1. AWX (Planned, paid members only)
+1. Galaxy (ToDo, paid members only)
+1. Nautobot
+
+## Get Started Today
+
+By joining this {{< link id="patreon_ad_ansible" text="Patreon series" >}}, you'll gain exclusive access to content that will elevate your network management skills. Stay ahead of the curve and become proficient in using Nautobot for network automation.
+
+Thank you for your support! Let's embark on this journey to revolutionize network automation with Nautobot together.
+
+If you found this information useful, consider {{< link id="patreon_ad" text="supporting us" >}} on Patreon for more in-depth guides and tutorials.
