@@ -9,7 +9,7 @@ March 07, 2021</div><div class=tag-meta><i class="fa fa-folder"></i>
 <a href=/categories/automation/ title="All posts under Automation">Automation</a>,
 <a href=/categories/notes/ title="All posts under Notes">Notes</a></div></div><div class=entry-content><div><a data-fancybox=gallery href=/images/vendors/git.webp><img class="img-fluid w-25 rounded shadow float-right" src=/images/vendors/git.webp alt="Post cover"></a></div><p>Sometimes we realize we committed something that should remain confidential. Or maybe we are ready to publish our open source project and we don&rsquo;t want to publish the entire history too.</p><p>It&rsquo;s a good time to reinitialize a git repository deleting old history:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>mv .git/config config.git
 </span></span><span style=display:flex><span>rm -rf .git
-</span></span><span style=display:flex><span>git init
+</span></span><span style=display:flex><span>git init -b master
 </span></span><span style=display:flex><span>mv config.git .git/config
 </span></span><span style=display:flex><span>git add .
 </span></span><span style=display:flex><span>git commit -m <span style=color:#e6db74>&#34;Initial commit&#34;</span>
