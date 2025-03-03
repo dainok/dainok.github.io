@@ -5,6 +5,7 @@
 summaryInclude=60;
 var fuseOptions = {
   shouldSort: true,
+  isCaseSensitive: false,
   includeMatches: true,
   threshold: 0.0,
   tokenize:true,
@@ -12,14 +13,13 @@ var fuseOptions = {
   distance: 100,
   maxPatternLength: 32,
   minMatchCharLength: 1,
+  matchAllTokens: true, // AND logic
   keys: [
     {name:"title",weight:0.8},
     {name:"contents",weight:0.5},
-    {name:"tags",weight:0.3},
     {name:"categories",weight:0.3}
   ]
 };
-
 
 var searchQuery = param("s");
 if(searchQuery){
@@ -29,14 +29,18 @@ if(searchQuery){
   $('#search-results').append("<p>Please enter a word or phrase above</p>");
 }
 
-
-
 function executeSearch(searchQuery){
-  $.getJSON( "/index.json", function( data ) {
+  $("#search-query").val(searchQuery);
+  var lang = $("html").attr("lang");
+  if(lang=="en"){
+    indexUrl = "/index.json";
+  }else{
+    indexUrl = "/" + lang + "/index.json"
+  }
+  $.getJSON( indexUrl, function( data ) {
     var pages = data;
     var fuse = new Fuse(pages, fuseOptions);
     var result = fuse.search(searchQuery);
-    console.log({"matches":result});
     if(result.length > 0){
       populateResults(result);
     }else{
@@ -50,7 +54,6 @@ function populateResults(result){
     var contents= value.item.contents;
     var snippet = "";
     var snippetHighlights=[];
-    var tags =[];
     if( fuseOptions.tokenize ){
       snippetHighlights.push(searchQuery);
     }else{
@@ -72,7 +75,7 @@ function populateResults(result){
     //pull template from hugo templarte definition
     var templateDefinition = $('#search-result-template').html();
     //replace values
-    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,categories:value.item.categories,snippet:snippet});
+    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,cover:value.item.cover,categories:value.item.categories,snippet:snippet});
     $('#search-results').append(output);
 
     $.each(snippetHighlights,function(snipkey,snipvalue){
