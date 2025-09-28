@@ -1,0 +1,5 @@
+.DS_Store
+*.bak
+*-original.png
+*-backup.png
+*_original
