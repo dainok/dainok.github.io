@@ -278,3 +278,8 @@
   white-space: nowrap;
   /* keep icon and label on the same line */
 }
+
+/* Center a block, e.g. a call-to-action button */
+.md-typeset .patreon {
+  text-align: center;
+}
