@@ -1,0 +1,1018 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/blog/building-an-iot-testing-lab/building-an-iot-testing-lab/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Building an IoT testing lab - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#building-an-iot-testing-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Building an IoT testing lab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bill-of-material-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bill of material (BOM)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First boot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dns-and-dhcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS and DHCP server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-traffic-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full traffic capture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-traffic-capture-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Light traffic capture (metadata)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mitm-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MITM Proxy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MITM Proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traffic-interception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traffic interception
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log rotation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean logs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:digital-self-defence" class="md-tag">digital-self-defence</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:security" class="md-tag">security</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2022-07-22">22 July 2022</time></span></p>
+<h1 id="building-an-iot-testing-lab">Building an IoT testing lab<a class="headerlink" href="#building-an-iot-testing-lab" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
+<p>As private individuals we are using a lot of consumer IoT devices: almost any standard home equipment can now be remotely controlled by a specific application installed on a smartphone.</p>
+<p>The question is: how much can we trust those IoT devices? In which way our digital security and privacy is affected?</p>
+<p>To answer those questions, we are building a small and cheap IoT testing lab.</p>
+<h2 id="design">Design<a class="headerlink" href="#design" title="Permanent link">&para;</a></h2>
+<p>The design is simple: we want a flexible device (Linux based) to intercept any Ethernet/IP traffic emitted by the IoT device.</p>
+<p><img alt="iot-testing-lab" src="../images/iot-testing-lab.png" /></p>
+<p>The Linux device will provide an Internet connection to the IoT device dumping all traffic data and metadata and intercepting encrypted traffic also.</p>
+<h3 id="bill-of-material-bom">Bill of material (BOM)<a class="headerlink" href="#bill-of-material-bom" title="Permanent link">&para;</a></h3>
+<p>For our testing lab we are using:</p>
+<ul>
+<li><a href="https://www.amazon.it/gp/product/B0899VXM8F/" title="Raspberry Pi 4 8 GB RAM on Amazon">Raspberry Pi 4 8 GB RAM</a></li>
+<li><a href="https://www.amazon.it/gp/product/B07WN3CHGH/" title="Raspberry Pi 4 Model B kit on Amazon">Raspberry Pi 4 case and accessories</a></li>
+<li><a href="https://www.amazon.it/gp/product/B09R4HNX4J/" title="microSD Samsung Evo plus 128 GB on Amazon">microSD Samsung Evo plus 128 GB</a></li>
+<li><a href="https://www.amazon.it/gp/product/B00M77HMU0/" title="Ethernet 10/100/1000 USB 3.0 adapter on Amazon">Ethernet 10/100/1000 USB 3.0 adapter</a></li>
+<li><a href="https://www.amazon.it/D-Link-DWL-G730AP-AirPlus-802-11g-Wireless/dp/B0002Z45DQ" title="D-Link DWL-G730AP on Amazon">D-Link DWL-G730AP</a></li>
+<li><a href="https://www.amazon.it/gp/product/B005KSYPGW/" title="Logitech K360 Wireless keyboard on Amazon">Logitech K360 Wireless keyboard</a></li>
+<li><a href="https://www.kali.org/get-kali/#kali-arm" title="Get Kali Linux for ARM">Kali Linux for ARM</a></li>
+<li><a href="https://nextdns.io/" title="NextDNS">NextDNS account</a></li>
+</ul>
+<p>The Kali Linux ARM image can be dumped to the microSD using <a href="https://www.raspberrypi.com/software/" title="Install Raspberry Pi OS using Raspberry Pi Imager">Raspberry Pi Imager</a>.</p>
+<p>I'm using an <a href="https://www.amazon.it/D-Link-DWL-G730AP-AirPlus-802-11g-Wireless/dp/B0002Z45DQ" title="D-Link DWL-G730AP on Amazon">old portable Wireless access point</a> I bought years ago. I guess <a href="https://www.amazon.it/TP-Link-TL-WR802N-Portatile-Modalit%C3%A0-Operative/dp/B00TQEX8BO/" title="TP-Link TL-WR802N on Amazon">this one</a> works too in "Access Point" mode.</p>
+<h2 id="first-boot">First boot<a class="headerlink" href="#first-boot" title="Permanent link">&para;</a></h2>
+<p>After the first boot, we can start to configure our Raspberry Pi. By default SSH is enabled on Kali Linux:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>ssh
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ssh
+</code></pre></div>
+<p>We need to install some packages required in the next steps:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>dist-upgrade
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>autoremove
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>iptables-persistent<span class="w"> </span>dnsmasq
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/analysis/zeek/
+</code></pre></div>
+<p>Finally, maybe we want to adjust the keyboard and timezone:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>dpkg-reconfigure<span class="w"> </span>keyboard-configuration
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Europe/Rome
+</code></pre></div>
+<p>We want to disable embedded Bluetooth and wireless adapters:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"dtoverlay=disable-bt"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/boot/config.txt
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"dtoverlay=disable-wifi"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/boot/config.txt
+</code></pre></div>
+<p>A reboot is suggested to apply all the above configurations.</p>
+<h2 id="network-configuration">Network configuration<a class="headerlink" href="#network-configuration" title="Permanent link">&para;</a></h2>
+<p>We expect our Pi acts as a router, so we need to configure two network interfaces. The first one is configured by default with DHCP, the second one must be configured:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/network/interfaces.d/eth0</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="s">auto eth0</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">    allow-hotplug eth0</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">    iface eth0 inet dhcp</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">EOF</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/network/interfaces.d/eth1</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s">auto eth1</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s">allow-hotplug eth1</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s">iface eth1 inet static</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s">    address 192.168.0.1</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s">    netmask 255.255.255.0</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>To enable the Pi to act as a router we have to enable IPv4 forwarding. Edit <code>/etc/sysctl.conf</code> and set:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>net.ipv4.ip_forward=1
+</code></pre></div>
+<p>At the end reload <code>sysctl</code> settings:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sysctl<span class="w"> </span>-p
+</code></pre></div>
+<p>To make the Internet reachable from devices attached to <code>eth1</code> we need to enable NAT. Moreover we want to enable additional tricks to force DNS traffic and log requests coming from <code>eth1</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/iptables/rules.v4</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">*nat</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">:PREROUTING ACCEPT [0:0]</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">:INPUT ACCEPT [0:0]</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">:OUTPUT ACCEPT [0:0]</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">:POSTROUTING ACCEPT [0:0]</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s">-A PREROUTING ! -d 192.168.0.1/32 -p udp -m udp --dport 53 -j MARK --set-xmark 0x1/0xffffffff</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s">-A PREROUTING -m mark --mark 0x1 -j LOG --log-prefix "iptables: direct_dns "</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="s">-A PREROUTING -m mark --mark 0x1 -j DNAT --to-destination 192.168.0.1</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s">-A POSTROUTING -o eth0 -j MASQUERADE</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="s">COMMIT</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="s">*filter</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="s">:INPUT DROP [0:0]</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="s">:FORWARD ACCEPT [0:0]</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="s">:OUTPUT ACCEPT [0:0]</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="s">:Services - [0:0]</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="s">-A INPUT -i lo -j ACCEPT</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="s">-A INPUT -i eth1 -j ACCEPT</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="s">-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="s">-A INPUT -m state --state NEW -j Services</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="s">-A FORWARD -i eth1 -m state --state NEW -j MARK --set-xmark 0x2/0xffffffff</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="s">-A FORWARD -m mark --mark 0x2 -j LOG --log-prefix "iptables: new_conn "</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="s">-A Services -p tcp -m tcp --dport 22 -j ACCEPT</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="s">-A Services -p tcp -m tcp --dport 9090 -j ACCEPT</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a><span class="s">COMMIT</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>We can reload the firewall with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>iptables-restore<span class="w"> </span>/etc/iptables/rules.v4
+</code></pre></div>
+<p>Finally, we want to make <code>iptables</code> log on a dedicated file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/rsyslog.d/iptables.conf</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="s">:msg, regex, "iptables: " -/var/log/analysis/iptables.log</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>We need to restart <code>rsyslog</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>rsyslog
+</code></pre></div>
+<h2 id="dns-and-dhcp-server">DNS and DHCP server<a class="headerlink" href="#dns-and-dhcp-server" title="Permanent link">&para;</a></h2>
+<p>To intercept and track DNS requests we want to use DNSMasq: it can act as DNS and DHCP server. Be sure DNSMasq load external configurations file editing <code>/etc/dnsmasq.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>conf-dir=/etc/dnsmasq.d/,*.conf
+</code></pre></div>
+<p>We can configure DHCP as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/dnsmasq.d/network.conf</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="s">interface=eth1</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="s">dhcp-range=192.168.0.50,192.168.0.150,24h</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>We want to forward the DNS requests to NextDNS. Be sure you are using your CPE otherwise, you won't see DNS requests on your NextDNS dashboard:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/dnsmasq.d/nextdns.conf</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="s">port=53</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="s">no-resolv</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="s">no-hosts</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="s">bogus-priv</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="s">strict-order</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="s">server=45.90.30.0</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="s">server=45.90.28.0</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="s">add-cpe-id=aaaaaa</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>We want DNSMasq to log all requests on a specific file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/dnsmasq.d/logging.conf</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s"># Log each DNS query</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="s">log-queries</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="s"># Log lots of extra information about DHCP</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="s">log-dhcp</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="s"># Log into a dedicated files</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="s">log-facility=/var/log/analysis/dnsmasq.log</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>Finally, we need to restart DNSMasq:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>dnsmasq
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>dnsmasq
+</code></pre></div>
+<h2 id="full-traffic-capture">Full traffic capture<a class="headerlink" href="#full-traffic-capture" title="Permanent link">&para;</a></h2>
+<p>Even if it won't be easy to analyze captured packets, it's still useful to have them so we can analyze specific conversations. We are configuring a small service to capture any packets entering from <code>eth1</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/systemd/system/tcpdump.service</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s">[Unit]</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s">After=network.target</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="s">[Service]</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="s">Restart=always</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="s">RestartSec=30</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="s">Environment="TCPDUMP_FORMAT=%%Y%%m%%d-%%H:%%M:%%S"</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="s">ExecStartPre=/bin/mkdir -p /var/log/analysis</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="s">ExecStart=/usr/bin/tcpdump -G 3600 -i eth1 -w "/var/log/analysis/tcpdump-eth1-${TCPDUMP_FORMAT}.pcap"</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="s">ExecStop=/bin/kill -s SIGINT $MAINPID</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="s">[Install]</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="s">WantedBy=multi-user.target</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>We need to enable and start the new service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>tcpdump
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>tcpdump
+</code></pre></div>
+<h2 id="light-traffic-capture-metadata">Light traffic capture (metadata)<a class="headerlink" href="#light-traffic-capture-metadata" title="Permanent link">&para;</a></h2>
+<p>We need a faster way to understand what the testing device is doing.</p>
+<p>Zeek can help to capture traffic metadata in a human-readable format. Zeek is not available on Kali Linux for Raspberry Pi, so we need to compile it. The process requires a few hours:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>cmake<span class="w"> </span>flex<span class="w"> </span>bison<span class="w"> </span>libpcap-dev<span class="w"> </span>libssl-dev<span class="w"> </span>python3<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>zlib1g-dev
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-git<span class="w"> </span>python3-semantic-version<span class="w"> </span>exim4
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/zeek/zeek
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="nb">cd</span><span class="w"> </span>zeek
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>./configure
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>make
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p>We want to install Zeek auxiliary programs also:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>auxil/zeek-aux
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>./configure
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>make
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p>Maybe we want to include the Zeek binary directory in the path:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/zeek/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+</code></pre></div>
+<p>To configure Zeek we need to edit <code>/usr/local/zeek/etc/node.cfg</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">[zeek]</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="na">type</span><span class="o">=</span><span class="s">standalone</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="na">host</span><span class="o">=</span><span class="s">localhost</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="na">interface</span><span class="o">=</span><span class="s">eth1</span>
+</code></pre></div>
+<p>We also want Zeek log on the same directory we used before. Edit also <code>/usr/local/zeek/etc/zeekctl.cfg</code> and set:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>LogDir = /var/log/analysis/zeek
+</code></pre></div>
+<p>Finally, we are ready to update Zeek installation/configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>zeekctl<span class="w"> </span>install
+</code></pre></div>
+<p>We can manually start Zeek or configure a SystemD service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/systemd/system/zeek.service</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="s">[Unit]</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="s">Description=zeek network analysis engine</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="s">[Service]</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="s">Type=forking</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="s">PIDFIle=/var/run/zeek.pid</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="s">ExecStart=/usr/local/zeek/bin/zeekctl start</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="s">ExecStop=/usr/local/zeek/bin/zeekctl stop</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="s">[Install]</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="s">WantedBy=multi-user.target</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>And enable it during the boot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>zeek
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>zeek
+</code></pre></div>
+<h2 id="mitm-proxy">MITM Proxy<a class="headerlink" href="#mitm-proxy" title="Permanent link">&para;</a></h2>
+<p>We are using MITM Proxy to analyze encrypted HTTP connections. We can install it with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>mitmproxy
+</code></pre></div>
+<p>We can configure MITM Proxy as a system service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/systemd/system/mitmproxy.service</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="s">[Unit]</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="s">Description=MITMProxy</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="s">[Service]</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="s">Type=simple</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="s">ExecStart=/usr/bin/mitmweb --mode transparent --web-port 9090 --web-host 0.0.0.0 --no-web-open-browser</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="s">StandardOutput=file:/var/log/analysis/mitmproxy.log</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="s">StandardError=file:/var/log/analysis/mitmproxy.log</span>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="s">[Install]</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a><span class="s">WantedBy=multi-user.target</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>And we want to start it on boot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mitmproxy
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mitmproxy
+</code></pre></div>
+<p>To intercept the traffic we need to NAT (REDIRECT) HTTP and HTTPS connections to the port used by MITM Proxy (default is 8080), so the traffic can be intercepted:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>PREROUTING<span class="w"> </span>-i<span class="w"> </span>eth1<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">80</span><span class="w"> </span>-m<span class="w"> </span>comment<span class="w"> </span>--comment<span class="w"> </span><span class="s2">"mitmproxy"</span><span class="w"> </span>-j<span class="w"> </span>REDIRECT<span class="w"> </span>--to-port<span class="w"> </span><span class="m">8080</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>sudo<span class="w"> </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>PREROUTING<span class="w"> </span>-i<span class="w"> </span>eth1<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>-m<span class="w"> </span>comment<span class="w"> </span>--comment<span class="w"> </span><span class="s2">"mitmproxy"</span><span class="w"> </span>-j<span class="w"> </span>REDIRECT<span class="w"> </span>--to-port<span class="w"> </span><span class="m">8080</span>
+</code></pre></div>
+<p>Because we need to activate and deactivate MITM Proxy traffic inspection, we can use a simple script:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="k">function</span><span class="w"> </span>disable<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">    </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-S<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>mitmproxy<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="s2">" "</span><span class="w"> </span>-f2-<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-rL1<span class="w"> </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-D
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="o">}</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="k">function</span><span class="w">  </span>enable<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">    </span>disable
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">    </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>PREROUTING<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">80</span><span class="w"> </span>-m<span class="w"> </span>comment<span class="w"> </span>--comment<span class="w"> </span><span class="s2">"mitmproxy"</span><span class="w"> </span>-j<span class="w"> </span>REDIRECT<span class="w"> </span>--to-port<span class="w"> </span><span class="m">8080</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">    </span>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>PREROUTING<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>-m<span class="w"> </span>comment<span class="w"> </span>--comment<span class="w"> </span><span class="s2">"mitmproxy"</span><span class="w"> </span>-j<span class="w"> </span>REDIRECT<span class="w"> </span>--to-port<span class="w"> </span><span class="m">8080</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="o">}</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="k">case</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="k">in</span>
+<a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a><span class="w">    </span><span class="nb">enable</span><span class="o">)</span>
+<a id="__codelineno-31-15" name="__codelineno-31-15" href="#__codelineno-31-15"></a><span class="w">        </span><span class="nb">enable</span>
+<a id="__codelineno-31-16" name="__codelineno-31-16" href="#__codelineno-31-16"></a><span class="w">        </span><span class="p">;;</span>
+<a id="__codelineno-31-17" name="__codelineno-31-17" href="#__codelineno-31-17"></a><span class="w">    </span>disable<span class="o">)</span>
+<a id="__codelineno-31-18" name="__codelineno-31-18" href="#__codelineno-31-18"></a><span class="w">        </span>disable
+<a id="__codelineno-31-19" name="__codelineno-31-19" href="#__codelineno-31-19"></a><span class="w">        </span><span class="p">;;</span>
+<a id="__codelineno-31-20" name="__codelineno-31-20" href="#__codelineno-31-20"></a><span class="w">    </span>*<span class="o">)</span>
+<a id="__codelineno-31-21" name="__codelineno-31-21" href="#__codelineno-31-21"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Use </span><span class="nv">$0</span><span class="s2"> enable|disable"</span>
+<a id="__codelineno-31-22" name="__codelineno-31-22" href="#__codelineno-31-22"></a><span class="w">        </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-31-23" name="__codelineno-31-23" href="#__codelineno-31-23"></a><span class="w">        </span><span class="p">;;</span>
+<a id="__codelineno-31-24" name="__codelineno-31-24" href="#__codelineno-31-24"></a><span class="k">esac</span>
+</code></pre></div>
+<p>We can activate and deactivate traffic interception with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>/root/mitmproxy.sh<span class="w"> </span><span class="nb">enable</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>sudo<span class="w"> </span>/root/mitmproxy.sh<span class="w"> </span>disable
+</code></pre></div>
+<p>MITM Proxy web interface is available on port <code>9090</code> by default.</p>
+<p><img alt="mitm-proxy-webui" src="../images/mitm-proxy-webui.png" /></p>
+<h3 id="traffic-interception">Traffic interception<a class="headerlink" href="#traffic-interception" title="Permanent link">&para;</a></h3>
+<p>Once traffic interception is activated, HTTPS connections will be broken into two parts:</p>
+<p><img alt="traffic-interception" src="../images/traffic-interception.png" /></p>
+<p>The first diagram shows non-intercepted HTTPS connections: in this case, the client gets a valid signed certificate.</p>
+<p>The second diagram shows HTTPS connections intercepted by MITM Proxy: the client gets an invalid self-signed certificate by the MITM Proxy server.</p>
+<p>We have three different scenarios:</p>
+<ol>
+<li>the application is not validating certificates, and MITM Proxy can intercept the traffic.</li>
+<li>the application is validating certificates and certificate pinning is not configured in the application.</li>
+<li>the application is validating certificates and certificate pinning is configured in the application.</li>
+</ol>
+<p>In the second scenario, we can enable the traffic interception by installing the MITM Proxy certificate into the device and trusting it. From the device open <code>http://mitm.it</code> and install the self-signed certificate.</p>
+<p><img alt="mitm-it-website" src="../images/mitm-it-website.png" /></p>
+<p><img alt="certificate-installer" src="../images/certificate-installer.png" /></p>
+<p>In the third scenario the application is validating a specific certificate so even if the MITM Proxy certificate is trusted, the application recognizes a MITM attack:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>192.168.0.126:34170: Client TLS handshake failed. The client may not trust the proxy's certificate for www.google.com (OpenSSL Error([('SSL routines', 'ssl3_read_bytes', 'sslv3 alert certificate unknown')]))
+</code></pre></div>
+<p>To bypass certificate pinning, see the post about <a href="../../disable-android-certificate-pinning-with-frida/disable-android-certificate-pinning-with-frida/">Frida</a>.</p>
+<h2 id="log-rotation">Log rotation<a class="headerlink" href="#log-rotation" title="Permanent link">&para;</a></h2>
+<p>To keep the system clean we rotate logs:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/logrotate.d/analysis</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="s">/var/log/analysis/iptables.log {</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="s">    daily</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="s">    rotate 7</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="s">    nocompress</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="s">    missingok</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="s">    notifempty</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a><span class="s">    dateext</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="s">}</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a><span class="s">/var/log/analysis/dnsmasq.log {</span>
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a><span class="s">    daily</span>
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a><span class="s">    rotate 7</span>
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a><span class="s">    nocompress</span>
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a><span class="s">    missingok</span>
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a><span class="s">    notifempty</span>
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a><span class="s">    dateext</span>
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a><span class="s">}</span>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a><span class="s">/var/log/analysis/tcpdump {</span>
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a><span class="s">    daily</span>
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a><span class="s">    rotate 0</span>
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a><span class="s">    ifempty</span>
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a><span class="s">    lastaction</span>
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a><span class="s">        /usr/bin/find /var/log/analysis/ -name "tcpdump-*" -mtime +7 -delete</span>
+<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a><span class="s">    endscript</span>
+<a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a><span class="s">}</span>
+<a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>Next <code>logrotate</code> executions will clean obsolete files.</p>
+<h2 id="clean-logs">Clean logs<a class="headerlink" href="#clean-logs" title="Permanent link">&para;</a></h2>
+<p>Before and after testing an IoT device and its related apps, we probably want to purge old log files. A short script can help to automate this task:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>sudo<span class="w"> </span>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /root/clean.sh</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="s">#!/bin/bash</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="s">NEXT_DNS_PROFILE=aaaaaa</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="s">NEXT_DNS_APIKEY=a8f4e42e896ff37f181e3e8a42a9737e1423d8e7</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="s">find /var/log/analysis -type f -exec rm -f {} \;</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="s">rm -rf /var/log/analysis/zeek/2*</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="s">systemctl restart tcpdump</span>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a><span class="s">systemctl restart dnsmasq</span>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="s">systemctl restart rsyslog</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="s">systemctl restart mitmproxy</span>
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="s">curl -X "DELETE" --header "X-Api-Key: ${NEXT_DNS_APIKEY}" https://api.nextdns.io/profiles/${NEXT_DNS_PROFILE}/logs</span>
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="s">EOF</span>
+</code></pre></div>
+<p>Replace the two parameters with your data and run it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/root/clean.sh
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>sudo<span class="w"> </span>/root/clean.sh
+</code></pre></div>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>We built a small and cheap lab to test consumer IoT devices. But the same tools we used can be used in a Threat Hunting scenario or during network analysis (performance, troubleshooting, whatever). Learning Linux means having an invaluable toolkit ready to be used in complex analysis.</p>
+<p>We are learning how to use this setup in dedicated posts.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

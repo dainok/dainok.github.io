@@ -1,0 +1,5054 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/tags/">
+      
+      
+        <link rel="prev" href="../index/">
+      
+      
+        <link rel="next" href="../events/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Tags - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tag:aci" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tags
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href=".." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tag:aci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aci
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        advanced
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:ansible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ansible
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:attack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        attack
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:awx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        awx
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:beginner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        beginner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:behind-the-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        behind-the-scene
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:camunda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        camunda
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:catalyst-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        catalyst-center
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:cisco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cisco
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:cmdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cmdb
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:cortex-xsoar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cortex-xsoar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:digital-self-defence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        digital-self-defence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:eve-ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        eve-ng
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fundamentals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        git
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:gitlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gitlab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        governance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:incident-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        incident-management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:intermediate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        intermediate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ipv6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:log-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        log-management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:media" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        media
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:misp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        misp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:n8n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        n8n
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:nautobot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nautobot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:ndo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ndo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:netascode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        netascode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:netdoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        netdoc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:oauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        oauth
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:osint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        osint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:ot-ics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ot-ics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:palo-alto-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        palo-alto-networks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:pexpect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pexpect
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:proxmox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        proxmox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:scm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        scm
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        security
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:servicenow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servicenow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:snmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        snmp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        terraform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:threat-intelligence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        threat-intelligence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:unetlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unetlab
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:vulnerability-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        vulnerability-management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tag:ztp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ztp
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Tags</h1>
+
+<div class="tag-cloud">
+<a class="tag-cloud__tag tag-cloud__tag--4" href="#tag:aci" title="22 posts">aci<sup>22</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--5" href="#tag:advanced" title="94 posts">advanced<sup>94</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--4" href="#tag:ansible" title="38 posts">ansible<sup>38</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:attack" title="2 posts">attack<sup>2</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:awx" title="1 post">awx<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--5" href="#tag:beginner" title="75 posts">beginner<sup>75</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:behind-the-scene" title="1 post">behind-the-scene<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:camunda" title="1 post">camunda<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:catalyst-center" title="1 post">catalyst-center<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--4" href="#tag:cisco" title="37 posts">cisco<sup>37</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:cmdb" title="1 post">cmdb<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:cortex-xsoar" title="3 posts">cortex-xsoar<sup>3</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:design" title="10 posts">design<sup>10</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--4" href="#tag:digital-self-defence" title="20 posts">digital-self-defence<sup>20</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:documentation" title="2 posts">documentation<sup>2</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:eve-ng" title="15 posts">eve-ng<sup>15</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:fundamentals" title="15 posts">fundamentals<sup>15</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:git" title="7 posts">git<sup>7</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:gitlab" title="3 posts">gitlab<sup>3</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--4" href="#tag:governance" title="20 posts">governance<sup>20</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:incident-management" title="1 post">incident-management<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--4" href="#tag:intermediate" title="44 posts">intermediate<sup>44</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:ipv6" title="1 post">ipv6<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:linux" title="6 posts">linux<sup>6</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:log-management" title="1 post">log-management<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:media" title="4 posts">media<sup>4</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:misp" title="4 posts">misp<sup>4</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:n8n" title="2 posts">n8n<sup>2</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:nautobot" title="8 posts">nautobot<sup>8</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:ndo" title="9 posts">ndo<sup>9</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:netascode" title="8 posts">netascode<sup>8</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:netdoc" title="2 posts">netdoc<sup>2</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:oauth" title="3 posts">oauth<sup>3</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:osint" title="1 post">osint<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:ot-ics" title="17 posts">ot-ics<sup>17</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--4" href="#tag:palo-alto-networks" title="18 posts">palo-alto-networks<sup>18</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:pexpect" title="2 posts">pexpect<sup>2</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:proxmox" title="7 posts">proxmox<sup>7</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:scm" title="6 posts">scm<sup>6</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:security" title="9 posts">security<sup>9</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:servicenow" title="5 posts">servicenow<sup>5</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:snmp" title="1 post">snmp<sup>1</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--2" href="#tag:terraform" title="3 posts">terraform<sup>3</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:unetlab" title="15 posts">unetlab<sup>15</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--3" href="#tag:vulnerability-management" title="6 posts">vulnerability-management<sup>6</sup></a>
+<a class="tag-cloud__tag tag-cloud__tag--1" href="#tag:ztp" title="1 post">ztp<sup>1</sup></a>
+</div>
+
+
+
+  <h2 id="tag:aci">
+
+
+<span class="md-tag">aci</span><a class="headerlink" href="#tag:aci" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/117a-practical-cisco-ndo-multi-site-use-case-additional-configuration/a-practical-cisco-ndo-multi-site-use-case-additional-configuration/">
+          A practical Cisco NDO multi-site use case additional configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/119a-practical-cisco-ndo-multi-site-use-case-building-the-parser/a-practical-cisco-ndo-multi-site-use-case-building-the-parser/">
+          A practical Cisco NDO multi-site use case building the parser
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/120a-practical-cisco-ndo-multi-site-use-case-config-deploy/a-practical-cisco-ndo-multi-site-use-case-config-deploy/">
+          A practical Cisco NDO multi-site use case config deploy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/118a-practical-cisco-ndo-multi-site-use-case-data-validation/a-practical-cisco-ndo-multi-site-use-case-data-validation/">
+          A practical Cisco NDO multi-site use case data validation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/116a-practical-cisco-ndo-multi-site-use-case-modelling/a-practical-cisco-ndo-multi-site-use-case-modelling/">
+          A practical Cisco NDO multi-site use case modelling
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/107cisco-aci-classes/cisco-aci-classes/">
+          Cisco ACI Classes
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/104cisco-aci-object-model-explained/cisco-aci-object-model-explained/">
+          Cisco ACI object model explained
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/206designing-a-gitlab-ci-cd-pipeline-for-iac/designing-a-gitlab-ci-cd-pipeline-for-iac/">
+          Designing a GitLab CI/CD pipeline for IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/109filtering-cisco-api-output/filtering-cisco-api-output/">
+          Filtering Cisco API Output
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/108finding-cisco-aci-classes-with-visore/finding-cisco-aci-classes-with-visore/">
+          Finding Cisco ACI Classes with Visore
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/106first-approach-to-cisco-aci-apis/first-approach-to-cisco-aci-apis/">
+          First Approach to Cisco ACI APIs
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/113frameworks-for-projects-with-cisco-aci-and-ndo/frameworks-for-projects-with-cisco-aci-and-ndo/">
+          Frameworks for Projects with Cisco ACI and NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/207gitlab-ci-cd-iac-in-action/gitlab-ci-cd-iac-in-action/">
+          GitLab CI/CD + IaC in action
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/205gitlab-as-the-backbone-of-iac/gitlab-as-the-backbone-of-iac/">
+          GitLab as the backbone of IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">
+          Importing NaC objects from Cisco ACI into Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/101introduction-to-cisco-aci/introduction-to-cisco-aci/">
+          Introduction to Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/105logging-into-cisco-aci/logging-into-cisco-aci/">
+          Logging into Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">
+          Managing a brownfield Cisco ACI fabric with NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/103operating-with-cisco-aci/operating-with-cisco-aci/">
+          Operating with Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/110pagination-with-cisco-aci/pagination-with-cisco-aci/">
+          Pagination with Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/126reconciling-attribute-drift-between-nac-and-terraform/reconciling-attribute-drift-between-nac-and-terraform/">
+          Reconciling attribute drift Between NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/102setting-up-a-cisco-aci-lab-environment/setting-up-a-cisco-aci-lab-environment/">
+          Setting up a Cisco ACI lab environment
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:advanced">
+
+
+<span class="md-tag">advanced</span><a class="headerlink" href="#tag:advanced" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/a-cmdb-for-it-infrastructures/a-cmdb-for-it-infrastructures/">
+          A CMDB for IT infrastructures
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/117a-practical-cisco-ndo-multi-site-use-case-additional-configuration/a-practical-cisco-ndo-multi-site-use-case-additional-configuration/">
+          A practical Cisco NDO multi-site use case additional configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/119a-practical-cisco-ndo-multi-site-use-case-building-the-parser/a-practical-cisco-ndo-multi-site-use-case-building-the-parser/">
+          A practical Cisco NDO multi-site use case building the parser
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/118a-practical-cisco-ndo-multi-site-use-case-data-validation/a-practical-cisco-ndo-multi-site-use-case-data-validation/">
+          A practical Cisco NDO multi-site use case data validation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/116a-practical-cisco-ndo-multi-site-use-case-modelling/a-practical-cisco-ndo-multi-site-use-case-modelling/">
+          A practical Cisco NDO multi-site use case modelling
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/203advanced-git-commands/advanced-git-commands/">
+          Advanced Git commands
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/113ansible-parsers-and-filters/ansible-parsers-and-filters/">
+          Ansible parsers and filters
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/141ansible-playbook-for-network-provisioning/ansible-playbook-for-network-provisioning/">
+          Ansible playbook for Network provisioning
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/109ansible-statements/ansible-statements/">
+          Ansible statements
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/assume-breach-design/assume-breach-design/">
+          Assume breach design
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/116attacking-the-oil-refinery-plant/attacking-the-oil-refinery-plant/">
+          Attacking the Oil Refinery plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/attempted-fraud-via-sms-and-fake-voice/attempted-fraud-via-sms-and-fake-voice/">
+          Attempted fraud via SMS and fake voice
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/auditing-active-directory-passwords-against-haveibeenpwned/auditing-active-directory-passwords-against-haveibeenpwned/">
+          Auditing Active Directory passwords against HaveIBeenPwned
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/143automated-vm-provisioning-from-a-servicenow-ticket/automated-vm-provisioning-from-a-servicenow-ticket/">
+          Automated VM Provisioning from a ServiceNow Ticket
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/108automated-reachability-tests-for-eve-ng-templates/automated-reachability-tests-for-eve-ng-templates/">
+          Automated reachability tests for EVE-NG templates
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/132automatic-cisco-xr-provisioning-with-zt/automatic-cisco-xr-provisioning-with-zt/">
+          Automatic Cisco XR provisioning with ZT
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/139automating-network-provisioning-with-servicenow-and-ansible/automating-network-provisioning-with-servicenow-and-ansible/">
+          Automating Network Provisioning with ServiceNow and Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/206automating-palo-alto-firewall-via-python-pan-sdk/automating-palo-alto-firewall-via-python-pan-sdk/">
+          Automating Palo Alto Firewall via Python PAN SDK
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/205automating-palo-alto-firewall-via-python-pan-os-sdk/automating-palo-alto-firewall-via-python-pan-os-sdk/">
+          Automating Palo Alto Firewall via Python PAN-OS SDK
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/204automating-palo-alto-firewall-via-rest-api/automating-palo-alto-firewall-via-rest-api/">
+          Automating Palo Alto Firewall via REST API
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/203automating-palo-alto-firewall-via-xml-api/automating-palo-alto-firewall-via-xml-api/">
+          Automating Palo Alto Firewall via XML API
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/automating-palo-alto-networks-firewalls/automating-palo-alto-networks-firewalls/">
+          Automating Palo Alto Networks firewalls
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/131automating-configuration-compliance-verification-for-cisco-switches/automating-configuration-compliance-verification-for-cisco-switches/">
+          Automating configuration compliance verification for Cisco Switches
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/116boosting-ansible-performance/boosting-ansible-performance/">
+          Boosting Ansible performance
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/building-an-iot-testing-lab/building-an-iot-testing-lab/">
+          Building an IoT testing lab
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/111building-network-reports-from-structured-json-data/building-network-reports-from-structured-json-data/">
+          Building network reports from structured JSON data
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/ccie-38620-my-story/ccie-38620-my-story/">
+          CCIE #38620 - My story
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/104cisco-aci-object-model-explained/cisco-aci-object-model-explained/">
+          Cisco ACI object model explained
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/109collecting-information-from-a-network-infrastructure/collecting-information-from-a-network-infrastructure/">
+          Collecting information from a network infrastructure
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/121comprehensive-ansible-lab/comprehensive-ansible-lab/">
+          Comprehensive Ansible Lab
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/connecting-an-ipv6-only-site-to-an-ipv4-only-world/connecting-an-ipv6-only-site-to-an-ipv4-only-world/">
+          Connecting an IPv6 only site to an IPv4 only world
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/204contributing-to-ntc-templates-with-git-and-github/contributing-to-ntc-templates-with-git-and-github/">
+          Contributing to NTC Templates with Git and GitHub
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/106customizing-eve-ng/customizing-eve-ng/">
+          Customizing EVE-NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/">
+          Data center topology with Cisco Nexus, HP Virtual Connect and VMware
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/206designing-a-gitlab-ci-cd-pipeline-for-iac/designing-a-gitlab-ci-cd-pipeline-for-iac/">
+          Designing a GitLab CI/CD pipeline for IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/">
+          Designing a cloud provider with both VMware NSX and Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/disable-android-certificate-pinning-with-frida/disable-android-certificate-pinning-with-frida/">
+          Disable Android Certificate Pinning with Frida
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/discontinued-iot-products/discontinued-iot-products/">
+          Discontinued IoT products
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/disjoint-l2-domains-on-cisco-ucs/disjoint-l2-domains-on-cisco-ucs/">
+          Disjoint L2 domains on Cisco UCS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/111eve-ng-sw-architecture-and-docker-support/eve-ng-sw-architecture-and-docker-support/">
+          EVE-NG (SW architecture and docker support)
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/114eve-ng-cli-hld-files/eve-ng-cli-hld-files/">
+          EVE-NG CLI - HLD files
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/113eve-ng-cli-iac-ready-images/eve-ng-cli-iac-ready-images/">
+          EVE-NG CLI - IaC-ready images
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/112eve-ng-cli-introduction/eve-ng-cli-introduction/">
+          EVE-NG CLI - Introduction
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/115eve-ng-cli-usage-and-hld-import/eve-ng-cli-usage-and-hld-import/">
+          EVE-NG CLI - Usage and HLD Import
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/110eve-ng-linux-vm-ssh-troubleshooting/eve-ng-linux-vm-ssh-troubleshooting/">
+          EVE-NG Linux VM SSH troubleshooting
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/107eve-ng-network-interfaces-explained/eve-ng-network-interfaces-explained/">
+          EVE-NG network interfaces explained
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/evaluating-security-of-rfid-nfc-implementations/evaluating-security-of-rfid-nfc-implementations/">
+          Evaluating security of RFID/NFC implementations
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/133event-driven-ansible/event-driven-ansible/">
+          Event-Driven Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/106first-approach-to-cisco-aci-apis/first-approach-to-cisco-aci-apis/">
+          First Approach to Cisco ACI APIs
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/110gathering-structured-network-data-with-netmiko-and-ntc-templates/gathering-structured-network-data-with-netmiko-and-ntc-templates/">
+          Gathering structured network data with Netmiko and NTC Templates
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/207gitlab-ci-cd-iac-in-action/gitlab-ci-cd-iac-in-action/">
+          GitLab CI/CD + IaC in action
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/205gitlab-as-the-backbone-of-iac/gitlab-as-the-backbone-of-iac/">
+          GitLab as the backbone of IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/home-phone-call-firewall/home-phone-call-firewall/">
+          Home phone call firewall
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/ics-ot-iot-security-challenges-and-protection-strategies/ics-ot-iot-security-challenges-and-protection-strategies/">
+          ICS/OT/IoT Security: challenges and protection strategies
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/202industrial-network-segmentation-with-private-vlans/industrial-network-segmentation-with-private-vlans/">
+          Industrial network segmentation with Private VLANs
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">
+          Industrial network segmentation with VLAN Insertion
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/108key-insights-from-developing-nautobot-and-ansible-integrations/key-insights-from-developing-nautobot-and-ansible-integrations/">
+          Key insights from developing Nautobot and Ansible integrations
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/log-management-is-more-than-a-log-collector/log-management-is-more-than-a-log-collector/">
+          Log management is more than a log collector
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/mitm-on-wired-8021x-with-a-raspberry-pi/mitm-on-wired-8021x-with-a-raspberry-pi/">
+          MITM on wired 802.1x with a Raspberry PI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/115managing-cisco-ndo-limitations-from-the-apic/managing-cisco-ndo-limitations-from-the-apic/">
+          Managing Cisco NDO Limitations from the APIC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">
+          Managing a brownfield Cisco ACI fabric with NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/netdoc-automated-network-discovery-and-documentation/netdoc-automated-network-discovery-and-documentation/">
+          NetDoc: automated network discovery and documentation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/off-path-firewall-with-traffic-engineering/off-path-firewall-with-traffic-engineering/">
+          Off-Path firewall with Traffic Engineering
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/303optimizing-strata-cloud-manager-api-usage/optimizing-strata-cloud-manager-api-usage/">
+          Optimizing Strata Cloud Manager API usage
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/112optimizing-a-network-assessment-automation/optimizing-a-network-assessment-automation/">
+          Optimizing a network assessment automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/135orchestrating-playbooks-with-ansible-awx/orchestrating-playbooks-with-ansible-awx/">
+          Orchestrating playbooks with Ansible AWX
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/palo-alto-firewall-as-code/palo-alto-firewall-as-code/">
+          Palo Alto Firewall as Code
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/104parsing-text-with-textfsm/parsing-text-with-textfsm/">
+          Parsing text with TextFSM
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/107patching-the-proxmox-kernel/patching-the-proxmox-kernel/">
+          Patching the Proxmox kernel
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/107pexpect-as-a-tool-of-last-resort/pexpect-as-a-tool-of-last-resort/">
+          Pexpect as a tool of last resort
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/post-mortem-account-security/post-mortem-account-security/">
+          Post-mortem account security
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/113protecting-your-development-environment/preotecting-your-development-environment/">
+          Preotecting Your Development Environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/132reboot-a-device-with-ansible-and-wait-for-it-to-come-online/reboot-a-device-with-ansible-and-wait-for-it-to-come-online/">
+          Reboot a device with Ansible and wait for it to come online
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/126reconciling-attribute-drift-between-nac-and-terraform/reconciling-attribute-drift-between-nac-and-terraform/">
+          Reconciling attribute drift Between NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/117running-ansible-playbooks-through-a-bastion-host/running-ansible-playbooks-through-a-bastion-host/">
+          Running Ansible playbooks through a Bastion host
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/siem-ready-applications/siem-ready-applications/">
+          SIEM ready applications
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/sanitize-personal-android-devices/sanitize-personal-android-devices/">
+          Sanitize personal Android devices
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/securing-user-authentication-under-iec-62443/securing-user-authentication-under-iec-62443/">
+          Securing user authentication under IEC 62443
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/140servicenow-catalog-configuration/servicenow-catalog-configuration/">
+          ServiceNow Catalog Configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/142servicenow-poll-based-request-processing/servicenow-poll-based-request-processing/">
+          ServiceNow Poll-Based Request Processing
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/401simplifying-documentation-with-markdown-and-ci-cd/simplifying-documentation-with-markdown-and-ci-cd/">
+          Simplifying documentation with Markdown and CI CD
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/109simulating-an-l1-link-in-proxmox/simulating-an-l1-link-in-proxmox/">
+          Simulating an L1 link in Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/110testing-stretched-networks-with-proxmox/testing-stretched-networks-with-proxmox/">
+          Testing stretched networks with Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/105textfsm-parsing-non-tabular-text/textfsm-parsing-non-tabular-text/">
+          TextFSM parsing non-tabular text
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/106textfsm-parsing-tabular-text/textfsm-parsing-tabular-text/">
+          TextFSM parsing tabular text
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/106the-ansible-role-breakdown/the-ansible-role-breakdown/">
+          The Ansible role breakdown
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/the-value-of-a-risk-based-va/the-value-of-a-risk-based-va/">
+          The value of a Risk Based VA
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/theft-and-recovery-of-a-facebook-account/theft-and-recovery-of-a-facebook-account/">
+          Theft and recovery of a Facebook account
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/108troubleshooting-eve-ng-nodes-that-fail-to-start/troubleshooting-eve-ng-nodes-that-fail-to-start/">
+          Troubleshooting EVE-NG nodes that fail to start
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/va-scanners-for-patch-management-good-or-bad/va-scanners-for-patch-management-good-or-bad/">
+          VA scanners for patch management: good or bad?
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/vrfs-on-linux/vrfs-on-linux/">
+          VRFs on Linux
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/vulnerability-management/vulnerability-management/">
+          Vulnerability Management
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/what-about-too-complex-it-infrastructures/what-about-too-complex-it-infrastructures/">
+          What about too complex IT-Infrastructures?
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/402writing-presentations-with-markdown/writing-presentations-with-markdown/">
+          Writing presentations with Markdown
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:ansible">
+
+
+<span class="md-tag">ansible</span><a class="headerlink" href="#tag:ansible" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../series/ansible/">
+          Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/136ansible-galaxy/ansible-galaxy/">
+          Ansible Galaxy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">
+          Ansible Playbooks and variables
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/144ansible-workbook-for-devnetops-slides/ansible-workbook-for-devnetops-slides/">
+          Ansible Workbook for DevNetOps slides
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/106ansible-ad-hoc-commands/ansible-ad-hoc-commands/">
+          Ansible ad hoc commands
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/105ansible-configuration/ansible-configuration/">
+          Ansible configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/104ansible-inventory/ansible-inventory/">
+          Ansible inventory
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/119ansible-orchestrators-and-integration-tools/ansible-orchestrators-and-integration-tools/">
+          Ansible orchestrators and integration tools
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/113ansible-parsers-and-filters/ansible-parsers-and-filters/">
+          Ansible parsers and filters
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/141ansible-playbook-for-network-provisioning/ansible-playbook-for-network-provisioning/">
+          Ansible playbook for Network provisioning
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/134ansible-reporting-with-ara/ansible-reporting-with-ara/">
+          Ansible reporting with ARA
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/109ansible-statements/ansible-statements/">
+          Ansible statements
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/143automated-vm-provisioning-from-a-servicenow-ticket/automated-vm-provisioning-from-a-servicenow-ticket/">
+          Automated VM Provisioning from a ServiceNow Ticket
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/145automatic-cis-controls-check-with-ansible/automatic-cis-controls-check-with-ansible/">
+          Automatic CIS controls check with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/139automating-network-provisioning-with-servicenow-and-ansible/automating-network-provisioning-with-servicenow-and-ansible/">
+          Automating Network Provisioning with ServiceNow and Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/automating-palo-alto-networks-firewalls/automating-palo-alto-networks-firewalls/">
+          Automating Palo Alto Networks firewalls
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/116boosting-ansible-performance/boosting-ansible-performance/">
+          Boosting Ansible performance
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/121comprehensive-ansible-lab/comprehensive-ansible-lab/">
+          Comprehensive Ansible Lab
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/108defining-and-using-variables-in-ansible/defining-and-using-variables-in-ansible/">
+          Defining and using variables in Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/137delegate-ansible-tasks-to-a-different-host/delegate-ansible-tasks-to-a-different-host/">
+          Delegate Ansible tasks to a different host
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/115enhancing-ansible-output/enhancing-ansible-output/">
+          Enhancing Ansible output
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/111handling-errors-in-ansible-playbooks/handling-errors-in-ansible-playbooks/">
+          Handling errors in Ansible playbooks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/105integrating-ansible-with-nautobot/integrating-ansible-with-nautobot/">
+          Integrating Ansible with Nautobot
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">
+          Introduction to Ansible Automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/101introduction-to-network-automation-with-ansible/introduction-to-network-automation-with-ansible/">
+          Introduction to network automation with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/108key-insights-from-developing-nautobot-and-ansible-integrations/key-insights-from-developing-nautobot-and-ansible-integrations/">
+          Key insights from developing Nautobot and Ansible integrations
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/101key-steps-for-real-world-success/key-steps-for-real-world-success/">
+          Key steps for Real-World success
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/131managing-cli-prompts-with-ansible/managing-cli-prompts-with-ansible/">
+          Managing CLI prompts with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/107orchestrating-ansible-playbooks-for-nautobot-integration/orchestrating-ansible-playbooks-for-nautobot-integration/">
+          Orchestrating Ansible playbooks for Nautobot integration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/135orchestrating-playbooks-with-ansible-awx/orchestrating-playbooks-with-ansible-awx/">
+          Orchestrating playbooks with Ansible AWX
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/114password-management-with-ansible/password-management-with-ansible/">
+          Password Management with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/102preparing-your-ansible-environment/preparing-your-ansible-environment/">
+          Preparing your Ansible environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/132reboot-a-device-with-ansible-and-wait-for-it-to-come-online/reboot-a-device-with-ansible-and-wait-for-it-to-come-online/">
+          Reboot a device with Ansible and wait for it to come online
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/117running-ansible-playbooks-through-a-bastion-host/running-ansible-playbooks-through-a-bastion-host/">
+          Running Ansible playbooks through a Bastion host
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/140servicenow-catalog-configuration/servicenow-catalog-configuration/">
+          ServiceNow Catalog Configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/142servicenow-poll-based-request-processing/servicenow-poll-based-request-processing/">
+          ServiceNow Poll-Based Request Processing
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/110strategies-for-troubleshooting-ansible-errors/strategies-for-troubleshooting-ansible-errors/">
+          Strategies for troubleshooting Ansible errors
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/106the-ansible-role-breakdown/the-ansible-role-breakdown/">
+          The Ansible role breakdown
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/112using-ansible-handlers-for-optimized-task-execution/using-ansible-handlers-for-optimized-task-execution/">
+          Using Ansible handlers for optimized task execution
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:attack">
+
+
+<span class="md-tag">attack</span><a class="headerlink" href="#tag:attack" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../ot-ics/114attacking-the-bottle-filling-plant/attacking-the-bottle-filling-plant/">
+          Attacking the Bottle Filling plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/116attacking-the-oil-refinery-plant/attacking-the-oil-refinery-plant/">
+          Attacking the Oil Refinery plant
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:awx">
+
+
+<span class="md-tag">awx</span><a class="headerlink" href="#tag:awx" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../ansible/135orchestrating-playbooks-with-ansible-awx/orchestrating-playbooks-with-ansible-awx/">
+          Orchestrating playbooks with Ansible AWX
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:beginner">
+
+
+<span class="md-tag">beginner</span><a class="headerlink" href="#tag:beginner" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/120a-practical-cisco-ndo-multi-site-use-case-config-deploy/a-practical-cisco-ndo-multi-site-use-case-config-deploy/">
+          A practical Cisco NDO multi-site use case config deploy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/117an-ics-lab-with-grficsv2/an-ics-lab-with-grficsv2/">
+          An ICS lab with GRFICSv2
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/112an-ics-lab-with-virtuaplant/an-ics-lab-with-virtuaplant/">
+          An ICS lab with VirtuaPlant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/403an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/">
+          An introduction to workflow and process automation with n8n and Camunda
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">
+          Ansible Playbooks and variables
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/144ansible-workbook-for-devnetops-slides/ansible-workbook-for-devnetops-slides/">
+          Ansible Workbook for DevNetOps slides
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/105ansible-configuration/ansible-configuration/">
+          Ansible configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/104ansible-inventory/ansible-inventory/">
+          Ansible inventory
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/119ansible-orchestrators-and-integration-tools/ansible-orchestrators-and-integration-tools/">
+          Ansible orchestrators and integration tools
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/302authenticating-to-the-strata-cloud-manager-api/authenticating-to-the-strata-cloud-manager-api/">
+          Authenticating to the Strata Cloud Manager API
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/109automating-eve-ng-installation/automating-eve-ng-installation/">
+          Automating EVE-NG installation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/automating-google-searches/automating-google-searches/">
+          Automating Google searches
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/202automating-palo-alto-firewall-via-cli/automating-palo-alto-firewall-via-cli/">
+          Automating Palo Alto Firewall via CLI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/301automating-operations-with-strata-cloud-manager/automating-operations-with-strata-cloud-manager/">
+          Automating operations with Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/102choosing-the-foundation-for-our-ssot/choosing-the-foundation-for-our-ssot/">
+          Choosing the foundation for our SSOT
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/107cisco-aci-classes/cisco-aci-classes/">
+          Cisco ACI Classes
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/103configuring-incident-classification-in-cortex-xsoar/configuring-incident-classification-in-cortex-xsoar/">
+          Configuring Incident Classification in Cortex XSOAR
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/306creating-an-interface-in-strata-cloud-manager/creating-an-interface-in-strata-cloud-manager/">
+          Creating an interface in Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/cybersecurity-fashion-or-strategy/cybersecurity-fashion-or-strategy/">
+          Cybersecurity: fashion or strategy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/108defining-and-using-variables-in-ansible/defining-and-using-variables-in-ansible/">
+          Defining and using variables in Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/115developing-unetlab-v3-with-ai-llm/developing-unetlab-v3-with-ai-llm/">
+          Developing UNetLab v3 with AI (LLM)
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/facebook-data-breach-a-danger-for-state-officers/facebook-data-breach-a-danger-for-state-officers/">
+          Facebook data breach: a danger for state officers
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/108finding-cisco-aci-classes-with-visore/finding-cisco-aci-classes-with-visore/">
+          Finding Cisco ACI Classes with Visore
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/113frameworks-for-projects-with-cisco-aci-and-ndo/frameworks-for-projects-with-cisco-aci-and-ndo/">
+          Frameworks for Projects with Cisco ACI and NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/">
+          From Single-Site to Multi-Site with NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">
+          Importing NaC objects from Cisco ACI into Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/104installing-eve-ng-5/installing-eve-ng-5/">
+          Installing EVE-NG 5
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/105installing-eve-ng-6/installing-eve-ng-6/">
+          Installing EVE-NG 6
+        </a>
+      </li>
+    
+      <li>
+        <a href="../threat-intelligence/102installing-misp/installing-misp/">
+          Installing MISP
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/103installing-nautobot-in-your-lab-environment/installing-nautobot-in-your-lab-environment/">
+          Installing Nautobot in your lab environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/103installing-ubuntu-linux/installing-ubuntu-linux/">
+          Installing Ubuntu Linux
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/113installing-virtuaplant-bottle-filling-plant/installing-virtuaplant-bottle-filling-plant/">
+          Installing VirtuaPlant Bottle Filling plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/115installing-virtuaplant-oil-refinery-plant/installing-virtuaplant-oil-refinery-plant/">
+          Installing VirtuaPlant Oil Refinery plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../threat-intelligence/103integrating-and-automating-misp/integrating-and-automating-misp/">
+          Integrating and automating MISP
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/101introducing-cortex-xsoar/introducing-cortex-xsoar/">
+          Introducing Cortex XSOAR
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">
+          Introduction to Ansible Automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/101introduction-to-cisco-aci/introduction-to-cisco-aci/">
+          Introduction to Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/">
+          Introduction to EVE-NG platform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../threat-intelligence/101introduction-to-misp/introduction-to-misp/">
+          Introduction to MISP
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/102introduction-to-modbus-protocol/introduction-to-modbus-protocol/">
+          Introduction to Modbus protocol
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/101introduction-to-ot-ics/introduction-to-ot-ics/">
+          Introduction to OT/ICS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/201introduction-to-palo-alto-firewall-automation/introduction-to-palo-alto-firewall-automation/">
+          Introduction to Palo Alto firewall automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/101introduction-to-network-automation-with-ansible/introduction-to-network-automation-with-ansible/">
+          Introduction to network automation with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/101key-steps-for-real-world-success/key-steps-for-real-world-success/">
+          Key steps for Real-World success
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/120key-takeaways-from-the-ansible-course/key-takeaways-from-the-ansible-course/">
+          Key takeaways from the Ansible course
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/111lab-modeling-for-unetlab-v3/lab-modeling-for-unetlab-v3/">
+          Lab modeling for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/101leveraging-nautobot-as-a-ssot/leveraging-nautobot-as-a-ssot/">
+          Leveraging Nautobot as a SSOT
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/network-outage/network-outage/">
+          Network outage
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/101network-simulators-are-a-must/network-simulators-are-a-must/">
+          Network simulators are a must
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/303oauth-client-credentials-flow-with-patreon/oauth-client-credentials-flow-with-patreon/">
+          OAuth Client Credentials flow with Patreon
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/103operating-with-cisco-aci/operating-with-cisco-aci/">
+          Operating with Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/107orchestrating-ansible-playbooks-for-nautobot-integration/orchestrating-ansible-playbooks-for-nautobot-integration/">
+          Orchestrating Ansible playbooks for Nautobot integration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/personal-digital-protection/personal-digital-protection/">
+          Personal digital protection
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/102preparing-your-ansible-environment/preparing-your-ansible-environment/">
+          Preparing your Ansible environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/102prerequisites-for-eve-ng/prerequisites-for-eve-ng/">
+          Prerequisites for EVE-NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/privacy-policy-and-non-existent-free-will/privacy-policy-and-non-existent-free-will/">
+          Privacy policy and non existent free will
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/106proxmox-optimizing-virtualization/proxmox-optimizing-virtualization/">
+          Proxmox optimizing virtualization
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/304retrieving-firewall-interfaces-with-strata-cloud-manager/retrieving-firewall-interfaces-with-strata-cloud-manager/">
+          Retrieving firewall interfaces with Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/103review-of-snmp-fundamentals/review-of-snmp-fundamentals/">
+          Review of SNMP Fundamentals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/secure-critical-infrastructure-by-design-and-by-default/secure-critical-infrastructure-by-design-and-by-default/">
+          Secure critical infrastructure "by design" and "by default"
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/102setting-up-your-cortex-xsoar-lab-environment/setting-up-your-cortex-xsoar-lab-environment/">
+          Setting Up Your Cortex XSOAR Lab Environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/102setting-up-a-cisco-aci-lab-environment/setting-up-a-cisco-aci-lab-environment/">
+          Setting up a Cisco ACI lab environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/102simplifying-the-data-structure/simplifying-the-data-structure/">
+          Simplifying the Data Structure
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/the-darwin-s-law-of-evolution-for-computers/the-darwin-s-law-of-evolution-for-computers/">
+          The Darwin's Law of Evolution for computers
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/the-dangers-of-losing-a-domain/the-dangers-of-losing-a-domain/">
+          The dangers of losing a domain
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/the-dangers-of-unwitting-sharing/the-dangers-of-unwitting-sharing/">
+          The dangers of unwitting sharing
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/the-importance-of-the-ciso/the-importance-of-the-ciso/">
+          The importance of the CISO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/top-management-security/top-management-security/">
+          Top management security
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/training-in-managing-cyber-attacks/training-in-managing-cyber-attacks/">
+          Training in managing cyber attacks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/103unetlab-the-evolution-of-iou-web/unetlab-the-evolution-of-iou-web/">
+          UNetLab the evolution of iou-web
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/104unetlab-v2-addressing-limitations/unetlab-v2-addressing-limitations/">
+          UNetLab v2 addressing limitations
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/112unetlab-v3-architecture/unetlab-v3-architecture/">
+          UNetLab v3 architecture
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/105unetlab-v3-whishing-list/unetlab-v3-whishing-list/">
+          UNetLab v3 whishing list
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/111why-build-an-ot-ics-cybersecurity-lab/why-build-an-ot-ics-cybersecurity-lab/">
+          Why build an OT/ICS Cybersecurity lab?
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/102iou-web-the-beginning/iou-web-the-beginning/">
+          iou-web the beginning
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:behind-the-scene">
+
+
+<span class="md-tag">behind-the-scene</span><a class="headerlink" href="#tag:behind-the-scene" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../nautobot/108key-insights-from-developing-nautobot-and-ansible-integrations/key-insights-from-developing-nautobot-and-ansible-integrations/">
+          Key insights from developing Nautobot and Ansible integrations
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:camunda">
+
+
+<span class="md-tag">camunda</span><a class="headerlink" href="#tag:camunda" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/403an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/">
+          An introduction to workflow and process automation with n8n and Camunda
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:catalyst-center">
+
+
+<span class="md-tag">catalyst-center</span><a class="headerlink" href="#tag:catalyst-center" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/131automating-configuration-compliance-verification-for-cisco-switches/automating-configuration-compliance-verification-for-cisco-switches/">
+          Automating configuration compliance verification for Cisco Switches
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:cisco">
+
+
+<span class="md-tag">cisco</span><a class="headerlink" href="#tag:cisco" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/117a-practical-cisco-ndo-multi-site-use-case-additional-configuration/a-practical-cisco-ndo-multi-site-use-case-additional-configuration/">
+          A practical Cisco NDO multi-site use case additional configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/119a-practical-cisco-ndo-multi-site-use-case-building-the-parser/a-practical-cisco-ndo-multi-site-use-case-building-the-parser/">
+          A practical Cisco NDO multi-site use case building the parser
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/120a-practical-cisco-ndo-multi-site-use-case-config-deploy/a-practical-cisco-ndo-multi-site-use-case-config-deploy/">
+          A practical Cisco NDO multi-site use case config deploy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/118a-practical-cisco-ndo-multi-site-use-case-data-validation/a-practical-cisco-ndo-multi-site-use-case-data-validation/">
+          A practical Cisco NDO multi-site use case data validation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/116a-practical-cisco-ndo-multi-site-use-case-modelling/a-practical-cisco-ndo-multi-site-use-case-modelling/">
+          A practical Cisco NDO multi-site use case modelling
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/132automatic-cisco-xr-provisioning-with-zt/automatic-cisco-xr-provisioning-with-zt/">
+          Automatic Cisco XR provisioning with ZT
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/131automating-configuration-compliance-verification-for-cisco-switches/automating-configuration-compliance-verification-for-cisco-switches/">
+          Automating configuration compliance verification for Cisco Switches
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/111building-network-reports-from-structured-json-data/building-network-reports-from-structured-json-data/">
+          Building network reports from structured JSON data
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/112circular-dependencies-with-ndo/circular-dependencies-with-ndo/">
+          Circular Dependencies with NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/cisco/">
+          Cisco
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/107cisco-aci-classes/cisco-aci-classes/">
+          Cisco ACI Classes
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/104cisco-aci-object-model-explained/cisco-aci-object-model-explained/">
+          Cisco ACI object model explained
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/109collecting-information-from-a-network-infrastructure/collecting-information-from-a-network-infrastructure/">
+          Collecting information from a network infrastructure
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/">
+          Data center topology with Cisco Nexus, HP Virtual Connect and VMware
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/206designing-a-gitlab-ci-cd-pipeline-for-iac/designing-a-gitlab-ci-cd-pipeline-for-iac/">
+          Designing a GitLab CI/CD pipeline for IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/">
+          Designing a cloud provider with both VMware NSX and Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/disjoint-l2-domains-on-cisco-ucs/disjoint-l2-domains-on-cisco-ucs/">
+          Disjoint L2 domains on Cisco UCS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/109filtering-cisco-api-output/filtering-cisco-api-output/">
+          Filtering Cisco API Output
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/108finding-cisco-aci-classes-with-visore/finding-cisco-aci-classes-with-visore/">
+          Finding Cisco ACI Classes with Visore
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/106first-approach-to-cisco-aci-apis/first-approach-to-cisco-aci-apis/">
+          First Approach to Cisco ACI APIs
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/113frameworks-for-projects-with-cisco-aci-and-ndo/frameworks-for-projects-with-cisco-aci-and-ndo/">
+          Frameworks for Projects with Cisco ACI and NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/">
+          From Single-Site to Multi-Site with NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/110gathering-structured-network-data-with-netmiko-and-ntc-templates/gathering-structured-network-data-with-netmiko-and-ntc-templates/">
+          Gathering structured network data with Netmiko and NTC Templates
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/207gitlab-ci-cd-iac-in-action/gitlab-ci-cd-iac-in-action/">
+          GitLab CI/CD + IaC in action
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/205gitlab-as-the-backbone-of-iac/gitlab-as-the-backbone-of-iac/">
+          GitLab as the backbone of IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">
+          Importing NaC objects from Cisco ACI into Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/202industrial-network-segmentation-with-private-vlans/industrial-network-segmentation-with-private-vlans/">
+          Industrial network segmentation with Private VLANs
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/101introduction-to-cisco-aci/introduction-to-cisco-aci/">
+          Introduction to Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/105logging-into-cisco-aci/logging-into-cisco-aci/">
+          Logging into Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/115managing-cisco-ndo-limitations-from-the-apic/managing-cisco-ndo-limitations-from-the-apic/">
+          Managing Cisco NDO Limitations from the APIC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">
+          Managing a brownfield Cisco ACI fabric with NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/103operating-with-cisco-aci/operating-with-cisco-aci/">
+          Operating with Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/112optimizing-a-network-assessment-automation/optimizing-a-network-assessment-automation/">
+          Optimizing a network assessment automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/110pagination-with-cisco-aci/pagination-with-cisco-aci/">
+          Pagination with Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/113protecting-your-development-environment/preotecting-your-development-environment/">
+          Preotecting Your Development Environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/126reconciling-attribute-drift-between-nac-and-terraform/reconciling-attribute-drift-between-nac-and-terraform/">
+          Reconciling attribute drift Between NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/102setting-up-a-cisco-aci-lab-environment/setting-up-a-cisco-aci-lab-environment/">
+          Setting up a Cisco ACI lab environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/twice-double-nat-on-cisco-router/twice-double-nat-on-cisco-router/">
+          Twice (double) NAT on Cisco router
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:cmdb">
+
+
+<span class="md-tag">cmdb</span><a class="headerlink" href="#tag:cmdb" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/a-cmdb-for-it-infrastructures/a-cmdb-for-it-infrastructures/">
+          A CMDB for IT infrastructures
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:cortex-xsoar">
+
+
+<span class="md-tag">cortex-xsoar</span><a class="headerlink" href="#tag:cortex-xsoar" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../palo-alto-networks/103configuring-incident-classification-in-cortex-xsoar/configuring-incident-classification-in-cortex-xsoar/">
+          Configuring Incident Classification in Cortex XSOAR
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/101introducing-cortex-xsoar/introducing-cortex-xsoar/">
+          Introducing Cortex XSOAR
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/102setting-up-your-cortex-xsoar-lab-environment/setting-up-your-cortex-xsoar-lab-environment/">
+          Setting Up Your Cortex XSOAR Lab Environment
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:design">
+
+
+<span class="md-tag">design</span><a class="headerlink" href="#tag:design" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../governance/assume-breach-design/assume-breach-design/">
+          Assume breach design
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/">
+          Data center topology with Cisco Nexus, HP Virtual Connect and VMware
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/">
+          Designing a cloud provider with both VMware NSX and Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/disjoint-l2-domains-on-cisco-ucs/disjoint-l2-domains-on-cisco-ucs/">
+          Disjoint L2 domains on Cisco UCS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/mitm-on-wired-8021x-with-a-raspberry-pi/mitm-on-wired-8021x-with-a-raspberry-pi/">
+          MITM on wired 802.1x with a Raspberry PI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/network-outage/network-outage/">
+          Network outage
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/off-path-firewall-with-traffic-engineering/off-path-firewall-with-traffic-engineering/">
+          Off-Path firewall with Traffic Engineering
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/siem-ready-applications/siem-ready-applications/">
+          SIEM ready applications
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/twice-double-nat-on-cisco-router/twice-double-nat-on-cisco-router/">
+          Twice (double) NAT on Cisco router
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/what-about-too-complex-it-infrastructures/what-about-too-complex-it-infrastructures/">
+          What about too complex IT-Infrastructures?
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:digital-self-defence">
+
+
+<span class="md-tag">digital-self-defence</span><a class="headerlink" href="#tag:digital-self-defence" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../digital-self-defence/attempted-fraud-via-sms-and-fake-voice/attempted-fraud-via-sms-and-fake-voice/">
+          Attempted fraud via SMS and fake voice
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/breaking-the-facial-recognition/breaking-the-facial-recognition/">
+          Breaking the facial recognition
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/building-an-iot-testing-lab/building-an-iot-testing-lab/">
+          Building an IoT testing lab
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/disable-android-certificate-pinning-with-frida/disable-android-certificate-pinning-with-frida/">
+          Disable Android Certificate Pinning with Frida
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/discontinued-iot-products/discontinued-iot-products/">
+          Discontinued IoT products
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/facebook-data-breach-a-danger-for-state-officers/facebook-data-breach-a-danger-for-state-officers/">
+          Facebook data breach: a danger for state officers
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/home-phone-call-firewall/home-phone-call-firewall/">
+          Home phone call firewall
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/monetizing-personal-data-the-new-form-of-prostitution/monetizing-personal-data-the-new-form-of-prostitution/">
+          Monetizing personal data: the new form of prostitution
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/opt-out-from-web-archive/opt-out-from-web-archive/">
+          Opt-out from Web Archive
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/personal-digital-protection/personal-digital-protection/">
+          Personal digital protection
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/post-mortem-account-security/post-mortem-account-security/">
+          Post-mortem account security
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/113protecting-your-development-environment/preotecting-your-development-environment/">
+          Preotecting Your Development Environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/privacy-policy-and-non-existent-free-will/privacy-policy-and-non-existent-free-will/">
+          Privacy policy and non existent free will
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/sanitize-personal-android-devices/sanitize-personal-android-devices/">
+          Sanitize personal Android devices
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/secured-bash-environment/secured-bash-environment/">
+          Secured Bash environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/the-dangers-of-losing-a-domain/the-dangers-of-losing-a-domain/">
+          The dangers of losing a domain
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/the-dangers-of-unwitting-sharing/the-dangers-of-unwitting-sharing/">
+          The dangers of unwitting sharing
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/theft-and-recovery-of-a-facebook-account/theft-and-recovery-of-a-facebook-account/">
+          Theft and recovery of a Facebook account
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/top-management-security/top-management-security/">
+          Top management security
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/weak-passwords-and-unauthorized-access/weak-passwords-and-unauthorized-access/">
+          Weak Passwords and Unauthorized Access
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:documentation">
+
+
+<span class="md-tag">documentation</span><a class="headerlink" href="#tag:documentation" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/401simplifying-documentation-with-markdown-and-ci-cd/simplifying-documentation-with-markdown-and-ci-cd/">
+          Simplifying documentation with Markdown and CI CD
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/402writing-presentations-with-markdown/writing-presentations-with-markdown/">
+          Writing presentations with Markdown
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:eve-ng">
+
+
+<span class="md-tag">eve-ng</span><a class="headerlink" href="#tag:eve-ng" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../eve-ng/109automating-eve-ng-installation/automating-eve-ng-installation/">
+          Automating EVE-NG installation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/106customizing-eve-ng/customizing-eve-ng/">
+          Customizing EVE-NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/eve-ng/">
+          EVE-NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/111eve-ng-sw-architecture-and-docker-support/eve-ng-sw-architecture-and-docker-support/">
+          EVE-NG (SW architecture and docker support)
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/114eve-ng-cli-hld-files/eve-ng-cli-hld-files/">
+          EVE-NG CLI - HLD files
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/113eve-ng-cli-iac-ready-images/eve-ng-cli-iac-ready-images/">
+          EVE-NG CLI - IaC-ready images
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/112eve-ng-cli-introduction/eve-ng-cli-introduction/">
+          EVE-NG CLI - Introduction
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/115eve-ng-cli-usage-and-hld-import/eve-ng-cli-usage-and-hld-import/">
+          EVE-NG CLI - Usage and HLD Import
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/110eve-ng-linux-vm-ssh-troubleshooting/eve-ng-linux-vm-ssh-troubleshooting/">
+          EVE-NG Linux VM SSH troubleshooting
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/107eve-ng-network-interfaces-explained/eve-ng-network-interfaces-explained/">
+          EVE-NG network interfaces explained
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/104installing-eve-ng-5/installing-eve-ng-5/">
+          Installing EVE-NG 5
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/105installing-eve-ng-6/installing-eve-ng-6/">
+          Installing EVE-NG 6
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/103installing-ubuntu-linux/installing-ubuntu-linux/">
+          Installing Ubuntu Linux
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/">
+          Introduction to EVE-NG platform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/102prerequisites-for-eve-ng/prerequisites-for-eve-ng/">
+          Prerequisites for EVE-NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/108troubleshooting-eve-ng-nodes-that-fail-to-start/troubleshooting-eve-ng-nodes-that-fail-to-start/">
+          Troubleshooting EVE-NG nodes that fail to start
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:fundamentals">
+
+
+<span class="md-tag">fundamentals</span><a class="headerlink" href="#tag:fundamentals" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/202collaborating-with-git-by-working-with-remote-repositories-and-forks/collaborating-with-git-by-working-with-remote-repositories-and-forks/">
+          Collaborating with Git by working with remote repositories and forks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/301diving-into-oauth-20/diving-into-oauth-20/">
+          Diving into OAuth 2.0
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/fundamentals/">
+          Fundamentals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">
+          Git fundamentals for developers and IT professionals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/">
+          Introduction to EVE-NG platform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/101introduction-to-ot-ics/introduction-to-ot-ics/">
+          Introduction to OT/ICS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/201introduction-to-palo-alto-firewall-automation/introduction-to-palo-alto-firewall-automation/">
+          Introduction to Palo Alto firewall automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/101key-steps-for-real-world-success/key-steps-for-real-world-success/">
+          Key steps for Real-World success
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/302oauth-authorization-code-flow-with-patr32eon/oauth-authorization-code-flow-with-patreon/">
+          OAuth Authorization Code flow with Patreon
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/303oauth-client-credentials-flow-with-patreon/oauth-client-credentials-flow-with-patreon/">
+          OAuth Client Credentials flow with Patreon
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/104parsing-text-with-textfsm/parsing-text-with-textfsm/">
+          Parsing text with TextFSM
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/102prerequisites-for-eve-ng/prerequisites-for-eve-ng/">
+          Prerequisites for EVE-NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/103review-of-snmp-fundamentals/review-of-snmp-fundamentals/">
+          Review of SNMP Fundamentals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/102simplifying-the-data-structure/simplifying-the-data-structure/">
+          Simplifying the Data Structure
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/105textfsm-parsing-non-tabular-text/textfsm-parsing-non-tabular-text/">
+          TextFSM parsing non-tabular text
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/111why-build-an-ot-ics-cybersecurity-lab/why-build-an-ot-ics-cybersecurity-lab/">
+          Why build an OT/ICS Cybersecurity lab?
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:git">
+
+
+<span class="md-tag">git</span><a class="headerlink" href="#tag:git" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/203advanced-git-commands/advanced-git-commands/">
+          Advanced Git commands
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/202collaborating-with-git-by-working-with-remote-repositories-and-forks/collaborating-with-git-by-working-with-remote-repositories-and-forks/">
+          Collaborating with Git by working with remote repositories and forks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/204contributing-to-ntc-templates-with-git-and-github/contributing-to-ntc-templates-with-git-and-github/">
+          Contributing to NTC Templates with Git and GitHub
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/206designing-a-gitlab-ci-cd-pipeline-for-iac/designing-a-gitlab-ci-cd-pipeline-for-iac/">
+          Designing a GitLab CI/CD pipeline for IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">
+          Git fundamentals for developers and IT professionals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/207gitlab-ci-cd-iac-in-action/gitlab-ci-cd-iac-in-action/">
+          GitLab CI/CD + IaC in action
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/205gitlab-as-the-backbone-of-iac/gitlab-as-the-backbone-of-iac/">
+          GitLab as the backbone of IaC
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:gitlab">
+
+
+<span class="md-tag">gitlab</span><a class="headerlink" href="#tag:gitlab" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/206designing-a-gitlab-ci-cd-pipeline-for-iac/designing-a-gitlab-ci-cd-pipeline-for-iac/">
+          Designing a GitLab CI/CD pipeline for IaC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/207gitlab-ci-cd-iac-in-action/gitlab-ci-cd-iac-in-action/">
+          GitLab CI/CD + IaC in action
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/205gitlab-as-the-backbone-of-iac/gitlab-as-the-backbone-of-iac/">
+          GitLab as the backbone of IaC
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:governance">
+
+
+<span class="md-tag">governance</span><a class="headerlink" href="#tag:governance" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/a-cmdb-for-it-infrastructures/a-cmdb-for-it-infrastructures/">
+          A CMDB for IT infrastructures
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/approaching-ot-ics-cybersecurity/approaching-ot-ics-cybersecurity/">
+          Approaching OT/ICS Cybersecurity
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/assume-breach-design/assume-breach-design/">
+          Assume breach design
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/auditing-active-directory-passwords-against-haveibeenpwned/auditing-active-directory-passwords-against-haveibeenpwned/">
+          Auditing Active Directory passwords against HaveIBeenPwned
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/crisis-management/crisis-management/">
+          Crisis management
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/cybersecurity-fashion-or-strategy/cybersecurity-fashion-or-strategy/">
+          Cybersecurity: fashion or strategy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/discontinued-iot-products/discontinued-iot-products/">
+          Discontinued IoT products
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/ics-ot-iot-security-challenges-and-protection-strategies/ics-ot-iot-security-challenges-and-protection-strategies/">
+          ICS/OT/IoT Security: challenges and protection strategies
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/improvised-vulnerability-management/improvised-vulnerability-management/">
+          Improvised vulnerability management
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/log-management-is-more-than-a-log-collector/log-management-is-more-than-a-log-collector/">
+          Log management is more than a log collector
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/secure-critical-infrastructure-by-design-and-by-default/secure-critical-infrastructure-by-design-and-by-default/">
+          Secure critical infrastructure "by design" and "by default"
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/securing-user-authentication-under-iec-62443/securing-user-authentication-under-iec-62443/">
+          Securing user authentication under IEC 62443
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/the-darwin-s-law-of-evolution-for-computers/the-darwin-s-law-of-evolution-for-computers/">
+          The Darwin's Law of Evolution for computers
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/the-importance-of-the-ciso/the-importance-of-the-ciso/">
+          The importance of the CISO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/the-value-of-a-risk-based-va/the-value-of-a-risk-based-va/">
+          The value of a Risk Based VA
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/top-management-security/top-management-security/">
+          Top management security
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/training-in-managing-cyber-attacks/training-in-managing-cyber-attacks/">
+          Training in managing cyber attacks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/va-scanners-for-patch-management-good-or-bad/va-scanners-for-patch-management-good-or-bad/">
+          VA scanners for patch management: good or bad?
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/vulnerability-management/vulnerability-management/">
+          Vulnerability Management
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/what-does-it-take-to-secure-any-sme-organization/what-does-it-take-to-secure-any-sme-organization/">
+          What does it take to secure any SME organization
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:incident-management">
+
+
+<span class="md-tag">incident-management</span><a class="headerlink" href="#tag:incident-management" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../governance/crisis-management/crisis-management/">
+          Crisis management
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:intermediate">
+
+
+<span class="md-tag">intermediate</span><a class="headerlink" href="#tag:intermediate" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/apt-proxy-with-apt-cacher-ng/apt-proxy-with-apt-cacher-ng/">
+          APT proxy with APT-Cacher NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/136ansible-galaxy/ansible-galaxy/">
+          Ansible Galaxy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/106ansible-ad-hoc-commands/ansible-ad-hoc-commands/">
+          Ansible ad hoc commands
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/134ansible-reporting-with-ara/ansible-reporting-with-ara/">
+          Ansible reporting with ARA
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/approaching-ot-ics-cybersecurity/approaching-ot-ics-cybersecurity/">
+          Approaching OT/ICS Cybersecurity
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/114attacking-the-bottle-filling-plant/attacking-the-bottle-filling-plant/">
+          Attacking the Bottle Filling plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/119attacking-the-chemical-plant/attacking-the-chemical-plant/">
+          Attacking the Chemical plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/145automatic-cis-controls-check-with-ansible/automatic-cis-controls-check-with-ansible/">
+          Automatic CIS controls check with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/automatic-network-discovery-and-documentation/automatic-network-discovery-and-documentation/">
+          Automatic network discovery and documentation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/404automating-user-management-with-n8n-and-ai-agents/automating-user-management-with-n8n-and-ai-agents/">
+          Automating user management with n8n and AI Agents
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/breaking-the-facial-recognition/breaking-the-facial-recognition/">
+          Breaking the facial recognition
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/112circular-dependencies-with-ndo/circular-dependencies-with-ndo/">
+          Circular Dependencies with NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/202collaborating-with-git-by-working-with-remote-repositories-and-forks/collaborating-with-git-by-working-with-remote-repositories-and-forks/">
+          Collaborating with Git by working with remote repositories and forks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../threat-intelligence/104consuming-misp-iocs-from-a-firewall/consuming-misp-iocs-from-a-firewall/">
+          Consuming MISP IoCs from a Firewall
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/108creating-templates-for-proxmox/creating-templates-for-proxmox/">
+          Creating templates for Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/crisis-management/crisis-management/">
+          Crisis management
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/137delegate-ansible-tasks-to-a-different-host/delegate-ansible-tasks-to-a-different-host/">
+          Delegate Ansible tasks to a different host
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/301diving-into-oauth-20/diving-into-oauth-20/">
+          Diving into OAuth 2.0
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/115enhancing-ansible-output/enhancing-ansible-output/">
+          Enhancing Ansible output
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/109filtering-cisco-api-output/filtering-cisco-api-output/">
+          Filtering Cisco API Output
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">
+          Git fundamentals for developers and IT professionals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/111handling-errors-in-ansible-playbooks/handling-errors-in-ansible-playbooks/">
+          Handling errors in Ansible playbooks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/improvised-vulnerability-management/improvised-vulnerability-management/">
+          Improvised vulnerability management
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/118installing-the-grficsv2-chemical-plant/installing-the-grficsv2-chemical-plant/">
+          Installing the GRFICSv2 Chemical plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/105integrating-ansible-with-nautobot/integrating-ansible-with-nautobot/">
+          Integrating Ansible with Nautobot
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/105logging-into-cisco-aci/logging-into-cisco-aci/">
+          Logging into Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/malicious-email-analysis/malicious-email-analysis/">
+          Malicious email analysis
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/131managing-cli-prompts-with-ansible/managing-cli-prompts-with-ansible/">
+          Managing CLI prompts with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/305modifying-an-object-in-strata-cloud-manager/modifying-an-object-in-strata-cloud-manager/">
+          Modifying an object in Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/monetizing-personal-data-the-new-form-of-prostitution/monetizing-personal-data-the-new-form-of-prostitution/">
+          Monetizing personal data: the new form of prostitution
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/302oauth-authorization-code-flow-with-patr32eon/oauth-authorization-code-flow-with-patreon/">
+          OAuth Authorization Code flow with Patreon
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/opt-out-from-web-archive/opt-out-from-web-archive/">
+          Opt-out from Web Archive
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/110pagination-with-cisco-aci/pagination-with-cisco-aci/">
+          Pagination with Cisco ACI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/114password-management-with-ansible/password-management-with-ansible/">
+          Password Management with Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/104populating-our-ssot-with-automation/populating-our-ssot-with-automation/">
+          Populating our SSOT with Automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/114preparing-vyos-image-for-unetlab-v3/preparing-vyos-image-for-unetlab-v3/">
+          Preparing VyOS image for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/113preparing-a-proxmox-cluster-for-unetlab-v3/preparing-a-proxmox-cluster-for-unetlab-v3/">
+          Preparing a Proxmox cluster for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/secured-bash-environment/secured-bash-environment/">
+          Secured Bash environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/110strategies-for-troubleshooting-ansible-errors/strategies-for-troubleshooting-ansible-errors/">
+          Strategies for troubleshooting Ansible errors
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/twice-double-nat-on-cisco-router/twice-double-nat-on-cisco-router/">
+          Twice (double) NAT on Cisco router
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/112using-ansible-handlers-for-optimized-task-execution/using-ansible-handlers-for-optimized-task-execution/">
+          Using Ansible handlers for optimized task execution
+        </a>
+      </li>
+    
+      <li>
+        <a href="../digital-self-defence/weak-passwords-and-unauthorized-access/weak-passwords-and-unauthorized-access/">
+          Weak Passwords and Unauthorized Access
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/what-does-it-take-to-secure-any-sme-organization/what-does-it-take-to-secure-any-sme-organization/">
+          What does it take to secure any SME organization
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/working-with-snmp-on-linux/working-with-snmp-on-linux/">
+          Working with SNMP on Linux
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:ipv6">
+
+
+<span class="md-tag">ipv6</span><a class="headerlink" href="#tag:ipv6" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/connecting-an-ipv6-only-site-to-an-ipv4-only-world/connecting-an-ipv6-only-site-to-an-ipv4-only-world/">
+          Connecting an IPv6 only site to an IPv4 only world
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:linux">
+
+
+<span class="md-tag">linux</span><a class="headerlink" href="#tag:linux" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/apt-proxy-with-apt-cacher-ng/apt-proxy-with-apt-cacher-ng/">
+          APT proxy with APT-Cacher NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/connecting-an-ipv6-only-site-to-an-ipv4-only-world/connecting-an-ipv6-only-site-to-an-ipv4-only-world/">
+          Connecting an IPv6 only site to an IPv4 only world
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/103installing-ubuntu-linux/installing-ubuntu-linux/">
+          Installing Ubuntu Linux
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/secured-bash-environment/secured-bash-environment/">
+          Secured Bash environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/vrfs-on-linux/vrfs-on-linux/">
+          VRFs on Linux
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/working-with-snmp-on-linux/working-with-snmp-on-linux/">
+          Working with SNMP on Linux
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:log-management">
+
+
+<span class="md-tag">log-management</span><a class="headerlink" href="#tag:log-management" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../governance/log-management-is-more-than-a-log-collector/log-management-is-more-than-a-log-collector/">
+          Log management is more than a log collector
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:media">
+
+
+<span class="md-tag">media</span><a class="headerlink" href="#tag:media" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../ansible/144ansible-workbook-for-devnetops-slides/ansible-workbook-for-devnetops-slides/">
+          Ansible Workbook for DevNetOps slides
+        </a>
+      </li>
+    
+      <li>
+        <a href="../eve-ng/111eve-ng-sw-architecture-and-docker-support/eve-ng-sw-architecture-and-docker-support/">
+          EVE-NG (SW architecture and docker support)
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">
+          Git fundamentals for developers and IT professionals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">
+          Industrial network segmentation with VLAN Insertion
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:misp">
+
+
+<span class="md-tag">misp</span><a class="headerlink" href="#tag:misp" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../threat-intelligence/104consuming-misp-iocs-from-a-firewall/consuming-misp-iocs-from-a-firewall/">
+          Consuming MISP IoCs from a Firewall
+        </a>
+      </li>
+    
+      <li>
+        <a href="../threat-intelligence/102installing-misp/installing-misp/">
+          Installing MISP
+        </a>
+      </li>
+    
+      <li>
+        <a href="../threat-intelligence/103integrating-and-automating-misp/integrating-and-automating-misp/">
+          Integrating and automating MISP
+        </a>
+      </li>
+    
+      <li>
+        <a href="../threat-intelligence/101introduction-to-misp/introduction-to-misp/">
+          Introduction to MISP
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:n8n">
+
+
+<span class="md-tag">n8n</span><a class="headerlink" href="#tag:n8n" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/403an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/">
+          An introduction to workflow and process automation with n8n and Camunda
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/404automating-user-management-with-n8n-and-ai-agents/automating-user-management-with-n8n-and-ai-agents/">
+          Automating user management with n8n and AI Agents
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:nautobot">
+
+
+<span class="md-tag">nautobot</span><a class="headerlink" href="#tag:nautobot" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../nautobot/102choosing-the-foundation-for-our-ssot/choosing-the-foundation-for-our-ssot/">
+          Choosing the foundation for our SSOT
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/103installing-nautobot-in-your-lab-environment/installing-nautobot-in-your-lab-environment/">
+          Installing Nautobot in your lab environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/105integrating-ansible-with-nautobot/integrating-ansible-with-nautobot/">
+          Integrating Ansible with Nautobot
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/108key-insights-from-developing-nautobot-and-ansible-integrations/key-insights-from-developing-nautobot-and-ansible-integrations/">
+          Key insights from developing Nautobot and Ansible integrations
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/101leveraging-nautobot-as-a-ssot/leveraging-nautobot-as-a-ssot/">
+          Leveraging Nautobot as a SSOT
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/nautobot/">
+          Nautobot
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/107orchestrating-ansible-playbooks-for-nautobot-integration/orchestrating-ansible-playbooks-for-nautobot-integration/">
+          Orchestrating Ansible playbooks for Nautobot integration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/104populating-our-ssot-with-automation/populating-our-ssot-with-automation/">
+          Populating our SSOT with Automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../nautobot/106the-ansible-role-breakdown/the-ansible-role-breakdown/">
+          The Ansible role breakdown
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:ndo">
+
+
+<span class="md-tag">ndo</span><a class="headerlink" href="#tag:ndo" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/117a-practical-cisco-ndo-multi-site-use-case-additional-configuration/a-practical-cisco-ndo-multi-site-use-case-additional-configuration/">
+          A practical Cisco NDO multi-site use case additional configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/119a-practical-cisco-ndo-multi-site-use-case-building-the-parser/a-practical-cisco-ndo-multi-site-use-case-building-the-parser/">
+          A practical Cisco NDO multi-site use case building the parser
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/120a-practical-cisco-ndo-multi-site-use-case-config-deploy/a-practical-cisco-ndo-multi-site-use-case-config-deploy/">
+          A practical Cisco NDO multi-site use case config deploy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/118a-practical-cisco-ndo-multi-site-use-case-data-validation/a-practical-cisco-ndo-multi-site-use-case-data-validation/">
+          A practical Cisco NDO multi-site use case data validation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/116a-practical-cisco-ndo-multi-site-use-case-modelling/a-practical-cisco-ndo-multi-site-use-case-modelling/">
+          A practical Cisco NDO multi-site use case modelling
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/112circular-dependencies-with-ndo/circular-dependencies-with-ndo/">
+          Circular Dependencies with NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/113frameworks-for-projects-with-cisco-aci-and-ndo/frameworks-for-projects-with-cisco-aci-and-ndo/">
+          Frameworks for Projects with Cisco ACI and NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/">
+          From Single-Site to Multi-Site with NDO
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/115managing-cisco-ndo-limitations-from-the-apic/managing-cisco-ndo-limitations-from-the-apic/">
+          Managing Cisco NDO Limitations from the APIC
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:netascode">
+
+
+<span class="md-tag">netascode</span><a class="headerlink" href="#tag:netascode" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/117a-practical-cisco-ndo-multi-site-use-case-additional-configuration/a-practical-cisco-ndo-multi-site-use-case-additional-configuration/">
+          A practical Cisco NDO multi-site use case additional configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/119a-practical-cisco-ndo-multi-site-use-case-building-the-parser/a-practical-cisco-ndo-multi-site-use-case-building-the-parser/">
+          A practical Cisco NDO multi-site use case building the parser
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/120a-practical-cisco-ndo-multi-site-use-case-config-deploy/a-practical-cisco-ndo-multi-site-use-case-config-deploy/">
+          A practical Cisco NDO multi-site use case config deploy
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/118a-practical-cisco-ndo-multi-site-use-case-data-validation/a-practical-cisco-ndo-multi-site-use-case-data-validation/">
+          A practical Cisco NDO multi-site use case data validation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">
+          Importing NaC objects from Cisco ACI into Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/115managing-cisco-ndo-limitations-from-the-apic/managing-cisco-ndo-limitations-from-the-apic/">
+          Managing Cisco NDO Limitations from the APIC
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">
+          Managing a brownfield Cisco ACI fabric with NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/126reconciling-attribute-drift-between-nac-and-terraform/reconciling-attribute-drift-between-nac-and-terraform/">
+          Reconciling attribute drift Between NaC and Terraform
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:netdoc">
+
+
+<span class="md-tag">netdoc</span><a class="headerlink" href="#tag:netdoc" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/automatic-network-discovery-and-documentation/automatic-network-discovery-and-documentation/">
+          Automatic network discovery and documentation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/netdoc-automated-network-discovery-and-documentation/netdoc-automated-network-discovery-and-documentation/">
+          NetDoc: automated network discovery and documentation
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:oauth">
+
+
+<span class="md-tag">oauth</span><a class="headerlink" href="#tag:oauth" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/301diving-into-oauth-20/diving-into-oauth-20/">
+          Diving into OAuth 2.0
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/302oauth-authorization-code-flow-with-patr32eon/oauth-authorization-code-flow-with-patreon/">
+          OAuth Authorization Code flow with Patreon
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/303oauth-client-credentials-flow-with-patreon/oauth-client-credentials-flow-with-patreon/">
+          OAuth Client Credentials flow with Patreon
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:osint">
+
+
+<span class="md-tag">osint</span><a class="headerlink" href="#tag:osint" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/automating-google-searches/automating-google-searches/">
+          Automating Google searches
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:ot-ics">
+
+
+<span class="md-tag">ot-ics</span><a class="headerlink" href="#tag:ot-ics" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../ot-ics/117an-ics-lab-with-grficsv2/an-ics-lab-with-grficsv2/">
+          An ICS lab with GRFICSv2
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/112an-ics-lab-with-virtuaplant/an-ics-lab-with-virtuaplant/">
+          An ICS lab with VirtuaPlant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/approaching-ot-ics-cybersecurity/approaching-ot-ics-cybersecurity/">
+          Approaching OT/ICS Cybersecurity
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/114attacking-the-bottle-filling-plant/attacking-the-bottle-filling-plant/">
+          Attacking the Bottle Filling plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/119attacking-the-chemical-plant/attacking-the-chemical-plant/">
+          Attacking the Chemical plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/116attacking-the-oil-refinery-plant/attacking-the-oil-refinery-plant/">
+          Attacking the Oil Refinery plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/ics-ot-iot-security-challenges-and-protection-strategies/ics-ot-iot-security-challenges-and-protection-strategies/">
+          ICS/OT/IoT Security: challenges and protection strategies
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/202industrial-network-segmentation-with-private-vlans/industrial-network-segmentation-with-private-vlans/">
+          Industrial network segmentation with Private VLANs
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">
+          Industrial network segmentation with VLAN Insertion
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/113installing-virtuaplant-bottle-filling-plant/installing-virtuaplant-bottle-filling-plant/">
+          Installing VirtuaPlant Bottle Filling plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/115installing-virtuaplant-oil-refinery-plant/installing-virtuaplant-oil-refinery-plant/">
+          Installing VirtuaPlant Oil Refinery plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/118installing-the-grficsv2-chemical-plant/installing-the-grficsv2-chemical-plant/">
+          Installing the GRFICSv2 Chemical plant
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/102introduction-to-modbus-protocol/introduction-to-modbus-protocol/">
+          Introduction to Modbus protocol
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/101introduction-to-ot-ics/introduction-to-ot-ics/">
+          Introduction to OT/ICS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/ot-ics/">
+          OT/ICS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/secure-critical-infrastructure-by-design-and-by-default/secure-critical-infrastructure-by-design-and-by-default/">
+          Secure critical infrastructure "by design" and "by default"
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/securing-user-authentication-under-iec-62443/securing-user-authentication-under-iec-62443/">
+          Securing user authentication under IEC 62443
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/111why-build-an-ot-ics-cybersecurity-lab/why-build-an-ot-ics-cybersecurity-lab/">
+          Why build an OT/ICS Cybersecurity lab?
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:palo-alto-networks">
+
+
+<span class="md-tag">palo-alto-networks</span><a class="headerlink" href="#tag:palo-alto-networks" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../palo-alto-networks/302authenticating-to-the-strata-cloud-manager-api/authenticating-to-the-strata-cloud-manager-api/">
+          Authenticating to the Strata Cloud Manager API
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/202automating-palo-alto-firewall-via-cli/automating-palo-alto-firewall-via-cli/">
+          Automating Palo Alto Firewall via CLI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/206automating-palo-alto-firewall-via-python-pan-sdk/automating-palo-alto-firewall-via-python-pan-sdk/">
+          Automating Palo Alto Firewall via Python PAN SDK
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/205automating-palo-alto-firewall-via-python-pan-os-sdk/automating-palo-alto-firewall-via-python-pan-os-sdk/">
+          Automating Palo Alto Firewall via Python PAN-OS SDK
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/204automating-palo-alto-firewall-via-rest-api/automating-palo-alto-firewall-via-rest-api/">
+          Automating Palo Alto Firewall via REST API
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/203automating-palo-alto-firewall-via-xml-api/automating-palo-alto-firewall-via-xml-api/">
+          Automating Palo Alto Firewall via XML API
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/automating-palo-alto-networks-firewalls/automating-palo-alto-networks-firewalls/">
+          Automating Palo Alto Networks firewalls
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/301automating-operations-with-strata-cloud-manager/automating-operations-with-strata-cloud-manager/">
+          Automating operations with Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/103configuring-incident-classification-in-cortex-xsoar/configuring-incident-classification-in-cortex-xsoar/">
+          Configuring Incident Classification in Cortex XSOAR
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/306creating-an-interface-in-strata-cloud-manager/creating-an-interface-in-strata-cloud-manager/">
+          Creating an interface in Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">
+          Industrial network segmentation with VLAN Insertion
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/101introducing-cortex-xsoar/introducing-cortex-xsoar/">
+          Introducing Cortex XSOAR
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/201introduction-to-palo-alto-firewall-automation/introduction-to-palo-alto-firewall-automation/">
+          Introduction to Palo Alto firewall automation
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/305modifying-an-object-in-strata-cloud-manager/modifying-an-object-in-strata-cloud-manager/">
+          Modifying an object in Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/303optimizing-strata-cloud-manager-api-usage/optimizing-strata-cloud-manager-api-usage/">
+          Optimizing Strata Cloud Manager API usage
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/palo-alto-firewall-as-code/palo-alto-firewall-as-code/">
+          Palo Alto Firewall as Code
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/palo-alto-networks/">
+          Palo Alto Networks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/304retrieving-firewall-interfaces-with-strata-cloud-manager/retrieving-firewall-interfaces-with-strata-cloud-manager/">
+          Retrieving firewall interfaces with Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/102setting-up-your-cortex-xsoar-lab-environment/setting-up-your-cortex-xsoar-lab-environment/">
+          Setting Up Your Cortex XSOAR Lab Environment
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:pexpect">
+
+
+<span class="md-tag">pexpect</span><a class="headerlink" href="#tag:pexpect" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/108automated-reachability-tests-for-eve-ng-templates/automated-reachability-tests-for-eve-ng-templates/">
+          Automated reachability tests for EVE-NG templates
+        </a>
+      </li>
+    
+      <li>
+        <a href="../fundamentals/107pexpect-as-a-tool-of-last-resort/pexpect-as-a-tool-of-last-resort/">
+          Pexpect as a tool of last resort
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:proxmox">
+
+
+<span class="md-tag">proxmox</span><a class="headerlink" href="#tag:proxmox" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../unetlab/108creating-templates-for-proxmox/creating-templates-for-proxmox/">
+          Creating templates for Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/107patching-the-proxmox-kernel/patching-the-proxmox-kernel/">
+          Patching the Proxmox kernel
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/114preparing-vyos-image-for-unetlab-v3/preparing-vyos-image-for-unetlab-v3/">
+          Preparing VyOS image for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/113preparing-a-proxmox-cluster-for-unetlab-v3/preparing-a-proxmox-cluster-for-unetlab-v3/">
+          Preparing a Proxmox cluster for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/106proxmox-optimizing-virtualization/proxmox-optimizing-virtualization/">
+          Proxmox optimizing virtualization
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/109simulating-an-l1-link-in-proxmox/simulating-an-l1-link-in-proxmox/">
+          Simulating an L1 link in Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/110testing-stretched-networks-with-proxmox/testing-stretched-networks-with-proxmox/">
+          Testing stretched networks with Proxmox
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:scm">
+
+
+<span class="md-tag">scm</span><a class="headerlink" href="#tag:scm" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../palo-alto-networks/302authenticating-to-the-strata-cloud-manager-api/authenticating-to-the-strata-cloud-manager-api/">
+          Authenticating to the Strata Cloud Manager API
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/301automating-operations-with-strata-cloud-manager/automating-operations-with-strata-cloud-manager/">
+          Automating operations with Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/306creating-an-interface-in-strata-cloud-manager/creating-an-interface-in-strata-cloud-manager/">
+          Creating an interface in Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/305modifying-an-object-in-strata-cloud-manager/modifying-an-object-in-strata-cloud-manager/">
+          Modifying an object in Strata Cloud Manager
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/303optimizing-strata-cloud-manager-api-usage/optimizing-strata-cloud-manager-api-usage/">
+          Optimizing Strata Cloud Manager API usage
+        </a>
+      </li>
+    
+      <li>
+        <a href="../palo-alto-networks/304retrieving-firewall-interfaces-with-strata-cloud-manager/retrieving-firewall-interfaces-with-strata-cloud-manager/">
+          Retrieving firewall interfaces with Strata Cloud Manager
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:security">
+
+
+<span class="md-tag">security</span><a class="headerlink" href="#tag:security" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../blog/auditing-active-directory-passwords-against-haveibeenpwned/auditing-active-directory-passwords-against-haveibeenpwned/">
+          Auditing Active Directory passwords against HaveIBeenPwned
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/building-an-iot-testing-lab/building-an-iot-testing-lab/">
+          Building an IoT testing lab
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/evaluating-security-of-rfid-nfc-implementations/evaluating-security-of-rfid-nfc-implementations/">
+          Evaluating security of RFID/NFC implementations
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/mitm-on-wired-8021x-with-a-raspberry-pi/mitm-on-wired-8021x-with-a-raspberry-pi/">
+          MITM on wired 802.1x with a Raspberry PI
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/malicious-email-analysis/malicious-email-analysis/">
+          Malicious email analysis
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/off-path-firewall-with-traffic-engineering/off-path-firewall-with-traffic-engineering/">
+          Off-Path firewall with Traffic Engineering
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/siem-ready-applications/siem-ready-applications/">
+          SIEM ready applications
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/secured-bash-environment/secured-bash-environment/">
+          Secured Bash environment
+        </a>
+      </li>
+    
+      <li>
+        <a href="../blog/working-with-snmp-on-linux/working-with-snmp-on-linux/">
+          Working with SNMP on Linux
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:servicenow">
+
+
+<span class="md-tag">servicenow</span><a class="headerlink" href="#tag:servicenow" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../ansible/141ansible-playbook-for-network-provisioning/ansible-playbook-for-network-provisioning/">
+          Ansible playbook for Network provisioning
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/143automated-vm-provisioning-from-a-servicenow-ticket/automated-vm-provisioning-from-a-servicenow-ticket/">
+          Automated VM Provisioning from a ServiceNow Ticket
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/139automating-network-provisioning-with-servicenow-and-ansible/automating-network-provisioning-with-servicenow-and-ansible/">
+          Automating Network Provisioning with ServiceNow and Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/140servicenow-catalog-configuration/servicenow-catalog-configuration/">
+          ServiceNow Catalog Configuration
+        </a>
+      </li>
+    
+      <li>
+        <a href="../ansible/142servicenow-poll-based-request-processing/servicenow-poll-based-request-processing/">
+          ServiceNow Poll-Based Request Processing
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:snmp">
+
+
+<span class="md-tag">snmp</span><a class="headerlink" href="#tag:snmp" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../fundamentals/103review-of-snmp-fundamentals/review-of-snmp-fundamentals/">
+          Review of SNMP Fundamentals
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:summary">
+
+
+<span class="md-tag">summary</span><a class="headerlink" href="#tag:summary" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../series/ansible/">
+          Ansible
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/cisco/">
+          Cisco
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/eve-ng/">
+          EVE-NG
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/fundamentals/">
+          Fundamentals
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/nautobot/">
+          Nautobot
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/ot-ics/">
+          OT/ICS
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/palo-alto-networks/">
+          Palo Alto Networks
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/threat-intelligence/">
+          Threat Intelligence
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/unetlab/">
+          UNetLab v3
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:terraform">
+
+
+<span class="md-tag">terraform</span><a class="headerlink" href="#tag:terraform" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">
+          Importing NaC objects from Cisco ACI into Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">
+          Managing a brownfield Cisco ACI fabric with NaC and Terraform
+        </a>
+      </li>
+    
+      <li>
+        <a href="../cisco/126reconciling-attribute-drift-between-nac-and-terraform/reconciling-attribute-drift-between-nac-and-terraform/">
+          Reconciling attribute drift Between NaC and Terraform
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:threat-intelligence">
+
+
+<span class="md-tag">threat-intelligence</span><a class="headerlink" href="#tag:threat-intelligence" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../series/threat-intelligence/">
+          Threat Intelligence
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:unetlab">
+
+
+<span class="md-tag">unetlab</span><a class="headerlink" href="#tag:unetlab" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../unetlab/108creating-templates-for-proxmox/creating-templates-for-proxmox/">
+          Creating templates for Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/115developing-unetlab-v3-with-ai-llm/developing-unetlab-v3-with-ai-llm/">
+          Developing UNetLab v3 with AI (LLM)
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/111lab-modeling-for-unetlab-v3/lab-modeling-for-unetlab-v3/">
+          Lab modeling for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/101network-simulators-are-a-must/network-simulators-are-a-must/">
+          Network simulators are a must
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/107patching-the-proxmox-kernel/patching-the-proxmox-kernel/">
+          Patching the Proxmox kernel
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/114preparing-vyos-image-for-unetlab-v3/preparing-vyos-image-for-unetlab-v3/">
+          Preparing VyOS image for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/113preparing-a-proxmox-cluster-for-unetlab-v3/preparing-a-proxmox-cluster-for-unetlab-v3/">
+          Preparing a Proxmox cluster for UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/106proxmox-optimizing-virtualization/proxmox-optimizing-virtualization/">
+          Proxmox optimizing virtualization
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/109simulating-an-l1-link-in-proxmox/simulating-an-l1-link-in-proxmox/">
+          Simulating an L1 link in Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/110testing-stretched-networks-with-proxmox/testing-stretched-networks-with-proxmox/">
+          Testing stretched networks with Proxmox
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/103unetlab-the-evolution-of-iou-web/unetlab-the-evolution-of-iou-web/">
+          UNetLab the evolution of iou-web
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/104unetlab-v2-addressing-limitations/unetlab-v2-addressing-limitations/">
+          UNetLab v2 addressing limitations
+        </a>
+      </li>
+    
+      <li>
+        <a href="../series/unetlab/">
+          UNetLab v3
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/112unetlab-v3-architecture/unetlab-v3-architecture/">
+          UNetLab v3 architecture
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/105unetlab-v3-whishing-list/unetlab-v3-whishing-list/">
+          UNetLab v3 whishing list
+        </a>
+      </li>
+    
+      <li>
+        <a href="../unetlab/102iou-web-the-beginning/iou-web-the-beginning/">
+          iou-web the beginning
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:vulnerability-management">
+
+
+<span class="md-tag">vulnerability-management</span><a class="headerlink" href="#tag:vulnerability-management" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../governance/discontinued-iot-products/discontinued-iot-products/">
+          Discontinued IoT products
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/improvised-vulnerability-management/improvised-vulnerability-management/">
+          Improvised vulnerability management
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/securing-user-authentication-under-iec-62443/securing-user-authentication-under-iec-62443/">
+          Securing user authentication under IEC 62443
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/the-value-of-a-risk-based-va/the-value-of-a-risk-based-va/">
+          The value of a Risk Based VA
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/va-scanners-for-patch-management-good-or-bad/va-scanners-for-patch-management-good-or-bad/">
+          VA scanners for patch management: good or bad?
+        </a>
+      </li>
+    
+      <li>
+        <a href="../governance/vulnerability-management/vulnerability-management/">
+          Vulnerability Management
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+  <h2 id="tag:ztp">
+
+
+<span class="md-tag">ztp</span><a class="headerlink" href="#tag:ztp" title="Permanent link">&para;</a></h2>
+  <ul>
+    
+      <li>
+        <a href="../cisco/132automatic-cisco-xr-provisioning-with-zt/automatic-cisco-xr-provisioning-with-zt/">
+          Automatic Cisco XR provisioning with ZT
+        </a>
+      </li>
+    
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../index/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Index">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Index
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../events/" class="md-footer__link md-footer__link--next" aria-label="Next: Events">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Events
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1039 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/index/">
+      
+      
+        <link rel="prev" href="../series/unetlab/">
+      
+      
+        <link rel="next" href="../tags/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Index - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#az-a" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Index
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href=".." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#az-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        H
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        I
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        K
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        M
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        N
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        P
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        T
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-u" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        U
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        V
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#az-w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Index</h1>
+
+<p class="az-count">213 posts</p>
+<nav class="az-nav"><a href="#az-a">A</a> <a href="#az-b">B</a> <a href="#az-c">C</a> <a href="#az-d">D</a> <a href="#az-e">E</a> <a href="#az-f">F</a> <a href="#az-g">G</a> <a href="#az-h">H</a> <a href="#az-i">I</a> <a href="#az-k">K</a> <a href="#az-l">L</a> <a href="#az-m">M</a> <a href="#az-n">N</a> <a href="#az-o">O</a> <a href="#az-p">P</a> <a href="#az-r">R</a> <a href="#az-s">S</a> <a href="#az-t">T</a> <a href="#az-u">U</a> <a href="#az-v">V</a> <a href="#az-w">W</a></nav>
+
+<h2 id="az-a">A<a class="headerlink" href="#az-a" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../blog/a-cmdb-for-it-infrastructures/a-cmdb-for-it-infrastructures/">A CMDB for IT infrastructures</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cmdb">cmdb</a> <a class="md-tag" href="../tags/#tag:governance">governance</a></span></li>
+<li><a href="../cisco/117a-practical-cisco-ndo-multi-site-use-case-additional-configuration/a-practical-cisco-ndo-multi-site-use-case-additional-configuration/">A practical Cisco NDO multi-site use case additional configuration</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a></span></li>
+<li><a href="../cisco/119a-practical-cisco-ndo-multi-site-use-case-building-the-parser/a-practical-cisco-ndo-multi-site-use-case-building-the-parser/">A practical Cisco NDO multi-site use case building the parser</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a></span></li>
+<li><a href="../cisco/120a-practical-cisco-ndo-multi-site-use-case-config-deploy/a-practical-cisco-ndo-multi-site-use-case-config-deploy/">A practical Cisco NDO multi-site use case config deploy</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a></span></li>
+<li><a href="../cisco/118a-practical-cisco-ndo-multi-site-use-case-data-validation/a-practical-cisco-ndo-multi-site-use-case-data-validation/">A practical Cisco NDO multi-site use case data validation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a></span></li>
+<li><a href="../cisco/116a-practical-cisco-ndo-multi-site-use-case-modelling/a-practical-cisco-ndo-multi-site-use-case-modelling/">A practical Cisco NDO multi-site use case modelling</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a></span></li>
+<li><a href="../fundamentals/203advanced-git-commands/advanced-git-commands/">Advanced Git commands</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:git">git</a></span></li>
+<li><a href="../ot-ics/117an-ics-lab-with-grficsv2/an-ics-lab-with-grficsv2/">An ICS lab with GRFICSv2</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../ot-ics/112an-ics-lab-with-virtuaplant/an-ics-lab-with-virtuaplant/">An ICS lab with VirtuaPlant</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../fundamentals/403an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/an-introduction-to-workflow-and-process-automation-with-n8n-and-camunda/">An introduction to workflow and process automation with n8n and Camunda</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:camunda">camunda</a> <a class="md-tag" href="../tags/#tag:n8n">n8n</a></span></li>
+<li><a href="../ansible/106ansible-ad-hoc-commands/ansible-ad-hoc-commands/">Ansible ad hoc commands</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../ansible/105ansible-configuration/ansible-configuration/">Ansible configuration</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../ansible/136ansible-galaxy/ansible-galaxy/">Ansible Galaxy</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../ansible/104ansible-inventory/ansible-inventory/">Ansible inventory</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../ansible/119ansible-orchestrators-and-integration-tools/ansible-orchestrators-and-integration-tools/">Ansible orchestrators and integration tools</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../ansible/113ansible-parsers-and-filters/ansible-parsers-and-filters/">Ansible parsers and filters</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a></span></li>
+<li><a href="../ansible/141ansible-playbook-for-network-provisioning/ansible-playbook-for-network-provisioning/">Ansible playbook for Network provisioning</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:servicenow">servicenow</a></span></li>
+<li><a href="../ansible/107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">Ansible Playbooks and variables</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../ansible/134ansible-reporting-with-ara/ansible-reporting-with-ara/">Ansible reporting with ARA</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../ansible/109ansible-statements/ansible-statements/">Ansible statements</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a></span></li>
+<li><a href="../ansible/144ansible-workbook-for-devnetops-slides/ansible-workbook-for-devnetops-slides/">Ansible Workbook for DevNetOps slides</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:media">media</a></span></li>
+<li><a href="../governance/approaching-ot-ics-cybersecurity/approaching-ot-ics-cybersecurity/">Approaching OT/ICS Cybersecurity</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../blog/apt-proxy-with-apt-cacher-ng/apt-proxy-with-apt-cacher-ng/">APT proxy with APT-Cacher NG</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:linux">linux</a></span></li>
+<li><a href="../governance/assume-breach-design/assume-breach-design/">Assume breach design</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:design">design</a> <a class="md-tag" href="../tags/#tag:governance">governance</a></span></li>
+<li><a href="../ot-ics/114attacking-the-bottle-filling-plant/attacking-the-bottle-filling-plant/">Attacking the Bottle Filling plant</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:attack">attack</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../ot-ics/119attacking-the-chemical-plant/attacking-the-chemical-plant/">Attacking the Chemical plant</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../ot-ics/116attacking-the-oil-refinery-plant/attacking-the-oil-refinery-plant/">Attacking the Oil Refinery plant</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:attack">attack</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../digital-self-defence/attempted-fraud-via-sms-and-fake-voice/attempted-fraud-via-sms-and-fake-voice/">Attempted fraud via SMS and fake voice</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../blog/auditing-active-directory-passwords-against-haveibeenpwned/auditing-active-directory-passwords-against-haveibeenpwned/">Auditing Active Directory passwords against HaveIBeenPwned</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../palo-alto-networks/302authenticating-to-the-strata-cloud-manager-api/authenticating-to-the-strata-cloud-manager-api/">Authenticating to the Strata Cloud Manager API</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a> <a class="md-tag" href="../tags/#tag:scm">scm</a></span></li>
+<li><a href="../fundamentals/108automated-reachability-tests-for-eve-ng-templates/automated-reachability-tests-for-eve-ng-templates/">Automated reachability tests for EVE-NG templates</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:pexpect">pexpect</a></span></li>
+<li><a href="../ansible/143automated-vm-provisioning-from-a-servicenow-ticket/automated-vm-provisioning-from-a-servicenow-ticket/">Automated VM Provisioning from a ServiceNow Ticket</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:servicenow">servicenow</a></span></li>
+<li><a href="../ansible/145automatic-cis-controls-check-with-ansible/automatic-cis-controls-check-with-ansible/">Automatic CIS controls check with Ansible</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../cisco/132automatic-cisco-xr-provisioning-with-zt/automatic-cisco-xr-provisioning-with-zt/">Automatic Cisco XR provisioning with ZT</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ztp">ztp</a></span></li>
+<li><a href="../blog/automatic-network-discovery-and-documentation/automatic-network-discovery-and-documentation/">Automatic network discovery and documentation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:netdoc">netdoc</a></span></li>
+<li><a href="../cisco/131automating-configuration-compliance-verification-for-cisco-switches/automating-configuration-compliance-verification-for-cisco-switches/">Automating configuration compliance verification for Cisco Switches</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:catalyst-center">catalyst-center</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../eve-ng/109automating-eve-ng-installation/automating-eve-ng-installation/">Automating EVE-NG installation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../blog/automating-google-searches/automating-google-searches/">Automating Google searches</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:osint">osint</a></span></li>
+<li><a href="../ansible/139automating-network-provisioning-with-servicenow-and-ansible/automating-network-provisioning-with-servicenow-and-ansible/">Automating Network Provisioning with ServiceNow and Ansible</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:servicenow">servicenow</a></span></li>
+<li><a href="../palo-alto-networks/301automating-operations-with-strata-cloud-manager/automating-operations-with-strata-cloud-manager/">Automating operations with Strata Cloud Manager</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a> <a class="md-tag" href="../tags/#tag:scm">scm</a></span></li>
+<li><a href="../palo-alto-networks/202automating-palo-alto-firewall-via-cli/automating-palo-alto-firewall-via-cli/">Automating Palo Alto Firewall via CLI</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../palo-alto-networks/206automating-palo-alto-firewall-via-python-pan-sdk/automating-palo-alto-firewall-via-python-pan-sdk/">Automating Palo Alto Firewall via Python PAN SDK</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../palo-alto-networks/205automating-palo-alto-firewall-via-python-pan-os-sdk/automating-palo-alto-firewall-via-python-pan-os-sdk/">Automating Palo Alto Firewall via Python PAN-OS SDK</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../palo-alto-networks/204automating-palo-alto-firewall-via-rest-api/automating-palo-alto-firewall-via-rest-api/">Automating Palo Alto Firewall via REST API</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../palo-alto-networks/203automating-palo-alto-firewall-via-xml-api/automating-palo-alto-firewall-via-xml-api/">Automating Palo Alto Firewall via XML API</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../palo-alto-networks/automating-palo-alto-networks-firewalls/automating-palo-alto-networks-firewalls/">Automating Palo Alto Networks firewalls</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../fundamentals/404automating-user-management-with-n8n-and-ai-agents/automating-user-management-with-n8n-and-ai-agents/">Automating user management with n8n and AI Agents</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:n8n">n8n</a></span></li>
+</ul>
+<h2 id="az-b">B<a class="headerlink" href="#az-b" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../ansible/116boosting-ansible-performance/boosting-ansible-performance/">Boosting Ansible performance</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a></span></li>
+<li><a href="../digital-self-defence/breaking-the-facial-recognition/breaking-the-facial-recognition/">Breaking the facial recognition</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../blog/building-an-iot-testing-lab/building-an-iot-testing-lab/">Building an IoT testing lab</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../fundamentals/111building-network-reports-from-structured-json-data/building-network-reports-from-structured-json-data/">Building network reports from structured JSON data</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+</ul>
+<h2 id="az-c">C<a class="headerlink" href="#az-c" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../blog/ccie-38620-my-story/ccie-38620-my-story/">CCIE #38620 - My story</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a></span></li>
+<li><a href="../nautobot/102choosing-the-foundation-for-our-ssot/choosing-the-foundation-for-our-ssot/">Choosing the foundation for our SSOT</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../cisco/112circular-dependencies-with-ndo/circular-dependencies-with-ndo/">Circular Dependencies with NDO</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a></span></li>
+<li><a href="../cisco/107cisco-aci-classes/cisco-aci-classes/">Cisco ACI Classes</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../cisco/104cisco-aci-object-model-explained/cisco-aci-object-model-explained/">Cisco ACI object model explained</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../fundamentals/202collaborating-with-git-by-working-with-remote-repositories-and-forks/collaborating-with-git-by-working-with-remote-repositories-and-forks/">Collaborating with Git by working with remote repositories and forks</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:git">git</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../fundamentals/109collecting-information-from-a-network-infrastructure/collecting-information-from-a-network-infrastructure/">Collecting information from a network infrastructure</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../ansible/121comprehensive-ansible-lab/comprehensive-ansible-lab/">Comprehensive Ansible Lab</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a></span></li>
+<li><a href="../palo-alto-networks/103configuring-incident-classification-in-cortex-xsoar/configuring-incident-classification-in-cortex-xsoar/">Configuring Incident Classification in Cortex XSOAR</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cortex-xsoar">cortex-xsoar</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../blog/connecting-an-ipv6-only-site-to-an-ipv4-only-world/connecting-an-ipv6-only-site-to-an-ipv4-only-world/">Connecting an IPv6 only site to an IPv4 only world</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ipv6">ipv6</a> <a class="md-tag" href="../tags/#tag:linux">linux</a></span></li>
+<li><a href="../threat-intelligence/104consuming-misp-iocs-from-a-firewall/consuming-misp-iocs-from-a-firewall/">Consuming MISP IoCs from a Firewall</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:misp">misp</a></span></li>
+<li><a href="../fundamentals/204contributing-to-ntc-templates-with-git-and-github/contributing-to-ntc-templates-with-git-and-github/">Contributing to NTC Templates with Git and GitHub</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:git">git</a></span></li>
+<li><a href="../palo-alto-networks/306creating-an-interface-in-strata-cloud-manager/creating-an-interface-in-strata-cloud-manager/">Creating an interface in Strata Cloud Manager</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a> <a class="md-tag" href="../tags/#tag:scm">scm</a></span></li>
+<li><a href="../unetlab/108creating-templates-for-proxmox/creating-templates-for-proxmox/">Creating templates for Proxmox</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../governance/crisis-management/crisis-management/">Crisis management</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:incident-management">incident-management</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../eve-ng/106customizing-eve-ng/customizing-eve-ng/">Customizing EVE-NG</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../governance/cybersecurity-fashion-or-strategy/cybersecurity-fashion-or-strategy/">Cybersecurity: fashion or strategy</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:governance">governance</a></span></li>
+</ul>
+<h2 id="az-d">D<a class="headerlink" href="#az-d" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../blog/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/">Data center topology with Cisco Nexus, HP Virtual Connect and VMware</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:design">design</a></span></li>
+<li><a href="../ansible/108defining-and-using-variables-in-ansible/defining-and-using-variables-in-ansible/">Defining and using variables in Ansible</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../ansible/137delegate-ansible-tasks-to-a-different-host/delegate-ansible-tasks-to-a-different-host/">Delegate Ansible tasks to a different host</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../blog/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci/">Designing a cloud provider with both VMware NSX and Cisco ACI</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:design">design</a></span></li>
+<li><a href="../fundamentals/206designing-a-gitlab-ci-cd-pipeline-for-iac/designing-a-gitlab-ci-cd-pipeline-for-iac/">Designing a GitLab CI/CD pipeline for IaC</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:git">git</a> <a class="md-tag" href="../tags/#tag:gitlab">gitlab</a></span></li>
+<li><a href="../unetlab/115developing-unetlab-v3-with-ai-llm/developing-unetlab-v3-with-ai-llm/">Developing UNetLab v3 with AI (LLM)</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../blog/disable-android-certificate-pinning-with-frida/disable-android-certificate-pinning-with-frida/">Disable Android Certificate Pinning with Frida</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../governance/discontinued-iot-products/discontinued-iot-products/">Discontinued IoT products</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:vulnerability-management">vulnerability-management</a></span></li>
+<li><a href="../blog/disjoint-l2-domains-on-cisco-ucs/disjoint-l2-domains-on-cisco-ucs/">Disjoint L2 domains on Cisco UCS</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:design">design</a></span></li>
+<li><a href="../fundamentals/301diving-into-oauth-20/diving-into-oauth-20/">Diving into OAuth 2.0</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:oauth">oauth</a></span></li>
+</ul>
+<h2 id="az-e">E<a class="headerlink" href="#az-e" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../ansible/115enhancing-ansible-output/enhancing-ansible-output/">Enhancing Ansible output</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../blog/evaluating-security-of-rfid-nfc-implementations/evaluating-security-of-rfid-nfc-implementations/">Evaluating security of RFID/NFC implementations</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../eve-ng/111eve-ng-sw-architecture-and-docker-support/eve-ng-sw-architecture-and-docker-support/">EVE-NG (SW architecture and docker support)</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a> <a class="md-tag" href="../tags/#tag:media">media</a></span></li>
+<li><a href="../eve-ng/114eve-ng-cli-hld-files/eve-ng-cli-hld-files/">EVE-NG CLI - HLD files</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../eve-ng/113eve-ng-cli-iac-ready-images/eve-ng-cli-iac-ready-images/">EVE-NG CLI - IaC-ready images</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../eve-ng/112eve-ng-cli-introduction/eve-ng-cli-introduction/">EVE-NG CLI - Introduction</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../eve-ng/115eve-ng-cli-usage-and-hld-import/eve-ng-cli-usage-and-hld-import/">EVE-NG CLI - Usage and HLD Import</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../eve-ng/110eve-ng-linux-vm-ssh-troubleshooting/eve-ng-linux-vm-ssh-troubleshooting/">EVE-NG Linux VM SSH troubleshooting</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../eve-ng/107eve-ng-network-interfaces-explained/eve-ng-network-interfaces-explained/">EVE-NG network interfaces explained</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../ansible/133event-driven-ansible/event-driven-ansible/">Event-Driven Ansible</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a></span></li>
+</ul>
+<h2 id="az-f">F<a class="headerlink" href="#az-f" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../digital-self-defence/facebook-data-breach-a-danger-for-state-officers/facebook-data-breach-a-danger-for-state-officers/">Facebook data breach: a danger for state officers</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../cisco/109filtering-cisco-api-output/filtering-cisco-api-output/">Filtering Cisco API Output</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../cisco/108finding-cisco-aci-classes-with-visore/finding-cisco-aci-classes-with-visore/">Finding Cisco ACI Classes with Visore</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../cisco/106first-approach-to-cisco-aci-apis/first-approach-to-cisco-aci-apis/">First Approach to Cisco ACI APIs</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../cisco/113frameworks-for-projects-with-cisco-aci-and-ndo/frameworks-for-projects-with-cisco-aci-and-ndo/">Frameworks for Projects with Cisco ACI and NDO</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a></span></li>
+<li><a href="../cisco/111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/">From Single-Site to Multi-Site with NDO</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a></span></li>
+</ul>
+<h2 id="az-g">G<a class="headerlink" href="#az-g" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../fundamentals/110gathering-structured-network-data-with-netmiko-and-ntc-templates/gathering-structured-network-data-with-netmiko-and-ntc-templates/">Gathering structured network data with Netmiko and NTC Templates</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">Git fundamentals for developers and IT professionals</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:git">git</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:media">media</a></span></li>
+<li><a href="../fundamentals/205gitlab-as-the-backbone-of-iac/gitlab-as-the-backbone-of-iac/">GitLab as the backbone of IaC</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:git">git</a> <a class="md-tag" href="../tags/#tag:gitlab">gitlab</a></span></li>
+<li><a href="../fundamentals/207gitlab-ci-cd-iac-in-action/gitlab-ci-cd-iac-in-action/">GitLab CI/CD + IaC in action</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:git">git</a> <a class="md-tag" href="../tags/#tag:gitlab">gitlab</a></span></li>
+</ul>
+<h2 id="az-h">H<a class="headerlink" href="#az-h" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../ansible/111handling-errors-in-ansible-playbooks/handling-errors-in-ansible-playbooks/">Handling errors in Ansible playbooks</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../digital-self-defence/home-phone-call-firewall/home-phone-call-firewall/">Home phone call firewall</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+</ul>
+<h2 id="az-i">I<a class="headerlink" href="#az-i" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../governance/ics-ot-iot-security-challenges-and-protection-strategies/ics-ot-iot-security-challenges-and-protection-strategies/">ICS/OT/IoT Security: challenges and protection strategies</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">Importing NaC objects from Cisco ACI into Terraform</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a> <a class="md-tag" href="../tags/#tag:terraform">terraform</a></span></li>
+<li><a href="../governance/improvised-vulnerability-management/improvised-vulnerability-management/">Improvised vulnerability management</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:vulnerability-management">vulnerability-management</a></span></li>
+<li><a href="../ot-ics/202industrial-network-segmentation-with-private-vlans/industrial-network-segmentation-with-private-vlans/">Industrial network segmentation with Private VLANs</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">Industrial network segmentation with VLAN Insertion</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:media">media</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../eve-ng/104installing-eve-ng-5/installing-eve-ng-5/">Installing EVE-NG 5</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../eve-ng/105installing-eve-ng-6/installing-eve-ng-6/">Installing EVE-NG 6</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../threat-intelligence/102installing-misp/installing-misp/">Installing MISP</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:misp">misp</a></span></li>
+<li><a href="../nautobot/103installing-nautobot-in-your-lab-environment/installing-nautobot-in-your-lab-environment/">Installing Nautobot in your lab environment</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../ot-ics/118installing-the-grficsv2-chemical-plant/installing-the-grficsv2-chemical-plant/">Installing the GRFICSv2 Chemical plant</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../eve-ng/103installing-ubuntu-linux/installing-ubuntu-linux/">Installing Ubuntu Linux</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a> <a class="md-tag" href="../tags/#tag:linux">linux</a></span></li>
+<li><a href="../ot-ics/113installing-virtuaplant-bottle-filling-plant/installing-virtuaplant-bottle-filling-plant/">Installing VirtuaPlant Bottle Filling plant</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../ot-ics/115installing-virtuaplant-oil-refinery-plant/installing-virtuaplant-oil-refinery-plant/">Installing VirtuaPlant Oil Refinery plant</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../threat-intelligence/103integrating-and-automating-misp/integrating-and-automating-misp/">Integrating and automating MISP</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:misp">misp</a></span></li>
+<li><a href="../nautobot/105integrating-ansible-with-nautobot/integrating-ansible-with-nautobot/">Integrating Ansible with Nautobot</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../palo-alto-networks/101introducing-cortex-xsoar/introducing-cortex-xsoar/">Introducing Cortex XSOAR</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cortex-xsoar">cortex-xsoar</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Introduction to Ansible Automation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../cisco/101introduction-to-cisco-aci/introduction-to-cisco-aci/">Introduction to Cisco ACI</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../eve-ng/101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/">Introduction to EVE-NG platform</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a></span></li>
+<li><a href="../threat-intelligence/101introduction-to-misp/introduction-to-misp/">Introduction to MISP</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:misp">misp</a></span></li>
+<li><a href="../ot-ics/102introduction-to-modbus-protocol/introduction-to-modbus-protocol/">Introduction to Modbus protocol</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../ansible/101introduction-to-network-automation-with-ansible/introduction-to-network-automation-with-ansible/">Introduction to network automation with Ansible</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../ot-ics/101introduction-to-ot-ics/introduction-to-ot-ics/">Introduction to OT/ICS</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../palo-alto-networks/201introduction-to-palo-alto-firewall-automation/introduction-to-palo-alto-firewall-automation/">Introduction to Palo Alto firewall automation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../unetlab/102iou-web-the-beginning/iou-web-the-beginning/">iou-web the beginning</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+</ul>
+<h2 id="az-k">K<a class="headerlink" href="#az-k" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../nautobot/108key-insights-from-developing-nautobot-and-ansible-integrations/key-insights-from-developing-nautobot-and-ansible-integrations/">Key insights from developing Nautobot and Ansible integrations</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:behind-the-scene">behind-the-scene</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../fundamentals/101key-steps-for-real-world-success/key-steps-for-real-world-success/">Key steps for Real-World success</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a></span></li>
+<li><a href="../ansible/120key-takeaways-from-the-ansible-course/key-takeaways-from-the-ansible-course/">Key takeaways from the Ansible course</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+</ul>
+<h2 id="az-l">L<a class="headerlink" href="#az-l" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../unetlab/111lab-modeling-for-unetlab-v3/lab-modeling-for-unetlab-v3/">Lab modeling for UNetLab v3</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../nautobot/101leveraging-nautobot-as-a-ssot/leveraging-nautobot-as-a-ssot/">Leveraging Nautobot as a SSOT</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../governance/log-management-is-more-than-a-log-collector/log-management-is-more-than-a-log-collector/">Log management is more than a log collector</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:log-management">log-management</a></span></li>
+<li><a href="../cisco/105logging-into-cisco-aci/logging-into-cisco-aci/">Logging into Cisco ACI</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+</ul>
+<h2 id="az-m">M<a class="headerlink" href="#az-m" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../blog/malicious-email-analysis/malicious-email-analysis/">Malicious email analysis</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">Managing a brownfield Cisco ACI fabric with NaC and Terraform</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a> <a class="md-tag" href="../tags/#tag:terraform">terraform</a></span></li>
+<li><a href="../cisco/115managing-cisco-ndo-limitations-from-the-apic/managing-cisco-ndo-limitations-from-the-apic/">Managing Cisco NDO Limitations from the APIC</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:ndo">ndo</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a></span></li>
+<li><a href="../ansible/131managing-cli-prompts-with-ansible/managing-cli-prompts-with-ansible/">Managing CLI prompts with Ansible</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../blog/mitm-on-wired-8021x-with-a-raspberry-pi/mitm-on-wired-8021x-with-a-raspberry-pi/">MITM on wired 802.1x with a Raspberry PI</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:design">design</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../palo-alto-networks/305modifying-an-object-in-strata-cloud-manager/modifying-an-object-in-strata-cloud-manager/">Modifying an object in Strata Cloud Manager</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a> <a class="md-tag" href="../tags/#tag:scm">scm</a></span></li>
+<li><a href="../digital-self-defence/monetizing-personal-data-the-new-form-of-prostitution/monetizing-personal-data-the-new-form-of-prostitution/">Monetizing personal data: the new form of prostitution</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+</ul>
+<h2 id="az-n">N<a class="headerlink" href="#az-n" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../blog/netdoc-automated-network-discovery-and-documentation/netdoc-automated-network-discovery-and-documentation/">NetDoc: automated network discovery and documentation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:netdoc">netdoc</a></span></li>
+<li><a href="../blog/network-outage/network-outage/">Network outage</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:design">design</a></span></li>
+<li><a href="../unetlab/101network-simulators-are-a-must/network-simulators-are-a-must/">Network simulators are a must</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+</ul>
+<h2 id="az-o">O<a class="headerlink" href="#az-o" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../fundamentals/302oauth-authorization-code-flow-with-patr32eon/oauth-authorization-code-flow-with-patreon/">OAuth Authorization Code flow with Patreon</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:oauth">oauth</a></span></li>
+<li><a href="../fundamentals/303oauth-client-credentials-flow-with-patreon/oauth-client-credentials-flow-with-patreon/">OAuth Client Credentials flow with Patreon</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:oauth">oauth</a></span></li>
+<li><a href="../blog/off-path-firewall-with-traffic-engineering/off-path-firewall-with-traffic-engineering/">Off-Path firewall with Traffic Engineering</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:design">design</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../cisco/103operating-with-cisco-aci/operating-with-cisco-aci/">Operating with Cisco ACI</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../digital-self-defence/opt-out-from-web-archive/opt-out-from-web-archive/">Opt-out from Web Archive</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../fundamentals/112optimizing-a-network-assessment-automation/optimizing-a-network-assessment-automation/">Optimizing a network assessment automation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../palo-alto-networks/303optimizing-strata-cloud-manager-api-usage/optimizing-strata-cloud-manager-api-usage/">Optimizing Strata Cloud Manager API usage</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a> <a class="md-tag" href="../tags/#tag:scm">scm</a></span></li>
+<li><a href="../nautobot/107orchestrating-ansible-playbooks-for-nautobot-integration/orchestrating-ansible-playbooks-for-nautobot-integration/">Orchestrating Ansible playbooks for Nautobot integration</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../ansible/135orchestrating-playbooks-with-ansible-awx/orchestrating-playbooks-with-ansible-awx/">Orchestrating playbooks with Ansible AWX</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:awx">awx</a></span></li>
+</ul>
+<h2 id="az-p">P<a class="headerlink" href="#az-p" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../cisco/110pagination-with-cisco-aci/pagination-with-cisco-aci/">Pagination with Cisco ACI</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../blog/palo-alto-firewall-as-code/palo-alto-firewall-as-code/">Palo Alto Firewall as Code</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../fundamentals/104parsing-text-with-textfsm/parsing-text-with-textfsm/">Parsing text with TextFSM</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a></span></li>
+<li><a href="../ansible/114password-management-with-ansible/password-management-with-ansible/">Password Management with Ansible</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../unetlab/107patching-the-proxmox-kernel/patching-the-proxmox-kernel/">Patching the Proxmox kernel</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../digital-self-defence/personal-digital-protection/personal-digital-protection/">Personal digital protection</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../fundamentals/107pexpect-as-a-tool-of-last-resort/pexpect-as-a-tool-of-last-resort/">Pexpect as a tool of last resort</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:pexpect">pexpect</a></span></li>
+<li><a href="../nautobot/104populating-our-ssot-with-automation/populating-our-ssot-with-automation/">Populating our SSOT with Automation</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../digital-self-defence/post-mortem-account-security/post-mortem-account-security/">Post-mortem account security</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../fundamentals/113protecting-your-development-environment/preotecting-your-development-environment/">Preotecting Your Development Environment</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../unetlab/113preparing-a-proxmox-cluster-for-unetlab-v3/preparing-a-proxmox-cluster-for-unetlab-v3/">Preparing a Proxmox cluster for UNetLab v3</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../unetlab/114preparing-vyos-image-for-unetlab-v3/preparing-vyos-image-for-unetlab-v3/">Preparing VyOS image for UNetLab v3</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../ansible/102preparing-your-ansible-environment/preparing-your-ansible-environment/">Preparing your Ansible environment</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a></span></li>
+<li><a href="../eve-ng/102prerequisites-for-eve-ng/prerequisites-for-eve-ng/">Prerequisites for EVE-NG</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a></span></li>
+<li><a href="../digital-self-defence/privacy-policy-and-non-existent-free-will/privacy-policy-and-non-existent-free-will/">Privacy policy and non existent free will</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../unetlab/106proxmox-optimizing-virtualization/proxmox-optimizing-virtualization/">Proxmox optimizing virtualization</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+</ul>
+<h2 id="az-r">R<a class="headerlink" href="#az-r" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../ansible/132reboot-a-device-with-ansible-and-wait-for-it-to-come-online/reboot-a-device-with-ansible-and-wait-for-it-to-come-online/">Reboot a device with Ansible and wait for it to come online</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a></span></li>
+<li><a href="../cisco/126reconciling-attribute-drift-between-nac-and-terraform/reconciling-attribute-drift-between-nac-and-terraform/">Reconciling attribute drift Between NaC and Terraform</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:netascode">netascode</a> <a class="md-tag" href="../tags/#tag:terraform">terraform</a></span></li>
+<li><a href="../palo-alto-networks/304retrieving-firewall-interfaces-with-strata-cloud-manager/retrieving-firewall-interfaces-with-strata-cloud-manager/">Retrieving firewall interfaces with Strata Cloud Manager</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a> <a class="md-tag" href="../tags/#tag:scm">scm</a></span></li>
+<li><a href="../fundamentals/103review-of-snmp-fundamentals/review-of-snmp-fundamentals/">Review of SNMP Fundamentals</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:snmp">snmp</a></span></li>
+<li><a href="../ansible/117running-ansible-playbooks-through-a-bastion-host/running-ansible-playbooks-through-a-bastion-host/">Running Ansible playbooks through a Bastion host</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a></span></li>
+</ul>
+<h2 id="az-s">S<a class="headerlink" href="#az-s" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../digital-self-defence/sanitize-personal-android-devices/sanitize-personal-android-devices/">Sanitize personal Android devices</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../governance/secure-critical-infrastructure-by-design-and-by-default/secure-critical-infrastructure-by-design-and-by-default/">Secure critical infrastructure "by design" and "by default"</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../blog/secured-bash-environment/secured-bash-environment/">Secured Bash environment</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:linux">linux</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../governance/securing-user-authentication-under-iec-62443/securing-user-authentication-under-iec-62443/">Securing user authentication under IEC 62443</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a> <a class="md-tag" href="../tags/#tag:vulnerability-management">vulnerability-management</a></span></li>
+<li><a href="../ansible/140servicenow-catalog-configuration/servicenow-catalog-configuration/">ServiceNow Catalog Configuration</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:servicenow">servicenow</a></span></li>
+<li><a href="../ansible/142servicenow-poll-based-request-processing/servicenow-poll-based-request-processing/">ServiceNow Poll-Based Request Processing</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:servicenow">servicenow</a></span></li>
+<li><a href="../cisco/102setting-up-a-cisco-aci-lab-environment/setting-up-a-cisco-aci-lab-environment/">Setting up a Cisco ACI lab environment</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:aci">aci</a> <a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cisco">cisco</a></span></li>
+<li><a href="../palo-alto-networks/102setting-up-your-cortex-xsoar-lab-environment/setting-up-your-cortex-xsoar-lab-environment/">Setting Up Your Cortex XSOAR Lab Environment</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:cortex-xsoar">cortex-xsoar</a> <a class="md-tag" href="../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></li>
+<li><a href="../blog/siem-ready-applications/siem-ready-applications/">SIEM ready applications</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:design">design</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../fundamentals/401simplifying-documentation-with-markdown-and-ci-cd/simplifying-documentation-with-markdown-and-ci-cd/">Simplifying documentation with Markdown and CI CD</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:documentation">documentation</a></span></li>
+<li><a href="../fundamentals/102simplifying-the-data-structure/simplifying-the-data-structure/">Simplifying the Data Structure</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a></span></li>
+<li><a href="../unetlab/109simulating-an-l1-link-in-proxmox/simulating-an-l1-link-in-proxmox/">Simulating an L1 link in Proxmox</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../ansible/110strategies-for-troubleshooting-ansible-errors/strategies-for-troubleshooting-ansible-errors/">Strategies for troubleshooting Ansible errors</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+</ul>
+<h2 id="az-t">T<a class="headerlink" href="#az-t" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../unetlab/110testing-stretched-networks-with-proxmox/testing-stretched-networks-with-proxmox/">Testing stretched networks with Proxmox</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../fundamentals/105textfsm-parsing-non-tabular-text/textfsm-parsing-non-tabular-text/">TextFSM parsing non-tabular text</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a></span></li>
+<li><a href="../fundamentals/106textfsm-parsing-tabular-text/textfsm-parsing-tabular-text/">TextFSM parsing tabular text</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a></span></li>
+<li><a href="../nautobot/106the-ansible-role-breakdown/the-ansible-role-breakdown/">The Ansible role breakdown</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:nautobot">nautobot</a></span></li>
+<li><a href="../digital-self-defence/the-dangers-of-losing-a-domain/the-dangers-of-losing-a-domain/">The dangers of losing a domain</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../digital-self-defence/the-dangers-of-unwitting-sharing/the-dangers-of-unwitting-sharing/">The dangers of unwitting sharing</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../governance/the-darwin-s-law-of-evolution-for-computers/the-darwin-s-law-of-evolution-for-computers/">The Darwin's Law of Evolution for computers</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:governance">governance</a></span></li>
+<li><a href="../governance/the-importance-of-the-ciso/the-importance-of-the-ciso/">The importance of the CISO</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:governance">governance</a></span></li>
+<li><a href="../governance/the-value-of-a-risk-based-va/the-value-of-a-risk-based-va/">The value of a Risk Based VA</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:vulnerability-management">vulnerability-management</a></span></li>
+<li><a href="../digital-self-defence/theft-and-recovery-of-a-facebook-account/theft-and-recovery-of-a-facebook-account/">Theft and recovery of a Facebook account</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a></span></li>
+<li><a href="../governance/top-management-security/top-management-security/">Top management security</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:governance">governance</a></span></li>
+<li><a href="../governance/training-in-managing-cyber-attacks/training-in-managing-cyber-attacks/">Training in managing cyber attacks</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:governance">governance</a></span></li>
+<li><a href="../eve-ng/108troubleshooting-eve-ng-nodes-that-fail-to-start/troubleshooting-eve-ng-nodes-that-fail-to-start/">Troubleshooting EVE-NG nodes that fail to start</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:eve-ng">eve-ng</a></span></li>
+<li><a href="../blog/twice-double-nat-on-cisco-router/twice-double-nat-on-cisco-router/">Twice (double) NAT on Cisco router</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../tags/#tag:design">design</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+</ul>
+<h2 id="az-u">U<a class="headerlink" href="#az-u" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../unetlab/103unetlab-the-evolution-of-iou-web/unetlab-the-evolution-of-iou-web/">UNetLab the evolution of iou-web</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../unetlab/104unetlab-v2-addressing-limitations/unetlab-v2-addressing-limitations/">UNetLab v2 addressing limitations</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../unetlab/112unetlab-v3-architecture/unetlab-v3-architecture/">UNetLab v3 architecture</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../unetlab/105unetlab-v3-whishing-list/unetlab-v3-whishing-list/">UNetLab v3 whishing list</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:unetlab">unetlab</a></span></li>
+<li><a href="../ansible/112using-ansible-handlers-for-optimized-task-execution/using-ansible-handlers-for-optimized-task-execution/">Using Ansible handlers for optimized task execution</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+</ul>
+<h2 id="az-v">V<a class="headerlink" href="#az-v" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../governance/va-scanners-for-patch-management-good-or-bad/va-scanners-for-patch-management-good-or-bad/">VA scanners for patch management: good or bad?</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:vulnerability-management">vulnerability-management</a></span></li>
+<li><a href="../blog/vrfs-on-linux/vrfs-on-linux/">VRFs on Linux</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:linux">linux</a></span></li>
+<li><a href="../governance/vulnerability-management/vulnerability-management/">Vulnerability Management</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:vulnerability-management">vulnerability-management</a></span></li>
+</ul>
+<h2 id="az-w">W<a class="headerlink" href="#az-w" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../digital-self-defence/weak-passwords-and-unauthorized-access/weak-passwords-and-unauthorized-access/">Weak Passwords and Unauthorized Access</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../blog/what-about-too-complex-it-infrastructures/what-about-too-complex-it-infrastructures/">What about too complex IT-Infrastructures?</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:design">design</a></span></li>
+<li><a href="../governance/what-does-it-take-to-secure-any-sme-organization/what-does-it-take-to-secure-any-sme-organization/">What does it take to secure any SME organization</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:governance">governance</a> <a class="md-tag" href="../tags/#tag:intermediate">intermediate</a></span></li>
+<li><a href="../ot-ics/111why-build-an-ot-ics-cybersecurity-lab/why-build-an-ot-ics-cybersecurity-lab/">Why build an OT/ICS Cybersecurity lab?</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../tags/#tag:ot-ics">ot-ics</a></span></li>
+<li><a href="../blog/working-with-snmp-on-linux/working-with-snmp-on-linux/">Working with SNMP on Linux</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../tags/#tag:linux">linux</a> <a class="md-tag" href="../tags/#tag:security">security</a></span></li>
+<li><a href="../fundamentals/402writing-presentations-with-markdown/writing-presentations-with-markdown/">Writing presentations with Markdown</a> <span class="az-tags"><a class="md-tag" href="../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../tags/#tag:documentation">documentation</a></span></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../series/unetlab/" class="md-footer__link md-footer__link--prev" aria-label="Previous: UNetLab v3">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                UNetLab v3
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tags/" class="md-footer__link md-footer__link--next" aria-label="Next: Tags">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Tags
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

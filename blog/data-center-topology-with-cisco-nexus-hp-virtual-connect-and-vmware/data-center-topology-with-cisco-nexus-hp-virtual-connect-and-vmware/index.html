@@ -1,0 +1,751 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/blog/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Data center topology with Cisco Nexus, HP Virtual Connect and VMware - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data center topology with Cisco Nexus, HP Virtual Connect and VMware
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#switching-within-the-physical-core-edge-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Switching within the physical core-edge network
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Switching within the physical core-edge network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spanning-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spanning Tree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switching-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Switching Path
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-additional-access-layer-hp-virtual-connects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The additional access layer: HP Virtual Connects
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The additional access layer: HP Virtual Connects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#smart-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Smart Link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bpdu-guard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BPDU Guard
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VMware
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:design" class="md-tag">design</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2013-05-02">02 May 2013</time></span></p>
+<h1 id="data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware">Data center topology with Cisco Nexus, HP Virtual Connect and VMware<a class="headerlink" href="#data-center-topology-with-cisco-nexus-hp-virtual-connect-and-vmware" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:design">design</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
+<p>The integration of devices made by different vendors is a delicate task, because each component can behave in a different way than what is expected. A data center core network built with Cisco, HP, NetApp and VMware equipment/software will be discussed:</p>
+<p><img alt="n5k-vc" src="../images/n5k-vc.png" /></p>
+<p>The previous diagram does not show the best data center implementation: it just show a data center implementation for a discussion about limits, risks and solutions.</p>
+<h2 id="switching-within-the-physical-core-edge-network">Switching within the physical core-edge network<a class="headerlink" href="#switching-within-the-physical-core-edge-network" title="Permanent link">&para;</a></h2>
+<p>The physical network is built with Cisco equipment:</p>
+<ul>
+<li>2 Cisco Catalyst 6500 (no VSS) will implement the Core level;</li>
+<li>2 Cisco Nexus 5K will implement the Distribution level;</li>
+<li>2 (or more) Cisco Nexus 2000 (Fabric Extender) will implement the Access level (HP Virtual Connects will implement an additional Access level and it will be discussed later).</li>
+</ul>
+<h3 id="spanning-tree">Spanning Tree<a class="headerlink" href="#spanning-tree" title="Permanent link">&para;</a></h3>
+<p>The STP is a required protocol to avoid loop in layer two networks. During a topology change a VLAN can be frozen up to 50 seconds. Rapid STP (802.1w) can be used to shorten the STP toplogy change up to 30 seconds, not less. In this scenario, a lot of Virtual Machines are running using a NFS datastore: each VM boots from a virtual disk, formally a file stored in a NFS datastore. Each virtual disk emulates a SCSI disk, so the Virtual OS can send SCSI commands to the virtual disk. A SCSI command needs a loss-less media: it can't be delayed, it can't be lost (the error recovery process takes too long). So a topology change will stop all SCSI commands of hundreds VM: all OSes will crash or became unusable (Windows will crash with a blue screen and Linux will remount all filesystems into a read-only mode). There are Virtual Machine level fixes to avoid this behavior, and they will be discussed later.</p>
+<p>STP could be almost completely eliminated configuring a VSS between the two Catalyst switches, but this discussion is not about VSS. So the down effect caused by a STP convergence must be minimized.</p>
+<p>Each Catalyst will configure a vPC link to both Nexus 5K. CoreA is Root (STP) for the NFS network, and CoreB is Root for the other VLANs. N5k should not be Root because they present themselves with two different Bridge ID: if the lowest BID will reboot, then all VLANs need to converge. Both Catalyst switches have two Supervisors, so each Root is more stable.</p>
+<p>Both Catalyst will act as gateway for routed VLANs (management and production). The DMZ VLAN is routed by a Firewall (not shown in the diagram). vMotion and NFS VLANs are isolated.
+A NHRP (Next Hop Resolution Protocol) can be configured between both catalyst: primary gateway should follow the STP Root.</p>
+<h3 id="switching-path">Switching Path<a class="headerlink" href="#switching-path" title="Permanent link">&para;</a></h3>
+<p>Each server has a teaming (Windows) or bonding (Linux) mechanism to overcome a single path failure. A path will become active and the other one will remain standby. Depending by the driver an active path can configured as preferred. In this scenario no preferred path is assumed, so the worst case scenario will be analyzed.
+Each NetApp storage can be configured with an active-standby path mechanism or with a LACP portchannel.</p>
+<p>The path between each couple of host should be analyzed:</p>
+<ul>
+<li>From ServerA to ServerC: the active path of both servers is attached to the same Fabric Extender (Nexus 2000) which is not a switching device. All frame must be forwarded to EdgeA switch and then back to the destination. The uplink path of Fabric Extender devices can be a bottleneck.</li>
+<li>From ServerA to ServerB: the active path of both servers is attached to different Fabric Extenders which forward frames to the upper Edge switch. Analyzing the STP topology, the link between edge switches should be in Alternate state (rapid-pvst is used): frames should flow to the Root Catalyst switch, than back to the destination Nexus 5K. But, because vPC keepalive links are always non-blocking link (a vPC domain use other mechanism to ensure a loop fre topology), frames flow through the vPC keepalive link, using the shortest path. vPC keepalive link can also be a bottleneck.</li>
+<li>Between NetApp storages: traffic between NetApp depends by the interface configuration (active-standby or active-active using LACP). As discussed in the previous point, the shortest path will be used. Because storage traffic can heavily impacts on the network, NetApp should be directly attached to the Nexus 5K switches rather than Fabric Extenders, otherwise N2K-N5K links will be over used (N2K are non-swiching devices).</li>
+<li>From a server to a NetApp storage: an active-standby NetApp configuration follows the ServerA ServerB example. A LACP NetApp configuration behave in a different way: the storage will present its MAC address to both N5K switches. ServerA will use the active path finding the destination storage within the nearest N5K switch. NetApp LACP configuration allows server to reach it using always the shortest path. On the other side an active-standby configuration allow to move cables to other switches without a Takeover/Giveback action.</li>
+</ul>
+<p>N2K switches are not switches, they are just extension (Fabric Extender) for the N5K/N7K switches with important features/limitations:</p>
+<ul>
+<li>they are non-switching devices;</li>
+<li>they provide end host connectivity only.</li>
+</ul>
+<p>No switch can be attached to a N2K device: each N2K has an implicit BPDU guard configured: if a BPDU is received, the port is immediately placed in an error-disabled state which keeps the link down.</p>
+<h2 id="the-additional-access-layer-hp-virtual-connects">The additional access layer: HP Virtual Connects<a class="headerlink" href="#the-additional-access-layer-hp-virtual-connects" title="Permanent link">&para;</a></h2>
+<p>HP Virtual Connects (VCs) are hybrid devices and can be compared to Cisco UCS 61xx devices: VC virtualize server information like UCS do. This is not a discussion between VC and UCS 61xx. The comparison was made only to point out what kind of devices VCs are.
+Each HP blade is attached (VC downlinks) to both VCs located in the same chassis: each VCs define WWNs and MAC addresses for servers using profiles. Each profile can be moved/cloned to other servers. A bunch of trunk links from upper Nexus layer brings all VLANs to VCs (VC uplinks). Each chassis must include a couple of VCs, which communicate through internal cross-connects 10GbE links. VCs on different chassis are connected using external fibers and form one VC domain. Each HP blade is connected to both VCs located in the same chassis, with internal hardware connections.</p>
+<p>Within the same VC domain, traffic is forwarded internally. In other words traffic between blade servers is switched</p>
+<ul>
+<li>within a VC if both blades are using the links to the same VC;</li>
+<li>within the VC domain using loop connection, if blades are using links to different VCs.</li>
+</ul>
+<p>A "Shared uplink set" is a group of VC uplinks; in "Auto" mode the Shared uplink set negotiates a LACP port-channel. Each blade can use one or more Shared uplink set to transmit and receive data. From the OS perspective, a single Shared Uplink set is a network interface.</p>
+<p>LACP port-channel can be configured withing the same VC only.</p>
+<h3 id="smart-link">Smart Link<a class="headerlink" href="#smart-link" title="Permanent link">&para;</a></h3>
+<p>With Smart Link features each Shared uplink set brings blade network connections down, if there are no more VC uplinks active in the same Shared uplink set. See the following example:</p>
+<p><img alt="smartlink" src="../images/smartlink.png" /></p>
+<p>In the left most diagram blade servers are configured with a bonding/teaming device which holds two Shared Uplink set. Each Shared Uplink set has only one VC Uplink which connecs to the External Networks. The bonding/teaming active path is indicated by the black arrow.</p>
+<p>In the center diagram a VC Uplink is broken and a Shared Uplink set became unusable. But blade servers still use the same path because it is in a up/up state: the data path is broken and blade servers are unreachable.</p>
+<p>In the right most diagram the Smart Link feature is enabled and it shutdown the unusable links. Blade servers can recognise the broken link and the active paths now are using the other Shared Uplink set (thanks to the bonding/teaming feature).</p>
+<p>Now see the following more complex example:</p>
+<p><img alt="bad-virtual-connect" src="../images/bad-virtual-connect.png" /></p>
+<p>In the above configuration each Virtual Connect configure one Shared Link set with a single VC Uplink inside it. The right most blade servers are using a remote Shared Uplink Set as the active path. If the Virtual Connect B Uplink goes down, the Smart Link notify direct connected blade servers, but it won't notify other Virtual Connects about the broken link. So the right blade server will still use the same link and will became unreachable.</p>
+<p>A Shared Uplink set can contains interface from different Virtual Connects, but this is outside the scope of this document.</p>
+<h3 id="bpdu-guard">BPDU Guard<a class="headerlink" href="#bpdu-guard" title="Permanent link">&para;</a></h3>
+<p>VC behave as an edge device on the network and won't transmit BPDUs: it will not participate in the spanning tree process. There is a configured BPDU Guard by default, and a receiving BPDU from blade server will shutdown that blade server internal link. There is no BPDU Filter feature.</p>
+<p>This is a good thing, because if a BPDU will be forwarded to the N2K, it will shutdown the entire VC Uplink because of the implicit BPDU Guard on N2K.</p>
+<h2 id="vmware">VMware<a class="headerlink" href="#vmware" title="Permanent link">&para;</a></h2>
+<p>The end host network access is provided by VMware software. Physically VMware vSphere is a software installed on servers: inside there is a complex system which emulates an entire data center.</p>
+<p>A VMware Virtual Network (vNet) does not run STP and does not participate in any Spanning Tree process. Let see the following example:</p>
+<p><img alt="bpdu-ddos" src="../images/bpdu-ddos.png" /></p>
+<p>The red VM is transmitting BPDU:</p>
+<ul>
+<li>The first BPDU is  forwarded through the blade server where the VM is active. When the BPDU reach the Virtual Connect A the link is shutdown because of the BPDU Guard.</li>
+<li>The VMware ESXi server links the red VM to the other active link (trough the Virtual Connect B).</li>
+<li>Another BPDU will cause the shutdown of the second link. Now the first VMware ESXi server is unreachable.</li>
+<li>The VMware HA feature will restart all VM to another server.</li>
+<li>The red VM is active again and can transmit another BPDU.</li>
+<li>The process will continue until all servers will be unreachable.</li>
+</ul>
+<p>A VM can trasnmit a BPDU if:</p>
+<ul>
+<li>Two vmnics are configured and bridged together: in this case if a BPDU (originated by the N5K) is received rom one vmnic, it will be forwarded through the other vmnic.</li>
+<li>A STP is running within the VM.</li>
+</ul>
+<p>The first case can be avoided configuring to reject Forged Transmit under each vmnet:</p>
+<p><img alt="reject-forged" src="../images/reject-forged.png" /></p>
+<p>The second case cannot be avoided using VMware ESXi 4.1. The solutions is: install Cisco Nexus 1000v or upgrade to VMware ESXi 5.1 which has a BPDU Filter feature.</p>
+<p>As discussed before, another potential issue is caused by STP convergence: because each Virtual Machine use SCSI protocol, a packet loss/delayed can be potentially dangerous. To avoid crash during a STP convergence is mandatory increase SCSI and NFS timeout.</p>
+<p>On Windows (persistent):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[HKEY_LOCAL_MACHINE\SYSTEM\&lt;wbr&gt;&lt;/wbr&gt;CurrentControlSet\Services\&lt;wbr&gt;&lt;/wbr&gt;Disk]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>"TimeoutValue"=dword:000000be
+</code></pre></div>
+<p>On Linux (non persistent):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">180</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/block/sdc/device/timeout
+</code></pre></div>
+<p>On Linux systems, VMware Tools also set the proper timeout (persistent on reboot).</p>
+<p>ESXi servers must be configured also with proper NFS settings. The easiest way is install Storage Virtual Console by NetApp and check the Netapp tab from vSphere Client:</p>
+<p><img alt="vmware-nfs-settings" src="../images/vmware-nfs-settings.png" /></p>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>Building a data center requires a deeply knowledge. This example showed:</p>
+<ul>
+<li>Cisco Fabric Extender (Nexus 2K) is a non-switching device with an implicity BPDU Guard configured.</li>
+<li>A Cisco Nexus 5K vPC acts as a single switch for a Portchannel, but originates two different Bridge IDs.</li>
+<li>HP Virtual Connects have a BPDU Guard by default and a Smart Link feature to notify link problems to blade servers. Smart Link is not forwarded to other Virtual Connects (local significance only).</li>
+<li>A VMware Virtual Machine can originate BPDU which are forwarded to other network devices.</li>
+<li>NFS datastores transport SCSI frames using a non-reliable media (frames can be delayed by STP).</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://blog.ioshints.info/2012/09/dear-vmware-bpdu-filter-bpdu-guard.html" title="Dear VMware, BPDU Filter != BPDU Guard">Dear VMware, BPDU Filter != BPDU Guard</a></li>
+<li><a href="http://rickardnobel.se/esxi-5-1-bdpu-guard/" title="ESXi 5.1 and BPDU Guard">ESXi 5.1 and BPDU Guard</a></li>
+<li><a href="http://www.mseanmcgee.com/wp-content/uploads/2010/05/VC-Common-Myths-Misperceptions-and-Objections-c01598869.pdf" title="HP Virtual Connect: Common Myths, Misperceptions, and Objections">HP Virtual Connect: Common Myths, Misperceptions, and Objections</a></li>
+<li><a href="http://blog.michaelfmcnamara.com/2009/08/hp-virtual-connect-smart-link/" title="HP Virtual Connect Smart Link">HP Virtual Connect Smart Link</a></li>
+<li><a href="http://h20000.www2.hp.com/bc/docs/support/SupportManual/c00814156/c00814156.pdf" title="Overview of HP Virtual Connect technologies">Overview of HP Virtual Connect technologies</a></li>
+<li><a href="http://www.cisco.com/en/US/docs/switches/datacenter/nexus2000/sw/configuration/guide/rel_4_1/Cisco_Nexus_2000_Series_Fabric_Extender_Software_Configuration_Guide_chapter2.html" title="Cisco Nexus 2000 Series Fabric Extender Software Configuration Guide, Release 4.1">Cisco Nexus 2000 Series Fabric Extender Software Configuration Guide, Release 4.1</a></li>
+<li><a href="http://packetpushers.net/cisco-nexus-2000-a-lovehate-relationship/" title="Cisco Nexus 2000: A Love/Hate Relationship">Cisco Nexus 2000: A Love/Hate Relationship</a></li>
+<li><a href="http://h20000.www2.hp.com/bc/docs/support/SupportManual/c01386629/c01386629.pdf" title="HP Virtual Connect for the Cisco Network Administrator">HP Virtual Connect for the Cisco Network Administrator</a></li>
+<li>
+<p><a href="http://bradhedlund.com/2010/08/16/cisco-ucs-qos-vs-hp-virtual-connect-rate-limiting/" title="Cisco UCS intelligent QoS vs. HP Virtual Connect rate limiting">Cisco UCS intelligent QoS vs. HP Virtual Connect rate limiting</a></p>
+</li>
+<li>
+<p><a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1009465" title="Increasing the disk timeout values for a Linux 2.6 virtual machine (1009465)">Increasing the disk timeout values for a Linux 2.6 virtual machine (1009465)</a></p>
+</li>
+<li><a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1014" title="Inconsistent Windows virtual machine performance when disks are located on SAN datastores (1014)">Inconsistent Windows virtual machine performance when disks are located on SAN datastores (1014)</a></li>
+<li><a href="http://www.netapp.com/us/products/management-software/vsc/" title="NetApp Virtual Storage Console for VMware vSphere">NetApp Virtual Storage Console for VMware vSphere</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

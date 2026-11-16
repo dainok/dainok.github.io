@@ -1,0 +1,38 @@
+/* ==========================================================================
+   downloads.css — links to PDF files (e.g. the slides on the Events page)
+   A PDF icon and a soft tinted background make them recognizable without
+   breaking the line: the link stays inline, same size and baseline as the
+   text around it.
+   ========================================================================== */
+
+:root {
+    /* Material Design "file-pdf-box" icon, used as a mask so it follows the text color */
+    --icon-pdf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-9.5 8.5c0 .8-.7 1.5-1.5 1.5H7v2H5.5V9H8c.8 0 1.5.7 1.5 1.5zm5 2c0 .8-.7 1.5-1.5 1.5h-2.5V9H13c.8 0 1.5.7 1.5 1.5zm4-3H17v1h1.5V13H17v2h-1.5V9h3zm-6.5 0h1v3h-1zm-5 0h1v1H7z'/%3E%3C/svg%3E");
+}
+
+.md-typeset :is(a[href$=".pdf" i], a[href*=".pdf#" i], a[href*=".pdf?" i]) {
+    padding: .1em .45em .1em .35em;
+    border-radius: .3em;
+    background-color: color-mix(in srgb, var(--md-typeset-a-color) 12%, transparent);
+    text-decoration: none;
+    /* keep the tinted box on each line if the link wraps */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.md-typeset :is(a[href$=".pdf" i], a[href*=".pdf#" i], a[href*=".pdf?" i])::before {
+    content: "";
+    display: inline-block;
+    width: 1.05em;
+    height: 1.05em;
+    margin-right: .3em;
+    vertical-align: -.2em;
+    /* sits on the text baseline */
+    background-color: currentcolor;
+    -webkit-mask: var(--icon-pdf) center / contain no-repeat;
+    mask: var(--icon-pdf) center / contain no-repeat;
+}
+
+.md-typeset :is(a[href$=".pdf" i], a[href*=".pdf#" i], a[href*=".pdf?" i]):hover {
+    background-color: color-mix(in srgb, var(--md-typeset-a-color) 22%, transparent);
+}

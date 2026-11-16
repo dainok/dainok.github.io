@@ -1,0 +1,823 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/palo-alto-networks/automating-palo-alto-networks-firewalls/automating-palo-alto-networks-firewalls/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Automating Palo Alto Networks firewalls - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#automating-palo-alto-networks-firewalls" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Automating Palo Alto Networks firewalls
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series" checked><label class="md-nav__link" for="__nav_series" id="__nav_series_label" tabindex="0"><span class="md-ellipsis">In the same series</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="1" aria-labelledby="__nav_series_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series"><span class="md-nav__icon md-icon"></span>In the same series</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1" checked><div class="md-nav__link md-nav__container"><a href="../../../series/palo-alto-networks/" class="md-nav__link"><span class="md-ellipsis">Palo Alto Networks</span></a><label class="md-nav__link" for="__nav_series_1" id="__nav_series_1_label"><span class="md-nav__icon md-icon"></span></label></div><nav class="md-nav" data-md-level="2" aria-labelledby="__nav_series_1_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1"><span class="md-nav__icon md-icon"></span>Palo Alto Networks</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_1"><label class="md-nav__link" for="__nav_series_1_1" id="__nav_series_1_1_label" tabindex="0"><span class="md-ellipsis">Mastering Cortex XSOAR</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_1_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_1"><span class="md-nav__icon md-icon"></span>Mastering Cortex XSOAR</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../101introducing-cortex-xsoar/introducing-cortex-xsoar/" class="md-nav__link"><span class="md-ellipsis">Introducing Cortex XSOAR</span></a></li><li class="md-nav__item"><a href="../../102setting-up-your-cortex-xsoar-lab-environment/setting-up-your-cortex-xsoar-lab-environment/" class="md-nav__link"><span class="md-ellipsis">Setting Up Your Cortex XSOAR Lab Environment</span></a></li><li class="md-nav__item"><a href="../../103configuring-incident-classification-in-cortex-xsoar/configuring-incident-classification-in-cortex-xsoar/" class="md-nav__link"><span class="md-ellipsis">Configuring Incident Classification in Cortex XSOAR</span></a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_2" checked><label class="md-nav__link" for="__nav_series_1_2" id="__nav_series_1_2_label" tabindex="0"><span class="md-ellipsis">Firewall automation: enhancing security and efficiency</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_2_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1_2"><span class="md-nav__icon md-icon"></span>Firewall automation: enhancing security and efficiency</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../201introduction-to-palo-alto-firewall-automation/introduction-to-palo-alto-firewall-automation/" class="md-nav__link"><span class="md-ellipsis">Introduction to Palo Alto firewall automation</span></a></li><li class="md-nav__item"><a href="../../202automating-palo-alto-firewall-via-cli/automating-palo-alto-firewall-via-cli/" class="md-nav__link"><span class="md-ellipsis">Automating Palo Alto Firewall via CLI</span></a></li><li class="md-nav__item"><a href="../../203automating-palo-alto-firewall-via-xml-api/automating-palo-alto-firewall-via-xml-api/" class="md-nav__link"><span class="md-ellipsis">Automating Palo Alto Firewall via XML API</span></a></li><li class="md-nav__item"><a href="../../204automating-palo-alto-firewall-via-rest-api/automating-palo-alto-firewall-via-rest-api/" class="md-nav__link"><span class="md-ellipsis">Automating Palo Alto Firewall via REST API</span></a></li><li class="md-nav__item"><a href="../../205automating-palo-alto-firewall-via-python-pan-os-sdk/automating-palo-alto-firewall-via-python-pan-os-sdk/" class="md-nav__link"><span class="md-ellipsis">Automating Palo Alto Firewall via Python PAN-OS SDK</span></a></li><li class="md-nav__item"><a href="../../206automating-palo-alto-firewall-via-python-pan-sdk/automating-palo-alto-firewall-via-python-pan-sdk/" class="md-nav__link"><span class="md-ellipsis">Automating Palo Alto Firewall via Python PAN SDK</span></a></li><li class="md-nav__item md-nav__item--active"><a href="./" class="md-nav__link md-nav__link--active" aria-current="page"><span class="md-ellipsis">Automating Palo Alto Networks firewalls</span></a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_3"><label class="md-nav__link" for="__nav_series_1_3" id="__nav_series_1_3_label" tabindex="0"><span class="md-ellipsis">Automating Palo Alto cloud based services</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_3_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_3"><span class="md-nav__icon md-icon"></span>Automating Palo Alto cloud based services</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../301automating-operations-with-strata-cloud-manager/automating-operations-with-strata-cloud-manager/" class="md-nav__link"><span class="md-ellipsis">Automating operations with Strata Cloud Manager</span></a></li><li class="md-nav__item"><a href="../../302authenticating-to-the-strata-cloud-manager-api/authenticating-to-the-strata-cloud-manager-api/" class="md-nav__link"><span class="md-ellipsis">Authenticating to the Strata Cloud Manager API</span></a></li><li class="md-nav__item"><a href="../../303optimizing-strata-cloud-manager-api-usage/optimizing-strata-cloud-manager-api-usage/" class="md-nav__link"><span class="md-ellipsis">Optimizing Strata Cloud Manager API usage</span></a></li><li class="md-nav__item"><a href="../../304retrieving-firewall-interfaces-with-strata-cloud-manager/retrieving-firewall-interfaces-with-strata-cloud-manager/" class="md-nav__link"><span class="md-ellipsis">Retrieving firewall interfaces with Strata Cloud Manager</span></a></li><li class="md-nav__item"><a href="../../305modifying-an-object-in-strata-cloud-manager/modifying-an-object-in-strata-cloud-manager/" class="md-nav__link"><span class="md-ellipsis">Modifying an object in Strata Cloud Manager</span></a></li><li class="md-nav__item"><a href="../../306creating-an-interface-in-strata-cloud-manager/creating-an-interface-in-strata-cloud-manager/" class="md-nav__link"><span class="md-ellipsis">Creating an interface in Strata Cloud Manager</span></a></li></ul></nav></li></ul></nav></li></ul></nav></li></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ansible-with-palo-alto-networks-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ansible with Palo Alto Networks firewall
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ansible with Palo Alto Networks firewall">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-facts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting facts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sending-operational-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sending operational commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sending-configuration-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sending configuration commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-templating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration templating
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#programming-the-firewall-using-external-feeds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programming the firewall using external feeds
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Programming the firewall using external feeds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-django" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing Django
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-django-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creating the Django application
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modeling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admin page
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printing-edls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Printing EDLs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting the server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-edl-from-a-panw-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using the EDL from a PANW firewall
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ansible" class="md-tag">ansible</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:palo-alto-networks" class="md-tag">palo-alto-networks</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2022-02-02">02 February 2022</time></span></p>
+<h1 id="automating-palo-alto-networks-firewalls">Automating Palo Alto Networks firewalls<a class="headerlink" href="#automating-palo-alto-networks-firewalls" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/paloalto-strata.png" /></p>
+<p>I spent a few Twitch sessions speaking about the automation of Palo Alto Networks firewalls. We used different approaches than the one used with Cisco devices. Initially, we developed a few simple Ansible playbooks. In the last sessions, we developed a very small Django web application to programmatically enable and disable network flows.</p>
+<h2 id="ansible-with-palo-alto-networks-firewall">Ansible with Palo Alto Networks firewall<a class="headerlink" href="#ansible-with-palo-alto-networks-firewall" title="Permanent link">&para;</a></h2>
+<p>The Palo Alto Networks module for Ansible has some prerequisites:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>pan-os-python<span class="w"> </span>pan-python<span class="w"> </span>pandevice<span class="w"> </span>xmltodict<span class="w"> </span>requests<span class="w"> </span>requests_toolbelt
+</code></pre></div>
+<p>Then install PAN-OS Ansible collection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>paloaltonetworks.panos
+</code></pre></div>
+<p>The <code>interpreter_python</code> on <code>ansible.cfg</code> file must point to the interpreter with the PanOS libraries installed. This is important if you're using a virtual environment.</p>
+<p><img alt="ansible-with-panw" src="../images/ansible-with-panw.png" /></p>
+<p>Firewall credentials are not passed in the standard way, but a specific dictionary must be passed to each task. We <a href="https://github.com/dainok/twitch-sessions/blob/main/S01E05-ansible-with-panw/playbook-1-facts.yml" title="playbook-1-facts.yml">populated</a> the dictionary from Ansible parameters as following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">set_fact</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">provider</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nt">ip_address</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">ansible_host</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">ansible_password</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">ansible_user</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div>
+<h3 id="getting-facts">Getting facts<a class="headerlink" href="#getting-facts" title="Permanent link">&para;</a></h3>
+<p>The Palo Alto Network module is not using the <code>gather_facts</code> parameter; instead, it's defining a <a href="https://github.com/dainok/twitch-sessions/blob/main/S01E05-ansible-with-panw/playbook-1-facts.yml" title="playbook-1-facts.yml">custom task</a> to retrieve facts:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">* paloaltonetworks.panos.panos_facts</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">provider</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div>
+<h3 id="sending-operational-commands">Sending operational commands<a class="headerlink" href="#sending-operational-commands" title="Permanent link">&para;</a></h3>
+<p>The module <code>panos_op</code> allows sending commands to the firewall. The module translates the given command into XML and uses the XML API. Some commands can fail so the best way is to specify commands using the XML syntax. The following command is failing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="s">'show</span><span class="nv"> </span><span class="s">arp</span><span class="nv"> </span><span class="s">management'</span><span class="w"> </span><span class="c1"># Fails with "show -&gt; arp has unexpected text."</span>
+</code></pre></div>
+<p>The following command is working:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;show&gt;&lt;arp&gt;&lt;entry</span><span class="nv"> </span><span class="s">name='management'/&gt;&lt;/arp&gt;&lt;/show&gt;"</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">cmd_is_xml</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>The API browser, available on the Firewall using the <code>/api</code> URL can help to find out the right request. The above API is available at <code>/php/rest/browse.php/op::show::arp</code>.</p>
+<p>We used <code>panos_op</code> to get <a href="https://github.com/dainok/twitch-sessions/blob/main/S01E05-ansible-with-panw/playbook-2-get-system-info.yml" title="playbook-2-get-system-info.yml">system info</a> and the <a href="https://github.com/dainok/twitch-sessions/blob/main/S01E05-ansible-with-panw/playbook-3-get-arp-table.yml" title="playbook-3-get-arp-table.yml">ARP table</a>.</p>
+<p>Because operational commands are sent in the XML format, the output is automatically converted to JSON from the Ansible module. Remember that XML can be converted to JSON/YAML and back, but mind that XML attributes will be usually lost.</p>
+<h3 id="sending-configuration-commands">Sending configuration commands<a class="headerlink" href="#sending-configuration-commands" title="Permanent link">&para;</a></h3>
+<p>We wrote the <a href="https://github.com/dainok/twitch-sessions/blob/main/S01E05-ansible-with-panw/playbook-4-provisioning.yml" title="playbook-4-provisioning.yml">fourth playbook</a> to test configuration commands. There are many configuration commands available from the Ansible module but we are limited to configuring some management interface parameters.</p>
+<p>We discussed a few about how to "zero-touch provision" a Palo Alto Network firewalls. Even if we didn't test the scenario, we agreed that we could write a working playbook.</p>
+<h3 id="configuration-templating">Configuration templating<a class="headerlink" href="#configuration-templating" title="Permanent link">&para;</a></h3>
+<p>Even if configuration commands could be used to manage a lot of firewall features, we tested a different approach: configuration templating. Because Palo Alto Network firewalls have the commit feature, in my opinion, this is the best approach.</p>
+<p>My idea is:</p>
+<ul>
+<li>prepare a configuration template (Jinja2);</li>
+<li>build the firewall configuration from the template using an external configuration file (model);</li>
+<li>upload the firewall configuration file and enable it.</li>
+</ul>
+<p>The <a href="https://github.com/dainok/twitch-sessions/blob/main/S01E05-ansible-with-panw/playbook-5-provisioning-from-file.yml" title="playbook-5-provisioning-from-file.yml">fifth playbook</a> implement this approach.</p>
+<p>Pros and cons of this approach:</p>
+<ul>
+<li>the entire firewall configuration can be stored in a CMDB file (pro);</li>
+<li>the firewall configuration is always consistent (pro);</li>
+<li>we can configure almost everything (pro);</li>
+<li>we don't need to make checks before inserting a specific configuration in a running firewall (pro);</li>
+<li>we need to spend a lot of time designing our firewall model (cons).</li>
+</ul>
+<h2 id="programming-the-firewall-using-external-feeds">Programming the firewall using external feeds<a class="headerlink" href="#programming-the-firewall-using-external-feeds" title="Permanent link">&para;</a></h2>
+<p>Many firewalls can read external feeds: the content can be used as a source or destination in access lists. This approach is perfect to allow temporary access. In the <a href="https://github.com/dainok/twitch-sessions/tree/main/S01E06-automating-dynamic-lists-for-panw-firewalls" title="edlprovider">last session</a> we created a small web application using Django.</p>
+<p>The application provides feeds containing IP addresses. Each IP address has an expiration date. Once the IP address is expired, it is removed from the feed.</p>
+<p><img alt="django-with-panw" src="../images/django-with-panw.png" /></p>
+<h3 id="installing-django">Installing Django<a class="headerlink" href="#installing-django" title="Permanent link">&para;</a></h3>
+<p>Install Django into a Python environment (see S01E01):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">Django</span><span class="o">==</span><span class="m">4</span>.0.1
+</code></pre></div>
+<h3 id="creating-the-django-application">Creating the Django application<a class="headerlink" href="#creating-the-django-application" title="Permanent link">&para;</a></h3>
+<p>Create the first Django project and an application within it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>django-admin<span class="w"> </span>startproject<span class="w"> </span>feedapp
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>feedapp
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>django-admin<span class="w"> </span>startapp<span class="w"> </span>edlprovider
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>./manage.py<span class="w"> </span>migrate
+</code></pre></div>
+<p>By default, the database is an SQLite file stored under the Django root folder. The app must be loaded in the <code>settings.py</code> file stored in the <code>feedapp</code> folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>INSTALLED_APPS = [
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    ...
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    "edlprovider",
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>]
+</code></pre></div>
+<p>Create the admin user:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>./manage.py<span class="w"> </span>createsuperuser
+</code></pre></div>
+<h3 id="modeling">Modeling<a class="headerlink" href="#modeling" title="Permanent link">&para;</a></h3>
+<p>In the simplest version of our application, we can expect that:</p>
+<ul>
+<li>an admin user is adding one or more EDL objects (list of IP addresses);</li>
+<li>an admin user is adding one or more IP addresses to one EDL object;</li>
+<li>possibly an expiration time can be set to each IP address;</li>
+<li>unexpired IP addresses will be available in a text list under a specific, non-guessable, URL.</li>
+</ul>
+<p>In other words, we have two objects:</p>
+<ul>
+<li>EDL with ID, name, URL;</li>
+<li>IP with name, expiration date (optional), associated EDL.</li>
+</ul>
+<p>When the model is complete, we need to update the migration scripts and upgrade the database schema:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>./manage.py<span class="w"> </span>makemigrations
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>./manage.py<span class="w"> </span>migrate
+</code></pre></div>
+<h3 id="admin-page">Admin page<a class="headerlink" href="#admin-page" title="Permanent link">&para;</a></h3>
+<p>By default, Django provides an admin page for each model. It can be enabled by adding in the <code>admin.py</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>admin.site.register(models.EDL)
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>admin.site.register(models.IPAddress)
+</code></pre></div>
+<p>Open the Django application using the URL <code>/admin</code>, and add one EDL with at least one IP address.</p>
+<h3 id="printing-edls">Printing EDLs<a class="headerlink" href="#printing-edls" title="Permanent link">&para;</a></h3>
+<p>The <code>view.py</code> file is used to serve custom HTTP requests. We need to print the content of each EDL if a GET is requesting the EDL id (slug). The URL is defined in the <code>rrapp/urls.py</code> file.</p>
+<p>All IP addresses linked to a specific EDL are printed in text format if the expiration date is in the future.</p>
+<h3 id="starting-the-server">Starting the server<a class="headerlink" href="#starting-the-server" title="Permanent link">&para;</a></h3>
+<p>In the <code>settings.py</code> file you can configure Django to serve any client. This is an insecure configuration. Add <code>*</code> to the <code>ALLOWED_HOSTS</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ALLOWED_HOSTS = ['*']
+</code></pre></div>
+<p>Start the application:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./manage.py<span class="w"> </span>runserver<span class="w"> </span><span class="m">0</span>.0.0.0:8000
+</code></pre></div>
+<p>The Django application is now reachable. Use the <code>/admin</code> URL and log in with the superuser credentials created before.</p>
+<h3 id="using-the-edl-from-a-panw-firewall">Using the EDL from a PANW firewall<a class="headerlink" href="#using-the-edl-from-a-panw-firewall" title="Permanent link">&para;</a></h3>
+<p>Once an EDL is populated, it can be used as a source or destination on ACLs.</p>
+<p>EDL can be debugged with the following commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>admin@fw&gt; request system external-list stats type ip name EDL1
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>admin@fw&gt; request system external-list show type ip name EDL1
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>admin@fw&gt; request system external-list refresh type ip name EDL1
+</code></pre></div>
+<p>Last note: when an IP address is removed from an EDL, the session is not cleared. In other words, the established sessions are maintained, and new sessions are dropped.</p>
+<p>A script should clear sessions related to expired IP addresses:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>admin@fw&gt; clear session all filter rule TestEDL1 destination 192.168.28.152
+</code></pre></div>
+<p>Mind also that firewall usually probes URLs every 5 minutes, so the clear command should be executed 5 minutes after the expiration date. The web application should be extended to track requests and if they have been cleared.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/dainok/twitch-sessions/tree/main/S01E05-ansible-with-panw" title="Ansible with PANW">Ansible with PANW</a></li>
+<li><a href="https://github.com/dainok/twitch-sessions/tree/main/S01E06-automating-dynamic-lists-for-panw-firewalls" title="Automating Dynamic Lists for PANW firewalls">Automating Dynamic Lists for PANW firewalls</a></li>
+<li><a href="https://galaxy.ansible.com/paloaltonetworks/panos" title="PAN-OS Ansible Collection">PAN-OS Ansible Collection</a></li>
+<li><a href="https://paloaltonetworks.github.io/pan-os-ansible/" title="PAN-OS Ansible Collection Documentation">PAN-OS Ansible Collection Documentation</a></li>
+<li><a href="http://api-lab.paloaltonetworks.com/" title="PAN-OS XML API Labs with pan-python">PAN-OS XML API Labs with pan-python</a></li>
+<li><a href="https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/policy/use-an-external-dynamic-list-in-policy/external-dynamic-list.html" title="External Dynamic List">External Dynamic List</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,615 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/governance/the-darwin-s-law-of-evolution-for-computers/the-darwin-s-law-of-evolution-for-computers/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>The Darwin's Law of Evolution for computers - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-darwins-law-of-evolution-for-computers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Darwin's Law of Evolution for computers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adecco-india-at-cisco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adecco India at Cisco
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-will-be-the-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How will be the future?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-cybersecurity-only-a-new-hype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Is Cybersecurity only a new "hype"?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:beginner" class="md-tag">beginner</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:governance" class="md-tag">governance</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2017-10-09">09 October 2017</time></span></p>
+<h1 id="the-darwins-law-of-evolution-for-computers">The Darwin's Law of Evolution for computers<a class="headerlink" href="#the-darwins-law-of-evolution-for-computers" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:governance">governance</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
+<p>We're leaving in the 'hype' era, where everything is sold as the Holy Grail for a non-real problem. Let's try to analyze things with a critical eye.</p>
+<p>Pushed by a friend, who is writing a couple of very good posts I recommend, I'm now sharing my thoughts about automation, the future of network engineers, AI, and so on. Of course, this is the point of view of my mind, as a result of 20 years playing in the IT world at both work and home.</p>
+<p>It seems to me that vendors are trying to push more and more cool words, at a higher rate compared to the past. A few years ago the "IT outsourcing" mantra lasted for a while, and everyone had to "outsource" something to become a good manager. After a while, it was the "cloud" era, but it was too early, so it was a false start. In the last two years, we have seen many "mantras" coming together: big data, cloud (again, but with a different awareness), Cyber security, automation, big data, and machine learning. They are too many mantras! Not so many years ago, the idea of the cloud could be compared to a startup, and that startup was selling something not ready for the enterprise market. In the last few years, thanks to Amazon, Google, Microsoft, Salesforce, and so on, enterprises and IT managers can now approach a valid cloud strategy with more awareness.</p>
+<blockquote>
+<p>Lesson learned: better if we wait for the second generation to have a mature technology.</p>
+</blockquote>
+<p>I would add another one:</p>
+<blockquote>
+<p>Lesson learned: successful startup aims to be bought by big companies. Buying cloud services from small companies can lead to unexpected services/license changes.</p>
+</blockquote>
+<p>Now let's apply the above thesis to the current mantras, especially to: automation, machine learning, and Cyber security.</p>
+<p>I guess I can affirm that networking vendors are including automation on every product. So we have REST APIs to program every device and UI (user interfaces) that should help to manage the whole infrastructure with few clicks and without the knowledge of what is below. But again the real world is different than what is told by marketing: a lot of bugs that make software unusable or dangerous.</p>
+<p>Moreover asking for support from vendors gives fewer results than a walk to Santiago de Compostela or Lourdes.</p>
+<h2 id="adecco-india-at-cisco">Adecco India at Cisco<a class="headerlink" href="#adecco-india-at-cisco" title="Permanent link">&para;</a></h2>
+<p>It seems to me that vendors are not interested in selling good software, everything should be developed and sold "agile" (no matter if the agile methodology is a completely different thing). And the most critical aspect is that the quality of support teams is terrible: a lot of FTE is spent for debugging what should be analyzed by the vendor, a lot of "it's by design" embarrassing limits, and really, too many untrained people unable to support anything or anyone.</p>
+<blockquote>
+<p>Lesson learned: vendors cannot write good software, and apparently, they don't care too much about that. They are only interested in selling ideas, not real and working features.</p>
+</blockquote>
+<p>Let's move now on to machine learning, the "hype" that will make humans useless. Computers can learn and detect things better than humans and will be able to analyze a lot of data in a relatively short time. So big data is not a problem anymore. But... because there is always a "but", the real world is a little bit different. If someone is using Facebook to guess sexual orientation, we should ask ourselves how much that research is "marketing" and how much is "real". And the answer is that machine learning, used to detect if a photographed man is gay, is slightly more efficient than an untrained human. So current machine learning algorithms perform better than thousands of untrained people. And that's still a good thing, but we should remember that machine learning algorithms don't (currently) perform like experts.</p>
+<blockquote>
+<p>Lesson learned: (current) machine learning algorithms slightly perform better than untrained humans, but they can manage a lot of data and much faster than humans.</p>
+</blockquote>
+<p>But machine learning applied to automation and Cyber security will save the world! (maybe)</p>
+<p>The security of our infrastructures/software/iot/whatever electronic device is embarrassing. We have a lot of non-upgradeable devices (mobile phones, IoT devices, set-top boxes...) and we have also a lot of vulnerable design devices. Moreover, we have infrastructures managed by untrained (cheap) people, all around the world. We have critical services exposed to the Internet with default or blank passwords. But we have a lot of vendors selling the Holy Grail of security.</p>
+<p>Holy Grail is not enough I guess, because we still have thousands of computers infected by WannaCry ransomware and sooner or later someone will pay the price.</p>
+<blockquote>
+<p>Lesson learned: Cyber security is the current mantra, but it won't help too much.</p>
+</blockquote>
+<p>So we have mature cloud services, but automation, machine learning, and security are still too young. The last year demonstrated that connecting everything to the Internet is not always a good idea, especially if we're connecting hospitals, 911 emergency numbers, peacemakers, airplanes, or IoT devices.</p>
+<p>Should we live as Amish people does? Indeed that's a possibility, and when I retire, I'll think about that for sure.</p>
+<h2 id="how-will-be-the-future">How will be the future?<a class="headerlink" href="#how-will-be-the-future" title="Permanent link">&para;</a></h2>
+<p>To conclude my mind-flow:</p>
+<ul>
+<li>Will the cloud kill IT, experts? No, because infrastructures must be managed, platforms must be well-deployed, and services must be well-designed and well-implemented.</li>
+<li>Will automation kill network experts? No, because network experts started to automate things 10 years ago, and the current "hype" is not changing things so much. You have to know what is below if you want to implement a good and effective solution.</li>
+</ul>
+<h2 id="is-cybersecurity-only-a-new-hype">Is Cybersecurity only a new "hype"?<a class="headerlink" href="#is-cybersecurity-only-a-new-hype" title="Permanent link">&para;</a></h2>
+<p>The network has been always asked to fix poorly designed software. I could write a lot about how "stretched data-center" is a bad choice, but that's not the right post. I can see more good tools used to fix the wrong thing (containers used as a VM, snapshot used as a backup...). But the network layer cannot fix every single mistake of the above layers, and sooner or later the above layers will pay a price.</p>
+<p>I think that Darwin's Law of Evolution by Natural Selection is valid also for computers and electronic devices. But it could dramatically impact human life too.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://blog.ipspace.net/2017/04/lets-drop-some-random-commands-shall-we.html" title="Let's Drop Some Random Commands, Shall We?">Let's Drop Some Random Commands, Shall We?</a></li>
+<li><a href="https://www.theguardian.com/technology/2017/sep/07/new-artificial-intelligence-can-tell-whether-youre-gay-or-straight-from-a-photograph" title="New AI can guess whether you're gay or straight from a photograph">New AI can guess whether you're gay or straight from a photograph</a></li>
+<li><a href="https://www.spreaker.com/user/runtime/dataknightmare-eng-1x01-youre-looking-ga" title="You're Looking Gay, Today">You're Looking Gay, Today</a></li>
+<li><a href="https://www.youtube.com/watch?v=hMtu7vV_HmY&amp;t=531s" title="115 batshit stupid things you can put on the internet in as fast as I can go by Dan Tentler">115 batshit stupid things you can put on the internet in as fast as I can go by Dan Tentler</a></li>
+<li><a href="https://www.theverge.com/2017/5/12/15630354/nhs-hospitals-ransomware-hack-wannacry-bitcoin" title="UK hospitals hit with massive ransomware attack">UK hospitals hit with massive ransomware attack</a></li>
+<li><a href="https://www.theatlantic.com/technology/archive/2017/09/saving-the-world-from-code/540393/" title="The Coming Software Apocalypse">The Coming Software Apocalypse</a></li>
+<li><a href="https://thehackernews.com/2017/08/pacemakers-hacking.html" title="FDA Recalls Nearly Half a Million Pacemakers Over Hacking Fears">FDA Recalls Nearly Half a Million Pacemakers Over Hacking Fears</a></li>
+<li><a href="https://www.nbcnews.com/storyline/german-plane-crash/germanwings-tragedy-prompts-discussion-about-remote-controlled-planes-n343446" title="Germanwings Crash Prompts Debate About Remote-Controlled Planes">Germanwings Crash Prompts Debate About Remote-Controlled Planes</a></li>
+<li><a href="https://www.incapsula.com/blog/650gbps-ddos-attack-leet-botnet.html" title="650Gbps DDoS Attack from the Leet Botnet">650Gbps DDoS Attack from the Leet Botnet</a></li>
+<li><a href="https://www.theinquirer.net/inquirer/news/2107413/microsoft-mozilla-ban-dutch-government-root-certificate" title="Microsoft and Mozilla ban Dutch government root certificate">Microsoft and Mozilla ban Dutch government root certificate</a></li>
+<li><a href="https://www.amazon.it/Blackout-Marc-Elsberg-ebook/dp/B00CLVHG3U/ref=sr_1_11?keywords=blackout+libro+stef+e+phere&amp;qid=1641832833&amp;sprefix=blackout%2Caps%2C142&amp;sr=8-11" title="Blackout">Blackout</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

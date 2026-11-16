@@ -1,0 +1,713 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/governance/ics-ot-iot-security-challenges-and-protection-strategies/ics-ot-iot-security-challenges-and-protection-strategies/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>ICS/OT/IoT Security: challenges and protection strategies - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#icsotiot-security-challenges-and-protection-strategies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ICS/OT/IoT Security: challenges and protection strategies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lifespan-vs-support-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifespan vs. Support Duration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-lifespan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component Lifespan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Lifespan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bluetooth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WiFi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HMI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vulnerability-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vulnerability Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defense-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defense Strategies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-segmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Segmentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Access
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code Security
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:governance" class="md-tag">governance</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ot-ics" class="md-tag">ot-ics</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-09-05">05 September 2024</time></span></p>
+<h1 id="icsotiot-security-challenges-and-protection-strategies">ICS/OT/IoT Security: challenges and protection strategies<a class="headerlink" href="#icsotiot-security-challenges-and-protection-strategies" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:governance">governance</a> <a class="md-tag" href="../../../tags/#tag:ot-ics">ot-ics</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
+<p>It's time to revisit the ICS/OT world, as it has unique characteristics that influence its processes and tools.</p>
+<p>First, I would categorize this broad field into the following groups:</p>
+<ul>
+<li>Systems localized within a confined area (e.g., a building or campus)</li>
+<li>Systems geographically distributed but accessible through protected/dedicated networks (often SCADA systems fall under this category)</li>
+<li>Systems geographically distributed and connected to the Internet without additional controls (often IoT systems fall under this category).</li>
+</ul>
+<p>I've chosen this classification because, as we'll see in the following posts, it dictates our ability to mitigate risks by implementing additional security measures. Clearly, there are other categorizations we should consider (e.g., based on risk), but this is the one I'd like to use as a starting point.</p>
+<p>Based on my experience, I want to highlight that most ICS/OT/IoT systems have a longer lifespan than the support period of individual components. This is crucial when planning a realistic strategy. Even though certain regulations require that components be upgradable, we will inevitably face situations where we need to protect components that are no longer sold, supported, or maintained.</p>
+<h2 id="lifespan-vs-support-duration">Lifespan vs. Support Duration<a class="headerlink" href="#lifespan-vs-support-duration" title="Permanent link">&para;</a></h2>
+<p>As previously mentioned, in my experience, ICS/OT/IoT systems often remain operational for longer than the manufacturers of individual components anticipated. In other words, the components (particularly software, but not exclusively) are no longer supported, yet the integrated system is still in use.</p>
+<p>Those familiar with the industrial, medical, maritime, or oil &amp; gas sectors (and I'd add banking as well) encounter this daily: systems are based on components (e.g., Windows) and remain active well beyond the end of their support period. This is unavoidable for three reasons:</p>
+<ol>
+<li>The aforementioned systems are generally untouchable: no changes or updates are permitted because their effects are unknown. In some cases, I've had vendors strongly advise against updating IEC62443-certified products, despite the regulation allowing for it.</li>
+<li>Many of the above systems have a very high acquisition cost (in terms of millions or tens of millions). Decommissioning or even simple refitting incurs unjustifiable costs for a system that is still functional (in the sense that it performs its intended work).</li>
+<li>I've often encountered operational systems supplied by defunct companies, leaving no support available. Here again, the cost of acquiring a new system is unjustifiable.</li>
+</ol>
+<p>The three points above mainly stem from the approach of the companies and individuals designing such systems. These systems are built to perform their tasks safely, even under stress. But... when we began discussing Industry 4.0 and started connecting systems designed to work to an IP network, we introduced a new risk: Cyber risk.</p>
+<p>In conversations with suppliers and customers of ICS/OT/IoT systems, I realize that Cyber risk is not even considered. To be honest, as a professional, I find some topological choices rather peculiar.</p>
+<p>In this regard, manufacturers and integrators still need to fully grasp the implications of bringing fragile technologies (from a Cyber perspective) onto IP and connecting them to the Internet.</p>
+<p>Given the topic, I'd add that the regulatory world is moving in a certain direction (see NIS, machinery regulation, IMO...). Will we finally see concrete results? Personally, I'm not so optimistic.</p>
+<h2 id="component-lifespan">Component Lifespan<a class="headerlink" href="#component-lifespan" title="Permanent link">&para;</a></h2>
+<p>We've discussed regulations and reality. Now, let's look at some examples demonstrating that component lifespan will inevitably be shorter than system lifespan. As mentioned earlier, systems continue to be used until they fail and repairs become economically unfeasible compared to purchasing a new system.</p>
+<p>Let's examine a few examples.</p>
+<h3 id="bluetooth">Bluetooth<a class="headerlink" href="#bluetooth" title="Permanent link">&para;</a></h3>
+<p>In the ICS world, I've noticed a preference for using Bluetooth in recent years to simplify system reconfiguration activities. Specifically, Bluetooth is used to remote some control commands (non-emergency). In this case, we should consider the risks introduced by a wireless protocol, but for now, let's focus on the various protocol releases. A new Bluetooth protocol standard is released approximately every 2-3 years. This means that in an industrial system with a lifespan of 15 years, we could find very old and potentially vulnerable protocol releases.</p>
+<p><img alt="bluetooth-timeline" src="../images/bluetooth-timeline.png" /></p>
+<h3 id="wifi">WiFi<a class="headerlink" href="#wifi" title="Permanent link">&para;</a></h3>
+<p>A similar discussion applies to the WiFi standard, which has been used in ICS for years to manage mobile parts. Regarding security, in just under 20 years, we've seen four standards (WEP, WPA, WPA2, WPA3) successively introduced to address security issues.</p>
+<p>Today, it's quite common to find ICS systems based on WEP, where the WiFi network is an extension of the wired field network.</p>
+<p><img alt="wifi-timeline" src="../images/wifi-timeline.png" /></p>
+<h3 id="hmi">HMI<a class="headerlink" href="#hmi" title="Permanent link">&para;</a></h3>
+<p>Even today, almost all HMI systems I encounter are based on Microsoft Windows. Starting from Windows XP, we've seen 6 different versions over 23 years, approximately one every 4 years. As before, it's equally easy to find ICS/OT systems still running on Windows XP.</p>
+<p><img alt="windows-timeline" src="../images/windows-timeline.png" /></p>
+<p>And as recent history has shown, there are systems with even older versions, released more than 30 years ago, and just because they're old doesn't <a href="https://www.reddit.com/r/windows/comments/1e82xds/windows_31_saves_the_day_during_crowdstrike/">necessarily mean they need to be replaced</a>.</p>
+<p>On the other hand, with Ubuntu, which I see fairly widespread, an LTS has a <a href="https://ubuntu.com/about/release-cycle">lifespan of about 5 years</a>. Considering that no development is aligned with the latest release, we can assume that a system around 3 years old is already out of support. This doesn't just impact ICS systems but typically OT and IoT systems as well.</p>
+<h2 id="vulnerability-management">Vulnerability Management<a class="headerlink" href="#vulnerability-management" title="Permanent link">&para;</a></h2>
+<p>Managing vulnerabilities doesn't necessarily mean updating. It means managing risk, which can be done by implementing additional security measures to reduce it.</p>
+<p>When conducting vulnerability assessments, I generally advise against doing so on ICS/OT parts. Here's why:</p>
+<ol>
+<li>ICS/OT systems are extremely fragile, and it's highly likely (I'd say certain) that a VA activity would negatively impact the systems.</li>
+<li>ICS/OT systems are generally untouchable. This means that even if vulnerabilities are found, they can't be mitigated through updates or EDR.</li>
+<li>As mentioned, ICS/OT systems have a long lifespan, so it's likely (again, I'd say certain) that we'll find vulnerabilities due to obsolete systems.</li>
+</ol>
+<p>The point I want to make is that in ICS/OT environments, it's almost certain that there will be severe, unpatchable vulnerabilities. Based on this assumption (which, in my experience, has always been true), we can develop our strategy.</p>
+<p>In the IoT world, we can draw similar conclusions, with one complication: IoT systems are generally directly connected to the Internet, with all the associated consequences.</p>
+<h2 id="defense-strategies">Defense Strategies<a class="headerlink" href="#defense-strategies" title="Permanent link">&para;</a></h2>
+<p>We've established that ICS/OT systems are vulnerable and unpatchable. In our vulnerability management plan, we can't rely on patching. Instead, we need to build a series of layers to adequately reduce risk.</p>
+<p>First, I'd start with the so-called Purdue model, which provides a foundation for correctly approaching the problem. Generally, there should be no direct traffic from OT networks to IT/Internet networks and vice versa. The conditional "should" is necessary because, in my experience, the Purdue model is often not applicable today. I often find ICS/OT systems that have (contractual, not technical) requirements for direct Internet access.</p>
+<p><img alt="purdue-model-1" src="../images/purdue-model-1.png" /></p>
+<p>My approach today is to create a particularly stringent security perimeter around the ICS/OT environment, inspired by the concept of ZTA (Zero Trust Architecture). Specifically, a combination of firewalls and IDS allows me to control access to ICS/OT systems and monitor any anomalies within the networks. It may sound simple, but consider that:</p>
+<ul>
+<li>Many ICS/OT systems reside together on large networks (I've seen thousands of IPs on a single 10.0.0.0/8 network).</li>
+<li>What we see isn't necessarily what's there (there are numerous 3/4/5G gateways implementing an independent, invisible Internet access point directly into the ICS/OT network).</li>
+<li>In many environments, VPN terminators are installed by contract, enabling remote assistance (and, once identified, these might be the lesser evil).</li>
+</ul>
+<p>ICS/OT security, therefore, involves an assessment to understand how chaotic the situation is and what possible paths exist.</p>
+<h2 id="network-segmentation">Network Segmentation<a class="headerlink" href="#network-segmentation" title="Permanent link">&para;</a></h2>
+<p>We've seen some critical aspects to consider within a proper security strategy. One, in particular, deserves further discussion, though in most cases, it's not feasible.</p>
+<p>We've seen that ICS/OT systems within a company often reside on a single, large network. This means that compromising a single component exposes all systems to the same risk. We also know that ICS/OT systems are untouchable, and changing the addressing scheme isn't an option. In this case, technologies that allow transparent segmentation of L2 networks can help. Personally, I've had experience with the <a href="../../../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">VLAN Insertion</a> feature offered by Palo Alto Networks. Different vendors have similar implementations with the same goal: to segment/micro-segment an L2 network transparently.</p>
+<p>The reason I consider this security measure impractical is that the production world is often under the responsibility of the OT Manager, who comes from the OT world, not IT. I notice a certain skepticism, if not fear, when "IT technologies" are proposed in the OT world. The result is that the OT Manager opposes and shifts responsibility for any production downtime to those who alter the topology.</p>
+<p>In some cases, I've seen people sit down and seek a compromise that satisfies all parties, but in many cases, no one wants to take the risk of changing the status quo, and everything remains the same.</p>
+<h2 id="network-access">Network Access<a class="headerlink" href="#network-access" title="Permanent link">&para;</a></h2>
+<p>Previously, we discussed how to segment ICS networks to reduce the impact in case of a breach. Now, let's touch on a topic that is both trendy and delicate. The idea behind NAC solutions is to enable network access for permitted devices while keeping out all others. However, there are some important considerations to keep in mind:</p>
+<ul>
+<li>The fact that a device is allowed access does not reduce the possibility of it being compromised;</li>
+<li>Today's NAC solutions rely on the 802.1x protocol and a series of compromises when this protocol cannot be used.</li>
+</ul>
+<p>In the ICS world, most devices (if not all) do not support 802.1x, which necessitates compromises such as MAB (MAC Authentication Bypass). Additionally, it is important to consider the risk posed by "silent" devices, those that tend to receive traffic more than send it. "Silent" devices might require further compromises.</p>
+<p>I am not demonizing NAC solutions, but I would like to emphasize that security is built in layers, and NAC solutions are just one layer. Like any security measure, they come with their own impacts. You can find more reflections on this topic in the "802.1x bypass" episode of the <a href="https://www.spreaker.com/podcast/info-sec-unplugged--6025156">podcast</a> I host with <a href="https://roccosicilia.com/">Rocco Sicilia</a>.</p>
+<h2 id="code-security">Code Security<a class="headerlink" href="#code-security" title="Permanent link">&para;</a></h2>
+<p>Finally, I want to address a still very niche topic (unfortunately): the security of code in the context of PLCs. We know that some vulnerabilities related to PLCs are caused by how they are programmed. We can address this, or rather prevent it, by writing correct code. This is not my area of expertise, so I will leave you with the <a href="https://plc-security.com/">Top 20 Secure PLC Coding Practices</a> and encourage you to follow <a href="https://www.linkedin.com/in/sarah-fluchs/">Sarah Flucks</a> on LinkedIn.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

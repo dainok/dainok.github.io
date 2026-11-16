@@ -1,0 +1,740 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/eve-ng/106customizing-eve-ng/customizing-eve-ng/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Customizing EVE-NG - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#customizing-eve-ng" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Customizing EVE-NG
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series" checked><label class="md-nav__link" for="__nav_series" id="__nav_series_label" tabindex="0"><span class="md-ellipsis">In the same series</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="1" aria-labelledby="__nav_series_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series"><span class="md-nav__icon md-icon"></span>In the same series</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1" checked><div class="md-nav__link md-nav__container"><a href="../../../series/eve-ng/" class="md-nav__link"><span class="md-ellipsis">EVE-NG</span></a><label class="md-nav__link" for="__nav_series_1" id="__nav_series_1_label"><span class="md-nav__icon md-icon"></span></label></div><nav class="md-nav" data-md-level="2" aria-labelledby="__nav_series_1_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1"><span class="md-nav__icon md-icon"></span>EVE-NG</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/" class="md-nav__link"><span class="md-ellipsis">Introduction to EVE-NG platform</span></a></li><li class="md-nav__item"><a href="../../102prerequisites-for-eve-ng/prerequisites-for-eve-ng/" class="md-nav__link"><span class="md-ellipsis">Prerequisites for EVE-NG</span></a></li><li class="md-nav__item"><a href="../../103installing-ubuntu-linux/installing-ubuntu-linux/" class="md-nav__link"><span class="md-ellipsis">Installing Ubuntu Linux</span></a></li><li class="md-nav__item"><a href="../../104installing-eve-ng-5/installing-eve-ng-5/" class="md-nav__link"><span class="md-ellipsis">Installing EVE-NG 5</span></a></li><li class="md-nav__item"><a href="../../105installing-eve-ng-6/installing-eve-ng-6/" class="md-nav__link"><span class="md-ellipsis">Installing EVE-NG 6</span></a></li><li class="md-nav__item md-nav__item--active"><a href="./" class="md-nav__link md-nav__link--active" aria-current="page"><span class="md-ellipsis">Customizing EVE-NG</span></a></li><li class="md-nav__item"><a href="../../107eve-ng-network-interfaces-explained/eve-ng-network-interfaces-explained/" class="md-nav__link"><span class="md-ellipsis">EVE-NG network interfaces explained</span></a></li><li class="md-nav__item"><a href="../../108troubleshooting-eve-ng-nodes-that-fail-to-start/troubleshooting-eve-ng-nodes-that-fail-to-start/" class="md-nav__link"><span class="md-ellipsis">Troubleshooting EVE-NG nodes that fail to start</span></a></li><li class="md-nav__item"><a href="../../109automating-eve-ng-installation/automating-eve-ng-installation/" class="md-nav__link"><span class="md-ellipsis">Automating EVE-NG installation</span></a></li><li class="md-nav__item"><a href="../../111eve-ng-sw-architecture-and-docker-support/eve-ng-sw-architecture-and-docker-support/" class="md-nav__link"><span class="md-ellipsis">EVE-NG (SW architecture and docker support)</span></a></li><li class="md-nav__item"><a href="../../112eve-ng-cli-introduction/eve-ng-cli-introduction/" class="md-nav__link"><span class="md-ellipsis">EVE-NG CLI - Introduction</span></a></li><li class="md-nav__item"><a href="../../113eve-ng-cli-iac-ready-images/eve-ng-cli-iac-ready-images/" class="md-nav__link"><span class="md-ellipsis">EVE-NG CLI - IaC-ready images</span></a></li><li class="md-nav__item"><a href="../../114eve-ng-cli-hld-files/eve-ng-cli-hld-files/" class="md-nav__link"><span class="md-ellipsis">EVE-NG CLI - HLD files</span></a></li><li class="md-nav__item"><a href="../../115eve-ng-cli-usage-and-hld-import/eve-ng-cli-usage-and-hld-import/" class="md-nav__link"><span class="md-ellipsis">EVE-NG CLI - Usage and HLD Import</span></a></li></ul></nav></li></ul></nav></li></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-an-internal-management-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configure an Internal Management Network
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-labs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Import Labs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-and-install-python-310" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compile and Install Python 3.10
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-development-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a Development Environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-visual-studio-code-for-remote-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Visual Studio Code for Remote Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:eve-ng" class="md-tag">eve-ng</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-07-27">27 July 2024</time></span></p>
+<h1 id="customizing-eve-ng">Customizing EVE-NG<a class="headerlink" href="#customizing-eve-ng" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
+<p>Let's delve into the most important part: customizing EVE-NG for DevNetOps. In particular, we will proceed to:</p>
+<ul>
+<li>Configure an internal network dedicated to device management.</li>
+<li>Import the labs from the <a href="https://github.com/dainok/courses">GitHub repository</a> dedicated to DevNetOps courses.</li>
+<li>Compile and install <a href="https://www.python.org/">Python</a> 3.10 (not required in EVE-NG 6)</li>
+<li>Create a user dedicated to development, with a dedicated Pythonenvironment.</li>
+<li>Utilize <a href="https://code.visualstudio.com/">Visual Studio Code</a> for remote development on the EVE-NG server.</li>
+</ul>
+<h2 id="configure-an-internal-management-network">Configure an Internal Management Network<a class="headerlink" href="#configure-an-internal-management-network" title="Permanent link">&para;</a></h2>
+<p>In automation, each lab we create requires a seemingly trivial yet essential characteristic: the IP addresses of the devices must be accessible from the automation system. If the <a href="https://www.eve-ng.net/index.php/features-compare/">EVE-NG PRO</a> version has a native feature (NAT Cloud) that simplifies this, in EVE-NG CE, we need to find a strategy to achieve the same result.</p>
+<p>The goal is to configure an additional network on EVE-NG that allows us to connect the management interfaces of the devices we will use for our labs, whether they are virtual (internal to EVE-NG) or physical (PLC and other external physical devices). The diagram below summarizes our intention:</p>
+<p><img alt="eveng-topology-with-internal-management-network" src="../images/eveng-topology-with-internal-management-network.png" /></p>
+<p>Firstly, let's clarify the networking of EVE-NG and introduce some concepts in Linux in general.</p>
+<p>A Linux system represents its network interfaces with various names, typically prefixed (<code>eth</code>, <code>ens</code>…) associated with an identifier number. Network interfaces can represent either a physical network card or a virtual network card. In our environment, we find that the physical network card is represented by <code>eth0</code>, but there are other network cards named <code>pnet</code>.</p>
+<p>We can view the network interfaces of the system with one of the following commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ifconfig<span class="w"> </span>-a
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ip<span class="w"> </span>link
+</code></pre></div>
+<p>The configured <code>pnet</code> interfaces are actually virtual switches (bridges) configured by default during installation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>brctl<span class="w"> </span>show
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>bridge<span class="w"> </span>name<span class="w">     </span>bridge<span class="w"> </span>id<span class="w">               </span>STP<span class="w"> </span>enabled<span class="w">     </span>interfaces
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pnet0<span class="w">           </span><span class="m">8000</span>.2ac1c946eac3<span class="w">       </span>no<span class="w">              </span>eth0
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>pnet1<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>pnet2<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>pnet3<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>pnet4<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>pnet5<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>pnet6<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>pnet7<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>pnet8<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>pnet9<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
+</code></pre></div>
+<p>In particular, we see that the bridge <code>pnet0</code> is associated with the physical interface <code>eth0</code>. Or, in other words, anything associated with the bridge <code>pnet0</code> will also be transmitted on the <code>eth0</code> network. As we'll see in the web interface, we can add Cloud networks. Cloud networks are simply the <code>pnet</code> bridges. In particular, the <code>pnet0</code> network is also used for web access. In fact, the management IP address is associated with the bridge <code>pnet0</code>, as we can see using one of the following commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ifconfig<span class="w"> </span>pnet0
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ip<span class="w"> </span>address<span class="w"> </span>show<span class="w"> </span>pnet0
+</code></pre></div>
+<p>We can then configure an IP address on the <code>pnet9</code> network and connect the management interfaces of the devices to the <code>Cloud9</code> network.</p>
+<p>EVE-NG, based on Ubuntu Linux Server 20.04 LTS, configures networks via the <code>/etc/network/interfaces</code> file. In particular, we need to configure the part related to the <code>pnet9</code> bridge as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># Cloud devices
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>auto pnet9
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>iface pnet9 inet static
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    address 169.254.1.1
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    netmask 255.255.255.0
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    bridge_ports none
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    bridge_stp off
+</code></pre></div>
+<p>We use the <a href="https://en.wikipedia.org/wiki/Link-local_address">APIPA</a> network, defined to be local. In this sense, in an Enterprise context, we have reasonable certainty of not overlapping with other networks. The remaining <code>pnet2</code> - <code>pnet9</code> interfaces can be deleted.</p>
+<p>We can now reload the modified network configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/etc/init.d/networking<span class="w"> </span>restart
+</code></pre></div>
+<p>If we ever want to associate a physical interface with this bridge, we need to add the line:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bridge_ports<span class="w"> </span>eth1
+</code></pre></div>
+<p>For convenience, let's choose to assign IP addresses automatically to the network interfaces connected to the <code>Cloud9</code> network. To do this, we use DHCP via <a href="https://thekelleys.org.uk/dnsmasq/doc.html">Dnsmasq</a>.</p>
+<p>The configuration of Dnsmasq is done via the configuration file <code>/etc/dnsmasq.conf</code>. In particular, we want to have only the DHCP service active and only for the network managed by the <code>pnet9</code> interface. The configuration is therefore:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>port=0
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>interface=pnet9
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>bind-interfaces
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>dhcp-range=169.254.1.2,169.254.1.254,3650d
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>log-dhcp
+</code></pre></div>
+<p>Upon completion, restart the service with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>dnsmasq
+</code></pre></div>
+<p>As we'll see later for the automation part, we need a stable association between the IP addresses of the devices and the devices themselves. We cannot rely on dynamic mapping provided by Dnsmasq, but we must define it statically. We can map the hostname that the device will present during the DHCP request and statically map it on Dnsmasq:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dhcp-host=SW1,169.254.1.101
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dhcp-host=SW2,169.254.1.102
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>dhcp-host=SW3,169.254.1.103
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>dhcp-host=SW4,169.254.1.104
+</code></pre></div>
+<p>The list must obviously be completed with all the names we will use on this and future labs.</p>
+<p>To complete our environment, the Cloud9 network must have access to the Internet. In other words, outbound traffic needs to be masqueraded (via NAT) using the IP address configured in the <code>pnet0</code> interface.</p>
+<p>We must first enable routing by modifying the file <code>/etc/sysctl.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>net.ipv4.ip_forward=1
+</code></pre></div>
+<p>Activate the setting by executing:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sysctl<span class="w"> </span>-p
+</code></pre></div>
+<p>Configure NAT using IPTables to masquerade outbound traffic with the address of <code>pnet0</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-o<span class="w"> </span>pnet0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
+</code></pre></div>
+<p>To save the changes, use:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>iptables-save<span class="w"> </span>&gt;<span class="w"> </span>/etc/iptables/rules.v4
+</code></pre></div>
+<p>Although not necessary, I recommend rebooting the system to ensure that everything is configured correctly.</p>
+<h2 id="import-labs">Import Labs<a class="headerlink" href="#import-labs" title="Permanent link">&para;</a></h2>
+<p>Now let's download the labs and make them available directly on the EVE-NG server:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dainok/courses<span class="w"> </span>/opt/courses
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">"/opt/courses/EVE-NG labs"</span><span class="w"> </span><span class="s2">"/opt/unetlab/labs/DevNetOps labs"</span>
+</code></pre></div>
+<p>By accessing the web interface of EVE-NG, we should now be able to see the available labs. For example, let's open <code>Simple Network Lab.unl</code>, power on <code>R1</code>, and verify the IP address and connectivity to the Internet:</p>
+<p><img alt="r1-boot" src="../images/r1-boot.png" /></p>
+<p>Now let's verify that we can access the node from the EVE-NG server (user <code>dev</code>) using the <code>admin</code> username and <code>cisco</code> password:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>ssh<span class="w"> </span>admin@169.254.1.21
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Unable<span class="w"> </span>to<span class="w"> </span>negotiate<span class="w"> </span>with<span class="w"> </span><span class="m">169</span>.254.1.21<span class="w"> </span>port<span class="w"> </span><span class="m">22</span>:<span class="w"> </span>no<span class="w"> </span>matching<span class="w"> </span>key<span class="w"> </span>exchange<span class="w"> </span>method<span class="w"> </span>found.<span class="w"> </span>Their<span class="w"> </span>offer:<span class="w"> </span>diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+</code></pre></div>
+<p>When accessing very old devices, there may be access problems caused by outdated ciphers. We can re-enable them by acting on the <code>~/.ssh/config</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Ciphers +aes128-cbc
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>HostKeyAlgorithms +ssh-rsa
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Host *
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>  ServerAliveInterval 5
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>  ServerAliveCountMax 3
+</code></pre></div>
+<p>At this point, we should be able to SSH into <strong>R1</strong>.</p>
+<p>For completeness, the repository contains the complete <code>dnsmasq.conf</code> file with all reserved DHCP records used in future labs. If no customizations have been made, you can update the system's configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cp<span class="w"> </span>-a<span class="w"> </span><span class="s2">"/opt/courses/EVE-NG setup/files/dnsmasq.conf"</span><span class="w"> </span>/etc/dnsmasq.conf
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>dnsmasq
+</code></pre></div>
+<h2 id="compile-and-install-python-310">Compile and Install Python 3.10<a class="headerlink" href="#compile-and-install-python-310" title="Permanent link">&para;</a></h2>
+<p>This step is not required on EVE-NG 6 because Python3.11 is available on Ubuntu Linux Server 22.04.</p>
+<p>Ubuntu Linux Server 20.04 LTS, on which EVE-NG is based, comes with Python 3.8, which is too old to be used with recent versions of frameworks typically used for automation. The latest versions of <a href="https://www.ansible.com/">Ansible</a>, for example, require a higher version.</p>
+<p>So let's proceed to download <a href="https://www.python.org/">Python</a> 3.10:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>/usr/src
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>wget<span class="w"> </span>-q<span class="w"> </span>https://www.python.org/ftp/python/3.10.14/Python-3.10.14.tgz
+</code></pre></div>
+<p>Unpack the file, compile the sources, and install the new version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>tar<span class="w"> </span>xzf<span class="w"> </span>Python-3.10.14.tgz
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">cd</span><span class="w"> </span>Python-3.10.14
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>./configure<span class="w"> </span>--enable-optimizations
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>make
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>make<span class="w"> </span>install
+</code></pre></div>
+<p>After completion, the new Python interpreter will be available at <code>/usr/local/bin/python3.10</code>.</p>
+<h2 id="create-a-development-environment">Create a Development Environment<a class="headerlink" href="#create-a-development-environment" title="Permanent link">&para;</a></h2>
+<p>Now we can create a user dedicated to development:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>useradd<span class="w"> </span>-m<span class="w"> </span>dev<span class="w"> </span>-s<span class="w"> </span>/bin/bash
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>passwd<span class="w"> </span>dev
+</code></pre></div>
+<p>We can also create a dedicated Python environment using the previously installed interpreter:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>su<span class="w"> </span>-<span class="w"> </span>dev
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>python3.10<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</code></pre></div>
+<p>For convenience, let's configure the shell to load the Python environment upon new login. Add to the <code>.profile</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">source</span><span class="w"> </span>~/venv/bin/activate
+</code></pre></div>
+<p>Finally, let's configure SSH authentication to occur via keys. From our desktop, copy our public key to the <code>~/.ssh/authorized_keys</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span>dev@172.25.82.167
+</code></pre></div>
+<p>Now we can connect to the EVE-NG server with the <code>dev</code> user without needing to enter the password. While we're at it, let's create a directory we'll use for development:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>mkdir<span class="w"> </span>src
+</code></pre></div>
+<h2 id="use-visual-studio-code-for-remote-development">Use Visual Studio Code for Remote Development<a class="headerlink" href="#use-visual-studio-code-for-remote-development" title="Permanent link">&para;</a></h2>
+<p>To complete the configuration of our environment, we need to set up <a href="https://code.visualstudio.com/">Visual Studio Code</a> to develop remotely on the EVE-NG server using the <code>dev</code> user created earlier.</p>
+<p>Start the instance of Visual Studio Code installed on our desktop, go to <code>Extensions</code>, and install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> plugin.</p>
+<p>Add a new host by going to <code>Remote Explorer</code> → <code>Remotes</code> → <code>SSH</code> → ➕:</p>
+<ul>
+<li>Specify the command to connect to the host: <code>ssh dev@172.25.82.167 -A</code></li>
+<li>Specify where to save the new host, typically in <code>.ssh/config</code></li>
+</ul>
+<p>At this point, we should be able to connect to the EVE-NG server:</p>
+<p><img alt="vscode-remote-ssh" src="../images/vscode-remote-ssh.png" /></p>
+<p>We can now enrich our development environment by installing the following plugins for remote use:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.ansible">Ansible by Red Hat</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja">Jinja by wholroyd</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions">GitHub Actions by GitHub</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform">HashiCorp Terraform by HashiCorp</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja">Jinja by wholroyd</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance by Microsoft</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python by Microsoft</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=4ops.terraform">Terraform by Anton Kulikov</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=andytruett.TextFSM-Syntax">TextFSM Template Syntax by andytruett</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">YAML by Red Hat</a></li>
+</ul>
+<p><img alt="vscode-plugins" src="../images/vscode-plugins.png" /></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

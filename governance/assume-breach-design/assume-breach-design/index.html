@@ -1,0 +1,713 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/governance/assume-breach-design/assume-breach-design/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Assume breach design - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#assume-breach-design" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Assume breach design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#policy-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Policy Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-technical-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Technical Matter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-purpose-of-the-dmz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Purpose of the DMZ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defense-in-depth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defense in Depth
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zero-trust-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Zero Trust Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assume-breach-design_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assume Breach Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-breach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Post Breach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:design" class="md-tag">design</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:governance" class="md-tag">governance</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-04-11">11 April 2024</time></span></p>
+<h1 id="assume-breach-design">Assume breach design<a class="headerlink" href="#assume-breach-design" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:governance">governance</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
+<p>There is much discussion around Zero Trust Architecture (ZTA), but it seems the concept of Assume Breach Design has yet to be formalized. Or, at least, a Google search does not yield results. The term <em>Assume Breach Paradigm</em> is used, and I want to apply it to infrastructure design. So, I am appropriating (in a manner of speaking) the term and explaining why changing the mindset could be beneficial.</p>
+<p>As always, the idea stems from field experience, when I realize that infrastructure design, from a cybersecurity perspective, follows a traditional approach. In the 1990s and 2000s, it was common to implement a DMZ network, a server network, and sometimes a client network. Policies were designed based on application needs and were never formalized. This approach, still frequently used today, relies on the classic 3-tier architecture of web applications: clients, servers, and databases, which had to be implemented separately. From a security standpoint, this led to logically separating these components through a firewall.</p>
+<p>What I see today is precisely the consequence of this: systems are separated based on an application logic, not a security logic. The result is that companies have security zones that separate application components (Internet, DMZ, client, server, OT, Guest), and policies derive from application needs, not security requirements.</p>
+<p>A case in point: server networks typically contain the backend and databases for the entire company. If one is compromised, the whole network is at risk.</p>
+<p>A second equally telling example: I imagine anyone who has implemented firewall policies based on an application request. The vast majority of firewall policies originate from application needs, and their impact is rarely evaluated because rejecting the request is not an option.</p>
+<h2 id="policy-design">Policy Design<a class="headerlink" href="#policy-design" title="Permanent link">&para;</a></h2>
+<p>The first attempt at a mindset shift was almost ten years ago. I was in a position to influence the network and security architecture of the company I was working for, and following the advice of an ISO27001 auditor, I formalized the interactions between different security zones.</p>
+<p>The idea was to publish a manifesto so that everyone in the company would know the rules governing the firewalls.</p>
+<p>Here are some examples:</p>
+<ul>
+<li>The server network cannot receive connections from the Internet;</li>
+<li>The DMZ network can access the server network only through HTTP/HTTPS protocols;</li>
+<li>Server and DMZ networks could only access the Internet on a specific list of addresses/protocols.</li>
+</ul>
+<p>All rules were designed to reduce the risk of compromise or lateral movement. But there were some fundamental errors.</p>
+<p>The first error (mine) was that the evaluation was conducted by me, and at the time, my experience was primarily in defensive security. A few years later, when I began working on offensive security as well, I realized that while the approach was correct, the assumptions were incomplete.</p>
+<p>The second error (company-wide) was failing to give this work the importance it deserved. It was seen as an obstacle created by a paranoid technician rather than a document meant to design secure applications within the company.</p>
+<p>Specifically, the 3-tier paradigm was converted to Client (Internet) - Reverse Proxy (DMZ) - Server. It goes without saying that a reverse proxy, without any functionality other than forwarding connections from the Internet to the internal network, has the sole consequence of exposing the internal network directly to the Internet. This should be obvious, but even today, I find several configurations like this.</p>
+<p>The last consequence was that when I left that company, the manifesto was shelved and forgotten.</p>
+<h2 id="a-technical-matter">A Technical Matter<a class="headerlink" href="#a-technical-matter" title="Permanent link">&para;</a></h2>
+<p>Anyway, the experience helped me over the years to provide an approach to technical teams that needed to organize firewall policies. Shifting the focus from policy to the needs of the systems before deciding where to place them helps prevent problems rather than chasing them.</p>
+<p>The formalization of policies never worked because it was seen by companies as a technical issue, not related to the business.</p>
+<p>Particularly, the words a CEO said to me a few years ago were illuminating: cybersecurity is a technical problem, and thus it is entrusted to the CIO.</p>
+<h2 id="the-purpose-of-the-dmz">The Purpose of the DMZ<a class="headerlink" href="#the-purpose-of-the-dmz" title="Permanent link">&para;</a></h2>
+<p>Another factor that drove me to rethink the approach to defending companies is my frequent task of analyzing firewall policies to bring order and logic. Almost always, I find NAT rules that allow direct access from the Internet to internal systems. Often these are necessities related to specific applications, IoT systems, cameras, or building automation in general.</p>
+<p>In all these cases, there is a DMZ, which prompts me to ask what the purpose of having a DMZ is if internal systems are still directly exposed.</p>
+<p>What I discovered is that the DMZ is often created without a clear understanding of the concept behind it.</p>
+<p>Originally, the DMZ network was intended to be the most at-risk segment of the infrastructure: the policies governing traffic to and from the DMZ were meant to be particularly stringent. Some might call this the Zero Trust approach today.</p>
+<p>Going back many years, systems in the DMZ network did not have Internet access. This was because if a system was compromised, it could not communicate outward.</p>
+<p>Over the years, this paradigm has crumbled (like many others) because many application frameworks require external resources (XML schemas, telemetry, licenses).</p>
+<p>The concept of "containment" in the DMZ has gradually eroded, and today a DMZ network risks becoming just another network. Quite frequently, I find:</p>
+<ul>
+<li>Databases residing in the DMZ;</li>
+<li>DMZ networks that can access the Internet indiscriminately;</li>
+<li>Internal systems that can access the DMZ indiscriminately;</li>
+<li>Unrestricted Internet access from the DMZ and internal networks;</li>
+<li>Weak systems exposed on the Internet, residing in the DMZ or even internal networks;</li>
+<li>Reverse proxies that map internal systems to the Internet without providing any security mechanism.</li>
+</ul>
+<p>I could go on, but I believe the point is clear.</p>
+<h2 id="defense-in-depth">Defense in Depth<a class="headerlink" href="#defense-in-depth" title="Permanent link">&para;</a></h2>
+<p>The idea behind the <em>Defense in Depth</em> paradigm is to protect a system from cyberattacks using a multi-layered approach. In other words, we should not rely on a single protection (the firewall), but foresee multiple layers that can act together if one or more protections fail.</p>
+<p>To be clear, a defense layer could consist of:</p>
+<ul>
+<li>Firewall</li>
+<li>VPN</li>
+<li>Anti-malware</li>
+<li>MFA</li>
+<li>Monitoring</li>
+<li>Vulnerability scanner</li>
+<li>IDS/IPS</li>
+<li>Physical security</li>
+</ul>
+<p>Defense in Depth is promoted by the <a href="https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-nsas-top10-cybersecurity-mitigation-strategies.pdf">NSA</a>, which advises associating each layer with one or more of the five cybersecurity functions as defined in the <a href="https://www.nist.gov/cyberframework">cybersecurity framework formalized by NIST</a>.</p>
+<p>I find the Defense In Depth approach absolutely correct, but, in my opinion, it risks being too technical and thus disconnected from the business. In a way, it was the mistake I made: not being able to speak to the business side, I could not secure the space I needed.</p>
+<h2 id="zero-trust-architecture">Zero Trust Architecture<a class="headerlink" href="#zero-trust-architecture" title="Permanent link">&para;</a></h2>
+<p>ZTA, unfortunately, is becoming a mantra. ZTA is defined by NIST in the document <a href="https://www.nist.gov/publications/zero-trust-architecture">SP 800-207</a>, which should be studied before discussing ZTA. I will try to summarize some points useful for my reflections, quoting directly from the original document.</p>
+<blockquote>
+<p>That is, authorized and approved subjects (combination of user, application (or service), and device) can access the data to the exclusion of all other subjects (i.e., attackers). To take this one step further, the word "resource" can be substituted for "data" so that ZT and ZTA are about resource access (e.g., printers, compute resources, Internet of Things IoT actuators) and not just data access.</p>
+</blockquote>
+<p>ZTA pertains to data access, where the data can reside on any system, including printers, IoT systems, and, of course, servers, databases, and so on. The subject is, therefore, digital data in any form.</p>
+<blockquote>
+<p>Access to resources is determined by dynamic policy—including the observable state of client identity, application/service, and the requesting asset—and may include other behavioral and environmental attributes.</p>
+</blockquote>
+<p>Data access is determined by dynamic policies built on who is requesting the data, who holds the data. Policies may consider other environmental or behavioral attributes.</p>
+<blockquote>
+<p>Requesting asset state can include device characteristics such as software versions installed, network location, time/date of request, previously observed behavior, and installed credentials. Behavioral attributes include, but not limited to, automated subject analytics, device analytics, and measured deviations from observed usage patterns.</p>
+</blockquote>
+<p>Today we build policies based on the identity of the source and destination. The destination identity typically consists of an IP address and port. The source identity is slightly more complex, considering not only the IP address but also the associated user. In more complex infrastructures, the source is also validated according to specific requirements concerning patch status and the presence of anti-malware.</p>
+<p>We rarely use attributes related to location and time. Even less frequently, we use behavioral attributes (e.g., if the client behaves differently from expected).</p>
+<p>The ZTA approach would require allowing access to data only when strictly necessary. To achieve this, we would need to:</p>
+<ul>
+<li>Identify the source in terms of device, user, application requesting the data, the client's location, the time of the request, the source's behavior, and compliance status;</li>
+<li>Identify the means by which the request arrives (Internet, VPN, private network, encryption...);</li>
+<li>Identify the requested data and the operation being requested.</li>
+</ul>
+<p>Although technologies capable of implementing almost all (but not all) features required by</p>
+<p>ZTA exist, it is still not a paradigm widely implemented today.</p>
+<p>The reason, in my opinion, is always the same: ZTA is seen as a technical approach, detached from the business.</p>
+<h2 id="assume-breach-design_1">Assume Breach Design<a class="headerlink" href="#assume-breach-design_1" title="Permanent link">&para;</a></h2>
+<p>Let's move on to the assume breach paradigm applied to design. The core idea is quite simple: my architectural choices are guided by the assessment of the risk of a potential breach. We could call it risk-based design, but in my opinion, the term would be less effective.</p>
+<p>There are two important premises:</p>
+<ul>
+<li>It is necessary to be able to thoroughly assess the possible attack paths against the infrastructure.</li>
+<li>It is necessary to be able to evaluate the impact of potential breaches on the business.</li>
+</ul>
+<p>The first point requires specific offensive skills that are different from those of someone who designs and defends an infrastructure. Those who do not make use of these skills will make substantial mistakes in designing defenses.</p>
+<p>The second point requires the ability to conduct a Business Impact Analysis (BIA) for each attack scenario.</p>
+<p>Only after these assessments can we determine which defenses to implement. In this sense, Defense in Depth and ZTA are consequences of Assume Breach Design, not its premises.</p>
+<p>Let's return to the example of particularly large server networks that contain backends and databases for all company applications. The consequence of this design is that if one is compromised, the attacker can move relatively easily to all critical business systems. If we correctly assess this scenario, we realize that it is unacceptable. At this point, we can implement a microsegmentation technology and try to reduce the traffic flows between these hosts. But we can also consider monitoring technologies that allow us to identify traffic anomalies. Both approaches have pros and cons, and there is no one-size-fits-all solution. The assessment of business risk helps us determine the available budget, and consequently, we can select the solution that best fits our context.</p>
+<p>I can, therefore, break down ZTA into parts and decide where it is important. The decision is based on a risk analysis of attack scenarios: in other words, Assume Breach Design.</p>
+<h2 id="post-breach">Post Breach<a class="headerlink" href="#post-breach" title="Permanent link">&para;</a></h2>
+<p>All the infrastructures I know have grown gradually and without structure. In other words, there is never any documentation that describes how the infrastructure, in terms of servers and applications, was created. On the one hand, the task would be impossible with traditional tools, while on the other, the assume breach paradigm forces us to think about how we would respond to an attack.</p>
+<p>In almost all cases (and I am being optimistic), if we notice an ongoing attack within our infrastructure, we are not able to say for sure how far the attack has spread. In other words, we do not know how to eradicate the attack from the infrastructure unless we completely rebuild it.</p>
+<p>The Infrastructure as Code paradigm can help us build our infrastructure (or part of it) starting from text files. The use of microservices and containers allows us to do the same in the application domain. If we start to embrace this mindset, we realize that we can rebuild the entire infrastructure at any moment, and the build process can serve as documentation.</p>
+<p>The advantages are immediate: documentation, standardization, compliance... However, the complexity of the tools remains a barrier to adoption for many organizations. The rigidity of the infrastructure is actually an apparent problem that reveals the underlying operational chaos.</p>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>The Assume Breach Design approach aims to bring business back to the center of decision-making. The infrastructure exists to serve one purpose: the company's business. The protections that technical teams decide on today are implemented to safeguard the company's business.</p>
+<p>Putting business back at the center means shifting cybersecurity from being a technical matter to a business necessity.</p>
+<p>For too many years, I have seen IT departments considered as a black hole that absorbs budget. The effects of this mindset are clear to everyone. Maybe it's time for a change.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

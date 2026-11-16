@@ -1,0 +1,736 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/ot-ics/101introduction-to-ot-ics/introduction-to-ot-ics/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Introduction to OT/ICS - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-to-otics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction to OT/ICS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series" checked><label class="md-nav__link" for="__nav_series" id="__nav_series_label" tabindex="0"><span class="md-ellipsis">In the same series</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="1" aria-labelledby="__nav_series_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series"><span class="md-nav__icon md-icon"></span>In the same series</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1" checked><div class="md-nav__link md-nav__container"><a href="../../../series/ot-ics/" class="md-nav__link"><span class="md-ellipsis">OT/ICS</span></a><label class="md-nav__link" for="__nav_series_1" id="__nav_series_1_label"><span class="md-nav__icon md-icon"></span></label></div><nav class="md-nav" data-md-level="2" aria-labelledby="__nav_series_1_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1"><span class="md-nav__icon md-icon"></span>OT/ICS</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--active"><a href="./" class="md-nav__link md-nav__link--active" aria-current="page"><span class="md-ellipsis">Introduction to OT/ICS</span></a></li><li class="md-nav__item"><a href="../../102introduction-to-modbus-protocol/introduction-to-modbus-protocol/" class="md-nav__link"><span class="md-ellipsis">Introduction to Modbus protocol</span></a></li><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_2"><label class="md-nav__link" for="__nav_series_1_2" id="__nav_series_1_2_label" tabindex="0"><span class="md-ellipsis">Building OT/ICS Cybersecurity labs</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_2_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_2"><span class="md-nav__icon md-icon"></span>Building OT/ICS Cybersecurity labs</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../111why-build-an-ot-ics-cybersecurity-lab/why-build-an-ot-ics-cybersecurity-lab/" class="md-nav__link"><span class="md-ellipsis">Why build an OT/ICS Cybersecurity lab?</span></a></li><li class="md-nav__item"><a href="../../112an-ics-lab-with-virtuaplant/an-ics-lab-with-virtuaplant/" class="md-nav__link"><span class="md-ellipsis">An ICS lab with VirtuaPlant</span></a></li><li class="md-nav__item"><a href="../../113installing-virtuaplant-bottle-filling-plant/installing-virtuaplant-bottle-filling-plant/" class="md-nav__link"><span class="md-ellipsis">Installing VirtuaPlant Bottle Filling plant</span></a></li><li class="md-nav__item"><a href="../../114attacking-the-bottle-filling-plant/attacking-the-bottle-filling-plant/" class="md-nav__link"><span class="md-ellipsis">Attacking the Bottle Filling plant</span></a></li><li class="md-nav__item"><a href="../../115installing-virtuaplant-oil-refinery-plant/installing-virtuaplant-oil-refinery-plant/" class="md-nav__link"><span class="md-ellipsis">Installing VirtuaPlant Oil Refinery plant</span></a></li><li class="md-nav__item"><a href="../../116attacking-the-oil-refinery-plant/attacking-the-oil-refinery-plant/" class="md-nav__link"><span class="md-ellipsis">Attacking the Oil Refinery plant</span></a></li><li class="md-nav__item"><a href="../../117an-ics-lab-with-grficsv2/an-ics-lab-with-grficsv2/" class="md-nav__link"><span class="md-ellipsis">An ICS lab with GRFICSv2</span></a></li><li class="md-nav__item"><a href="../../118installing-the-grficsv2-chemical-plant/installing-the-grficsv2-chemical-plant/" class="md-nav__link"><span class="md-ellipsis">Installing the GRFICSv2 Chemical plant</span></a></li><li class="md-nav__item"><a href="../../119attacking-the-chemical-plant/attacking-the-chemical-plant/" class="md-nav__link"><span class="md-ellipsis">Attacking the Chemical plant</span></a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_3"><label class="md-nav__link" for="__nav_series_1_3" id="__nav_series_1_3_label" tabindex="0"><span class="md-ellipsis">Visibility, observability, and segregation in OT/ICS</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_3_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_3"><span class="md-nav__icon md-icon"></span>Visibility, observability, and segregation in OT/ICS</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/" class="md-nav__link"><span class="md-ellipsis">Industrial network segmentation with VLAN Insertion</span></a></li><li class="md-nav__item"><a href="../../202industrial-network-segmentation-with-private-vlans/industrial-network-segmentation-with-private-vlans/" class="md-nav__link"><span class="md-ellipsis">Industrial network segmentation with Private VLANs</span></a></li></ul></nav></li></ul></nav></li></ul></nav></li></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ot-operational-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OT (Operational Technology)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ics-industrial-control-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ICS (Industrial Control Systems)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scada-supervisory-control-and-data-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SCADA (Supervisory Control and Data Acquisition)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dcs-distributed-control-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCS (Distributed Control System)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plc-programmable-logic-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PLC (Programmable Logic Controller)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-of-key-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary of key differences
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-vs-ot-key-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IT vs. OT: Key Differences
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-thoughts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Thoughts
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:beginner" class="md-tag">beginner</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:fundamentals" class="md-tag">fundamentals</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ot-ics" class="md-tag">ot-ics</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-02-12">12 February 2025</time></span></p>
+<h1 id="introduction-to-otics">Introduction to OT/ICS<a class="headerlink" href="#introduction-to-otics" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../../../tags/#tag:ot-ics">ot-ics</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
+<p>Operational Technology (OT) encompasses the systems responsible for monitoring and controlling industrial operations. Within OT, <strong>Industrial Control Systems (ICS)</strong> refer specifically to technologies used for automating and managing industrial processes.</p>
+<p><img alt="ot-ics-scada" src="../images/ot-ics-scada.png" /></p>
+<p>While IT professionals have decades of experience securing networks, systems, and applications, cybersecurity in OT/ICS is a relatively new concern. In industrial environments, <strong>availability takes priority over integrity and confidentiality</strong>, meaning that ICS software is often designed for speed and efficiency rather than security. This fundamental difference makes OT/ICS systems uniquely vulnerable to cyber threats.</p>
+<h2 id="ot-operational-technology">OT (Operational Technology)<a class="headerlink" href="#ot-operational-technology" title="Permanent link">&para;</a></h2>
+<p>Operational Technology (OT) refers to the hardware and software used to monitor, control, and automate industrial processes, critical infrastructure, and manufacturing plants. OT is distinct from IT (Information Technology) because its primary focus is on ensuring <strong>operational continuity and physical safety</strong>, whereas IT is concerned with <strong>data management and cybersecurity</strong>.</p>
+<p>Key OT Components:</p>
+<ul>
+<li>Industrial Control Systems (ICS)</li>
+<li>Sensors and Actuators</li>
+<li>Supervisory and Control Systems (SCADA, DCS)</li>
+<li>Embedded Devices (PLC, RTU)</li>
+<li>Industrial Networks (Industrial Ethernet, MODBUS, Profibus, etc.)</li>
+</ul>
+<h2 id="ics-industrial-control-systems">ICS (Industrial Control Systems)<a class="headerlink" href="#ics-industrial-control-systems" title="Permanent link">&para;</a></h2>
+<p>Industrial Control Systems (ICS) are a subset of OT that includes all technologies used to monitor and control automated industrial processes. ICS are deployed in manufacturing, energy, transportation, utilities, and other critical industries to ensure safe and efficient operations.</p>
+<p>Types of ICS:</p>
+<ul>
+<li>SCADA (Supervisory Control and Data Acquisition)</li>
+<li>DCS (Distributed Control System)</li>
+<li>PLC (Programmable Logic Controller)</li>
+<li>RTU (Remote Terminal Unit)</li>
+</ul>
+<h2 id="scada-supervisory-control-and-data-acquisition">SCADA (Supervisory Control and Data Acquisition)<a class="headerlink" href="#scada-supervisory-control-and-data-acquisition" title="Permanent link">&para;</a></h2>
+<p>SCADA is a supervisory system used to monitor and control industrial processes distributed over large geographical areas, such as power grids, pipelines, and water treatment plants. SCADA collects data from remote sensors and devices, allowing operators to make real-time decisions.</p>
+<p>Key SCADA Components:</p>
+<ul>
+<li>Supervisory Computers: Centralized servers that collect and process data from field devices (PLCs, RTUs) and provide visualization tools for operators.</li>
+<li>Human-Machine Interface (HMI): The graphical interface used by operators to monitor and control industrial processes.</li>
+<li>Communication Networks: Infrastructure connecting SCADA components (Ethernet, serial, radio, cellular, satellite).</li>
+<li>Remote Terminal Units (RTU): Remote field devices that collect data from sensors and transmit it to the SCADA system.</li>
+<li>Programmable Logic Controllers (PLC): Controllers responsible for executing real-time logic and automation tasks.</li>
+</ul>
+<h2 id="dcs-distributed-control-system">DCS (Distributed Control System)<a class="headerlink" href="#dcs-distributed-control-system" title="Permanent link">&para;</a></h2>
+<p>A DCS is an automation system designed for real-time process control in large, localized industrial facilities, such as oil refineries, chemical plants, and power plants. Unlike SCADA, which is optimized for wide-area monitoring, DCS systems are designed for tightly integrated process control within a single site.</p>
+<p><img alt="hmi-example" src="../images/hmi-example.png" /></p>
+<p>Key DCS Components:</p>
+<ul>
+<li>Process Control Units (PCU): Localized control units that manage industrial processes in real time.</li>
+<li>Field Devices (Sensors, Actuators, Valves, etc.): Directly interface with physical processes.</li>
+<li>Engineering Workstations: Used for configuring and optimizing control logic.</li>
+<li>Operator Consoles (HMI): Interfaces for monitoring and managing plant operations.</li>
+<li>Industrial Communication Networks: Used to connect different DCS components (e.g., Fieldbus, Profibus, OPC-UA).</li>
+</ul>
+<h2 id="plc-programmable-logic-controller">PLC (Programmable Logic Controller)<a class="headerlink" href="#plc-programmable-logic-controller" title="Permanent link">&para;</a></h2>
+<p>A PLC is a specialized industrial computer used to control machinery and processes in manufacturing and automation environments. PLCs are essential components of both SCADA and DCS systems, as they provide real-time monitoring and decision-making.</p>
+<p><img alt="plc-example" src="../images/plc-example.png" /></p>
+<p>Key PLC Features:</p>
+<ul>
+<li>Real-Time operation: Executes logic based on inputs from sensors and generates outputs to control machinery.</li>
+<li>Modular architecture: Allows customization with input/output (I/O) modules.</li>
+<li>Industrial protocol support: Communicates via MODBUS, PROFINET, EtherCAT, and other protocols.</li>
+<li>High reliability: Designed for continuous operation in harsh environments.</li>
+</ul>
+<h2 id="summary-of-key-differences">Summary of key differences<a class="headerlink" href="#summary-of-key-differences" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Primary Function</th>
+<th>Best for</th>
+<th>Geographical Scope</th>
+<th>Control Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OT</strong></td>
+<td>Industrial operations &amp; automation</td>
+<td>Manufacturing, utilities, energy</td>
+<td>Local and global</td>
+<td>Ensures uptime and safety</td>
+</tr>
+<tr>
+<td><strong>ICS</strong></td>
+<td>Monitoring &amp; controlling industrial processes</td>
+<td>Industrial environments</td>
+<td>Local and global</td>
+<td>Integrates SCADA, DCS, PLC, RTU</td>
+</tr>
+<tr>
+<td><strong>SCADA</strong></td>
+<td>Supervisory control &amp; data acquisition</td>
+<td>Remote monitoring (e.g., power grids, pipelines)</td>
+<td>Large-scale, geographically distributed</td>
+<td>Centralized monitoring</td>
+</tr>
+<tr>
+<td><strong>DCS</strong></td>
+<td>Real-time process automation &amp; control</td>
+<td>Complex, high-precision manufacturing (e.g., chemical plants, oil refineries)</td>
+<td>Localized within a facility</td>
+<td>Distributed control with redundancy</td>
+</tr>
+<tr>
+<td><strong>PLC</strong></td>
+<td>Logic execution &amp; machine control</td>
+<td>Automated processes (e.g., assembly lines, robotic systems)</td>
+<td>Localized control</td>
+<td>Executes predefined automation logic</td>
+</tr>
+</tbody>
+</table>
+<h2 id="it-vs-ot-key-differences">IT vs. OT: Key Differences<a class="headerlink" href="#it-vs-ot-key-differences" title="Permanent link">&para;</a></h2>
+<p>While Information Technology (IT) and Operational Technology (OT) are increasingly interconnected, they have fundamental differences in priorities, lifecycle management, and security approaches:</p>
+<ul>
+<li>System Lifecycle: IT systems typically have a <strong>3-5 year lifecycle</strong>, with frequent upgrades and replacements. OT systems, however, are built for <strong>longevity</strong>, often operating for <strong>10-30 years</strong> without major changes.</li>
+<li>Patching and Updates: In IT, regular software updates and patches are standard to mitigate security vulnerabilities. In OT, however, patching is <strong>infrequent or even impossible</strong>, as system downtime can disrupt critical industrial processes.</li>
+<li>Security vs. Safety: IT security focuses on <strong>protecting data</strong> (confidentiality, integrity, availability). OT prioritizes <strong>safety and operational continuity</strong>, where system availability is <strong>more important than data protection</strong>.</li>
+<li>Risk Approach: IT deals with <strong>cybersecurity risks</strong>, such as data breaches and malware. OT must consider both <strong>cyber and physical risks</strong>, as failures can lead to equipment damage, environmental hazards, or <strong>even loss of life</strong>.</li>
+<li>Data Protection vs. Availability: IT prioritizes <strong>data confidentiality and integrity</strong> (ensuring information is secure and accurate). OT prioritizes <strong>availability and uptime</strong>, ensuring industrial systems run without interruption.</li>
+</ul>
+<p>These differences make OT environments harder to secure, requiring specialized cybersecurity strategies that balance safety, reliability, and risk management.</p>
+<p><img alt="it-vs-ot" src="../images/it-vs-ot.png" /></p>
+<h2 id="final-thoughts">Final Thoughts<a class="headerlink" href="#final-thoughts" title="Permanent link">&para;</a></h2>
+<p>Understanding the differences between OT, ICS, SCADA, DCS, and PLCs is essential for anyone working in industrial automation, cybersecurity, or operational technology. As IT and OT continue to converge, securing these systems against cyber threats becomes increasingly important.</p>
+<p>In Simple Terms:</p>
+<ul>
+<li>Industrial operations rely on <strong>sophisticated, mission-critical computer systems</strong> (SCADA).</li>
+<li>In OT/ICS environments, <strong>security is not the top priority</strong>, availability and uptime come first.</li>
+<li>Operators can <strong>manually override plant operations</strong> using a mouse, keyboard, or touchscreen, both locally and remotely.</li>
+<li>Malicious software can manipulate plant behavior in the same way an authorized operator would through the HMI.</li>
+</ul>
+<p>For a deeper understanding, refer to the <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r2.pdf">Guide to Industrial Control Systems (ICS) Security (NIST 800-82)</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

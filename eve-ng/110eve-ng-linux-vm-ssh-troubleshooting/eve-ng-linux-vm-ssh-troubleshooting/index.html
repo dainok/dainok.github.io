@@ -1,0 +1,596 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/eve-ng/110eve-ng-linux-vm-ssh-troubleshooting/eve-ng-linux-vm-ssh-troubleshooting/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>EVE-NG Linux VM SSH troubleshooting - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eve-ng-linux-vm-ssh-troubleshooting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              EVE-NG Linux VM SSH troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab scenario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Fix
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:eve-ng" class="md-tag">eve-ng</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-09-20">20 September 2025</time></span></p>
+<h1 id="eve-ng-linux-vm-ssh-troubleshooting">EVE-NG Linux VM SSH troubleshooting<a class="headerlink" href="#eve-ng-linux-vm-ssh-troubleshooting" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
+<p><strong>Special thanks to <a href="https://www.linkedin.com/in/cianfarani-carlo-b7a86478/">Carlo Cianfarani</a> for providing this post.</strong></p>
+<p>In this post we will explore how to troubleshoot and fix an issue on EVE-NG involving Linux VMs connected through a virtual router instance (Cisco XRd) implemented as docker container. Some time ago, indeed, I managed to extend EVE-NG to support docker containers.</p>
+<h2 id="lab-scenario">Lab scenario<a class="headerlink" href="#lab-scenario" title="Permanent link">&para;</a></h2>
+<p><img alt="xrd-lab" src="../images/xrd-lab.png" /></p>
+<p>In the scenario depicted, Linux VM ethernet interfaces (e.g. plain <code>e1000</code> or paravirtualized <code>virtio-net</code>) are attached to two different IP subnets, each implemented by a Linux bridge. Linux VMs run on QEMU hypervisor which, at userspace level, starts a multithreaded process for each VM. Essentially, there is a main thread plus additional threads, one for each VM’s assigned vCPU.</p>
+<p>We can check how EVE-NG networking is implemented under the hood by using:</p>
+<p><img alt="brctl-show" src="../images/brctl-show.png" /></p>
+<p>In the above <code>vnet0_1</code> and <code>vnet0_2</code> are both Linux bridge implementing ethernet links connecting the VMs to the virtual router’s interfaces. <code>vunl0_1_0</code> and <code>vunl0_2_0</code> are Linux TAP network devices implementing the VM virtual ethernet interfaces’ backend.</p>
+<p><img alt="ethtool-1" src="../images/ethtool-1.png" /></p>
+<p><img alt="ethtool-2" src="../images/ethtool-2.png" /></p>
+<p><code>vnet0_3_1</code> and <code>vnet0_3_2</code> on the other hand are Linux <code>veth</code> network devices where the paired <code>veth</code> lives inside the docker container’s network namespace.</p>
+<p><img alt="ethtool-3" src="../images/ethtool-3.png" /></p>
+<p><img alt="ethtool-4" src="../images/ethtool-4.png" /></p>
+<p><img alt="ip-link-1" src="../images/ip-link-1.png" /></p>
+<p><img alt="ip-link-2" src="../images/ip-link-2.png" /></p>
+<p>The following command enters the <strong>XRd</strong> container’s namespaces (PID, network and User) and confirms the associations between <code>veth</code> pairs.</p>
+<p><img alt="docker-inspect-1" src="../images/docker-inspect-1.png" /></p>
+<p><img alt="nsenter" src="../images/nsenter.png" /></p>
+<p>In this lab you can successfully ping both local and remote IP addresses, however SSH to the remote VM fail! Let’s try to troubleshoot it.</p>
+<p>When attempting SSH from Linux VM1 to VM2 we can check <code>TcpInSegs</code>, <code>TcpInErrs</code> and <code>TcpInCsumErrors</code> counters on VM2 keep increment of the same amount (4 packets for each run).</p>
+<p><img alt="nstat-1" src="../images/nstat-1.png" /></p>
+<p>That means VM2 is receiving TCP SYN packets (segments) with an invalid TCP checksum. To confirm it, I used Linux <a href="https://www.kernel.org/doc/html/v5.0/trace/ftrace.html">ftrace</a> framework exposed via <a href="https://www.trace-cmd.org/">trace-cmd</a> frontend.</p>
+<p>The virtual router instance connected to the Linux bridges is a Cisco XRd docker container running IOS-XR 7.10.2. From a networking perspective each docker container runs into a Linux network namespace other than the root (or default) network namespace. EVE-NG manages to create a veth pair for any ethernet link connected to it. In our scenario, a veth network device is connected to a Linux bridge within the root network namespace while the paired one lives within the container’s dedicated network namespace. By using ftrace we can dig into the Linux <code>sk_buff</code> kernel structures involved, by checking the value of <code>ip_summed</code> field we’re interested in (<code>skb</code> → <code>ip_summed</code>).</p>
+<p>From Linux host viewpoint, ftrace reports TCP SYN packets handled from VM1 ethernet TAP backend in the RX path as seen with <code>ip_summed</code> set to 3 while TCP packets handled in RX path from veth device connected to the remote bridge as seen with <code>ip_summed</code> set to <code>0</code>.</p>
+<p>From Linux kernel C header files <a href="https://github.com/torvalds/linux/blob/cbf658dd09419f1ef9de11b9604e950bdd5c170b/include/linux/skbuff.h#L247">/include/linux/skbuff.h</a></p>
+<p><img alt="skbuff" src="../images/skbuff.png" /></p>
+<p>Those values correspond to <code>CHECKSUM_PARTIAL</code> and <code>CHECKSUM_NONE</code> respectively. To get a clear understanding of what was really going on, I asked on stackoverflow opening this <a href="https://unix.stackexchange.com/questions/797717/tcp-checksum-offloading-on-virtio-net-paravirtualized-interfaces">discussion</a>.</p>
+<p><img alt="trace-cmd-1" src="../images/trace-cmd-1.png" /></p>
+<p><img alt="trace-cmd-2" src="../images/trace-cmd-2.png" /></p>
+<p>Linux ftrace framework allows us to enable static tracepoints built inside the kernel. Here tracepoints <code>netif_receive_skb_entry</code>, <code>netif_rx_entry</code> within the relevant kernel network functions implemented by the host Linux kernel and exposed to the low-level device driver code have been enabled. Next in the reporting step the tracing file (trace.dat) has been filtered using the -F option (inessential trace entries for ARP request and reply were filtered).</p>
+<p>According to the above trace, <code>qemu-system-x86-11472</code> process with PID <code>11472</code> is the main thread (Linux lightweighted processes) running VM1’s QEMU instance. The RX path processing on <code>vunl0_1_0</code> TAP interface is run in the context of this process (note that EVE-NG assigned node-id 1 to VM1 node hence the name <code>vunl0_1_0</code> for the VM1virtual ethernet’s backend).</p>
+<p><img alt="ps-1" src="../images/ps-1.png" /></p>
+<p>Likewise, <code>spp-17445</code> is the Pid for the thread running within the XRd docker container. This thread runs the driver code handling the RX path processing for the <code>vnet0_3_2</code> veth device paired with the corresponding veth device within the XRd container’s network namespace (even in this case EVE-NG assigned node-id <code>3</code> to the XRd node).</p>
+<p><img alt="ps-2" src="../images/ps-2.png" /></p>
+<p>As we can see, attempting to SSH from VM1 to VM2 results in VM1 sending out TCP SYN packets having the <code>sk_buff</code>’s <code>ip_summed</code> field set to <code>3</code> (<code>CHECKSUM_PARTIAL</code>). That means VM1 kernel network stack is sending out TCP packets with an incomplete/incorrect TCP checksum.</p>
+<p>After spending many hours troubleshooting, I identified the issue: by default, VM’s exposed ethernet interfaces (e.g. <code>e1000</code> or <code>virtio-net</code>) have TCP/UDP checksum offloading enabled. Namely Linux kernel network stack assumes that the underlying “NIC hardware” will compute and fill in the correct TCP/UDP checksum into outgoing packets.</p>
+<p>The problem is that the virtual NIC, in its TX path, does not perform that computation at all. As a result, TCP/UDP packets are sent with zeroed or corrupted checksum fields. On the receiving side, in RX path processing, they are delivered to the VM Linux kernel’s network stack that discards these invalid packets.</p>
+<h2 id="the-fix">The Fix<a class="headerlink" href="#the-fix" title="Permanent link">&para;</a></h2>
+<p>The solution is straightforward: disable TX checksum offloading at the virtual NIC level. This can be done from within the Linux VM as follows (note that disabling RX checksum offloading is not an option since it is not configurable).</p>
+<p><img alt="ethtool-5" src="../images/ethtool-5.png" /></p>
+<p><img alt="ethtool-7" src="../images/ethtool-7.png" /></p>
+<p>Of course we need to do the same on the remote Linux VM:</p>
+<p><img alt="ethtool-8" src="../images/ethtool-8.png" /></p>
+<p>And voilà, magically SSH to the remote VM works!</p>
+<p><img alt="ssh-1" src="../images/ssh-1.png" /></p>
+<p>To be honest, a different kind of fix is available. According to Cisco <a href="https://xrdocs.io/virtual-routing/tutorials/2022-08-25-user-interface-and-knobs-for-xrd/">documentation</a> there is an optional flag (<code>chksum</code>) applicable for XRd interfaces. It can be set on interfaces basis by setting the relevant Linux environment variables passed to the container (<code>XR_MGMT_INTERFACES</code> for management interfaces and <code>XR_INTERFACES</code> for dataplane interfaces). It is supposed to force the virtual router to compute the relevant TCP/UDP checksum for ingress packets coming from that interface.</p>
+<p>Let’s check the current setting for those environment variables:</p>
+<p><img alt="docker-inspect-2" src="../images/docker-inspect-2.png" /></p>
+<p>From the above <code>XR_INTERFACE</code> environment variable, the chksum flag is clear for the first two XRd interfaces (<code>Gi0/0/0/0</code> and <code>Gi0/0/0/1</code>) used in the lab. Let’s try to set the <code>chksum</code> flag for the <code>Gi0/0/0/0</code> interface only (the XRd ingress interface for traffic coming from VM1 to VM2). To do it, we proceed to stop &amp; wipe the XRd node. This way the XRd docker container is restarted from scratch.</p>
+<p><img alt="docker-inspect-3" src="../images/docker-inspect-3.png" /></p>
+<p>Attempt to SSH to VM2 still fails, however we can confirm TCP packets get received from VM2 with the correct TCP checksum (<code>TcpInErrs</code> or <code>TcpInCsumErrors</code> no longer keep incrementing on VM2).</p>
+<p><img alt="nstat-2" src="../images/nstat-2.png" /></p>
+<p>In the next step we fix the issue the other way around by setting the chksum flag for the <code>Gi0/0/0/1</code> interface</p>
+<p><img alt="docker-inspect-4" src="../images/docker-inspect-4.png" /></p>
+<p>And eventually it does work as well !</p>
+<p><img alt="ssh-2" src="../images/ssh-2.png" /></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

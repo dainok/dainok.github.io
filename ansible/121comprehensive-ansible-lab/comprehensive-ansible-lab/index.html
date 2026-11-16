@@ -1,0 +1,1028 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/ansible/121comprehensive-ansible-lab/comprehensive-ansible-lab/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Comprehensive Ansible Lab - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#comprehensive-ansible-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Comprehensive Ansible Lab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series" checked><label class="md-nav__link" for="__nav_series" id="__nav_series_label" tabindex="0"><span class="md-ellipsis">In the same series</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="1" aria-labelledby="__nav_series_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series"><span class="md-nav__icon md-icon"></span>In the same series</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1" checked><div class="md-nav__link md-nav__container"><a href="../../../series/ansible/" class="md-nav__link"><span class="md-ellipsis">Ansible</span></a><label class="md-nav__link" for="__nav_series_1" id="__nav_series_1_label"><span class="md-nav__icon md-icon"></span></label></div><nav class="md-nav" data-md-level="2" aria-labelledby="__nav_series_1_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1"><span class="md-nav__icon md-icon"></span>Ansible</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_1" checked><label class="md-nav__link" for="__nav_series_1_1" id="__nav_series_1_1_label" tabindex="0"><span class="md-ellipsis">Ansible Workbook for DevNetOps</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_1_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1_1"><span class="md-nav__icon md-icon"></span>Ansible Workbook for DevNetOps</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../101introduction-to-network-automation-with-ansible/introduction-to-network-automation-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Introduction to network automation with Ansible</span></a></li><li class="md-nav__item"><a href="../../102preparing-your-ansible-environment/preparing-your-ansible-environment/" class="md-nav__link"><span class="md-ellipsis">Preparing your Ansible environment</span></a></li><li class="md-nav__item"><a href="../../103introduction-to-ansible-automation/introduction-to-ansible-automation/" class="md-nav__link"><span class="md-ellipsis">Introduction to Ansible Automation</span></a></li><li class="md-nav__item"><a href="../../104ansible-inventory/ansible-inventory/" class="md-nav__link"><span class="md-ellipsis">Ansible inventory</span></a></li><li class="md-nav__item"><a href="../../105ansible-configuration/ansible-configuration/" class="md-nav__link"><span class="md-ellipsis">Ansible configuration</span></a></li><li class="md-nav__item"><a href="../../106ansible-ad-hoc-commands/ansible-ad-hoc-commands/" class="md-nav__link"><span class="md-ellipsis">Ansible ad hoc commands</span></a></li><li class="md-nav__item"><a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/" class="md-nav__link"><span class="md-ellipsis">Ansible Playbooks and variables</span></a></li><li class="md-nav__item"><a href="../../108defining-and-using-variables-in-ansible/defining-and-using-variables-in-ansible/" class="md-nav__link"><span class="md-ellipsis">Defining and using variables in Ansible</span></a></li><li class="md-nav__item"><a href="../../109ansible-statements/ansible-statements/" class="md-nav__link"><span class="md-ellipsis">Ansible statements</span></a></li><li class="md-nav__item"><a href="../../110strategies-for-troubleshooting-ansible-errors/strategies-for-troubleshooting-ansible-errors/" class="md-nav__link"><span class="md-ellipsis">Strategies for troubleshooting Ansible errors</span></a></li><li class="md-nav__item"><a href="../../111handling-errors-in-ansible-playbooks/handling-errors-in-ansible-playbooks/" class="md-nav__link"><span class="md-ellipsis">Handling errors in Ansible playbooks</span></a></li><li class="md-nav__item"><a href="../../112using-ansible-handlers-for-optimized-task-execution/using-ansible-handlers-for-optimized-task-execution/" class="md-nav__link"><span class="md-ellipsis">Using Ansible handlers for optimized task execution</span></a></li><li class="md-nav__item"><a href="../../113ansible-parsers-and-filters/ansible-parsers-and-filters/" class="md-nav__link"><span class="md-ellipsis">Ansible parsers and filters</span></a></li><li class="md-nav__item"><a href="../../114password-management-with-ansible/password-management-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Password Management with Ansible</span></a></li><li class="md-nav__item"><a href="../../115enhancing-ansible-output/enhancing-ansible-output/" class="md-nav__link"><span class="md-ellipsis">Enhancing Ansible output</span></a></li><li class="md-nav__item"><a href="../../116boosting-ansible-performance/boosting-ansible-performance/" class="md-nav__link"><span class="md-ellipsis">Boosting Ansible performance</span></a></li><li class="md-nav__item"><a href="../../117running-ansible-playbooks-through-a-bastion-host/running-ansible-playbooks-through-a-bastion-host/" class="md-nav__link"><span class="md-ellipsis">Running Ansible playbooks through a Bastion host</span></a></li><li class="md-nav__item"><a href="../../../fundamentals/101key-steps-for-real-world-success/key-steps-for-real-world-success/" class="md-nav__link"><span class="md-ellipsis">Key steps for Real-World success</span></a></li><li class="md-nav__item"><a href="../../119ansible-orchestrators-and-integration-tools/ansible-orchestrators-and-integration-tools/" class="md-nav__link"><span class="md-ellipsis">Ansible orchestrators and integration tools</span></a></li><li class="md-nav__item"><a href="../../120key-takeaways-from-the-ansible-course/key-takeaways-from-the-ansible-course/" class="md-nav__link"><span class="md-ellipsis">Key takeaways from the Ansible course</span></a></li><li class="md-nav__item md-nav__item--active"><a href="./" class="md-nav__link md-nav__link--active" aria-current="page"><span class="md-ellipsis">Comprehensive Ansible Lab</span></a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_2"><label class="md-nav__link" for="__nav_series_1_2" id="__nav_series_1_2_label" tabindex="0"><span class="md-ellipsis">Appendixes</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_2_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_2"><span class="md-nav__icon md-icon"></span>Appendixes</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../131managing-cli-prompts-with-ansible/managing-cli-prompts-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Managing CLI prompts with Ansible</span></a></li><li class="md-nav__item"><a href="../../132reboot-a-device-with-ansible-and-wait-for-it-to-come-online/reboot-a-device-with-ansible-and-wait-for-it-to-come-online/" class="md-nav__link"><span class="md-ellipsis">Reboot a device with Ansible and wait for it to come online</span></a></li><li class="md-nav__item"><a href="../../133event-driven-ansible/event-driven-ansible/" class="md-nav__link"><span class="md-ellipsis">Event-Driven Ansible</span></a></li><li class="md-nav__item"><a href="../../134ansible-reporting-with-ara/ansible-reporting-with-ara/" class="md-nav__link"><span class="md-ellipsis">Ansible reporting with ARA</span></a></li><li class="md-nav__item"><a href="../../135orchestrating-playbooks-with-ansible-awx/orchestrating-playbooks-with-ansible-awx/" class="md-nav__link"><span class="md-ellipsis">Orchestrating playbooks with Ansible AWX</span></a></li><li class="md-nav__item"><a href="../../136ansible-galaxy/ansible-galaxy/" class="md-nav__link"><span class="md-ellipsis">Ansible Galaxy</span></a></li><li class="md-nav__item"><a href="../../137delegate-ansible-tasks-to-a-different-host/delegate-ansible-tasks-to-a-different-host/" class="md-nav__link"><span class="md-ellipsis">Delegate Ansible tasks to a different host</span></a></li><li class="md-nav__item"><a href="../../144ansible-workbook-for-devnetops-slides/ansible-workbook-for-devnetops-slides/" class="md-nav__link"><span class="md-ellipsis">Ansible Workbook for DevNetOps slides</span></a></li><li class="md-nav__item"><a href="../../145automatic-cis-controls-check-with-ansible/automatic-cis-controls-check-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Automatic CIS controls check with Ansible</span></a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_3"><label class="md-nav__link" for="__nav_series_1_3" id="__nav_series_1_3_label" tabindex="0"><span class="md-ellipsis">ServiceNow</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_3_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_3"><span class="md-nav__icon md-icon"></span>ServiceNow</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../139automating-network-provisioning-with-servicenow-and-ansible/automating-network-provisioning-with-servicenow-and-ansible/" class="md-nav__link"><span class="md-ellipsis">Automating Network Provisioning with ServiceNow and Ansible</span></a></li><li class="md-nav__item"><a href="../../140servicenow-catalog-configuration/servicenow-catalog-configuration/" class="md-nav__link"><span class="md-ellipsis">ServiceNow Catalog Configuration</span></a></li><li class="md-nav__item"><a href="../../141ansible-playbook-for-network-provisioning/ansible-playbook-for-network-provisioning/" class="md-nav__link"><span class="md-ellipsis">Ansible playbook for Network provisioning</span></a></li><li class="md-nav__item"><a href="../../142servicenow-poll-based-request-processing/servicenow-poll-based-request-processing/" class="md-nav__link"><span class="md-ellipsis">ServiceNow Poll-Based Request Processing</span></a></li><li class="md-nav__item"><a href="../../143automated-vm-provisioning-from-a-servicenow-ticket/automated-vm-provisioning-from-a-servicenow-ticket/" class="md-nav__link"><span class="md-ellipsis">Automated VM Provisioning from a ServiceNow Ticket</span></a></li></ul></nav></li></ul></nav></li></ul></nav></li></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modeling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-the-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Define the Inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credential-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credential Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-cisco_ios_system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Role cisco_ios_system
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-cisco_ios_ntp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Role cisco_ios_ntp
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-cisco_ios_snmpv2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Role cisco_ios_snmpv2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#role-cisco_ios_vlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Role cisco_ios_vlan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Profiles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Playbook
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ansible-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ansible Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ansible" class="md-tag">ansible</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-12-11">11 December 2024</time></span></p>
+<h1 id="comprehensive-ansible-lab">Comprehensive Ansible Lab<a class="headerlink" href="#comprehensive-ansible-lab" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
+<p>In the final exercise, we'll see how to put together what we've learned to configure and manage a legacy fabric (based on STP).</p>
+<p>So let's open the <code>Cisco Legacy Core-Access topology</code> lab, start all the devices, and make sure they're reachable.</p>
+<p><img alt="leaf-spine-topology-1" src="../images/leaf-spine-topology-1.png" /></p>
+<h2 id="modeling">Modeling<a class="headerlink" href="#modeling" title="Permanent link">&para;</a></h2>
+<p>Before even thinking about writing playbooks, we need to create a model of our environment, which means creating a data structure that can represent our fabric and serve as a working tool. There are many possibilities:</p>
+<ul>
+<li><a href="https://docs.netbox.dev/en/stable/">NetBox</a> / <a href="https://networktocode.com/nautobot/">Nautobot</a>: I've seen integration between these applications, Ansible, and devices. People would make a change on NetBox / Nautobot regarding a device's interface. The change would trigger an Ansible playbook that would modify the configuration on the physical device.</li>
+<li><a href="https://about.gitlab.com/install/">GitLab</a> / <a href="https://github.com/">GitHub</a>: This approach leans more towards Infrastructure as Code. An operator makes a change on the data structure, typically based on CSV / YAML / JSON, and the CI / CD pipeline runs various tests. If everything works, it adjusts the configuration of the devices in production.</li>
+<li>CSV / XLS / YAML: This is the simplest case, where a simple file contains the parameters of the structure, and the manual execution of a playbook adjusts the configuration of the devices. Any tests are done manually by the operator.</li>
+</ul>
+<p>For simplicity, let's choose the third approach. The first two would require significant development beyond the scope of this specific course.</p>
+<p>In particular, for its readability and flexibility, we choose to use a YAML file. The YAML file should contain all the parameters that define our fabric. In particular, we definitely need to include information about:</p>
+<ul>
+<li>DNS</li>
+<li>hostname and domain</li>
+<li>NTP</li>
+<li>SNMP</li>
+</ul>
+<p>Operationally, we definitely need to apply the following as well:</p>
+<ul>
+<li>hardening of devices</li>
+<li>configure interfaces</li>
+</ul>
+<p>In particular, we can imagine that the interfaces have a template based on their function. We will definitely need templates for:</p>
+<ul>
+<li>inter-switch-link (ISL) interfaces</li>
+<li>interfaces to endpoints</li>
+</ul>
+<p>Furthermore, the interfaces to endpoints will have a profile based on the connected device, for example:</p>
+<ul>
+<li>virtualization server</li>
+<li>firewall</li>
+<li>client access with VoIP phone</li>
+<li>management access</li>
+<li>office devices access</li>
+</ul>
+<p>We have made this analysis based on our experience, but in a real case, the analysis must be done on the environment we are willing to automate. We must understand how a particular environment is structured and the way people work. Our goal is to formalize a structure (modeling) and standardize the way of working. Only then can we start developing the working tools, which in our case will be based on Ansible.</p>
+<p>Practically speaking, we can create a first draft of a data structure that will define our environment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">dns_domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">dns_lookup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">dns_servers</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.4.4</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.8.8.8</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">ntp_servers</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">195.201.19.162</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">141.98.136.83</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">snmp_community</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">494174af4b08f87467a138584f4edb33</span>
+</code></pre></div>
+<p>We also need to define the VLANs that need to be configured in the fabric:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">vlans</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SERVER</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">51</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DMZ</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">52</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MGMT</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">53</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OFFICE</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">54</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VOIP</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">55</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INTERNET</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">999</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NATIVE</span>
+</code></pre></div>
+<p>Finally, we need to define the profile associated with each interface:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">interfaces</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">Ethernet0/1</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unused</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">Ethernet0/2</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">to Hypervisor</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hypervisor</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">Ethernet0/3</span><span class="p">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">to Firewall</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firewall</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="nt">Ethernet1/0</span><span class="p">:</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">to SW3</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isl</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="nt">Ethernet1/1</span><span class="p">:</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">to SW4</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isl</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="nt">Ethernet1/2</span><span class="p">:</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">to SW5</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isl</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="nt">Ethernet1/3</span><span class="p">:</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">to SW6</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isl</span>
+</code></pre></div>
+<p>The decision on how to formalize the interface-profile association is crucial because it has a huge impact on the way of operating but at the same time must ensure the integrity of the infrastructure. The format chosen in the example above appears cumbersome but ensures that interfaces are not associated with multiple profiles.</p>
+<p>Let's see a second example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">profiles</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">isl</span><span class="p">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SW1</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet1/0</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SW1</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet1/1</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SW1</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet1/2</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SW1</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet1/3</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span><span class="nt">firewall</span><span class="p">:</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SW1</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet0/3</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="nt">unused</span><span class="p">:</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SW1</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet0/1</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">switch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SW1</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet0/2</span>
+</code></pre></div>
+<p>If we had chosen the second format, apparently more convenient, the operator would have had to ensure that an interface is not associated with multiple profiles.</p>
+<p>Therefore, we decide to use the first format, where the interface is defined as a unique key within the file.</p>
+<h2 id="define-the-inventory">Define the Inventory<a class="headerlink" href="#define-the-inventory" title="Permanent link">&para;</a></h2>
+<p>Next, let's define the inventory file, which for convenience we'll implement as an INI file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[all]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">sw1.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.101</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">sw2.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.102</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">sw3.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.103</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">sw4.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.104</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="na">sw5.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.105</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="na">sw6.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.106</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">[access]</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="na">sw[3</span><span class="o">:</span><span class="s">6].example.com</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="k">[core]</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="na">sw[1</span><span class="o">:</span><span class="s">2].example.com</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="k">[cisco_ios]</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="na">sw[1</span><span class="o">:</span><span class="s">6].example.com</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="k">[cisco_ios:vars]</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="na">ansible_connection</span><span class="o">=</span><span class="s">ansible.netcommon.network_cli</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="na">ansible_network_os</span><span class="o">=</span><span class="s">cisco.ios.ios</span>
+</code></pre></div>
+<p>We'll place the host- and group-associated variables respectively in the <code>host_vars</code> and <code>group_vars</code> directories. In particular:</p>
+<ul>
+<li><code>host_vars/sw1.examle.com.yml</code>: will contain the interface-profile association for SW1;</li>
+<li><code>host_vars/sw2.examle.com.yml</code>: will contain the interface-profile association for SW2;</li>
+<li><code>host_vars/sw3.examle.com.yml</code>: will contain the interface-profile association for SW3;</li>
+<li><code>host_vars/sw4.examle.com.yml</code>: will contain the interface-profile association for SW4;</li>
+<li><code>host_vars/sw5.examle.com.yml</code>: will contain the interface-profile association for SW5;</li>
+<li><code>host_vars/sw6.examle.com.yml</code>: will contain the interface-profile association for SW6;</li>
+<li><code>group_vars/all.yml</code>: will contain all the fabric variables;</li>
+</ul>
+<h2 id="credential-management">Credential Management<a class="headerlink" href="#credential-management" title="Permanent link">&para;</a></h2>
+<p>In planning our automation, we need to consider how credentials will be managed. This choice is tied to the use of any orchestrators and directly impacts the security of our environment.</p>
+<p>In general, two choices are possible:</p>
+<ul>
+<li>the playbook is manually invoked by an operator, and in this case, the best choice is for the operator to interactively enter the credentials to be used;</li>
+<li>the playbook is invoked by an orchestrator, and in this case, the credentials will probably be passed as environment variables. The use of a vault is strongly recommended.</li>
+</ul>
+<p>For simplicity, we decide to use the first option: credentials will be interactively entered during playbook execution.</p>
+<h2 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h2>
+<p>Given the purpose we've set, we can easily identify four roles:</p>
+<ul>
+<li><code>system</code>, which will handle the configuration of the hostname, domain, and DNS servers;</li>
+<li><code>ntp</code>, which will handle the configuration of NTP servers;</li>
+<li><code>snmpv2</code>, which will handle the configuration of SNMP v2 community;</li>
+<li><code>interface_profile</code>, which will handle configuring interfaces by applying the correct profile;</li>
+<li><code>vlan</code>, which will handle creating the necessary VLANs.</li>
+</ul>
+<p>So let's create the skeleton for the four roles:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>init<span class="w"> </span>roles/cisco_ios_ntp
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>init<span class="w"> </span>roles/cisco_ios_interface_profile
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>init<span class="w"> </span>roles/cisco_ios_snmpv2
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>init<span class="w"> </span>roles/cisco_ios_system
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ansible-galaxy<span class="w"> </span>role<span class="w"> </span>init<span class="w"> </span>roles/cisco_ios_vlan
+</code></pre></div>
+<h2 id="role-cisco_ios_system">Role cisco_ios_system<a class="headerlink" href="#role-cisco_ios_system" title="Permanent link">&para;</a></h2>
+<p>The <code>cisco_ios_system</code> role requires only the <code>roles/cisco_ios_system/tasks/main.yml</code> file, which will contain the tasks to configure hostname, domain, DNS lookup, and DNS server.</p>
+<p>We split the task into two parts, as it will be more convenient for compliance to know which configuration needs modification. In the first part, we configure the hostname and domain. In particular, as a standard, we want to configure the hostname in uppercase and the domain in lowercase:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Set and normalize hostname and domain</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SETTING FACTS</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">device_hostname</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">inventory_hostname_short</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">upper</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">device_domain</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">inventory_hostname.split('.',</span><span class="nv"> </span><span class="s">1)[1]</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">lower</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># Configure hostname</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIGURING HOSTNAME AND DOMAIN NAME</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="nt">cisco.ios.ios_system</span><span class="p">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">device_hostname</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nt">domain_name</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">device_domain</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div>
+<p>In the second part, we configure the DNS servers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Configure DNS lookup</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIGURING DNS LOOKUP</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">cisco.ios.ios_system</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nt">lookup_enabled</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">dns_lookup</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">name_servers</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">dns_servers</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div>
+<h2 id="role-cisco_ios_ntp">Role cisco_ios_ntp<a class="headerlink" href="#role-cisco_ios_ntp" title="Permanent link">&para;</a></h2>
+<p>The <code>cisco_ios_ntp</code> role requires only the <code>roles/cisco_ios_ntp/tasks/main.yml</code> file, which will contain the tasks to configure NTP peers.</p>
+<p>Before configuring NTP peers, we need to transform the list of IP addresses into the data structure required by the module:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Convert a list of IP into a list of peers</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SETTING NTP PEER LIST</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="nt">ntp_peers_config_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">      </span><span class="no">[</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">        </span><span class="no">{% for peer in ntp_servers %}</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">          </span><span class="no">{"peer": "{{ peer }}"},</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="no">{% endfor %}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">      </span><span class="no">]</span>
+</code></pre></div>
+<p>Now we can apply the configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Configure NTP peers</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIGURING NTP PEERS</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">cisco.ios.ios_ntp_global</span><span class="p">:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="nt">logging</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">      </span><span class="nt">peers</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">ntp_peers_config_list</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replaced</span>
+</code></pre></div>
+<h2 id="role-cisco_ios_snmpv2">Role cisco_ios_snmpv2<a class="headerlink" href="#role-cisco_ios_snmpv2" title="Permanent link">&para;</a></h2>
+<p>The <code>cisco_ios_snmpv2</code> role requires only the <code>roles/cisco_ios_snmpv2/tasks/main.yml</code> file, which will contain the task to configure a single SNMPv2 read-only community.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Configure the SNMPv2 read-only community</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIGURING SNMPv2 COMMUNITY</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">cisco.ios.ios_snmp_server</span><span class="p">:</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">config</span><span class="p">:</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">      </span><span class="nt">communities</span><span class="p">:</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">snmp_community</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">          </span><span class="nt">ro</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replaced</span>
+</code></pre></div>
+<h2 id="role-cisco_ios_vlan">Role cisco_ios_vlan<a class="headerlink" href="#role-cisco_ios_vlan" title="Permanent link">&para;</a></h2>
+<p>The <code>cisco_ios_vlan</code> role requires only the <code>roles/cisco_ios_vlan/tasks/main.yml</code> file, which will contain the tasks to configure VLANs.</p>
+<p>Before configuring VLANs, we need to transform the list defined in the design phase into the data structure required by the module:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Convert a list of VLAN to be used with ios_vlans module</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SETTING VLAN LIST</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="nt">vlans_config_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">      </span><span class="no">[</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="no">{% for vlan in vlans %}</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">          </span><span class="no">{</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">            </span><span class="no">"vlan_id": "{{ vlan.id }}",</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">            </span><span class="no">"name": "{{ vlan.name }}",</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">            </span><span class="no">"mtu": 1500,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">            </span><span class="no">"state": "active",</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">            </span><span class="no">"shutdown": "disabled",</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">          </span><span class="no">},</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="no">{% endfor %}</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">      </span><span class="no">]</span>
+</code></pre></div>
+<p>Now we can apply the configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Configuring VLANs</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADDING VLANS</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="nt">cisco.ios.ios_vlans</span><span class="p">:</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">vlans_config_list</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replaced</span>
+</code></pre></div>
+<h2 id="profiles">Profiles<a class="headerlink" href="#profiles" title="Permanent link">&para;</a></h2>
+<p>In the initial phase, we identified seven types of interfaces:</p>
+<ul>
+<li><code>isl</code>: used for interfaces connecting to other switches (inter-switch-link);</li>
+<li><code>hypervisor</code>: used for hypervisor interfaces, configured as trunks with all passing VLANs;</li>
+<li><code>firewall</code>: used for firewall interfaces, configured as trunks with all passing VLANs;</li>
+<li><code>client</code>: used for user computer interfaces, configured in access with passing VoIP VLAN;</li>
+<li><code>management</code>: used for device management interfaces, configured in access;</li>
+<li><code>office</code>: used for office devices like printers and fax machines, configured in access;</li>
+<li><code>unused</code>: used for unused interfaces.</li>
+</ul>
+<p>We have two options for approaching profile development:</p>
+<ul>
+<li>we can parameterize the profiles, creating a single set of tasks that configures the interfaces;</li>
+<li>we can create multiple sets of tasks, one per profile.</li>
+</ul>
+<p>The first choice would be more correct from a software design perspective, but the second is simpler, more readable, and more maintainable for the network automation we are creating. Once again, there is no correct choice, but a balance between different possibilities that determines the best choice given the specific context.</p>
+<p>The <code>cisco_ios_interface_profile</code> role, for each device, will read the interface definitions and apply the correct profile. It requires the <code>roles/cisco_ios_interface_profile/tasks/main.yml</code> file and a file for each profile, placed within the same directory.</p>
+<p>The main file, to optimize performance, will read the configuration that will then be used during the configuration of individual interfaces. Then, the task file will be invoked based on the associated profile:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Get running-config</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GETTING RUNNING CONFIGURATION</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="nt">cisco.ios.ios_command</span><span class="p">:</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="nt">commands</span><span class="p">:</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show running-config</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show_running_config</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># Attach profile to interface</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATTACHING PROFILE TO INTERFACE</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">  </span><span class="nt">ansible.builtin.include_tasks</span><span class="p">:</span><span class="w"> </span><span class="s">"profile_{{</span><span class="nv"> </span><span class="s">interface.value.profile</span><span class="nv"> </span><span class="s">}}.yml"</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span><span class="nt">with_dict</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">interfaces</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">  </span><span class="nt">loop_control</span><span class="p">:</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="nt">loop_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interface</span>
+</code></pre></div>
+<p>The main file will also handle configuring the interface state and description. However, we first need to create a data structure usable with the <code>ios_interface</code> module:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Generate interface status/description data to ve used with ios_interface</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SETTING INTERFACE LIST</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nt">interface_config_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">      </span><span class="no">[</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="no">{% for interface, interface_data in interfaces.items() %}</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">          </span><span class="no">{</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">            </span><span class="no">"name": "{{ interface }}",</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">            </span><span class="no">{% if interface_data.profile == 'unused' %}</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">              </span><span class="no">"enabled": false,</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">            </span><span class="no">{% else %}</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">              </span><span class="no">"description": "{{ interface_data.description }} ({{ interface_data.profile }})",</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">              </span><span class="no">"enabled": true,</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">            </span><span class="no">{% endif %}</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">          </span><span class="no">},</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">        </span><span class="no">{% endfor %}</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">      </span><span class="no">]</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="c1"># Set description and activate interface if used</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"SETTING</span><span class="nv"> </span><span class="s">INTERFACE</span><span class="nv"> </span><span class="s">STATUS"</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">  </span><span class="nt">cisco.ios.ios_interfaces</span><span class="p">:</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">interface_config_list</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div>
+<p>Finally, let's implement the files that define the profiles. Although the <code>ios_interface</code> module allows for various configurations, it does not provide enough freedom of action. Therefore, we decide to use the <code>ios_config</code> module to configure the interfaces as desired.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Configure profile isl</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"APPLYING</span><span class="nv"> </span><span class="s">PROFILE</span><span class="nv"> </span><span class="s">ISL</span><span class="nv"> </span><span class="s">TO</span><span class="nv"> </span><span class="s">INTERFACE</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">interface.key</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span><span class="nt">cisco.ios.ios_config</span><span class="p">:</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">show_running_config.stdout.0</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="nt">lines</span><span class="p">:</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">switchport trunk encapsulation dot1q</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">switchport mode trunk</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">switchport nonegotiate</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">udld port aggressive</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="nt">parents</span><span class="p">:</span><span class="w"> </span><span class="s">"interface</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">interface.key</span><span class="nv"> </span><span class="s">}}"</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="nt">before</span><span class="p">:</span><span class="w"> </span><span class="s">"default</span><span class="nv"> </span><span class="s">interface</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">interface.key</span><span class="nv"> </span><span class="s">}}"</span>
+</code></pre></div>
+<p>Above, we see the configuration of the <strong>isl</strong> profile in detail. In particular, if the module detects any differences, it first deletes the interface configuration (<code>default interface</code>) and then configures it. This is why we decided to separate the description.</p>
+<h2 id="playbook">Playbook<a class="headerlink" href="#playbook" title="Permanent link">&para;</a></h2>
+<p>All that's left is to put together what we've created previously, creating the playbook that calls the roles in order and saves the configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">#!/usr/bin/env ansible-playbook</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CONFIGURE FABRIC</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">core,access</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_ios_system</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns,hostname</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_ios_ntp</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ntp</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_ios_snmpv2</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">snmp</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_ios_vlan</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vlan</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_ios_interface_profile</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interface</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">  </span><span class="nt">post_tasks</span><span class="p">:</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SAVING CONFIG</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="w">      </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="w">      </span><span class="nt">cisco.ios.ios_config</span><span class="p">:</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="w">        </span><span class="nt">save_when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">modified</span>
+</code></pre></div>
+<p>We are aware that we have omitted some important configurations, such as those related to spanning tree and logging.</p>
+<h2 id="ansible-configuration">Ansible Configuration<a class="headerlink" href="#ansible-configuration" title="Permanent link">&para;</a></h2>
+<p>Before running the playbook, let's focus on configuring Ansible through the <code>ansible.cfg</code> file and optimize performance by adjusting the <code>fork</code> and <code>strategy</code> parameters:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">[defaults]</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="na">inventory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">inventory.ini</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="na">stdout_callback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ansible.builtin.default</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="na">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">free</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="na">forks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">8</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="k">[persistent_connection]</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="na">ssh_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">libssh</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="k">[libssh_connection]</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="na">host_key_checking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="na">look_for_keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
+</code></pre></div>
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<p>Now let's move on to the testing phase. For each role, we need to verify:</p>
+<ul>
+<li>that the configuration performed by the role is as expected;</li>
+<li>that a new execution confirms the state of the devices without further changes (idempotence);</li>
+<li>that changing the configuration is correctly reflected on the devices.</li>
+</ul>
+<p>So we execute the playbook and wait for it to finish without errors:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>./playbook-fabric-setup.yml<span class="w"> </span>-i<span class="w"> </span>inventorydev.ini<span class="w"> </span>-u<span class="w"> </span>admin<span class="w"> </span>-k
+</code></pre></div>
+<p>Now we need to check on the devices if the configuration is as expected.</p>
+<p>Then we run the playbook again to verify that there are no further changes.</p>
+<p>Now we need to vary the configuration, for example:</p>
+<ul>
+<li>by replacing a DNS server;</li>
+<li>by replacing an NTP peer;</li>
+<li>by changing the SNMP community;</li>
+<li>by changing the profiles of two interfaces.</li>
+</ul>
+<p>We run the playbook again and verify the configuration on the devices upon completion.</p>
+<p>We run the playbook one last time and verify that there are no further changes.</p>
+<p>All sources are available on <a href="https://github.com/dainok/courses/tree/master/Ansible/21.%20Final%20lab">GitHub</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

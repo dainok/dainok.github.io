@@ -1,0 +1,928 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/ansible/135orchestrating-playbooks-with-ansible-awx/orchestrating-playbooks-with-ansible-awx/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Orchestrating playbooks with Ansible AWX - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#orchestrating-playbooks-with-ansible-awx" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Orchestrating playbooks with Ansible AWX
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series" checked><label class="md-nav__link" for="__nav_series" id="__nav_series_label" tabindex="0"><span class="md-ellipsis">In the same series</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="1" aria-labelledby="__nav_series_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series"><span class="md-nav__icon md-icon"></span>In the same series</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--section md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1" checked><div class="md-nav__link md-nav__container"><a href="../../../series/ansible/" class="md-nav__link"><span class="md-ellipsis">Ansible</span></a><label class="md-nav__link" for="__nav_series_1" id="__nav_series_1_label"><span class="md-nav__icon md-icon"></span></label></div><nav class="md-nav" data-md-level="2" aria-labelledby="__nav_series_1_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1"><span class="md-nav__icon md-icon"></span>Ansible</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_1"><label class="md-nav__link" for="__nav_series_1_1" id="__nav_series_1_1_label" tabindex="0"><span class="md-ellipsis">Ansible Workbook for DevNetOps</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_1_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_1"><span class="md-nav__icon md-icon"></span>Ansible Workbook for DevNetOps</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../101introduction-to-network-automation-with-ansible/introduction-to-network-automation-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Introduction to network automation with Ansible</span></a></li><li class="md-nav__item"><a href="../../102preparing-your-ansible-environment/preparing-your-ansible-environment/" class="md-nav__link"><span class="md-ellipsis">Preparing your Ansible environment</span></a></li><li class="md-nav__item"><a href="../../103introduction-to-ansible-automation/introduction-to-ansible-automation/" class="md-nav__link"><span class="md-ellipsis">Introduction to Ansible Automation</span></a></li><li class="md-nav__item"><a href="../../104ansible-inventory/ansible-inventory/" class="md-nav__link"><span class="md-ellipsis">Ansible inventory</span></a></li><li class="md-nav__item"><a href="../../105ansible-configuration/ansible-configuration/" class="md-nav__link"><span class="md-ellipsis">Ansible configuration</span></a></li><li class="md-nav__item"><a href="../../106ansible-ad-hoc-commands/ansible-ad-hoc-commands/" class="md-nav__link"><span class="md-ellipsis">Ansible ad hoc commands</span></a></li><li class="md-nav__item"><a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/" class="md-nav__link"><span class="md-ellipsis">Ansible Playbooks and variables</span></a></li><li class="md-nav__item"><a href="../../108defining-and-using-variables-in-ansible/defining-and-using-variables-in-ansible/" class="md-nav__link"><span class="md-ellipsis">Defining and using variables in Ansible</span></a></li><li class="md-nav__item"><a href="../../109ansible-statements/ansible-statements/" class="md-nav__link"><span class="md-ellipsis">Ansible statements</span></a></li><li class="md-nav__item"><a href="../../110strategies-for-troubleshooting-ansible-errors/strategies-for-troubleshooting-ansible-errors/" class="md-nav__link"><span class="md-ellipsis">Strategies for troubleshooting Ansible errors</span></a></li><li class="md-nav__item"><a href="../../111handling-errors-in-ansible-playbooks/handling-errors-in-ansible-playbooks/" class="md-nav__link"><span class="md-ellipsis">Handling errors in Ansible playbooks</span></a></li><li class="md-nav__item"><a href="../../112using-ansible-handlers-for-optimized-task-execution/using-ansible-handlers-for-optimized-task-execution/" class="md-nav__link"><span class="md-ellipsis">Using Ansible handlers for optimized task execution</span></a></li><li class="md-nav__item"><a href="../../113ansible-parsers-and-filters/ansible-parsers-and-filters/" class="md-nav__link"><span class="md-ellipsis">Ansible parsers and filters</span></a></li><li class="md-nav__item"><a href="../../114password-management-with-ansible/password-management-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Password Management with Ansible</span></a></li><li class="md-nav__item"><a href="../../115enhancing-ansible-output/enhancing-ansible-output/" class="md-nav__link"><span class="md-ellipsis">Enhancing Ansible output</span></a></li><li class="md-nav__item"><a href="../../116boosting-ansible-performance/boosting-ansible-performance/" class="md-nav__link"><span class="md-ellipsis">Boosting Ansible performance</span></a></li><li class="md-nav__item"><a href="../../117running-ansible-playbooks-through-a-bastion-host/running-ansible-playbooks-through-a-bastion-host/" class="md-nav__link"><span class="md-ellipsis">Running Ansible playbooks through a Bastion host</span></a></li><li class="md-nav__item"><a href="../../../fundamentals/101key-steps-for-real-world-success/key-steps-for-real-world-success/" class="md-nav__link"><span class="md-ellipsis">Key steps for Real-World success</span></a></li><li class="md-nav__item"><a href="../../119ansible-orchestrators-and-integration-tools/ansible-orchestrators-and-integration-tools/" class="md-nav__link"><span class="md-ellipsis">Ansible orchestrators and integration tools</span></a></li><li class="md-nav__item"><a href="../../120key-takeaways-from-the-ansible-course/key-takeaways-from-the-ansible-course/" class="md-nav__link"><span class="md-ellipsis">Key takeaways from the Ansible course</span></a></li><li class="md-nav__item"><a href="../../121comprehensive-ansible-lab/comprehensive-ansible-lab/" class="md-nav__link"><span class="md-ellipsis">Comprehensive Ansible Lab</span></a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_2" checked><label class="md-nav__link" for="__nav_series_1_2" id="__nav_series_1_2_label" tabindex="0"><span class="md-ellipsis">Appendixes</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_2_label" aria-expanded="true"><label class="md-nav__title" for="__nav_series_1_2"><span class="md-nav__icon md-icon"></span>Appendixes</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../131managing-cli-prompts-with-ansible/managing-cli-prompts-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Managing CLI prompts with Ansible</span></a></li><li class="md-nav__item"><a href="../../132reboot-a-device-with-ansible-and-wait-for-it-to-come-online/reboot-a-device-with-ansible-and-wait-for-it-to-come-online/" class="md-nav__link"><span class="md-ellipsis">Reboot a device with Ansible and wait for it to come online</span></a></li><li class="md-nav__item"><a href="../../133event-driven-ansible/event-driven-ansible/" class="md-nav__link"><span class="md-ellipsis">Event-Driven Ansible</span></a></li><li class="md-nav__item"><a href="../../134ansible-reporting-with-ara/ansible-reporting-with-ara/" class="md-nav__link"><span class="md-ellipsis">Ansible reporting with ARA</span></a></li><li class="md-nav__item md-nav__item--active"><a href="./" class="md-nav__link md-nav__link--active" aria-current="page"><span class="md-ellipsis">Orchestrating playbooks with Ansible AWX</span></a></li><li class="md-nav__item"><a href="../../136ansible-galaxy/ansible-galaxy/" class="md-nav__link"><span class="md-ellipsis">Ansible Galaxy</span></a></li><li class="md-nav__item"><a href="../../137delegate-ansible-tasks-to-a-different-host/delegate-ansible-tasks-to-a-different-host/" class="md-nav__link"><span class="md-ellipsis">Delegate Ansible tasks to a different host</span></a></li><li class="md-nav__item"><a href="../../144ansible-workbook-for-devnetops-slides/ansible-workbook-for-devnetops-slides/" class="md-nav__link"><span class="md-ellipsis">Ansible Workbook for DevNetOps slides</span></a></li><li class="md-nav__item"><a href="../../145automatic-cis-controls-check-with-ansible/automatic-cis-controls-check-with-ansible/" class="md-nav__link"><span class="md-ellipsis">Automatic CIS controls check with Ansible</span></a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-nav__toggle md-toggle" type="checkbox" id="__nav_series_1_3"><label class="md-nav__link" for="__nav_series_1_3" id="__nav_series_1_3_label" tabindex="0"><span class="md-ellipsis">ServiceNow</span><span class="md-nav__icon md-icon"></span></label><nav class="md-nav" data-md-level="3" aria-labelledby="__nav_series_1_3_label" aria-expanded="false"><label class="md-nav__title" for="__nav_series_1_3"><span class="md-nav__icon md-icon"></span>ServiceNow</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../../139automating-network-provisioning-with-servicenow-and-ansible/automating-network-provisioning-with-servicenow-and-ansible/" class="md-nav__link"><span class="md-ellipsis">Automating Network Provisioning with ServiceNow and Ansible</span></a></li><li class="md-nav__item"><a href="../../140servicenow-catalog-configuration/servicenow-catalog-configuration/" class="md-nav__link"><span class="md-ellipsis">ServiceNow Catalog Configuration</span></a></li><li class="md-nav__item"><a href="../../141ansible-playbook-for-network-provisioning/ansible-playbook-for-network-provisioning/" class="md-nav__link"><span class="md-ellipsis">Ansible playbook for Network provisioning</span></a></li><li class="md-nav__item"><a href="../../142servicenow-poll-based-request-processing/servicenow-poll-based-request-processing/" class="md-nav__link"><span class="md-ellipsis">ServiceNow Poll-Based Request Processing</span></a></li><li class="md-nav__item"><a href="../../143automated-vm-provisioning-from-a-servicenow-ticket/automated-vm-provisioning-from-a-servicenow-ticket/" class="md-nav__link"><span class="md-ellipsis">Automated VM Provisioning from a ServiceNow Ticket</span></a></li></ul></nav></li></ul></nav></li></ul></nav></li></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minikube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minikube
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-awx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installing AWX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ansible-pylibssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ansible-pylibssh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bastion-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bastion host
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-awx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring AWX
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ansible" class="md-tag">ansible</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:awx" class="md-tag">awx</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-03-22">22 March 2025</time></span></p>
+<h1 id="orchestrating-playbooks-with-ansible-awx">Orchestrating playbooks with Ansible AWX<a class="headerlink" href="#orchestrating-playbooks-with-ansible-awx" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:awx">awx</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/awx.png" /></p>
+<p><a href="https://github.com/ansible/awx">Ansible AWX</a> is the open-source version from which <a href="https://docs.ansible.com/ansible-tower/index.html">Ansible Tower</a> draws inspiration. Both AWX and Tower are orchestrators for Ansible playbooks, allowing management of playbooks in the form of projects, credentials, schedules, and reports.</p>
+<p>The installation of Ansible AWX is particularly complex and has changed multiple times over time. Currently, it requires a <a href="https://kubernetes.io/">Kubernetes</a> environment which we will install on an Ubuntu Linux Server system.</p>
+<p>Therefore, we need a system with the following specifications:</p>
+<ul>
+<li><a href="https://releases.ubuntu.com/22.04/">Ubuntu Linux Server 22.04</a></li>
+<li>8 cores</li>
+<li>8 GB of RAM</li>
+<li>50 GB of disk space</li>
+</ul>
+<h2 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h2>
+<p>First, we install <a href="https://www.docker.com/">Docker</a>  by following the <a href="https://docs.docker.com/engine/install/ubuntu/">official documentation</a>.</p>
+<p>Remove any packages related to previous versions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>apt-get<span class="w"> </span>purge<span class="w"> </span>docker.io<span class="w"> </span>docker-doc<span class="w"> </span>docker-compose<span class="w"> </span>docker-compose-v2<span class="w"> </span>podman-docker<span class="w"> </span>containerd<span class="w"> </span>runc
+</code></pre></div>
+<p>Add the official Docker repository:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>wget<span class="w"> </span>-qO-<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>add-apt-repository<span class="w"> </span><span class="s2">"deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2">] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$VERSION_CODENAME</span><span class="s2">"</span><span class="k">)</span><span class="s2"> stable"</span>
+</code></pre></div>
+<p>Finally, install Docker:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+</code></pre></div>
+<h2 id="minikube">Minikube<a class="headerlink" href="#minikube" title="Permanent link">&para;</a></h2>
+<p><a href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a> allows us to have a complete instance of Kubernetes within a single virtual machine.</p>
+<p>So, let's install Minikube:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>curl<span class="w"> </span>-LO<span class="w"> </span>https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>install<span class="w"> </span>minikube-linux-amd64<span class="w"> </span>/usr/local/bin/minikube<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>minikube-linux-amd64
+</code></pre></div>
+<p>Then, with an unprivileged user but belonging to the <code>docker</code> group, we create the Kubernetes instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>minikube<span class="w"> </span>start<span class="w"> </span>--cpus<span class="o">=</span><span class="m">4</span><span class="w"> </span>--memory<span class="o">=</span>6g<span class="w"> </span>--addons<span class="o">=</span>ingress
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>minikube<span class="w"> </span>kubectl<span class="w"> </span>--<span class="w"> </span>get<span class="w"> </span>nodes
+</code></pre></div>
+<p>For simplicity, let's add an alias that allows us to use the <strong>kubectl</strong> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">kubectl</span><span class="o">=</span><span class="s2">"minikube kubectl --"</span>
+</code></pre></div>
+<h2 id="installing-awx">Installing AWX<a class="headerlink" href="#installing-awx" title="Permanent link">&para;</a></h2>
+<p>Check the <a href="https://github.com/ansible/awx-operator/releases">AWX Operator repository</a> to see which tag we can use (<strong>2.16.1</strong>) and create the necessary files for the environment setup:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># awx/kustomization.yaml</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize.config.k8s.io/v1beta1</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kustomization</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awx</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nt">images</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quay.io/ansible/awx-operator</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">newTag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.16.1</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.com/ansible/awx-operator/config/default?ref=2.16.1</span>
+</code></pre></div>
+<p>Then apply the changes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span>awx/
+</code></pre></div>
+<p>Monitor the pod creation with the following command and wait for it to finish:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>-w
+</code></pre></div>
+<p>Then create the resource file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># awx/awx.yaml</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awx.ansible.com/v1beta1</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWX</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awx</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nt">service_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nodeport</span>
+</code></pre></div>
+<p>And associate it with the previously created file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># awx/kustomization.yaml</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize.config.k8s.io/v1beta1</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kustomization</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awx</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nt">images</span><span class="p">:</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quay.io/ansible/awx-operator</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="nt">newTag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.16.1</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.com/ansible/awx-operator/config/default?ref=2.16.1</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awx.yaml</span>
+</code></pre></div>
+<p>Then apply the changes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span>awx/
+</code></pre></div>
+<p>And monitor the logs related to the creation of the AWX service:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>-f<span class="w"> </span>deployments/awx-operator-controller-manager<span class="w"> </span>-c<span class="w"> </span>awx-manager
+</code></pre></div>
+<p>We can also monitor the pod status:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
+</code></pre></div>
+<p>At the end of the process, the AWX service should be available:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>minikube<span class="w"> </span>service<span class="w"> </span>awx-service<span class="w"> </span>--url<span class="w"> </span>-n<span class="w"> </span>awx
+</code></pre></div>
+<p>Now we need to make the AWX service reachable from the outside:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/awx-service<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>The AWX web interface should now be available on port <code>8080</code>. Login is possible with the user <code>admin</code> and the password can be retrieved using the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>awx-admin-password<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.data.password}"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
+</code></pre></div>
+<p><img alt="awx-dashboard" src="../images/awx-dashboard.png" /></p>
+<p>In case of issues, we need to check the status of the entire environment using the following commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>minikube<span class="w"> </span>status
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>minikube<span class="w"> </span>service<span class="w"> </span>list
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>services<span class="w"> </span>-n<span class="w"> </span>awx
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>-f<span class="w"> </span>deployments/awx-operator-controller-manager
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>-f<span class="w"> </span>deployments/awx-task
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>-f<span class="w"> </span>deployments/awx-web
+</code></pre></div>
+<p>In case of extreme necessity, it is possible to get a shell inside the various containers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--stdin<span class="w"> </span>--tty<span class="w"> </span>--namespace<span class="w"> </span>awx<span class="w"> </span>awx-task-5f88767b44-87m9p<span class="w"> </span>--<span class="w"> </span>/bin/bash
+</code></pre></div>
+<h2 id="ansible-pylibssh">ansible-pylibssh<a class="headerlink" href="#ansible-pylibssh" title="Permanent link">&para;</a></h2>
+<p>If we need the <code>ansible-pylibssh</code> library, we need to make an additional modification. AWX, like Ansible, by default, uses the <code>paramiko</code> library. Playbook execution is performed by a container created at runtime from the <a href="https://quay.io/repository/ansible/awx-ee">awx-ee</a> image:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>minikube<span class="w"> </span>ssh<span class="w"> </span>docker<span class="w"> </span>images
+</code></pre></div>
+<p>If we run a playbook using the default environment, we get the following error:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "No existing session"}
+</code></pre></div>
+<p>We can force the use of <code>pylibssh</code> by setting the following variable:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">ansible_network_cli_ssh_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">libssh</span>
+</code></pre></div>
+<p>In this case, we would get a more explicit error:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "Failed to import the required Python library (ansible-pylibssh) on automation-job-11-m85n8's Python /usr/bin/python3. Please read the module documentation and install it in the appropriate location. If the required library is installed, but Ansible is using the wrong Python interpreter, please consult the documentation on ansible_python_interpreter"}
+</code></pre></div>
+<p>There is a third-party <a href="https://quay.io/repository/azzeddineslimani/eev_awx_cisco">EE image</a> (Execution Environment) containing <code>ansible-pylibssh</code>: however, it is a year old and without any guarantee.</p>
+<p>The <a href="https://github.com/dainok/courses/tree/master/Ansible/A5.%20AWX">GitHub repository</a> contains the structure contributing to the creation of the <a href="https://hub.docker.com/repository/docker/dainok/awx-ee-pylibssh/general">dainok/awx-ee-pylibssh</a> image. In particular, there are four files:</p>
+<ul>
+<li><code>dependencies/bindep.txt</code>: contains the list of RPM packages to install in the image.</li>
+<li><code>dependencies/requirements.txt</code>: contains the list of Python packages to install in the image.</li>
+<li><code>dependencies/requirements.yml</code>: contains the Ansible Galaxy modules to install in the image.</li>
+<li><code>execution-environment.yml</code>: defines how to create the image from a specific version of <code>awx-ee</code> based on the dependencies defined above.</li>
+</ul>
+<p>So, let's create the environment to build the image:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span><span class="s2">"/opt/courses/Ansible/A5. AWX"</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ansible</span><span class="o">==</span><span class="m">9</span>.5.1<span class="w"> </span>ansible-builder<span class="o">==</span><span class="m">3</span>.0.1
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>ansible-builder<span class="w"> </span>build<span class="w"> </span>--tag<span class="w"> </span>dainok/awx-ee-pylibssh:1<span class="w"> </span>--container-runtime<span class="w"> </span>docker<span class="w"> </span>--verbosity<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<p>Once the creation is complete, we can publish the image on Docker Hub:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>docker<span class="w"> </span>login
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>docker<span class="w"> </span>tag<span class="w"> </span>dainok/awx-ee-pylibssh:1<span class="w"> </span>dainok/awx-ee-pylibssh:latest
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>docker<span class="w"> </span>push<span class="w"> </span>dainok/awx-ee-pylibssh:1
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>docker<span class="w"> </span>push<span class="w"> </span>dainok/awx-ee-pylibssh:latest
+</code></pre></div>
+<h2 id="bastion-host">Bastion host<a class="headerlink" href="#bastion-host" title="Permanent link">&para;</a></h2>
+<p>The architecture of the bastion host has already been described in a previous lesson and we will refer to the same architecture.</p>
+<p>First, we need to copy the contents of the <code>id_rsa.pub</code> file into the <code>authorized_keys</code> file of the bastion host. Then, we make the private key <code>id_rsa</code> available to AWX:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>bastion-host-key<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>--from-file<span class="o">=</span>ssh-privatekey<span class="o">=</span>.ssh/id_rsa
+</code></pre></div>
+<p>In AWX, go to <code>Instance Groups</code> → <code>default</code> → <code>Edit</code> → <code>Customize pod specification</code>. The content should be similar to the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awx</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="w">  </span><span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quay.io/ansible/awx-ee:latest</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">      </span><span class="nt">args</span><span class="p">:</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-runner</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'--private-data-dir=/runner'</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250m</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100Mi</span>
+</code></pre></div>
+<p>Customize the configuration so that the key referenced as <code>Secret</code> is available as a local file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">awx</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="w">  </span><span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quay.io/ansible/awx-ee:latest</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="w">      </span><span class="nt">args</span><span class="p">:</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible-runner</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">worker</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'--private-data-dir=/runner'</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="w">        </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">250m</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100Mi</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="w">      </span><span class="c1"># Custom config starts here</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a><span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh-keys</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/bastionhost_id_rsa</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssh-keys</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="w">      </span><span class="nt">secret</span><span class="p">:</span>
+<a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a><span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bastion-host-key</span>
+<a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a><span class="w">        </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0400</span>
+<a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a><span class="w">  </span><span class="nt">securityContext</span><span class="p">:</span>
+<a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w"> </span><span class="c1"># The AWX user</span>
+<a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a><span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w"> </span><span class="c1"># The AWX user</span>
+</code></pre></div>
+<p>Finally, in the inventory <code>Resources</code> → <code>Inventories</code> → <code>Cisco Legacy Core-Access topology</code>, add the variable that forces the use of the bastion host:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible.netcommon.network_cli</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco.ios.ios</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nt">ansible_network_cli_ssh_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">paramiko</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="nt">ansible_ssh_common_args</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-o ProxyCommand="ssh -o IdentityFile=/opt/bastionhost_id_rsa/ssh-privatekey -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -W %h:%p -q dev@172.25.82.110"</span>
+</code></pre></div>
+<p>Now, all playbooks associated with the inventory <code>Cisco Legacy Core-Access topology</code> will be executed via the bastion host.</p>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<p>The playbook repositories we will use in AWX must contain the list of Ansible Galaxy modules needed within the <a href="https://github.com/dainok/courses/blob/master/collections/requirements.yml">collections/requirements.yml</a> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nt">collections</span><span class="p">:</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco.ios</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8.0.0</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://galaxy.ansible.com</span>
+</code></pre></div>
+<p>The same file can be used to install dependencies in the local environment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>src/courses/collections/requirements.yml
+</code></pre></div>
+<h2 id="configuring-awx">Configuring AWX<a class="headerlink" href="#configuring-awx" title="Permanent link">&para;</a></h2>
+<p>First, let's create the execution environment (EE) using the Docker image created earlier. In <code>Administration</code> → <code>Execution Environments</code>, add a new image:</p>
+<ul>
+<li>Name: <code>awx-ee-pylibssh</code></li>
+<li>Image: <code>dainok/awx-ee-pylibssh:1</code></li>
+<li>Pull: Only pull the image if not present before running</li>
+</ul>
+<p>Now, go to <code>Resources</code> → <code>Projects</code> and add a project using the course's <a href="https://github.com/dainok/courses/">GitHub repository</a>:</p>
+<ul>
+<li>Name: <code>Courses</code></li>
+<li>Execution Environment: <code>awx-ee-pylibssh</code></li>
+<li>Source Control Type: <code>Git</code></li>
+<li>Source Control URL: <a href="https://github.com/dainok/courses">https://github.com/dainok/courses</a></li>
+</ul>
+<p>Next, go to <code>Resources</code> → <code>Inventories</code> to create a new inventory of type <code>inventory</code>:</p>
+<ul>
+<li>Name: <code>Cisco Legacy Core-Access topology</code></li>
+</ul>
+<p>The inventory will have the following variables defined in YAML format:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible.netcommon.network_cli</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco.ios.ios</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nt">ansible_network_cli_ssh_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">libssh</span>
+</code></pre></div>
+<p>Then, create the two groups used in the playbooks: <code>core</code> and <code>access</code>.</p>
+<p>Add the credentials by going to <code>Resources</code> → <code>Credentials</code>:</p>
+<ul>
+<li>Name: <code>Cisco Lab</code></li>
+<li>Credential Type: <code>Machine</code></li>
+<li>Username: <code>admin</code></li>
+<li>Password: <code>cisco</code></li>
+</ul>
+<p>Finally, add the six devices associating them with the correct group:</p>
+<ul>
+<li><code>sw1.example.com</code>: associated with the <code>core</code> group with variable <code>ansible_host: 169.254.1.101</code></li>
+<li><code>sw2.example.com</code>: associated with the <code>core</code> group with variable <code>ansible_host: 169.254.1.102</code></li>
+<li><code>sw3.example.com</code>:associated with the <code>access</code> group with variable <code>ansible_host: 169.254.1.103</code></li>
+<li><code>sw4.example.com</code>: associated with the <code>access</code> group with variable <code>ansible_host: 169.254.1.104</code></li>
+<li><code>sw5.example.com</code>: associated with the <code>access</code> group with variable <code>ansible_host: 169.254.1.105</code></li>
+<li><code>sw6.example.com</code>: associated with the <code>access</code> group with variable <code>ansible_host: 169.254.1.106</code></li>
+</ul>
+<p>Finally, create the template for playbook execution. Go to <code>Resources</code> → <code>Templates</code> and add a new template:</p>
+<ul>
+<li>Name: <code>Fabric provisioning</code></li>
+<li>Job Type: <code>Run</code></li>
+<li>Inventory: <code>Cisco Legacy Core-Access topology</code></li>
+<li>Project: <code>Courses</code></li>
+<li>Playbook: <code>Ansible/17. Final lab/playbook-fabric-setup.yml</code></li>
+<li>Credentials: <code>Cisco Lab</code></li>
+</ul>
+<p>Save the template and run it. Under <code>Jobs</code>, you can see the task result and its logs.</p>
+<p>The first execution may take longer as it needs to create the container used to run the playbook:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-A
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>NAMESPACE<span class="w">   </span>NAME<span class="w">                                               </span>READY<span class="w">   </span>STATUS<span class="w">              </span>RESTARTS<span class="w">        </span>AGE
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>awx<span class="w">         </span>automation-job-5-plmtj<span class="w">                             </span><span class="m">0</span>/1<span class="w">     </span>ContainerCreating<span class="w">   </span><span class="m">0</span><span class="w">               </span>6m56s
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>awx<span class="w">         </span>awx-migration-24.3.1-qmncx<span class="w">                         </span><span class="m">0</span>/1<span class="w">     </span>Completed<span class="w">           </span><span class="m">0</span><span class="w">               </span>42h
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>awx<span class="w">         </span>awx-operator-controller-manager-5b795f7bb-597fv<span class="w">    </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">             </span><span class="m">17</span><span class="w"> </span><span class="o">(</span>22h<span class="w"> </span>ago<span class="o">)</span><span class="w">    </span>42h
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>awx<span class="w">         </span>awx-postgres-15-0<span class="w">                                  </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">             </span><span class="m">0</span><span class="w">               </span>42h
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>awx<span class="w">         </span>awx-task-77b9bcbc8d-txjl8<span class="w">                          </span><span class="m">4</span>/4<span class="w">     </span>Running<span class="w">             </span><span class="m">0</span><span class="w">               </span>42h
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>awx<span class="w">         </span>awx-web-7569c8f4f9-dxmvk<span class="w">                           </span><span class="m">3</span>/3<span class="w">     </span>Running<span class="w">             </span><span class="m">0</span><span class="w">               </span>42h
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>There are a large number of moving parts that can malfunction. Let's summarize potential errors we may encounter.</p>
+<p>The task execution should trigger the download of the Docker image we created. Let's verify this with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>$<span class="w"> </span>minikube<span class="w"> </span>ssh<span class="w"> </span>docker<span class="w"> </span>images
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>REPOSITORY<span class="w">                  </span>TAG<span class="w">   </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">        </span>SIZE
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>dainok/awx-ee-pylibssh<span class="w">      </span><span class="m">1</span><span class="w">     </span>f2bee65d1f1c<span class="w">   </span><span class="m">18</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">   </span><span class="m">3</span>.36GB
+</code></pre></div>
+<p>If the container creation takes longer than expected and particularly if it stops at <code>ContainerCreating</code>, we can analyze the problem with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>automation-job-12-gqzxr
+</code></pre></div>
+<p>If the image is not downloaded correctly, check the URL including the tag. The error associated with the inability to retrieve the image is:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>Receptor detail:
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>Error creating pod: container failed to start, ImagePullBackOff
+</code></pre></div>
+<p>If the logs indicate a timeout when connecting to devices, it's possible the bastion host configuration is incorrect:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "ssh connection failed: ssh connect failed: Timeout connecting to 169.254.1.111"}
+</code></pre></div>
+<p>A similar error indicates probably the inability to access the bastion host, if used:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "ssh connection failed: ssh connect failed: Socket error: Connection reset by peer"}
+</code></pre></div>
+<p>In this case, we should see similar logs on the bastion host:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>May 11 06:14:50 eve-ng sshd[1885336]: Failed password for dev from 172.25.82.1 port 49826 ssh2
+</code></pre></div>
+<p>If you encounter errors related to the <strong>pylibssh</strong> library, it's crucial to ensure that you are using the correct EE image referenced at the inventory and/or template level. For instance, if you receive a warning about <strong>ansible-pylibssh</strong> not being installed and a failure message indicating no existing session, you might encounter the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>ok: [sw1.example.com]
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>TASK [cisco_ios_system : CONFIGURING HOSTNAME AND DOMAIN NAME] *****************
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "No existing session"}
+</code></pre></div>
+<p>To avoid ambiguity, if you are not using a bastion host, ensure that the use of <code>pylibssh</code> is enforced by the configuration; otherwise, you might encounter an error similar to this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "Failed to import the required Python library (ansible-pylibssh) on automation-job-11-m85n8's Python /usr/bin/python3. Please read the module documentation and install it in the appropriate location. If the required library is installed, but Ansible is using the wrong Python interpreter, please consult the documentation on ansible_python_interpreter"}
+</code></pre></div>
+<p>If you are experiencing connection issues with outdated devices, you might see an error message like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "ssh connection failed: ssh connect failed: kex error : no match for method kex algos: server [diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1], client [curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512]"}
+</code></pre></div>
+<p>In this case, you may need to use <code>paramiko</code> instead of <code>ansible-pylibssh</code> by setting the following configuration variable:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nt">ansible_network_cli_ssh_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">libssh</span>
+</code></pre></div>
+<p>Finally, if you receive an error related to credentials or credential type, you might see a message like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>fatal: [sw1.example.com]: FAILED! =&gt; {"changed": false, "msg": "ssh connection failed: Failed to authenticate public key: Access denied for 'none'. Authentication that can continue: publickey,keyboard-interactive,password"}
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,46 @@
+/* Grid of series cards (see hooks/series_cards.py) */
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 0.8rem;
+    margin: 1em 0;
+}
+
+.series-card {
+    position: relative;
+    padding: 0.8rem 1rem;
+    border: 0.05rem solid var(--md-default-fg-color--lightest);
+    border-radius: 0.2rem;
+    transition: border-color 125ms, box-shadow 125ms;
+}
+
+.series-card:hover,
+.series-card:focus-within {
+    border-color: var(--md-accent-fg-color);
+    box-shadow: var(--md-shadow-z2);
+}
+
+/* Card title: override the default Material h2 look */
+.md-typeset .series-card h2 {
+    margin: 0 0 0.6rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.05rem solid var(--md-default-fg-color--lightest);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: normal;
+}
+
+.md-typeset .series-card h2 .headerlink {
+    display: none;
+}
+
+/* Make the whole card clickable through the title link */
+.md-typeset .series-card h2 a:not(.headerlink)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.md-typeset .series-card p {
+    margin: 0;
+}

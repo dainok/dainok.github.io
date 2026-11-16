@@ -1,0 +1,674 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/governance/approaching-ot-ics-cybersecurity/approaching-ot-ics-cybersecurity/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Approaching OT/ICS Cybersecurity - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#approaching-otics-cybersecurity" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Approaching OT/ICS Cybersecurity
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-attackers-point-of-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the Attacker's point of view
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-do-we-interconnect-critical-devices-to-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why (do we interconnect critical devices to Internet?)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#peculiarities-of-otics-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peculiarities of OT/ICS devices
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-should-we-approach-cybersecurity-in-otics-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How (should we approach Cybersecurity in OT/ICS environments?)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-should-we-do-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What (should we do in practice?)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-ot-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IT - OT Convergence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:governance" class="md-tag">governance</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:intermediate" class="md-tag">intermediate</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ot-ics" class="md-tag">ot-ics</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2022-03-28">28 March 2022</time></span></p>
+<h1 id="approaching-otics-cybersecurity">Approaching OT/ICS Cybersecurity<a class="headerlink" href="#approaching-otics-cybersecurity" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:governance">governance</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:ot-ics">ot-ics</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
+<p>A few days ago, together with <a href="https://roccosicilia.com/" title="Rocco Sicilia's Blog">Rocco Sicilia</a> and <a href="https://www.festocte.it/academy/" title="FESTO Academy">FESTO Academy</a>, I presented a webinar on OT/ICS Cybersecurity approach. We are often spending time increasing Cybersecurity awareness, and that webinar was focused to gives Cybersecurity fundamentals to OT managers.</p>
+<h2 id="understanding-the-attackers-point-of-view">Understanding the Attacker's point of view<a class="headerlink" href="#understanding-the-attackers-point-of-view" title="Permanent link">&para;</a></h2>
+<p>The main discussion was about the Threat Actors, I mean, the attackers. Understanding the attackers gives us the big picture about the different business models they have (the "why", using a definition by <a href="https://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action" title="How great leaders inspire action">Simon Sinek</a>). We focused on:</p>
+<ul>
+<li>the evolving Cybercrime phenomena;</li>
+<li>the value the attacker is looking for;</li>
+<li>types of attackers, goals, and budgets;</li>
+</ul>
+<p>Then we discussed some popular Cyberattacks: from WannaCry and NotPetya (2017) which I consider IT attacks to OT/ICS specific attacks: Stuxnet (Iran, 2010), BlackEnergy (Ukraine, 2015), Triton (Saudi Arabia, 2017), Florida city's water supply (2021), Colonial Pipeline (2021), and the recent Viasat attack (2022).</p>
+<p><img alt="cybercrime-gangs" src="../images/cybercrime-gangs.png" /></p>
+<p>Even if IT and OT attacks have different targets, we reviewed how attackers are <a href="https://www.cert.govt.nz/it-specialists/guides/how-ransomware-happens-and-how-to-stop-it/" title="Life cycle of a ransomware incident">used to breach in</a> enterprises: <strong>three out of four Threat Vectors are based on human behavior</strong>, one Threat Vector only is technology-based.</p>
+<h2 id="why-do-we-interconnect-critical-devices-to-internet">Why (do we interconnect critical devices to Internet?)<a class="headerlink" href="#why-do-we-interconnect-critical-devices-to-internet" title="Permanent link">&para;</a></h2>
+<p>Based on the previous paragraph the question is legitimate and the answer is obvious: the Industry 4.0 era is based on fast and automatic interactions (data exchanges). Data can be automatically transmitted between components, plants, systems, suppliers, customers... The more automatic and fast the process is, the more profitable the business is.</p>
+<blockquote>
+<p>Cyberspace provides tools, methods, and interactions to get more opportunities.</p>
+</blockquote>
+<p>But at the same time:</p>
+<blockquote>
+<p>It is considered the fifth theater of warfare.</p>
+</blockquote>
+<p>Place ourselves out of Cyberspace or interconnecting everything without considering the consequences are extreme solutions. We need to find the right balance between them.</p>
+<blockquote>
+<p>Find the correct proportion between freedom, even unconscious, and security</p>
+</blockquote>
+<h2 id="peculiarities-of-otics-devices">Peculiarities of OT/ICS devices<a class="headerlink" href="#peculiarities-of-otics-devices" title="Permanent link">&para;</a></h2>
+<p>The next chapter was about OT/ICS peculiarities. The audience was already aware, but we presented them from an IT perspective:</p>
+<ul>
+<li>designed for "availability": the same term is used in the IT world with a different meaning;</li>
+<li>extremely sensitive to Ethernet disruptions and overloads: remember that Ethernet networks can fail by design (STP convergence);</li>
+<li>communications do not guarantee confidentiality, integrity, and availability: those are fundamentals attributes in IT security;</li>
+<li>long term life: compared to the IT world, we can see plants 20 years old;</li>
+<li>not subject to the same life cycle as IT components: production OT/ICS components (including HMI) are usually "untouchable".</li>
+</ul>
+<p>Based on our experiences, we presented seven common issues:</p>
+<ul>
+<li>Shadow OT: nobody knows exactly what is installed in plant networks and why (e.g. WiFi networks, cloud base telemetry, vulnerable devices, default passwords, remote access devices...). That leads to <strong>unmanaged Risk</strong>.</li>
+<li>Weak and sensitive protocols: OT/ICS protocols don't follow the CIA triage used in IT, but they run on Ethernet networks. That leads to <strong>unexpected behaviors</strong>.</li>
+<li>Long term life devices: 5 years old plants installed and not maintained are vulnerable to well-known attacks. OT/ICS plants tend to be <strong>Legacy, weak and harmful</strong>.</li>
+<li>Remote maintenance: remote 3rd party operators can connect to critical plants anytime and acts locally, watch sensitive production processes and information (<strong>espionage and sabotage</strong>).</li>
+<li>Removable storage: 3rd party operators are used to upgrading software via untrusted USB keys. It's not uncommon that malware spread via USB even today.</li>
+</ul>
+<p>The list is not intended to be complete, of course; those are the main issues that industries are reporting to us.</p>
+<h2 id="how-should-we-approach-cybersecurity-in-otics-environments">How (should we approach Cybersecurity in OT/ICS environments?)<a class="headerlink" href="#how-should-we-approach-cybersecurity-in-otics-environments" title="Permanent link">&para;</a></h2>
+<p>Without reinventing the wheel, there are many standards and frameworks which can be used: <a href="https://www.nist.gov/cyberframework" title="Framework for Improving Critical Infrastructure Cybersecurity (NIST)">Framework for Improving Critical Infrastructure Cybersecurity (NIST)</a>, <a href="https://www.cisecurity.org/controls" title="CIS Controls">CIS Controls</a>, UNI ISO 31000:2018 Risk management — Guidelines, Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations (<a href="https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final" title="Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations">800-171</a> and <a href="https://csrc.nist.gov/publications/detail/sp/800-172/final" title="Enhanced Security Requirements for Protecting Controlled Unclassified Information: A Supplement to NIST Special Publication 800-171">800-172</a>) and <a href="https://www.sans.org/white-papers/36327/" title="Secure Architecture for Industrial Control Systems">Secure Architecture for Industrial Control Systems (Purdue Model)</a> were discussed during the webinar.</p>
+<p>Special mention for the IEC62443 standard: it should be taken into account for both integrators and customers. Even if we still don't have regulations for medical and industry sectors, IEC62443 is supposed to be a sort of guideline.</p>
+<p>The purpose of this phase is to plan a strategy taking into accounts</p>
+<h2 id="what-should-we-do-in-practice">What (should we do in practice?)<a class="headerlink" href="#what-should-we-do-in-practice" title="Permanent link">&para;</a></h2>
+<p>Cybersecurity is a process and is implemented with organization and technical measures. In practice we want to build a continuous improvement process, starting from the first major issue: Shadow OT.</p>
+<blockquote>
+<p>We cannot protect what we don't know.</p>
+</blockquote>
+<p>The first step requires assessing the OT/ICS infrastructure, and finding out what is installed, the purpose, the business impact, the weakness or robustness... Then we can move on to the supplier, partners, 3rd parties, and employees and evaluate the Cybersecurity risk.</p>
+<p>We can suppose a 4-phases improvement process:</p>
+<ul>
+<li>Check: measures the Cybersecurity posture (get qualitative or quantitative values regarding the many Cybersecurity aspects).</li>
+<li>Act: analyze the associated Risk and highlight the unacceptable ones.</li>
+<li>Plan: define a strategy to mitigate the unacceptable risks, taking into account standards and regulations.</li>
+<li>Do: govern and supervise the implementation.</li>
+</ul>
+<p><img alt="cybersecurity-pdca" src="../images/cybersecurity-pdca.png" /></p>
+<p>It's a PDCA cycle, but I'm starting from the third phase because I assume the first two steps are already been completed during the first iteration. It is expected that the next CHECK phase will get better KPI (Key Performance Indicators).</p>
+<h2 id="it-ot-convergence">IT - OT Convergence<a class="headerlink" href="#it-ot-convergence" title="Permanent link">&para;</a></h2>
+<p>An interesting discussion was about IT and OT convergence: should we go for it?</p>
+<p>I consider IT and OT two different worlds with different values and rules. In my opinion, they cannot converge and they shouldn't. If IT guys follow the CIA (Confidentiality, Integrity, Availability) triad, the OT guys are following a sort of Safety, Reliability, and Productivity triad. Moreover, if uniqueness is something to avoid in IT (we don't want to reinvent the wheel), customization is expected in OT/ICS.</p>
+<p>But the IT and OT Cybersecurity must converge. Moreover, Cybersecurity must be a common overlay for all organization departments. The IT and OT Cybersecurity convergence point is defined by:</p>
+<ul>
+<li>Safety first.</li>
+<li>A Risk-based approach.</li>
+<li>Open mindset and dialogue with stakeholders.</li>
+</ul>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>Preparing a webinar or a training path is a good way to review concepts and organize them in a coherent flow. I hope auditors could get a different point of view regarding OT/ICS security. <a href="../../../slides/20220317-approaching-ot-ics-security.pdf">Slides are available</a> and the additional session will be delivered in the future.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

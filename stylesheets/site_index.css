@@ -1,0 +1,184 @@
+/* Tag cloud, A-Z index, cover image and byline (.mkdocs/site_index.py, obsidian_links.py, article_byline.py) */
+
+/* ---------- tag cloud ---------- */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem 1.1rem;
+  margin: 1.2rem 0 2rem;
+  padding: 1.1rem 1.3rem;
+  border: 1px solid var(--brand-wash);
+  border-radius: 6px;
+  line-height: 1.25;
+}
+
+.tag-cloud__tag {
+  text-decoration: none !important;
+  color: var(--md-default-fg-color--light) !important;
+  transition: color .15s;
+}
+
+.tag-cloud__tag sup {
+  margin-left: .15em;
+  font-size: .6em;
+  font-weight: 400;
+  opacity: .7;
+}
+
+.tag-cloud__tag:hover {
+  color: var(--md-accent-fg-color) !important;
+  background: none !important;
+}
+
+.tag-cloud__tag--1 {
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+.tag-cloud__tag--2 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.tag-cloud__tag--3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--md-typeset-a-color) !important;
+}
+
+.tag-cloud__tag--4 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--md-typeset-a-color) !important;
+}
+
+.tag-cloud__tag--5 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--md-typeset-a-color) !important;
+}
+
+.tag-cloud__empty {
+  color: var(--md-default-fg-color--light);
+}
+
+/* ---------- A-Z index ---------- */
+.az-count {
+  color: var(--md-default-fg-color--light);
+  margin-bottom: .4rem;
+}
+
+.az-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin: .6rem 0 1.6rem;
+}
+
+.az-nav a {
+  min-width: 1.9rem;
+  padding: .15rem .45rem;
+  text-align: center;
+  font-weight: 600;
+  text-decoration: none !important;
+  border: 1px solid var(--brand-wash);
+  border-radius: 4px;
+}
+
+.az-nav a:hover {
+  background: var(--brand-wash);
+  border-color: var(--brand);
+}
+
+.az-tags {
+  margin-left: .4rem;
+}
+
+.az-tags .md-tag {
+  font-size: .6rem;
+  margin: 0 .15rem 0 0;
+}
+
+.md-typeset .az-tags a.md-tag {
+  text-decoration: none;
+}
+
+.md-typeset .az-tags a.md-tag:hover {
+  background: var(--brand);
+  color: #1d1c00;
+}
+
+/* the section letters of the A-Z index are large; keep the underline short */
+.md-typeset h2[id^="az-"] {
+  min-width: 2.4rem;
+}
+
+/* ---------- cover image at the top of a page ---------- */
+.md-typeset img.page-cover {
+  display: block;
+  width: 100%;
+  max-height: 18rem;
+  object-fit: cover;
+  margin: 0 0 1.4rem;
+  border-radius: 6px;
+}
+
+/* ---------- date above the title ---------- */
+.md-typeset p.article-date {
+  margin: 0 0 .85rem;
+  /* breathing room above the title */
+  line-height: 1.2;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+
+.article-date .byline__item {
+  gap: .35rem;
+}
+
+/* ---------- byline: author and tags under the title ---------- */
+.md-typeset p.byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem 1.2rem;
+  margin: -.5rem 0 1.6rem;
+  font-size: .72rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.byline__item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .3rem;
+}
+
+.byline .twemoji {
+  display: inline-flex;
+}
+
+.byline .twemoji svg {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--brand-deep);
+}
+
+[data-md-color-scheme="slate"] .byline .twemoji svg {
+  fill: var(--brand);
+}
+
+.md-typeset .byline a.md-tag {
+  margin: 0;
+  font-size: .62rem;
+  text-decoration: none;
+}
+
+.md-typeset .byline a.md-tag:hover {
+  background: var(--brand);
+  color: #1d1c00;
+}

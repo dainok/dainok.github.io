@@ -1,0 +1,224 @@
+/* Home page: hero banner and card grids (.mkdocs/hooks/home.py) */
+
+/* ---------- hero ---------- */
+/* The banner is dark in both schemes, so its colors are fixed. */
+.md-typeset div.home-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 17rem;
+    margin: 0 0 2.4rem;
+    padding: 2.4rem clamp(1.2rem, 4vw, 3rem);
+    overflow: hidden;
+    border-radius: 6px;
+    border-bottom: .2rem solid var(--brand-teal);
+    background-color: var(--olive-950);
+    background-image:
+        /* teal glow at the bottom */
+        linear-gradient(0deg, rgba(65, 168, 185, .18), transparent 40%),
+        /* dark only behind the title: the code is already faded on the left in the image,
+           so the scrim stays light and the colors on the right stay bright */
+        linear-gradient(90deg, rgba(22, 21, 0, .88) 0%, rgba(22, 21, 0, .55) 38%, rgba(22, 21, 0, 0) 75%),
+        url("../images/home-hero.webp");
+    background-size: cover;
+    background-position: right center;
+    color: var(--olive-100);
+}
+
+.md-typeset div.home-hero h1 {
+    margin: 0 0 .7rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.05;
+    color: var(--brand-teal);
+}
+
+.md-typeset div.home-hero .headerlink {
+    display: none;
+}
+
+/* Narrow text column: the description wraps on the dark side and stays off the code */
+.md-typeset div.home-hero p {
+    max-width: 28rem;
+    margin: 0 0 1.1rem;
+    font-size: 1.05rem;
+    color: var(--olive-100);
+}
+
+.md-typeset div.home-hero p:last-child {
+    margin-bottom: 0;
+}
+
+.md-typeset div.home-hero .md-button {
+    margin: 0 .4rem .4rem 0;
+    color: var(--teal-300);
+    border-color: var(--teal-300);
+}
+
+.md-typeset div.home-hero .md-button--primary {
+    color: var(--brand-text);
+    background-color: var(--brand-teal);
+    border-color: var(--brand-teal);
+}
+
+.md-typeset div.home-hero .md-button:hover,
+.md-typeset div.home-hero .md-button:focus {
+    color: var(--brand-text);
+    background-color: var(--teal-300);
+    border-color: var(--teal-300);
+}
+
+/* Small screens: the code sits under the text, so the scrim covers the whole width */
+@media (max-width: 44.9375em) {
+    .md-typeset div.home-hero {
+        background-image:
+            linear-gradient(0deg, rgba(65, 168, 185, .18), transparent 40%),
+            linear-gradient(90deg, rgba(22, 21, 0, .9) 0%, rgba(22, 21, 0, .7) 100%),
+            url("../images/home-hero.webp");
+    }
+}
+
+/* ---------- topic tags ---------- */
+.home-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: 1rem 0 2.2rem;
+}
+
+.md-typeset a.home-tag {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .35rem;
+    padding: .3rem .85rem;
+    font-size: .8rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--md-typeset-a-color);
+    text-decoration: none;
+    border: .1rem solid var(--brand-teal);
+    border-radius: 2rem;
+    transition: color 125ms, background-color 125ms, border-color 125ms;
+}
+
+.md-typeset a.home-tag sup {
+    font-size: .65em;
+    font-weight: 400;
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset a.home-tag:hover,
+.md-typeset a.home-tag:focus-visible {
+    color: var(--brand-text);
+    background-color: var(--brand-teal);
+    border-color: var(--brand-teal);
+}
+
+.md-typeset a.home-tag:hover sup,
+.md-typeset a.home-tag:focus-visible sup {
+    color: inherit;
+}
+
+/* ---------- card grids ---------- */
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+    gap: 1rem;
+    margin: 1rem 0 2.2rem;
+}
+
+.md-typeset a.home-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: .05rem solid var(--md-default-fg-color--lightest);
+    border-radius: .3rem;
+    color: var(--md-default-fg-color);
+    text-decoration: none;
+    transition: border-color 125ms, box-shadow 125ms;
+}
+
+.md-typeset a.home-card:hover,
+.md-typeset a.home-card:focus-visible {
+    border-color: var(--md-accent-fg-color);
+    box-shadow: var(--md-shadow-z2);
+}
+
+/* Cover: a box with a fixed ratio and some breathing room around the image.
+   The image is shown whole (contain) inside the padding, never cropped. */
+.home-card__media {
+    --media-pad-y: 1.1rem;
+    --media-pad-x: 1.6rem;
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 2;
+    overflow: hidden;
+    /* white, so logos on white or transparent backgrounds look right in both schemes */
+    background: #ffffff;
+}
+
+/* Higher specificity than Material's `.md-typeset img` (max-width, height: auto) */
+.md-typeset .home-card__media img {
+    position: absolute;
+    top: var(--media-pad-y);
+    left: var(--media-pad-x);
+    display: block;
+    width: calc(100% - 2 * var(--media-pad-x));
+    height: calc(100% - 2 * var(--media-pad-y));
+    max-width: none;
+    margin: 0;
+    object-fit: contain;
+}
+
+.home-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+    padding: .8rem 1rem 1rem;
+}
+
+.home-card__date {
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--md-default-fg-color--light);
+}
+
+.home-card__title {
+    font-size: .95rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.home-card:hover .home-card__title {
+    color: var(--md-accent-fg-color);
+}
+
+.home-card__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: .72rem;
+    line-height: 1.5;
+    color: var(--md-default-fg-color--light);
+}
+
+.home-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    margin-top: .2rem;
+}
+
+.home-card__tags .md-tag {
+    margin: 0;
+    font-size: .6rem;
+}
+
+/* series cards have no cover: a teal bar on top instead */
+.home-card--series {
+    border-top: .2rem solid var(--brand-teal) !important;
+}

@@ -1,0 +1,879 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Network automation, security and OT/ICS series, notes and labs.">
+      
+      
+        <meta name="author" content="Andrea Dainese">
+      
+      
+        <link rel="canonical" href="https://www.adainese.it/blog/evaluating-security-of-rfid-nfc-implementations/evaluating-security-of-rfid-nfc-implementations/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../images/logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>Evaluating security of RFID/NFC implementations - Andrea Dainese</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Source Sans 3";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/brand.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/home.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/site_index.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/series_cards.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/downloads.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#evaluating-security-of-rfidnfc-implementations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Don't show this again">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </button>
+            
+            
+New to the site? The full series, with downloads and labs, live on
+<a href="https://www.patreon.com/posts/108910463">Patreon</a>.
+
+          </div>
+          
+            <script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Andrea Dainese" class="md-header__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Andrea Dainese
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Evaluating security of RFID/NFC implementations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../series/fundamentals/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Series
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../index/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Index
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../events/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Events
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner"><nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0"><label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Andrea Dainese" class="md-nav__button md-logo" aria-label="Andrea Dainese" data-md-component="logo">
+      
+  <img src="../../../images/logo.svg" alt="logo">
+
+    </a>
+    Andrea Dainese
+  </label><ul class="md-nav__list" data-md-scrollfix></ul></nav></div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-red-team-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Red Team perspective
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Red Team perspective">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-the-pm3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upgrading the PM3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyzing-rfid-tags-with-proxmark3-easy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyzing RFID tags with ProxMark3 Easy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyzing-an-em410x-tag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyzing an EM410x tag
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyzing-a-mifare-classic-nfc-smartcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analyzing a MiFare Classic NFC smartcard
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-blue-team-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Blue Team perspective
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+  <nav class="md-tags" hidden>
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:security" class="md-tag">security</a>
+      
+    
+  </nav>
+
+
+
+<p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2018-01-12">12 January 2018</time></span></p>
+<h1 id="evaluating-security-of-rfidnfc-implementations">Evaluating security of RFID/NFC implementations<a class="headerlink" href="#evaluating-security-of-rfidnfc-implementations" title="Permanent link">&para;</a></h1>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
+<p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
+<p>Many companies rely on RFID (Radio-frequency identification) tags for many aspects. Employer badges are often RFID-based and allow for unique identification, authorization, and account for each employer.</p>
+<p>Other companies use simple RFID tags or the more evolved NFC smartcards to identify and bill for services. Many home alarm systems use RFID tags to manage arm/disarm operations. Moreover, RFID tags are used to identify goods within stores or buildings in general.
+In a utopian world, everything would be fine, but in the real world, we should ask how we can trust users, and technology and we must evaluate the risks caused by a tampered NFC smartcard or RFID in general.</p>
+<p>What about if an employer badge is duplicated?
+What about if a home alarm NFC smartcard is duplicated?
+What about if a laundry machine smartcard has been tampered?
+What about if an RFID tag is substituted/deactivated?</p>
+<p>This won't be an exhaustive post about RFID technology, we'll focus on how they are used in the real world.
+The most common RFID devices we found, are:</p>
+<ul>
+<li>125kHz RFID tags (EM410x)</li>
+<li>13.56MHZ NFC smartcards (MIFARE Classic)</li>
+</ul>
+<p>Both of them are old and very insecure for many reasons.</p>
+<h2 id="the-red-team-perspective">The Red Team perspective<a class="headerlink" href="#the-red-team-perspective" title="Permanent link">&para;</a></h2>
+<p>The cheapest and most flexible tool we found is ProxMark3 (PM3) Easy, it can be found on eBay at about 60€. It's a USB device with two antennas, for 125kHz and 15.56MHz tags. The bundle includes some blank tags.</p>
+<p><img alt="proxmark" src="../images/proxmark.png" /></p>
+<p>We're using the PM3 attached to a VM running the latest Kali Linux on VMware Fusion. The PM3 can be mapped to the VM and it works fine.</p>
+<h3 id="upgrading-the-pm3">Upgrading the PM3<a class="headerlink" href="#upgrading-the-pm3" title="Permanent link">&para;</a></h3>
+<p>Before using the PM3, it must be upgraded. Connect it to a Linux OS, and check if it's detected using <code>dmesg</code> and/or <code>lsusb</code>. If it's not detected, unplug it, press and hold the button on the PM3, and plug it again (keep the PM3 button pressed).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>sudo<span class="w"> </span>dmesg
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">[</span>...<span class="o">]</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.340405<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-2.2:<span class="w"> </span>new<span class="w"> </span>full-speed<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>number<span class="w"> </span><span class="m">5</span><span class="w"> </span>using<span class="w"> </span>uhci_hcd
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.455030<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-2.2:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>found,<span class="w"> </span><span class="nv">idVendor</span><span class="o">=</span>9ac4,<span class="w"> </span><span class="nv">idProduct</span><span class="o">=</span>4b8f
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.455033<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-2.2:<span class="w"> </span>New<span class="w"> </span>USB<span class="w"> </span>device<span class="w"> </span>strings:<span class="w"> </span><span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>,<span class="w"> </span><span class="nv">Product</span><span class="o">=</span><span class="m">2</span>,<span class="w"> </span><span class="nv">SerialNumber</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.455034<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-2.2:<span class="w"> </span>Product:<span class="w"> </span>PM3
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.455035<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-2.2:<span class="w"> </span>Manufacturer:<span class="w"> </span>proxmark.org
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.623029<span class="o">]</span><span class="w"> </span>cdc_acm<span class="w"> </span><span class="m">1</span>-2.2:1.0:<span class="w"> </span>ttyACM0:<span class="w"> </span>USB<span class="w"> </span>ACM<span class="w"> </span>device
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.625835<span class="o">]</span><span class="w"> </span>usbcore:<span class="w"> </span>registered<span class="w"> </span>new<span class="w"> </span>interface<span class="w"> </span>driver<span class="w"> </span>cdc_acm
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="o">[</span><span class="w"> </span><span class="m">3056</span>.625836<span class="o">]</span><span class="w"> </span>cdc_acm:<span class="w"> </span>USB<span class="w"> </span>Abstract<span class="w"> </span>Control<span class="w"> </span>Model<span class="w"> </span>driver<span class="w"> </span><span class="k">for</span><span class="w"> </span>USB<span class="w"> </span>modems<span class="w"> </span>and<span class="w"> </span>ISDN<span class="w"> </span>adapters
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="o">[</span><span class="w"> </span><span class="m">3171</span>.708851<span class="o">]</span><span class="w"> </span>usb<span class="w"> </span><span class="m">1</span>-2.2:<span class="w"> </span>USB<span class="w"> </span>disconnect,<span class="w"> </span>device<span class="w"> </span>number<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+<p>Please read the full <a href="https://github.com/Proxmark/proxmark3/wiki/Kali-Linux#Upgrading_Proxmark3_to_CDC_Bootloader" title="Proxmark3 on Kali Linux">HowTo</a> before continuing.
+Now download and prepare the environment to upgrade the PM3:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>build-essential<span class="w"> </span>libreadline5<span class="w"> </span>libreadline-dev<span class="w"> </span>gcc-arm-none-eabi<span class="w"> </span>libusb-0.1-4<span class="w"> </span>libusb-dev<span class="w"> </span>libqt4-dev<span class="w"> </span>ncurses-dev<span class="w"> </span>perl<span class="w"> </span>pkg-config
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>/usr/src/
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Proxmark/proxmark3
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>proxmark3
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">cd</span><span class="w"> </span>armsrc<span class="w"> </span>make
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">cd</span><span class="w"> </span>..
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">cd</span><span class="w"> </span>client
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>sudo<span class="w"> </span>make
+</code></pre></div>
+<p>And now (from the <code>client</code> directory) upgrade the boot loader (if required) and the firmware:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>./flasher<span class="w"> </span>/dev/ttyACM0<span class="w"> </span>-b<span class="w"> </span>../bootrom/obj/bootrom.elf
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>./flasher<span class="w"> </span>/dev/ttyACM0<span class="w"> </span>../armsrc/obj/fullimage.elf
+</code></pre></div>
+<p>Remember you need to keep the PM3 button pressed, as explained before.</p>
+<p>Inside the <code>client</code> directory run the PM3 client:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ sudo ./proxmark3 /dev/ttyACM0
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>proxmark3&gt; hw status
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>#db# Memory
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>#db#   BIGBUF_SIZE.............40000
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>#db#   Available memory........40000
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>#db# Tracing
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>#db#   tracing ................1
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>#db#   traceLen ...............0
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>#db# Fgpa
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>#db#   mode....................HF
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>#db# LF Sampling config:
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>#db#   [q] divisor:           95
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>#db#   [b] bps:               8
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>#db#   [d] decimation:        1
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>#db#   [a] averaging:         1
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>#db#   [t] trigger threshold: 0
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>#db# USB Speed:
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>#db#   Sending USB packets to client...
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>#db#   Time elapsed:      1500ms
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>#db#   Bytes transferred: 875008
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>#db#   USB Transfer Speed PM3 -&gt; Client = 583338 Bytes/s
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>#db# Various
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>#db#   MF_DBGLEVEL......2
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>#db#   ToSendMax........-722433155
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>#db#   ToSendBit........0
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>proxmark3&gt; hw version
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>[[[ Cached information ]]]
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>Prox/RFID mark3 RFID instrument
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>bootrom: master/v3.0.1-181-gaa264ab-suspect 2017-11-14 18:49:33
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>os: master/v3.0.1-233-g91e0384-suspect 2017-12-27 20:48:13
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>LF FPGA image built for 2s30vq100 on 2015/03/06 at 07:38:04
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>HF FPGA image built for 2s30vq100 on 2017/10/27 at 08:30:59
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>uC: AT91SAM7S256 Rev D
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>Embedded Processor: ARM7TDMI
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>Nonvolatile Program Memory Size: 256K bytes. Used: 197722 bytes (75%). Free: 64422 bytes (25%).
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>Second Nonvolatile Program Memory Size: None
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>Internal SRAM Size: 64K bytes
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>Architecture Identifier: AT91SAM7Sxx Series
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>Nonvolatile Program Memory Type: Embedded Flash Memory
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>proxmark3&gt; hw tune
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>Measuring antenna characteristics, please wait...
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a># LF antenna: 25.57 V @   125.00 kHz
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a># LF antenna: 19.80 V @   134.00 kHz
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a># LF optimal: 25.57 V @   123.71 kHz
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a># HF antenna: 24.03 V @    13.56 MHz
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a>Displaying LF tuning graph. Divisor 89 is 134khz, 95 is 125khz.
+</code></pre></div>
+<h3 id="analyzing-rfid-tags-with-proxmark3-easy">Analyzing RFID tags with ProxMark3 Easy<a class="headerlink" href="#analyzing-rfid-tags-with-proxmark3-easy" title="Permanent link">&para;</a></h3>
+<p>PM3 is now ready to read tags. To scan an unknown tag we need to type two commands, one for each antenna:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>proxmark3&gt; hf search
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>proxmark3&gt; lf search
+</code></pre></div>
+<p>If the scanned tag is supported, one of the above commands should answer with the details of the tag.</p>
+<h3 id="analyzing-an-em410x-tag">Analyzing an EM410x tag<a class="headerlink" href="#analyzing-an-em410x-tag" title="Permanent link">&para;</a></h3>
+<p>The following is an access card for a restricted area:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>proxmark3&gt; lf search
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>NOTE: some demods output possible binary
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  if it finds something that looks like a tag
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>False Positives ARE possible
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>Checking for known tags:
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>EM410x pattern found:
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>EM TAG ID      : 1111111111
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>Possible de-scramble patterns
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>Unique TAG ID  : 2222222222
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>HoneyWell IdentKey {
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>DEZ 8          : 01118481
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>DEZ 10         : 0286331153
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>DEZ 5.5        : 04369.04369
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>DEZ 3.5A       : 017.04369
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>DEZ 3.5B       : 017.04369
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>DEZ 3.5C       : 017.04369
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>DEZ 14/IK2     : 00073300775185
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>DEZ 15/IK3     : 000586406201480
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>DEZ 20/ZK      : 08080808080808080808
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>}
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>Other          : 04369_017_01118481
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>Pattern Paxton : 287657745 [0x11254F11]
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>Pattern 1      : 4342282 [0x42420A]
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>Pattern Sebury : 4369 17 1118481  [0x1111 0x11 0x111111]
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>Valid EM410x ID Found!
+</code></pre></div>
+<p>We guess that the authentications is based on EM TAG ID only, so we need to copy that on a new tag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>proxmark3&gt; lf em 410xwrite 1111111111 1
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Writing T55x7 tag with UID 0x1111111111 (clock rate: 64)
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>#db# Started writing T55x7 tag ...
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>#db# Clock rate: 64
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>#db# Tag T55x7 written with 0xffc700025fddc8be
+</code></pre></div>
+<p>And it worked.</p>
+<p>We discovered that many companies still rely on weak technology for access control.</p>
+<h3 id="analyzing-a-mifare-classic-nfc-smartcard">Analyzing a MiFare Classic NFC smartcard<a class="headerlink" href="#analyzing-a-mifare-classic-nfc-smartcard" title="Permanent link">&para;</a></h3>
+<p>The following is an access card for a restricted area:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>proxmark3&gt; hf search
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a> UID : 11 11 11 11
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>ATQA : 00 04
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a> SAK : 08 [2]
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>TYPE : NXP MIFARE CLASSIC 1k | Plus 2k SL1
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>proprietary non iso14443-4 card found, RATS not supported
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>No chinese magic backdoor command detected
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Prng detection: WEAK
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>Valid ISO14443A Tag Found - Quiting Search
+</code></pre></div>
+<p>MiFare Classic smartcards are not secure:</p>
+<blockquote>
+<p>We can recover the full 48-bit key of the MiFare algorithm in 200 seconds on a PC, given 1 known IV (from one single encryption).
+The security of this cipher is therefore close to zero.</p>
+<p>Courtois, Nicolas T.; Karsten Nohl; Sean O'Neil (2008-04-14). "Algebraic Attacks on the Crypto-1 Stream Cipher in MiFare Classic and Oyster Cards". Cryptology ePrint Archive.</p>
+</blockquote>
+<p>By the way, in many cases, we don't even need to crack a card because:</p>
+<ul>
+<li>UID is enough</li>
+<li>data are not encrypted or encrypted with a default key</li>
+</ul>
+<p>Let's start with the easier and common scenario, and let's clone the UID only to another smartcard:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>proxmark3&gt; hf mf csetuid 11111111
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>uid:8e 71 ae 0f
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>#db# halt error. response len: 1
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Chinese magic backdoor commands (GEN 1a) detected
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>#db# halt error. response len: 1
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>#db# Halt error
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>old block 0:  c0 92 ee 01 bd 08 04 00 62 63 64 65 66 67 68 69
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>new block 0:  11 11 11 11 5e 08 04 00 62 63 64 65 66 67 68 69
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>#db# halt error. response len: 1
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>old UID:c0 92 ee 01
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>new UID:11 11 11 11
+</code></pre></div>
+<p>And it works with many access cards based on MiFare Classic.</p>
+<p>Other implementations, like public laundry machines or public transport, save additional data, that can be possibly encrypted:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>proxmark3&gt; hf mf chk - ?
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>No key specified, trying default keys
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>chk default key[ 0] ffffffffffff
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>chk default key[ 1] 000000000000
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>chk default key[ 2] a0a1a2a3a4a5
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>chk default key[ 3] b0b1b2b3b4b5
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>chk default key[ 4] aabbccddeeff
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>chk default key[ 5] 1a2b3c4d5e6f
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>chk default key[ 6] 123456789abc
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>chk default key[ 7] 010203040506
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>chk default key[ 8] 123456abcdef
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>chk default key[ 9] abcdef123456
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>chk default key[10] 4d3a99c351dd
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>chk default key[11] 1a982c7e459a
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>chk default key[12] d3f7d3f7d3f7
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>chk default key[13] 714c5c886e97
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>chk default key[14] 587ee5f9350f
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>chk default key[15] a0478cc39091
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>chk default key[16] 533cb6c723f6
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>chk default key[17] 8fd0a4f256e9
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>To cancel this operation press the button on the proxmark...
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>--o
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>|---|----------------|---|----------------|---|
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>|sec|key A           |res|key B           |res|
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>|---|----------------|---|----------------|---|
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>|000|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>|001|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>|002|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>|003|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>|004|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>|005|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>|006|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>|007|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>|008|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>|009|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>|010|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>|011|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a>|012|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a>|013|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a>|014|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a>|015|  ffffffffffff  | 1 |  ffffffffffff  | 1 |
+<a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a>|---|----------------|---|----------------|---|
+</code></pre></div>
+<p>The above card is using the default key: <code>ffffffffffff</code>.
+If data are partially encrypted with a non-default key, we can try a nested attack, using one of the default keys:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>proxmark3&gt; hf mf nested 1 0 A ffffffffffff d
+</code></pre></div>
+<p>Or we can test other attacks:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>proxmark3&gt; hf mf mifare
+</code></pre></div>
+<p>Once we have all keys (dumped into <code>dumpkeys.bin</code> file), we can dump the card into the <code>dumpdata.bin</code> file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>proxmark3&gt; hf mf dump 1
+</code></pre></div>
+<p>And we can copy the content to a new card:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>proxmark3&gt; hf mf restore 1
+</code></pre></div>
+<p>And it worked.</p>
+<p>We discovered that even if additional (but weak) security layers are available, they are rarely used.</p>
+<h2 id="the-blue-team-perspective">The Blue Team perspective<a class="headerlink" href="#the-blue-team-perspective" title="Permanent link">&para;</a></h2>
+<p>Each component included, installed, and used in any enterprise (or any house) should be evaluated especially if it can lead to a security breach. Referring to a company, if the evaluation cannot be provided by an internal team, use one (or more) trusted external service. Don't trust vendors without testing them. Don't buy or implement solutions without knowing them in the detail.</p>
+<p>Secure smartcard solutions currently exist, but the question is: for how long they will remain secure?
+The question is very important, because if a big worldwide enterprise decides to implement an access solution based on the latest and most secure smartcard for 30000 employers, what it should do if (better say when) that smartcard will no more secure? How much does cost the migration to another access control system?
+Should it use something upgradeable (like an app on a smartphone), or should it maintain a weak access control?</p>
+<p>It depends, as always... on risk and cost analysis.</p>
+<h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
+<p>We discovered a large number of weak implementations, provided also by respectable vendors but implemented poorly. Day after day we realized that no vendor can be blinded trusted, no matter how respectable it is.
+If enterprises can usually afford the cost of a third opinion, end users rarely can. The more IoT, smart homes we see, the more I tend to get a simple "smart less" building. This is still not the era of the "apartment thieves", but it will come soon.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/Proxmark/proxmark3/wiki" title="ProxMark3 Wiki">Proxmark3 Wiki</a></li>
+<li><a href="https://github.com/Proxmark/proxmark3/wiki/Kali-Linux" title="Proxmark3 on Kali Linux">Proxmark3 on Kali Linux</a></li>
+<li><a href="https://www.offensive-security.com/offsec/cloning-rfid-tags-with-proxmark-3/" title="Cloning RFID Tags with Proxmark 3">Cloning RFID Tags with Proxmark 3</a></li>
+<li><a href="https://blog.kchung.co/rfid-hacking-with-the-proxmark-3/" title="RFID Hacking with The Proxmark 3">RFID Hacking with The Proxmark 3</a></li>
+<li><a href="https://blog.kchung.co/reverse-engineering-hid-iclass-master-keys/" title="Reverse Engineering HID iClass Master Keys">Reverse Engineering HID iClass Master Keys</a></li>
+<li><a href="https://eprint.iacr.org/2008/166.pdf" title="Algebraic Attacks on the Crypto-1 Stream Cipher in MiFare Classic and Oyster Cards">Algebraic Attacks on the Crypto-1 Stream Cipher in MiFare Classic and Oyster Cards</a></li>
+<li><a href="http://nearfieldcommunication.org/nfc-security-risks.html" title="Security Risks of Near Field Communication">Security Risks of Near Field Communication</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Andrea Dainese
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["announce.dismiss", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>

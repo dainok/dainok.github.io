@@ -1,0 +1,280 @@
+/* ==========================================================================
+   brand.css — Andrea Dainese
+   Place in .mkdocs/stylesheets/brand.css and load via extra_css.
+   Brand colors: teal #41a8b9 (titles/highlights), olive-black #222000 (text).
+   Text pairs meet WCAG AA (4.5:1 body, 3:1 large text).
+   ========================================================================== */
+
+:root {
+  /* Brand tokens (raw) */
+  --brand-teal: #41a8b9;
+  /* logo, blockquote bar, dark-mode accents */
+  --brand-text: #222000;
+  /* body text on white */
+
+  /* Teal scale */
+  --teal-900: #1b5d6b;
+  --teal-700: #287a89;
+  /* links + buttons in light mode (4.96:1 on white) */
+  --teal-600: #3a9bab;
+  /* large titles in light mode (3.25:1 on white) */
+  --teal-500: #41a8b9;
+  --teal-400: #6ec4d2;
+  --teal-300: #8fd3de;
+  /* links in dark mode (10:1 on dark bg) */
+  --teal-200: #a8dde5;
+  --teal-100: #ddf1f4;
+  --teal-50: #eef7f9;
+
+  /* Olive neutral scale (derived from #222000) */
+  --olive-950: #161500;
+  --olive-900: #1f1e08;
+  --olive-800: #222000;
+  --olive-700: #4a4930;
+  --olive-500: #6b6a52;
+  /* secondary text on white (5.5:1) */
+  --olive-300: #a5a493;
+  --olive-100: #e9e8dc;
+  --line: #dde8ea;
+
+  /* Fonts (set theme.font.text: Rubik in mkdocs.yml to load it) */
+  --md-text-font-family: Rubik, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+/* ---------- Light scheme ---------- */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #ffffff;
+  --md-default-fg-color: var(--brand-text);
+  --md-default-fg-color--light: var(--olive-500);
+  --md-default-fg-color--lighter: var(--olive-300);
+  --md-default-fg-color--lightest: var(--line);
+
+  --md-primary-fg-color: var(--teal-700);
+  /* header bar */
+  --md-primary-fg-color--light: var(--teal-500);
+  --md-primary-fg-color--dark: var(--teal-900);
+  --md-primary-bg-color: #ffffff;
+  /* text on header (4.96:1) */
+  --md-primary-bg-color--light: rgba(255, 255, 255, .75);
+
+  --md-accent-fg-color: var(--teal-700);
+  --md-typeset-color: var(--brand-text);
+  --md-typeset-a-color: var(--teal-700);
+
+  --md-footer-bg-color: var(--teal-900);
+  --md-footer-bg-color--dark: #14464f;
+}
+
+/* ---------- Dark scheme ---------- */
+[data-md-color-scheme="slate"] {
+  --md-hue: 57;
+  --md-default-bg-color: var(--olive-950);
+  --md-default-fg-color: var(--olive-100);
+  --md-default-fg-color--light: var(--olive-300);
+  --md-default-fg-color--lighter: #6b6a52;
+  --md-default-fg-color--lightest: #2e2d14;
+
+  --md-primary-fg-color: var(--olive-900);
+  --md-primary-fg-color--light: var(--teal-500);
+  --md-primary-fg-color--dark: var(--olive-950);
+  --md-primary-bg-color: var(--olive-100);
+  --md-primary-bg-color--light: rgba(233, 232, 220, .7);
+
+  --md-accent-fg-color: var(--teal-400);
+  --md-typeset-color: var(--olive-100);
+  --md-typeset-a-color: var(--teal-300);
+
+  --md-footer-bg-color: var(--olive-900);
+  --md-footer-bg-color--dark: var(--olive-950);
+}
+
+/* ---------- Code ---------- */
+/* Inline code: no background, brand-tinted text only */
+[data-md-color-scheme="default"] {
+  --md-code-bg-color: #000000;
+  /* used by code blocks */
+  --md-code-fg-color: var(--teal-900);
+  /* 9.5:1 on white */
+}
+
+[data-md-color-scheme="slate"] {
+  --md-code-bg-color: #000000;
+  --md-code-fg-color: var(--teal-200);
+  /* 11:1 on dark bg */
+}
+
+/* Code blocks (pre > code): black background in both schemes */
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  /* Syntax highlighting tuned for a black background */
+  --md-code-hl-color: rgba(65, 168, 185, .25);
+  /* highlighted lines */
+  --md-code-hl-number-color: #f2a37c;
+  --md-code-hl-special-color: #f28fad;
+  --md-code-hl-function-color: #8fd3de;
+  --md-code-hl-constant-color: #c4b0ff;
+  --md-code-hl-keyword-color: #6ec4d2;
+  --md-code-hl-string-color: #e8c97a;
+  --md-code-hl-name-color: #e9e8dc;
+  --md-code-hl-operator-color: #a5a493;
+  --md-code-hl-punctuation-color: #a5a493;
+  --md-code-hl-comment-color: #8d8c78;
+  /* 5.9:1 on black */
+  --md-code-hl-generic-color: #a5a493;
+  --md-code-hl-variable-color: #a8dde5;
+}
+
+.md-typeset code {
+  background-color: transparent;
+  /* inline code: no background */
+}
+
+.md-typeset pre>code {
+  background-color: #000000;
+  color: #e9e8dc;
+  /* 16:1 on black */
+}
+
+[data-md-color-scheme="slate"] .md-typeset pre>code {
+  box-shadow: 0 0 0 1px #2e2d14;
+  /* keeps blocks visible on dark bg */
+}
+
+/* ---------- Typography: titles in brand teal, uppercase ---------- */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  color: var(--teal-600);
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2,
+[data-md-color-scheme="slate"] .md-typeset h3 {
+  color: var(--brand-teal);
+  /* 6:1 on dark bg */
+}
+
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  color: var(--md-default-fg-color);
+}
+
+/* ---------- Lists: square bullets at every level ---------- */
+.md-typeset ul,
+.md-typeset ul ul,
+.md-typeset ul ul ul,
+.md-typeset ul ul ul ul {
+  list-style-type: square;
+}
+
+/* ---------- Blockquote: vertical bar in brand teal ---------- */
+.md-typeset blockquote {
+  border-left: .2rem solid var(--brand-teal);
+}
+
+/* ---------- Header: brand teal underline accent ---------- */
+.md-header {
+  box-shadow: 0 2px 0 var(--brand-teal);
+}
+
+/* ---------- Buttons: dark text on brand teal in dark mode ---------- */
+.md-typeset .md-button {
+  color: var(--teal-700);
+  border-color: var(--teal-700);
+}
+
+.md-typeset .md-button--primary {
+  background-color: var(--teal-700);
+  border-color: var(--teal-700);
+  color: #ffffff;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
+  background-color: var(--brand-teal);
+  border-color: var(--brand-teal);
+  color: var(--brand-text);
+  /* 5.9:1 */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button {
+  color: var(--teal-300);
+  border-color: var(--teal-300);
+}
+
+/* ---------- Highlight (==mark==), tags, tables ---------- */
+.md-typeset mark {
+  background-color: var(--teal-100);
+  color: var(--brand-text);
+}
+
+[data-md-color-scheme="slate"] .md-typeset mark {
+  background-color: rgba(65, 168, 185, .28);
+  color: var(--olive-100);
+}
+
+.md-typeset .md-tag {
+  background-color: var(--teal-100);
+  color: var(--teal-900);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-tag {
+  background-color: rgba(65, 168, 185, .2);
+  color: var(--teal-200);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--teal-50);
+  color: var(--brand-text);
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: #26250d;
+  color: var(--olive-100);
+}
+
+/* ---------- Images and tables centered in the post ---------- */
+
+/* Images: block-level with automatic side margins. Emoji and images with an explicit
+   alignment (`{ align=left }` / `{ align=right }`) keep their own behaviour. */
+.md-typeset img:not([align]):not(.twemoji):not(.emojione) {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tables: Material wraps each one in .md-typeset__scrollwrap > .md-typeset__table
+   (an inline-block), so centering the wrapper centers the table. */
+.md-typeset__scrollwrap {
+  text-align: center;
+}
+
+/* ...but the text inside the cells must not inherit the centering. A column alignment
+   set in Markdown (:---:, ---:) is an inline style and still wins. */
+.md-typeset__table table th,
+.md-typeset__table table td {
+  text-align: left;
+}
+
+/* ---------- About page: contact links row ---------- */
+.md-typeset .contacts {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.md-typeset .contacts a {
+  margin: 0 .5rem;
+  white-space: nowrap;
+  /* keep icon and label on the same line */
+}
