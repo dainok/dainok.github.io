@@ -468,65 +468,65 @@ Everything here is free. If it helps you, you can
 <h1 id="installing-nautobot-in-your-lab-environment">Installing Nautobot in your lab environment<a class="headerlink" href="#installing-nautobot-in-your-lab-environment" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:nautobot">nautobot</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/nautobot.png" /></p>
-<p>In this guide, we'll walk through installing Nautobot in a lab environment. For production installation, please refer to the <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/administration/installation/">official documentation</a>. Nautobot requires Python versions between 3.8 and 3.11. First, ensure you have the correct Python version:</p>
+<p>In this post, we install Nautobot in a lab environment. For a production installation, refer to the <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/administration/installation/">official documentation</a>. Nautobot requires a Python version between 3.8 and 3.11, so we first check that we have the correct one:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>python3<span class="w"> </span>-V
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Python<span class="w"> </span><span class="m">3</span>.11.9
 </code></pre></div>
-<p>Next, create a dedicated Python environment:</p>
+<p>Next, we create a dedicated Python environment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>/opt/nautobot
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>/opt/nautobot/venv
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">source</span><span class="w"> </span>/opt/nautobot/venv/bin/activate
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>wheel<span class="w"> </span>setuptools
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>pip<span class="w"> </span>install<span class="w"> </span>--no-binary<span class="o">=</span>pyuwsgi<span class="w"> </span>nautobot
 </code></pre></div>
-<p>We will use PostgreSQL as the database. After installing PostgreSQL, create a dedicated database and user for Nautobot:</p>
+<p>We use PostgreSQL as the database. After installing PostgreSQL, we create a dedicated database and user for Nautobot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>psql<span class="w"> </span>postgres
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>create<span class="w"> </span>user<span class="w"> </span>nautobot<span class="w"> </span>with<span class="w"> </span>password<span class="w"> </span><span class="s1">'42f5de36abff'</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>create<span class="w"> </span>user<span class="w"> </span>nautobot<span class="w"> </span>with<span class="w"> </span>password<span class="w"> </span><span class="s1">'&lt;DB_PASSWORD&gt;'</span><span class="p">;</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>create<span class="w"> </span>database<span class="w"> </span>nautobot<span class="p">;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>grant<span class="w"> </span>all<span class="w"> </span>privileges<span class="w"> </span>on<span class="w"> </span>database<span class="w"> </span>nautobot<span class="w"> </span>to<span class="w"> </span>nautobot<span class="p">;</span>
 </code></pre></div>
-<p>Configure Nautobot using the following environment variables:</p>
+<p>We configure Nautobot with the following environment variables:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_ROOT</span><span class="o">=</span>/opt/nautobot
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_DB_HOST</span><span class="o">=</span>localhost
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_DB_NAME</span><span class="o">=</span>nautobot
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_DB_USER</span><span class="o">=</span>nautobot
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_DB_PASSWORD</span><span class="o">=</span>42f5de36abff
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_ALLOWED_HOSTS</span><span class="o">=</span><span class="se">\*</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_DB_PASSWORD</span><span class="o">=</span>&lt;DB_PASSWORD&gt;
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_ALLOWED_HOSTS</span><span class="o">=</span>*
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NAUTOBOT_DEBUG</span><span class="o">=</span>True
 </code></pre></div>
-<p>Initialize the basic configuration, which will be saved to <code>/opt/nautobot/nautobot_config.py</code>:</p>
+<p>We initialize the basic configuration, which is saved to <code>/opt/nautobot/nautobot_config.py</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>nautobot-server<span class="w"> </span>init
 </code></pre></div>
-<p>Update the database:</p>
+<p>We update the database:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nautobot-server<span class="w"> </span>migrate
 </code></pre></div>
-<p>Create the first administrative user:</p>
+<p>We create the first administrative user:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>nautobot-server<span class="w"> </span>createsuperuser
 </code></pre></div>
-<p>Finally, start the Nautobot server:</p>
+<p>Finally, we start the Nautobot server:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>nautobot-server<span class="w"> </span>runserver
 </code></pre></div>
-<p>You can now access Nautobot at <code>http://localhost:8000/</code> using the admin user credentials you created earlier.</p>
+<p>We can now access Nautobot at <code>http://localhost:8000/</code> with the credentials of the admin user created earlier.</p>
 <h2 id="installing-a-development-version-of-nautobot">Installing a Development Version of Nautobot<a class="headerlink" href="#installing-a-development-version-of-nautobot" title="Permanent link">&para;</a></h2>
-<p>As discussed, the feature we need (interface roles) is available in the <strong>next</strong> version of Nautobot. Let's follow the <a href="https://docs.nautobot.com/projects/core/en/stable/development/core/getting-started/#post-upgrade-operations">official guide</a> to install it.</p>
-<p>First, activate the previously created Python environment:</p>
+<p>As discussed, the feature we need (interface roles) is available in the <strong>next</strong> version of Nautobot. We follow the <a href="https://docs.nautobot.com/projects/core/en/stable/development/core/getting-started/#post-upgrade-operations">official guide</a> to install it.</p>
+<p>First, we activate the Python environment created before:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>/opt/nautobot
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
 </code></pre></div>
-<p>Uninstall the current version of Nautobot:</p>
+<p>We uninstall the current version of Nautobot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pip<span class="w"> </span>uninstall<span class="w"> </span>-y<span class="w"> </span>nautobot
 </code></pre></div>
-<p>Download the <strong>next</strong> version from <a href="https://github.com/nautobot/nautobot/tree/next">GitHub</a>:</p>
+<p>We download the <strong>next</strong> version from <a href="https://github.com/nautobot/nautobot/tree/next">GitHub</a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span>next<span class="w"> </span>https://github.com/nautobot/nautobot
 </code></pre></div>
-<p>Install the newly downloaded version:</p>
+<p>We install the version we just downloaded:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>nautobot
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>poetry<span class="w"> </span>install
 </code></pre></div>
-<p>Update the database:</p>
+<p>We update the database:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>nautobot-server<span class="w"> </span>migrate
 </code></pre></div>
-<p>Start Nautobot:</p>
+<p>We start Nautobot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>nautobot-server<span class="w"> </span>runserver
 </code></pre></div>
 

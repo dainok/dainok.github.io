@@ -490,30 +490,30 @@ Everything here is free. If it helps you, you can
 <h1 id="consuming-misp-iocs-from-a-firewall">Consuming MISP IoCs from a Firewall<a class="headerlink" href="#consuming-misp-iocs-from-a-firewall" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:misp">misp</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/misp.png" /></p>
-<p>Once our MISP instance is properly configured, it contains a set of threat intelligence data that can be leveraged by prevention tools such as Firewalls, Email Gateways, and more.</p>
-<p>Let’s explore how to extract IoCs from MISP. Specifically, we’ll look at how to create a list of IP addresses to be proactively blocked by perimeter systems.</p>
-<p>Modern firewalls are capable of ingesting <a href="https://docs.paloaltonetworks.com/pan-os/11-0/pan-os-admin/policy/use-an-external-dynamic-list-in-policy/external-dynamic-list">External Dynamic Lists (EDLs)</a>, which are simply text files hosted on web servers containing lists of IP addresses. These lists can then be referenced within security policies to take specific actions.</p>
-<p>While the number of IP addresses that can be managed via EDLs might seem substantial, it becomes clear that these limits are relatively low when compared to <a href="https://iplists.firehol.org/">the global volume of IP-based IoCs</a>.</p>
+<p>Once our MISP instance is configured, it contains threat intelligence data that prevention tools such as firewalls and email gateways can use.</p>
+<p>Let's see how to extract IoCs from MISP. Specifically, we create a list of IP addresses that perimeter systems block proactively.</p>
+<p>Modern firewalls can ingest <a href="https://docs.paloaltonetworks.com/pan-os/11-0/pan-os-admin/policy/use-an-external-dynamic-list-in-policy/external-dynamic-list">External Dynamic Lists (EDLs)</a>, which are text files, hosted on web servers, that contain lists of IP addresses. We can reference these lists in security policies to take specific actions.</p>
+<p>The number of IP addresses that EDLs can manage might seem substantial, but the limits are relatively low compared to <a href="https://iplists.firehol.org/">the global volume of IP-based IoCs</a>.</p>
 <p><img alt="global-unique-ips" src="../images/global-unique-ips.png" /></p>
-<p>This underscores the importance of managing IoCs in a structured way, with particular attention to their lifecycle.</p>
+<p>This shows why we must manage IoCs in a structured way, with particular attention to their lifecycle.</p>
 <h2 id="native-export">Native Export<a class="headerlink" href="#native-export" title="Permanent link">&para;</a></h2>
-<p>MISP natively supports exporting attributes in multiple formats. By navigating to <code>Event Actions</code> → <code>Export</code>, we can generate IoC lists in various formats:</p>
+<p>MISP natively supports exporting attributes in multiple formats. Under <code>Event Actions</code> → <code>Export</code>, we can generate IoC lists in various formats:</p>
 <p><img alt="misp-ioc-generators" src="../images/misp-ioc-generators.png" /></p>
-<p>Further down the page, we can immediately retrieve lists of IoCs for a specific attribute type in plain text format:</p>
+<p>Further down the page, we can immediately retrieve the lists of IoCs for a specific attribute type in plain text:</p>
 <p><img alt="misp-attribute-filters" src="../images/misp-attribute-filters.png" /></p>
-<p>For instance, clicking on <code>ip-dst</code> will instantly provide a file containing all <code>ip-dst</code> attributes marked as exportable for IDS purposes.</p>
-<p>However, as discussed earlier, the list might exceed the limitations imposed by our firewall. Therefore, we need greater control over the export process.</p>
+<p>For instance, clicking <code>ip-dst</code> returns a file with all the <code>ip-dst</code> attributes marked as exportable for IDS purposes.</p>
+<p>As discussed, however, the list might exceed the limits of our firewall. We therefore need more control over the export process.</p>
 <h2 id="export-via-api">Export via API<a class="headerlink" href="#export-via-api" title="Permanent link">&para;</a></h2>
-<p>By building our own IoC export mechanism, we gain enhanced control over the number, type, date, and format of indicators.</p>
-<p>We want to obtain a list of all IP-type IoCs, limiting their number and prioritizing the most recent entries. While the request appears simple, fulfilling it requires a robust lifecycle management system for IoCs, a non-trivial task. Consider, for example, a C2-related IP address:</p>
+<p>By building our own IoC export mechanism, we gain control over the number, type, date and format of the indicators.</p>
+<p>We want a list of all the IP-type IoCs, with a limited number of entries, and we want the most recent ones first. The request looks simple, but fulfilling it requires a robust lifecycle management of the IoCs, which is a non-trivial task. Consider, for example, an IP address related to a C2 server:</p>
 <ul>
-<li>When can it be considered obsolete?</li>
+<li>When can we consider it obsolete?</li>
 <li>How do we define it as obsolete?</li>
-<li>Is it possible for an obsolete IP to become relevant again? How should this be handled?</li>
+<li>Can an obsolete IP become relevant again? How do we handle this case?</li>
 </ul>
-<p>For the purposes of this article, we assume the IoC lifecycle is already being properly managed, and we focus solely on the automation process.</p>
-<p>Our goal is to generate a list of IP addresses (including both <code>ip-src</code> and <code>ip-dst</code>), limit the total number, and prioritize the most recent entries.</p>
-<p>The API we’ll use is <a href="https://www.misp-project.org/openapi/#tag/Attributes">restSearch</a>, which provides paginated attribute listings based on specified parameters.</p>
+<p>In this post, we assume that the lifecycle of the IoCs is already managed properly, and we focus only on the automation process.</p>
+<p>Our goal is to generate a list of IP addresses (both <code>ip-src</code> and <code>ip-dst</code>), limit the total number and prioritize the most recent entries.</p>
+<p>We use the <a href="https://www.misp-project.org/openapi/#tag/Attributes">restSearch</a> API, which provides paginated lists of attributes based on the specified parameters.</p>
 <p>The request is a POST with the following parameters:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">"controller"</span><span class="p">:</span> <span class="s2">"attributes"</span><span class="p">,</span>
@@ -528,13 +528,13 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">params_post</span><span class="p">)</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">req</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
 </code></pre></div>
-<p>The output can then be parsed into a plain-text list of unique IP addresses:</p>
+<p>We then parse the output into a plain-text list of unique IP addresses:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">req</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"response"</span><span class="p">][</span><span class="s2">"Attribute"</span><span class="p">]:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">"value"</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ip_list</span><span class="p">:</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        <span class="n">ip_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">"value"</span><span class="p">])</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">ioc_page</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ip_list</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span>
 </code></pre></div>
-<p>The full script is available in the GitHub repository. When executed, it provides the IoC list in plain-text format via HTTP:</p>
+<p>The full script is available in the GitHub repository. When we run it, it provides the IoC list in plain text via HTTP:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./get_ioc_to_edl_api.py
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Most recent IoC:  Wed May 14 15:38:15 2025
@@ -547,9 +547,9 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>127.0.0.1 - - [17/May/2025 10:32:01] "GET /favicon.ico HTTP/1.1" 200 -
 </code></pre></div>
 <p><img alt="edl-web-page" src="../images/edl-web-page.png" /></p>
-<p>Generating the list consumes time and computing resources from the MISP server. In production environments, it is advisable to update the list on an event-driven or scheduled basis, populating a cache file that can then be served to security tools.</p>
+<p>Generating the list consumes time and computing resources of the MISP server. In production environments, it is advisable to update the list on an event-driven or scheduled basis and to populate a cache file that we then serve to the security tools.</p>
 <h2 id="export-via-sdk">Export via SDK<a class="headerlink" href="#export-via-sdk" title="Permanent link">&para;</a></h2>
-<p>Similarly, we can generate our list using PyMISP. The code is very similar to the API-based approach:</p>
+<p>We can generate the same list with PyMISP. The code is very similar to the API-based approach:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">res</span> <span class="o">=</span> <span class="n">misp</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">controller</span><span class="o">=</span><span class="s2">"attributes"</span><span class="p">,</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">type_attribute</span><span class="o">=</span><span class="p">[</span><span class="s2">"ip-src"</span><span class="p">,</span> <span class="s2">"ip-dst"</span><span class="p">],</span>
@@ -561,8 +561,8 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">pythonify</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">)</span>
 </code></pre></div>
-<p>However, in my tests, I encountered some issues: the <code>to_ids</code> filter does not seem to work correctly, nor does the sorting. The sorting issue directly affects the ability to retrieve the most recent IoCs.</p>
-<p>At this time, I personally prefer the API-based approach.</p>
+<p>In my tests, however, I ran into some issues: the <code>to_ids</code> filter does not seem to work correctly, and neither does the sorting. The sorting issue directly affects the ability to retrieve the most recent IoCs.</p>
+<p>At the moment, I prefer the API-based approach.</p>
 <p>Both scripts are available in the <a href="https://github.com/dainok/courses/tree/master/Various/MISP">GitHub repository</a>.</p>
 
 

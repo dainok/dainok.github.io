@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#create-data-structures" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create data structures
+        Create Data Structures
       
     </span>
   </a>
@@ -439,10 +439,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#limit-data-structure-optional" class="md-nav__link">
+  <a href="#limit-the-data-structure-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Limit data structure (optional)
+        Limit the Data Structure (Optional)
       
     </span>
   </a>
@@ -450,10 +450,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#apply-interface-profile-configuration" class="md-nav__link">
+  <a href="#apply-the-interface-profile-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Apply interface profile configuration
+        Apply the Interface Profile Configuration
       
     </span>
   </a>
@@ -464,7 +464,7 @@ Everything here is free. If it helps you, you can
   <a href="#set-interface-description-and-state" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set interface description and state
+        Set Interface Description and State
       
     </span>
   </a>
@@ -475,7 +475,7 @@ Everything here is free. If it helps you, you can
   <a href="#running-the-playbook" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Running the playbook
+        Running the Playbook
       
     </span>
   </a>
@@ -530,7 +530,7 @@ Everything here is free. If it helps you, you can
 <h1 id="the-ansible-role-breakdown">The Ansible role breakdown<a class="headerlink" href="#the-ansible-role-breakdown" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:nautobot">nautobot</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/nautobot.png" /></p>
-<p>Now, we need to translate the interface roles defined in Nautobot into specific configurations for the switches. To achieve this, we will create an Ansible role that utilizes the inventory described in the previous post to configure the interfaces of each device.</p>
+<p>Now we need to translate the interface roles defined in Nautobot into specific configurations for the switches. We create an Ansible role that uses the inventory described in the previous post to configure the interfaces of each device.</p>
 <h2 id="fetch-running-configuration">Fetch Running Configuration<a class="headerlink" href="#fetch-running-configuration" title="Permanent link">&para;</a></h2>
 <p>First, we retrieve the current running configuration from the switch:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GETTING RUNNING CONFIGURATION</span>
@@ -539,9 +539,9 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show running-config</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">show_running_config</span>
 </code></pre></div>
-<p>Optimizing <code>show running-config</code> improves overall performance.</p>
-<h2 id="create-data-structures">Create data structures<a class="headerlink" href="#create-data-structures" title="Permanent link">&para;</a></h2>
-<p>Next, we generate data structures with necessary details from Nautobot:</p>
+<p>Retrieving the running configuration once, and reusing it in the following tasks, improves overall performance.</p>
+<h2 id="create-data-structures">Create Data Structures<a class="headerlink" href="#create-data-structures" title="Permanent link">&para;</a></h2>
+<p>Next, we generate the data structures with the details we need from Nautobot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SETTING INTERFACE PROFILES</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">interface_profiles</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
@@ -570,12 +570,12 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">      </span><span class="no">]</span>
 </code></pre></div>
 <ul>
-<li><code>interface_profiles</code> links each interface to its profile.</li>
-<li><code>interface_cfgs</code> holds configurations for the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_interfaces_module.html">ios_interfaces module</a> .</li>
+<li><code>interface_profiles</code> links each interface to its profile.</li>
+<li><code>interface_cfgs</code> holds the configurations for the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_interfaces_module.html">ios_interfaces module</a>.</li>
 </ul>
-<p>Interfaces are processed only if they have an associated profile.</p>
-<h2 id="limit-data-structure-optional">Limit data structure (optional)<a class="headerlink" href="#limit-data-structure-optional" title="Permanent link">&para;</a></h2>
-<p>Optionally, we can limit the data structure to a single interface via command line:</p>
+<p>We process only the interfaces that have an associated profile.</p>
+<h2 id="limit-the-data-structure-optional">Limit the Data Structure (Optional)<a class="headerlink" href="#limit-the-data-structure-optional" title="Permanent link">&para;</a></h2>
+<p>Optionally, we can limit the data structure to a single interface from the command line:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FILTERING INTERFACES</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">interface_profiles</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
@@ -596,15 +596,15 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">      </span><span class="no">]</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interface_limit is defined</span>
 </code></pre></div>
-<h2 id="apply-interface-profile-configuration">Apply interface profile configuration<a class="headerlink" href="#apply-interface-profile-configuration" title="Permanent link">&para;</a></h2>
-<p>For each interface, an external configuration file is included:</p>
+<h2 id="apply-the-interface-profile-configuration">Apply the Interface Profile Configuration<a class="headerlink" href="#apply-the-interface-profile-configuration" title="Permanent link">&para;</a></h2>
+<p>For each interface, we include an external configuration file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATTACHING PROFILE TO INTERFACE</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">ansible.builtin.include_tasks</span><span class="p">:</span><span class="w"> </span><span class="s">"profile_{{</span><span class="nv"> </span><span class="s">interface.value</span><span class="nv"> </span><span class="s">}}.yml"</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">with_dict</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">interface_profiles</span><span class="nv"> </span><span class="s">}}"</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">loop_control</span><span class="p">:</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">loop_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interface</span>
 </code></pre></div>
-<p>The profile file uses the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_config_module.html">ios_config module</a> to apply configuration commands:</p>
+<p>The profile file uses the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_config_module.html">ios_config module</a> to apply the configuration commands:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"APPLYING</span><span class="nv"> </span><span class="s">PROFILE</span><span class="nv"> </span><span class="s">ISL</span><span class="nv"> </span><span class="s">TO</span><span class="nv"> </span><span class="s">INTERFACE</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">interface.key</span><span class="nv"> </span><span class="s">}}"</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">cisco.ios.ios_config</span><span class="p">:</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">show_running_config.stdout.0</span><span class="nv"> </span><span class="s">}}"</span>
@@ -617,21 +617,21 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">before</span><span class="p">:</span><span class="w"> </span><span class="s">"default</span><span class="nv"> </span><span class="s">interface</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">interface.key</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>
 <p>This step is the slowest, so optimizations are crucial.</p>
-<h2 id="set-interface-description-and-state">Set interface description and state<a class="headerlink" href="#set-interface-description-and-state" title="Permanent link">&para;</a></h2>
-<p>Finally, we apply the prepared configuration data:</p>
+<h2 id="set-interface-description-and-state">Set Interface Description and State<a class="headerlink" href="#set-interface-description-and-state" title="Permanent link">&para;</a></h2>
+<p>Finally, we apply the configuration data we prepared:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"SETTING</span><span class="nv"> </span><span class="s">INTERFACE</span><span class="nv"> </span><span class="s">STATUS"</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">cisco.ios.ios_interfaces</span><span class="p">:</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">interface_cfgs</span><span class="nv"> </span><span class="s">}}"</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">merged</span>
 </code></pre></div>
-<p>This task manages the interface state (<code>shutdown</code> and <code>no shutdown</code>) using the native module.</p>
-<h2 id="running-the-playbook">Running the playbook<a class="headerlink" href="#running-the-playbook" title="Permanent link">&para;</a></h2>
-<p>Execute the playbook on all devices or limit it to a specific interface:</p>
+<p>This task manages the state of the interface (<code>shutdown</code> and <code>no shutdown</code>) with the native module.</p>
+<h2 id="running-the-playbook">Running the Playbook<a class="headerlink" href="#running-the-playbook" title="Permanent link">&para;</a></h2>
+<p>We run the playbook on all the devices, or we limit it to a specific interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./playbook-interface-configuration.yml
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>./playbook-interface-configuration.yml<span class="w"> </span>--extra-vars<span class="w"> </span><span class="nv">interface_limit</span><span class="o">=</span>GigabitEthernet1/0/47<span class="w"> </span>--limit<span class="w"> </span>MGMTSWITCH1
 </code></pre></div>
-<p>By following these steps, you'll efficiently automate your network interface configurations using Ansible and Nautobot.</p>
-<p>The Ansible role can be downloaded from <a href="https://github.com/dainok/courses/tree/master/Nautobot/06.%20The%20Ansible%20role%20breakdown">GitHub</a>.</p>
+<p>With these steps, we automate the configuration of the network interfaces with Ansible and Nautobot.</p>
+<p>We can download the Ansible role from <a href="https://github.com/dainok/courses/tree/master/Nautobot/06.%20The%20Ansible%20role%20breakdown">GitHub</a>.</p>
 
 
 

@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#enabling-feeds" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling feeds
+        Enabling Feeds
       
     </span>
   </a>
@@ -479,17 +479,17 @@ Everything here is free. If it helps you, you can
 <h1 id="installing-misp">Installing MISP<a class="headerlink" href="#installing-misp" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:misp">misp</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/misp.png" /></p>
-<p>Installing MISP is relatively straightforward and is well documented in the <a href="https://misp.github.io/MISP/">user guide</a>. For some reason, the user guide does not yet mention Ubuntu 24.04, although the <a href="https://github.com/MISP/MISP/blob/2.5/INSTALL/INSTALL.ubuntu2404.sh">installation script</a> is available in the repository.</p>
+<p>Installing MISP is relatively straightforward and well documented in the <a href="https://misp.github.io/MISP/">user guide</a>. The user guide does not yet mention Ubuntu 24.04, although the <a href="https://github.com/MISP/MISP/blob/2.5/INSTALL/INSTALL.ubuntu2404.sh">installation script</a> is available in the repository.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>apt-get<span class="w"> </span>update
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>wget<span class="w"> </span>-O<span class="w"> </span>/tmp/INSTALL.sh<span class="w"> </span>https://raw.githubusercontent.com/MISP/MISP/refs/heads/2.5/INSTALL/INSTALL.ubuntu2404.sh
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>bash<span class="w"> </span>/tmp/INSTALL.sh
 </code></pre></div>
-<p>At this point, the installation begins, displaying each step as it proceeds:</p>
+<p>The installation starts and displays each step as it proceeds:</p>
 <p><img alt="misp-setup" src="../images/misp-setup.png" /></p>
-<p>At the end, credentials to access the platform are shown:</p>
+<p>At the end, it shows the credentials to access the platform:</p>
 <p><img alt="misp-credentials" src="../images/misp-credentials.png" /></p>
-<p>By default, the platform is accessible at <a href="https://misp.local">https://misp.local</a>. If the system is reachable through a different FQDN, you can update the <code>/var/www/MISP/app/Config/config.php</code> file:</p>
+<p>By default, the platform is accessible at <a href="https://misp.local">https://misp.local</a>. If the system is reachable through a different FQDN, we update the <code>/var/www/MISP/app/Config/config.php</code> file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">&lt;?php</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$config</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="s1">'debug'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
@@ -498,7 +498,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="c1"># 'baseurl' =&gt; 'https://misp.local',</span>
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="s1">'baseurl'</span> <span class="o">=&gt;</span> <span class="s1">'https://172.24.1.18'</span><span class="p">,</span>
 </code></pre></div>
-<p>You should also modify the <code>/etc/apache2/sites-available/misp-ssl.conf</code> file, which handles HTTPS redirection:</p>
+<p>We also modify the <code>/etc/apache2/sites-available/misp-ssl.conf</code> file, which handles the HTTPS redirection:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&lt;VirtualHost _default_:80&gt;
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    ServerAdmin admin@misp.local
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    ServerName misp.local
@@ -512,50 +512,50 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    ServerSignature Off
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>&lt;/VirtualHost&gt;
 </code></pre></div>
-<p>Reload the configuration:</p>
+<p>We reload the configuration:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>apachectl<span class="w"> </span>graceful
 </code></pre></div>
-<p>Then log in using the credentials displayed during installation.</p>
-<h2 id="enabling-feeds">Enabling feeds<a class="headerlink" href="#enabling-feeds" title="Permanent link">&para;</a></h2>
-<p>We can now enable one or more default feeds in MISP. Go to <code>Sync Actions → Feeds</code>:</p>
+<p>Then we log in with the credentials displayed during the installation.</p>
+<h2 id="enabling-feeds">Enabling Feeds<a class="headerlink" href="#enabling-feeds" title="Permanent link">&para;</a></h2>
+<p>We can now enable one or more default feeds in MISP. We go to <code>Sync Actions → Feeds</code>:</p>
 <p><img alt="misp-feeds" src="../images/misp-feeds.png" /></p>
-<p>Edit the feeds and enable them. Returning to the event list, you’ll now see events imported from the feeds:</p>
+<p>We edit the feeds and enable them. When we return to the event list, we see the events imported from the feeds:</p>
 <p><img alt="misp-event-list" src="../images/misp-event-list.png" /></p>
 <h2 id="creating-an-event">Creating an Event<a class="headerlink" href="#creating-an-event" title="Permanent link">&para;</a></h2>
-<p>Next, let's create an event. Navigate to <code>Event Actions → Add Event</code>, using a SPAM email as the base:</p>
+<p>Next, let's create an event. We navigate to <code>Event Actions → Add Event</code>, using a spam email as the base:</p>
 <p><img alt="add-misp-event" src="../images/add-misp-event.png" /></p>
-<p>When creating an event, the following parameters are required:</p>
+<p>When we create an event, the following parameters are required:</p>
 <ul>
-<li><strong>Distribution</strong> refers to event sharing: Your organization only (0), This community only (1), Connected communities (2), All communities (3), Sharing group (4), Inherit Event (5).</li>
-<li><strong>Analysis</strong> indicates the threat analysis status: Initial (0), Ongoing (1), Complete (2).</li>
-<li><strong>Threat level</strong>: High (1), Medium (2), Low (3), Undefined (4).</li>
+<li><strong>Distribution:</strong> the sharing level of the event. Your organization only (0), This community only (1), Connected communities (2), All communities (3), Sharing group (4), Inherit Event (5).</li>
+<li><strong>Analysis:</strong> the status of the threat analysis. Initial (0), Ongoing (1), Complete (2).</li>
+<li><strong>Threat level:</strong> High (1), Medium (2), Low (3), Undefined (4).</li>
 </ul>
-<p>Once the event is created, you can associate attributes that best describe the threat. Since we’re analyzing an email, we’ll include:</p>
+<p>Once the event is created, we associate the attributes that best describe the threat. Since we are analyzing an email, we include:</p>
 <ul>
-<li>Subject</li>
-<li>IP address of the sending server</li>
-<li>Destination email address</li>
-<li>Source email address</li>
-<li>Any links contained in the email</li>
-<li>Any attachments found in the email</li>
+<li>The subject.</li>
+<li>The IP address of the sending server.</li>
+<li>The destination email address.</li>
+<li>The source email address.</li>
+<li>Any links contained in the email.</li>
+<li>Any attachments found in the email.</li>
 </ul>
-<p>When creating an attribute, the following parameters are required:</p>
+<p>When we create an attribute, the following parameters are required:</p>
 <ul>
-<li><strong>Category</strong> of the attribute, which in this case will be *Payload delivery*</li>
-<li><strong>Type</strong> of the attribute, chosen from a predefined list based on the most appropriate match</li>
-<li><strong>Distribution</strong>, referring to the attribute sharing level</li>
+<li><strong>Category:</strong> the category of the attribute, which in this case is <em>Payload delivery</em>.</li>
+<li><strong>Type:</strong> the type of the attribute, chosen from a predefined list based on the best match.</li>
+<li><strong>Distribution:</strong> the sharing level of the attribute.</li>
 </ul>
 <p><img alt="misp-attributes" src="../images/misp-attributes.png" /></p>
-<p>The final step is to properly tag the event and its attributes. Best practices suggest tagging the event itself, and only tagging individual attributes when strictly necessary. If an appropriate cluster exists, you can also use <a href="https://www.misp-project.org/galaxy.html">MISP Galaxy</a> (<a href="https://github.com/MISP/misp-galaxy/tree/main/galaxies">GitHub</a>).</p>
-<p>You can also assign the appropriate TLP level. The <a href="https://www.first.org/tlp/">TLP (Traffic Light Protocol)</a> was created to support the proper sharing of sensitive information. TLP uses a series of labels to define who may share the information:</p>
+<p>The final step is to tag the event and its attributes properly. Best practice is to tag the event itself, and to tag individual attributes only when strictly necessary. If an appropriate cluster exists, we can also use <a href="https://www.misp-project.org/galaxy.html">MISP Galaxy</a> (<a href="https://github.com/MISP/misp-galaxy/tree/main/galaxies">GitHub</a>).</p>
+<p>We can also assign the appropriate TLP level. The <a href="https://www.first.org/tlp/">TLP (Traffic Light Protocol)</a> was created to support the proper sharing of sensitive information. TLP uses a series of labels that define who may share the information:</p>
 <ul>
-<li><code>TLP:CLEAR</code>: Information can be freely shared without restriction, subject to copyright or proprietary considerations.</li>
-<li><code>TLP:GREEN</code>: Information can be shared with peers and partner organizations, but not publicly.</li>
-<li><code>TLP:AMBER</code>: Information carries potential privacy, reputational, or operational risk and may only be shared within the recipient’s organization and its clients.</li>
-<li><code>TLP:AMBER+STRICT</code>: Same as <code>TLP:AMBER</code>, but sharing is restricted to the recipient organization only.</li>
-<li><code>TLP:RED</code>: Information is highly sensitive and must not be shared beyond the original recipients.</li>
+<li><code>TLP:CLEAR</code>: the information can be shared freely without restriction, subject to copyright or proprietary considerations.</li>
+<li><code>TLP:GREEN</code>: the information can be shared with peers and partner organizations, but not publicly.</li>
+<li><code>TLP:AMBER</code>: the information carries potential privacy, reputational or operational risk, and can be shared only within the organization of the recipient and its clients.</li>
+<li><code>TLP:AMBER+STRICT</code>: same as <code>TLP:AMBER</code>, but sharing is restricted to the organization of the recipient only.</li>
+<li><code>TLP:RED</code>: the information is highly sensitive and must not be shared beyond the original recipients.</li>
 </ul>
-<p>Once completed, your event should look like the following:</p>
+<p>When we complete these steps, the event looks like this:</p>
 <p><img alt="misp-event" src="../images/misp-event.png" /></p>
 
 

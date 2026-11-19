@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#connecting-to-the-device-and-retrieving-information" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connecting to the device and retrieving information
+        Connecting to the Device and Retrieving Information
       
     </span>
   </a>
@@ -439,10 +439,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#processing-retrieved-data" class="md-nav__link">
+  <a href="#processing-the-retrieved-data" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Processing retrieved data
+        Processing the Retrieved Data
       
     </span>
   </a>
@@ -453,7 +453,7 @@ Everything here is free. If it helps you, you can
   <a href="#updating-data-on-nautobot" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Updating data on Nautobot
+        Updating Data on Nautobot
       
     </span>
   </a>
@@ -461,10 +461,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#preparing-to-execute-the-script" class="md-nav__link">
+  <a href="#preparing-to-run-the-script" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Preparing to Execute the Script
+        Preparing to Run the Script
       
     </span>
   </a>
@@ -523,45 +523,45 @@ Everything here is free. If it helps you, you can
 <h1 id="populating-our-ssot-with-automation">Populating our SSOT with Automation<a class="headerlink" href="#populating-our-ssot-with-automation" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:nautobot">nautobot</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/nautobot.png" /></p>
-<p>Now, we need to populate our Single Source of Truth (SSOT). Manually adding interfaces for each device is impractical. Hence, automating this process by reading device configurations and creating corresponding SSOT objects is essential.</p>
-<p>Currently, there's no official system for automatic device discovery. This led me to develop <a href="https://github.com/dainok/netdoc">NetDoc</a> years ago, though it's currently exclusive to Netbox.</p>
-<p>Let's create a simple automation to efficiently handle this task.</p>
-<p><strong>Tools We'll Use:</strong></p>
+<p>Now we need to populate our Single Source of Truth (SSOT). Adding the interfaces of each device manually is impractical, so we automate the process: we read the configuration of the devices and create the corresponding SSOT objects.</p>
+<p>There is currently no official system for automatic device discovery. This is why I developed <a href="https://github.com/dainok/netdoc">NetDoc</a> years ago, although it works only with NetBox.</p>
+<p>Let's create a simple automation for this task.</p>
+<p>We use the following tools:</p>
 <ul>
-<li><a href="https://github.com/ktbyers/netmiko">Netmiko</a> for device connectivity and information retrieval.</li>
-<li><a href="https://github.com/networktocode/ntc-templates">NTC Templates</a> to parse information into structured data.</li>
-<li><a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/">Nautobot’s REST API</a> to create SSOT objects.</li>
+<li><a href="https://github.com/ktbyers/netmiko">Netmiko</a> to connect to the devices and retrieve information.</li>
+<li><a href="https://github.com/networktocode/ntc-templates">NTC Templates</a> to parse the information into structured data.</li>
+<li>The <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/">REST API of Nautobot</a> to create the SSOT objects.</li>
 </ul>
-<p>Assuming the device is manually created in our SSOT for convenience, our automation will focus solely on populating interfaces.</p>
-<p>Let's proceed step-by-step to develop our automation.</p>
+<p>We assume that the device is created manually in our SSOT for convenience, so our automation only populates the interfaces.</p>
+<p>Let's develop the automation step by step.</p>
 <h2 id="parameters-needed-for-our-automation">Parameters Needed for Our Automation<a class="headerlink" href="#parameters-needed-for-our-automation" title="Permanent link">&para;</a></h2>
-<p>Our automation requires the following parameters to function effectively:</p>
+<p>Our automation requires the following parameters:</p>
 <ul>
-<li><code>nautobot_base_url</code>: The URL to access Nautobot.</li>
-<li><code>nautobot_apikey</code>: The API key for making REST API requests to Nautobot.</li>
-<li><code>host</code>: The IP address of the physical device to be read.</li>
-<li><code>username</code>: The username used to access the physical device.</li>
-<li><code>password</code>: The password used to access the physical device.</li>
+<li><code>nautobot_base_url</code>: the URL to access Nautobot.</li>
+<li><code>nautobot_apikey</code>: the API key to make REST API requests to Nautobot.</li>
+<li><code>host</code>: the IP address of the physical device to read.</li>
+<li><code>username</code>: the username to access the physical device.</li>
+<li><code>password</code>: the password to access the physical device.</li>
 </ul>
-<p>You can create the API key on Nautobot by navigating to <code>User</code> → <code>Profile</code> → <code>API Tokens</code> → <code>Add a token</code>.</p>
+<p>We create the API key in Nautobot under <code>User</code> → <code>Profile</code> → <code>API Tokens</code> → <code>Add a token</code>.</p>
 <p><img alt="nautobot-api-token" src="../images/nautobot-api-token.png" /></p>
-<p>In the example script, some parameters are interactively read while others are statically defined within the code. Please note, this script serves as a simple example and should not be used securely in production environments.</p>
-<h2 id="connecting-to-the-device-and-retrieving-information">Connecting to the device and retrieving information<a class="headerlink" href="#connecting-to-the-device-and-retrieving-information" title="Permanent link">&para;</a></h2>
-<p>Next, we need to establish a connection to the device and retrieve necessary information. In this example, let's assume the device is a Cisco IOS XE switch, and the required data can be obtained using the following two commands:</p>
+<p>In the example script, some parameters are read interactively while others are defined statically in the code. The script is a simple example and must not be used as it is in production environments.</p>
+<h2 id="connecting-to-the-device-and-retrieving-information">Connecting to the Device and Retrieving Information<a class="headerlink" href="#connecting-to-the-device-and-retrieving-information" title="Permanent link">&para;</a></h2>
+<p>Next, we connect to the device and retrieve the information we need. In this example, the device is a Cisco IOS XE switch, and two commands provide the data we need:</p>
 <ul>
-<li><code>show version</code>: to retrieve the device hostname.</li>
-<li><code>show interfaces</code>: to retrieve all configured interfaces and any additional parameters.</li>
+<li><code>show version</code>: to retrieve the hostname of the device.</li>
+<li><code>show interfaces</code>: to retrieve all the configured interfaces and their additional parameters.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">with</span> <span class="n">ConnectHandler</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span> <span class="k">as</span> <span class="n">net_connect</span><span class="p">:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">show_version</span> <span class="o">=</span> <span class="n">net_connect</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="s2">"show version"</span><span class="p">,</span> <span class="n">use_textfsm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">show_interfaces</span> <span class="o">=</span> <span class="n">net_connect</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="s2">"show interfaces"</span><span class="p">,</span> <span class="n">use_textfsm</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p>The <code>use_textfsm</code> parameter allows us to immediately transform the human-readable output into structured data. This transformation (parsing) is performed using the Google TextFSM library and NTC Templates.</p>
-<h2 id="processing-retrieved-data">Processing retrieved data<a class="headerlink" href="#processing-retrieved-data" title="Permanent link">&para;</a></h2>
-<p>Now that we have obtained the data we need in a structured format, our next step is to clean it up and extract only the following parameters:</p>
+<p>The <code>use_textfsm</code> parameter transforms the human-readable output into structured data immediately. The transformation (parsing) is performed with the TextFSM library by Google and NTC Templates.</p>
+<h2 id="processing-the-retrieved-data">Processing the Retrieved Data<a class="headerlink" href="#processing-the-retrieved-data" title="Permanent link">&para;</a></h2>
+<p>Now that we have the data in a structured format, we clean it up and extract only the following parameters:</p>
 <ul>
 <li>Hostname (standardized to uppercase).</li>
-<li>Interface name, description, and link status.</li>
+<li>Interface name, description and link status.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">device_name</span> <span class="o">=</span> <span class="n">show_version</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"hostname"</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">device_interfaces</span> <span class="o">=</span> <span class="p">{</span>
@@ -572,13 +572,13 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">show_interfaces</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">}</span>
 </code></pre></div>
-<h2 id="updating-data-on-nautobot">Updating data on Nautobot<a class="headerlink" href="#updating-data-on-nautobot" title="Permanent link">&para;</a></h2>
+<h2 id="updating-data-on-nautobot">Updating Data on Nautobot<a class="headerlink" href="#updating-data-on-nautobot" title="Permanent link">&para;</a></h2>
 <p>We are now ready to update the data on Nautobot. To do this, we need to:</p>
 <ul>
-<li>Retrieve the device ID by its name. Let's assume the device has already been manually created within Nautobot.</li>
-<li>Add interfaces associated with the device only if they do not already exist.</li>
+<li>Retrieve the device ID by its name. We assume that the device already exists in Nautobot.</li>
+<li>Add the interfaces associated with the device only if they do not already exist.</li>
 </ul>
-<p>First, let's make a call to retrieve all devices by filtering their name:</p>
+<p>First, we retrieve the devices by filtering on their name:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Ingesting data to Nautobot</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Token </span><span class="si">{</span><span class="n">nautobot_apikey</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
@@ -592,7 +592,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">device_name</span><span class="si">}</span><span class="s2"> not found"</span><span class="p">)</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">device_id</span> <span class="o">=</span> <span class="n">req</span><span class="p">[</span><span class="s2">"results"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"id"</span><span class="p">]</span>
 </code></pre></div>
-<p>If the device exists, we use the <code>device_id</code> to retrieve interfaces associated with this device. If the interface does not exist, we create it:</p>
+<p>If the device exists, we use <code>device_id</code> to retrieve the interfaces associated with it. If an interface does not exist, we create it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Ingesting data to Nautobot</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Token </span><span class="si">{</span><span class="n">nautobot_apikey</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
@@ -606,27 +606,26 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">device_name</span><span class="si">}</span><span class="s2"> not found"</span><span class="p">)</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">device_id</span> <span class="o">=</span> <span class="n">req</span><span class="p">[</span><span class="s2">"results"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">"id"</span><span class="p">]</span>
 </code></pre></div>
-<p>In both cases, we assume that Nautobot's structure does not allow multiple devices with the same name or multiple interfaces with the same name within the same device.</p>
-<h2 id="preparing-to-execute-the-script">Preparing to Execute the Script<a class="headerlink" href="#preparing-to-execute-the-script" title="Permanent link">&para;</a></h2>
-<p>Before running the script, we need to create the device on Nautobot. Here's the step-by-step process.</p>
-<p><strong>Create a Device Role:</strong> navigate to <code>Organization</code> → <code>Roles</code> → <code>Add</code>, with <code>Content Type = dcim|device</code>:</p>
+<p>In both cases, we assume that the structure of Nautobot does not allow multiple devices with the same name, or multiple interfaces with the same name within the same device.</p>
+<h2 id="preparing-to-run-the-script">Preparing to Run the Script<a class="headerlink" href="#preparing-to-run-the-script" title="Permanent link">&para;</a></h2>
+<p>Before running the script, we must create the device in Nautobot. Here are the steps.</p>
+<p><strong>Create a Device Role:</strong> we navigate to <code>Organization</code> → <code>Roles</code> → <code>Add</code>, with <code>Content Type = dcim|device</code>:</p>
 <p><img alt="nautobot-role-switch" src="../images/nautobot-role-switch.png" /></p>
-<p><strong>Create a Manufacturer:</strong> go to <code>Devices</code> → <code>Manufacturers</code> → <code>Add</code>:</p>
+<p><strong>Create a Manufacturer:</strong> we go to <code>Devices</code> → <code>Manufacturers</code> → <code>Add</code>:</p>
 <p><img alt="nautobot-manufacturer" src="../images/nautobot-manufacturer.png" /></p>
-<p><strong>Create a Device Type:</strong> in <code>Devices</code> → <code>Device Type</code> → <code>Add</code>, associate it with the previously created Manufacturer:</p>
+<p><strong>Create a Device Type:</strong> in <code>Devices</code> → <code>Device Type</code> → <code>Add</code>, we associate it with the Manufacturer created before:</p>
 <p><img alt="nautobot-create-device-type" src="../images/nautobot-create-device-type.png" /></p>
-<p><strong>Create a Location Type:</strong> set up a <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/">Location Type</a> in <code>Organization</code> → <code>Location Type</code> → <code>Add</code>, with <code>Content Type = dcim|device</code>:</p>
+<p><strong>Create a Location Type:</strong> we set up a <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/">Location Type</a> in <code>Organization</code> → <code>Location Type</code> → <code>Add</code>, with <code>Content Type = dcim|device</code>:</p>
 <p><img alt="nautobot-location-type" src="../images/nautobot-location-type.png" /></p>
-<p><strong>Create a Location:</strong> add a Location in <code>Organization</code> → <code>Locations</code> → <code>Add</code>, associating it with the previously created Location Type:</p>
+<p><strong>Create a Location:</strong> we add a Location in <code>Organization</code> → <code>Locations</code> → <code>Add</code>, and associate it with the Location Type created before:</p>
 <p><img alt="nautobot-create-location" src="../images/nautobot-create-location.png" /></p>
-<p><strong>Create the Device:</strong> finally, in</p>
-<p>, associate the Device Role, Device Type, and Location, using the hostname in uppercase:</p>
+<p><strong>Create the Device:</strong> finally, in <code>Devices</code> → <code>Devices</code> → <code>Add</code>, we associate the Device Role, the Device Type and the Location, and we use the hostname in uppercase:</p>
 <p><img alt="nautobot-create-hardware" src="../images/nautobot-create-hardware.png" /></p>
 <h2 id="running-the-script">Running the Script<a class="headerlink" href="#running-the-script" title="Permanent link">&para;</a></h2>
-<p>Now, we can execute the script. If everything works correctly, the device on Nautobot will be populated with all its interfaces:</p>
+<p>Now we can run the script. If everything works, the device in Nautobot is populated with all its interfaces:</p>
 <p><img alt="populate-nautobot" src="../images/populate-nautobot.png" /></p>
-<p>This process ensures that the device is properly set up within Nautobot before proceeding with the automation script to populate its interfaces.</p>
-<p>The script can be downloaded from <a href="https://github.com/dainok/courses/tree/master/Nautobot/04.%20Populating%20Nautobot">GitHub</a>.</p>
+<p>This process ensures that the device is set up correctly in Nautobot before the automation script populates its interfaces.</p>
+<p>We can download the script from <a href="https://github.com/dainok/courses/tree/master/Nautobot/04.%20Populating%20Nautobot">GitHub</a>.</p>
 
 
 

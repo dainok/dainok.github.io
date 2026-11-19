@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#nautobots-data-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nautobot's data structure
+        Nautobot's Data Structure
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#django-shell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Django shell
+        Django Shell
       
     </span>
   </a>
@@ -450,10 +450,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#django-shell-o-rest-api" class="md-nav__link">
+  <a href="#django-shell-or-rest-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Django shell o REST API
+        Django Shell or REST API
       
     </span>
   </a>
@@ -537,70 +537,70 @@ Everything here is free. If it helps you, you can
 <h1 id="key-insights-from-developing-nautobot-and-ansible-integrations">Key insights from developing Nautobot and Ansible integrations<a class="headerlink" href="#key-insights-from-developing-nautobot-and-ansible-integrations" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:behind-the-scene">behind-the-scene</a> <a class="md-tag" href="../../../tags/#tag:nautobot">nautobot</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/nautobot.png" /></p>
-<p>Beyond the topics discussed in previous posts, my work on this project focused on four key areas:</p>
+<p>Beyond the topics of the previous posts, my work on this project focused on four key areas:</p>
 <ul>
-<li>The data structure of Nautobot</li>
-<li>Nautobot's REST API</li>
-<li>Integrating Ansible with Nautobot</li>
-<li>Running Ansible playbooks from Nautobot</li>
+<li>The data structure of Nautobot.</li>
+<li>The REST API of Nautobot.</li>
+<li>Integrating Ansible with Nautobot.</li>
+<li>Running Ansible playbooks from Nautobot.</li>
 </ul>
-<p>Let's dive into the challenges encountered and the solutions omitted from previous posts.</p>
-<h2 id="nautobots-data-structure">Nautobot's data structure<a class="headerlink" href="#nautobots-data-structure" title="Permanent link">&para;</a></h2>
-<p>Effectively using Nautobot requires careful planning of the data structure to avoid costly changes later. Understanding this structure allows for simplifications in automation scripts.</p>
-<p>Each object in Nautobot is identified by a UUID, such as <code>2170a207-43b2-422a-a90d-51a4908b85fb</code>. This choice allows any attribute to be changed without issues. Since the device identifier is a UUID and not a name, we must consider:</p>
+<p>Let's look at the challenges I encountered and the solutions that I left out of the previous posts.</p>
+<h2 id="nautobots-data-structure">Nautobot's Data Structure<a class="headerlink" href="#nautobots-data-structure" title="Permanent link">&para;</a></h2>
+<p>To use Nautobot effectively, we need to plan the data structure carefully to avoid costly changes later. Understanding the structure also lets us simplify the automation scripts.</p>
+<p>Each object in Nautobot is identified by a UUID, such as <code>2170a207-43b2-422a-a90d-51a4908b85fb</code>. This choice allows us to change any attribute without issues. Since the identifier of a device is a UUID and not a name, we must consider:</p>
 <ul>
 <li>Can two devices have the same name?</li>
 <li>Can two interfaces on the same device have the same name?</li>
 </ul>
-<p>Quick tests reveal that the answer is no to both questions, allowing for safe simplifications in automation scripts.</p>
-<h2 id="django-shell">Django shell<a class="headerlink" href="#django-shell" title="Permanent link">&para;</a></h2>
-<p>Nautobot is built on <a href="https://www.djangoproject.com/">Django</a>, a Python-based web application framework. Django provides a shell for easy interaction with the data structure.</p>
-<p>The decision had to be made whether to develop automations using the shell or the REST API.</p>
-<p>The shell can be invoked using the command:</p>
+<p>Quick tests show that the answer is no to both questions, so we can simplify the automation scripts safely.</p>
+<h2 id="django-shell">Django Shell<a class="headerlink" href="#django-shell" title="Permanent link">&para;</a></h2>
+<p>Nautobot is built on <a href="https://www.djangoproject.com/">Django</a>, a Python-based web application framework. Django provides a shell that allows easy interaction with the data structure.</p>
+<p>I had to decide whether to develop the automations with the shell or with the REST API.</p>
+<p>We invoke the shell with the command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nautobot-server<span class="w"> </span>shell
 </code></pre></div>
-<p>For example, to retrieve the list of interfaces associated with a device, you can use this simple script:</p>
+<p>For example, to retrieve the list of the interfaces associated with a device, we can use this simple script:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">nautobot.dcim</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">models</span><span class="o">.</span><span class="n">Interface</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">device__name</span><span class="o">=</span><span class="s2">"MGMTSWITCH1"</span><span class="p">)</span>
 </code></pre></div>
-<p>While this option is appealing, it is important to note that the shell is only available locally to the instance running Nautobot. In environments where Nautobot is running in containers, accessing the shell can be complex or impossible.</p>
+<p>This option is appealing, but the shell is available only locally on the instance that runs Nautobot. When Nautobot runs in containers, accessing the shell can be complex or impossible.</p>
 <h2 id="rest-api">REST API<a class="headerlink" href="#rest-api" title="Permanent link">&para;</a></h2>
-<p>REST APIs are useful when well-documented, which is not the case with Nautobot. The <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/">documentation</a> includes examples, and local installations provide API call documentation (<a href="http://localhost:8000/api/docs/">http://localhost:8000/api/docs/).</a>.) However, some features like <a href="https://docs.nautobot.com/projects/core/en/v1.4.7/rest-api/filtering/#filtering-by-choice-field">filtering</a> are poorly documented, requiring trial and error.</p>
-<p>The <code>device_id</code> filter worked, but <code>device_name</code> returned an error:</p>
+<p>REST APIs are useful when they are well documented, which is not the case with Nautobot. The <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/">documentation</a> includes examples, and local installations provide the documentation of the API calls at <a href="http://localhost:8000/api/docs/">http://localhost:8000/api/docs/</a>. Some features, such as <a href="https://docs.nautobot.com/projects/core/en/v1.4.7/rest-api/filtering/#filtering-by-choice-field">filtering</a>, are poorly documented and require trial and error.</p>
+<p>The <code>device_id</code> filter worked, but <code>device_name</code> returned an error:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span><span class="nt">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Unknown filter field"</span><span class="p">]}</span>
 </code></pre></div>
-<p>After numerous attempts, I discovered a <a href="https://github.com/nautobot/nautobot/issues/4370">2023 bug</a>. Eventually, I realized the API filters are actually <a href="https://github.com/nautobot/nautobot/blob/develop/nautobot/dcim/filters/__init__.py">FilterSets</a>, allowing <code>device</code> to filter by name or label.</p>
+<p>After numerous attempts, I found a <a href="https://github.com/nautobot/nautobot/issues/4370">bug from 2023</a>. Eventually, I realized that the API filters are actually <a href="https://github.com/nautobot/nautobot/blob/develop/nautobot/dcim/filters/__init__.py">FilterSets</a>, so <code>device</code> can filter by name or label.</p>
 <p>The equivalent code is:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">url</span> <span class="o">=</span> <span class="s2">"http://localhost:8000/api/dcim/interfaces/?device=MGMTSWITCH1"</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Remember to handle <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/#pagination">pagination</a>.</p>
-<h2 id="django-shell-o-rest-api">Django shell o REST API<a class="headerlink" href="#django-shell-o-rest-api" title="Permanent link">&para;</a></h2>
-<p>Deciding between the shell and REST API, I chose the REST API for broader compatibility despite the difficulties.</p>
+<h2 id="django-shell-or-rest-api">Django Shell or REST API<a class="headerlink" href="#django-shell-or-rest-api" title="Permanent link">&para;</a></h2>
+<p>I chose the REST API for its broader compatibility, despite the difficulties.</p>
 <h2 id="integrating-ansible-with-nautobot">Integrating Ansible with Nautobot<a class="headerlink" href="#integrating-ansible-with-nautobot" title="Permanent link">&para;</a></h2>
-<p><a href="https://networktocode.com/">network.toCode()</a> provides a <a href="https://galaxy.ansible.com/ui/repo/published/networktocode/nautobot/">specific Ansible collection for Nautobot</a>. I needed a solution to use Nautobot as an Ansible inventory without creating one from scratch.</p>
-<p>The <a href="https://nautobot-ansible.readthedocs.io/en/latest/plugins/inventory_inventory.html">plugin documentation</a> offers a good starting point with examples.</p>
+<p><a href="https://networktocode.com/">network.toCode()</a> provides a <a href="https://galaxy.ansible.com/ui/repo/published/networktocode/nautobot/">specific Ansible collection for Nautobot</a>. I needed a way to use Nautobot as an Ansible inventory without building one from scratch.</p>
+<p>The <a href="https://nautobot-ansible.readthedocs.io/en/latest/plugins/inventory_inventory.html">plugin documentation</a> is a good starting point and includes examples.</p>
 <p>The challenge is defining a data structure that includes:</p>
 <ul>
-<li>Ansible-specific parameters (<code>ansible_connection</code>, <code>ansible_network_os</code>, <code>ansible_host</code>, <code>ansible_user</code>, <code>ansible_ssh_pass</code>)</li>
-<li>A group identifying devices</li>
-<li>A list of interfaces with profiles for each device</li>
+<li>The Ansible-specific parameters (<code>ansible_connection</code>, <code>ansible_network_os</code>, <code>ansible_host</code>, <code>ansible_user</code>, <code>ansible_ssh_pass</code>).</li>
+<li>A group that identifies the devices.</li>
+<li>A list of interfaces, with a profile for each device.</li>
 </ul>
-<p>Three options exist:</p>
+<p>There are three options:</p>
 <ul>
-<li>The inventory contains all necessary information from Nautobot.</li>
-<li>Playbook defines information except for the group with correct variables.</li>
+<li>The inventory contains all the necessary information from Nautobot.</li>
+<li>The playbook defines the information, except for the group with the correct variables.</li>
 <li>A mix of both.</li>
 </ul>
-<p>I opted to move information to Nautobot to experiment with <a href="https://docs.nautobot.com/projects/core/en/v1.1.6/additional-features/custom-fields/">custom fields</a>. In practice, usernames and passwords are stored in a vault; for simplicity, I hardcoded them in the playbook.</p>
+<p>I chose to move the information to Nautobot, to experiment with <a href="https://docs.nautobot.com/projects/core/en/v1.1.6/additional-features/custom-fields/">custom fields</a>. In practice, usernames and passwords are stored in a vault; for simplicity, I hardcoded them in the playbook.</p>
 <p>After testing, I found the correct combination. Two custom fields map to variables:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">compose</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_fields.connection</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_fields.network_os</span>
 </code></pre></div>
-<p>Each device is associated with three groups based on attributes:</p>
+<p>Each device is associated with three groups, based on its attributes:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">keyed_groups</span><span class="p">:</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">device_types</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type</span>
@@ -609,18 +609,18 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">location</span>
 </code></pre></div>
-<p><code>compose</code> and <code>keyed_groups</code> are standard Ansible features that required some trial and error. I used the following command to test:</p>
+<p><code>compose</code> and <code>keyed_groups</code> are standard Ansible features, and they required some trial and error. I used the following command to test:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ansible-inventory<span class="w"> </span>-i<span class="w"> </span>inventory.yml<span class="w"> </span>--list
 </code></pre></div>
 <h2 id="the-ansible-playbook">The Ansible Playbook<a class="headerlink" href="#the-ansible-playbook" title="Permanent link">&para;</a></h2>
-<p>Creating an optimized Ansible playbook requires experience. I reused a <a href="https://github.com/dainok/courses/tree/master/Ansible/17.%20Final%20lab/roles/cisco_ios_interface_profile">previously developed role</a> with slight modifications.</p>
+<p>Creating an optimized Ansible playbook requires experience. I reused a <a href="https://github.com/dainok/courses/tree/master/Ansible/17.%20Final%20lab/roles/cisco_ios_interface_profile">role I had developed previously</a> with slight modifications.</p>
 <p>First, I read the configuration from Nautobot and created two data structures:</p>
 <ul>
-<li><code>interface_profiles</code>: maps interfaces to profiles.</li>
+<li><code>interface_profiles</code>: maps the interfaces to the profiles.</li>
 <li><code>interface_cfgs</code>: contains the data structure for the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_interfaces_module.html">ios_interfaces module</a>.</li>
 </ul>
-<p>This approach was necessary as the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_l2_interfaces_module.html">ios_l2_interfaces module</a> does not support all needed parameters. Using the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_config_module.html">ios_config module</a> for interface configuration and <strong>ios_interfaces</strong> for specific parameters (<strong>description</strong> and <strong>status</strong>) was the solution.</p>
-<p>This results in a simple CLI command list that any network engineer can read and modify:</p>
+<p>This approach was necessary because the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_l2_interfaces_module.html">ios_l2_interfaces module</a> does not support all the parameters we need. The solution was to use the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_config_module.html">ios_config module</a> for the configuration of the interface and <code>ios_interfaces</code> for the specific parameters (<code>description</code> and <code>status</code>).</p>
+<p>The result is a simple list of CLI commands that any network engineer can read and modify:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">lines</span><span class="p">:</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">switchport access vlan 53</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">switchport voice vlan 54</span>
@@ -632,7 +632,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">switchport mode access</span>
 <a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">switchport nonegotiate</span>
 </code></pre></div>
-<p>I used <a href="https://jinja.palletsprojects.com/en/">Jinja</a> to create the data structure for better performance:</p>
+<p>I used <a href="https://jinja.palletsprojects.com/en/">Jinja</a> to create the data structure, for better performance:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">interface_profiles</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="no">{</span>
@@ -643,14 +643,14 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">      </span><span class="no">{% endfor %}</span>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="no">}</span>
 </code></pre></div>
-<p>Verify the data structure as JSON using the <code>debug</code> command to avoid issues like missing commas:</p>
+<p>We verify the data structure as JSON with the <code>debug</code> module, to avoid issues such as missing commas:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ok: [MGMTSWITCH1] =&gt; {
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>"msg": "{\n\"GigabitEthernet1/0/44\": \"interface_access\"\n\"GigabitEthernet1/0/45\": \"
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>interface_isl\"\n\"GigabitEthernet1/0/47\": \"interface_trunk\"\n}"
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>}
 </code></pre></div>
-<p>Once corrected</p>
+<p>Once corrected:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ok: [MGMTSWITCH1] =&gt; {
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    "msg": {
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>        "GigabitEthernet1/0/44": "interface_access",
@@ -659,11 +659,11 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    }
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>}
 </code></pre></div>
-<p>The next step is enabling playbook execution for a specific interface:</p>
+<p>The next step is to enable the execution of the playbook for a specific interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>./playbook-interface-configuration.yml<span class="w"> </span>--extra-vars<span class="w"> </span><span class="nv">interface_limit</span><span class="o">=</span>GigabitEthernet1/0/47
 </code></pre></div>
-<p>I cleaned the data structures to keep only the filtered element. Profile association is done using <code>include_tasks</code>, optimal for network engineers who deal with profiles for each interface.</p>
-<p>Finally, <code>description</code> and interface status are configured using the <code>ios_interfaces</code> module, simplifying <code>shutdown</code> and <code>no shutdown</code> command management.</p>
+<p>I cleaned the data structures to keep only the filtered element. The association of the profile is done with <code>include_tasks</code>, which is optimal for network engineers who deal with a profile for each interface.</p>
+<p>Finally, <code>description</code> and the status of the interface are configured with the <code>ios_interfaces</code> module, which simplifies the management of the <code>shutdown</code> and <code>no shutdown</code> commands.</p>
 
 
 

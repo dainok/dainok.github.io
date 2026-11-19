@@ -449,36 +449,36 @@ Everything here is free. If it helps you, you can
 <h1 id="choosing-the-foundation-for-our-ssot">Choosing the foundation for our SSOT<a class="headerlink" href="#choosing-the-foundation-for-our-ssot" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:nautobot">nautobot</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/nautobot.png" /></p>
-<p>The first topic we need to address is selecting the software that will serve as the foundation for our SSOT (Single Source of Truth). Our ultimate goal is to create a data structure that consolidates all the critical information about our infrastructure, such as:</p>
+<p>The first topic is the choice of the software that serves as the foundation for our SSOT (Single Source of Truth). Our goal is a data structure that consolidates the critical information about our infrastructure, such as:</p>
 <ul>
-<li>VLANs, IP networks, IP addresses, VRFs (IPAM)</li>
-<li>Sites, physical and virtual devices</li>
-<li>Rack configuration and cabling</li>
+<li>VLANs, IP networks, IP addresses and VRFs (IPAM).</li>
+<li>Sites, physical and virtual devices.</li>
+<li>Rack configuration and cabling.</li>
 </ul>
-<p>Essentially, we’re looking for an IPAM (IP Address Management) tool that can also store various other types of data. Since this data structure will be the base for executing some automated workflows, it needs to be:</p>
+<p>In essence, we are looking for an IPAM (IP Address Management) tool that can also store other types of data. This data structure is the base for automated workflows, so it needs to be:</p>
 <ul>
-<li>Well-documented</li>
-<li>Designed with an API-First approach</li>
-<li>Open source</li>
-<li>Extensible via plugins</li>
-<li>Written in a widely used automation programming language (Python)</li>
+<li>Well documented.</li>
+<li>Designed with an API-first approach.</li>
+<li>Open source.</li>
+<li>Extensible via plugins.</li>
+<li>Written in a widely used automation language (Python).</li>
 </ul>
-<p>We have two main candidates: <a href="https://networktocode.com/nautobot/">Nautobot</a> and <a href="https://netboxlabs.com/oss/netbox/">Netbox</a>. Nautobot is a fork of Netbox created in 2021. The <a href="https://blog.networktocode.com/post/why-did-network-to-code-fork-netbox/">primary reason</a> behind Nautobot’s development was to evolve the product into a platform for automating processes within organizations.</p>
-<p>Both products are currently undergoing significant restructuring, often with substantial breaking changes. This decision will impact the future of our integration:</p>
+<p>We have two main candidates: <a href="https://networktocode.com/nautobot/">Nautobot</a> and <a href="https://netboxlabs.com/oss/netbox/">NetBox</a>. Nautobot is a fork of NetBox created in 2021. The <a href="https://blog.networktocode.com/post/why-did-network-to-code-fork-netbox/">main reason</a> for its development was to evolve the product into a platform that automates the processes of an organization.</p>
+<p>Both products are undergoing significant restructuring, often with substantial breaking changes. This affects the future of our integration:</p>
 <ul>
-<li>Our implementation must keep up with product updates: it’s crucial that our integration doesn’t hinder future updates to our SSOT.</li>
-<li>The closer we stick to the product’s official features, the fewer customizations we’ll need to make, simplifying future updates.</li>
-<li>Fewer customizations mean fewer problems → we’ll use more standard constructs.</li>
-<li>It must support interface roles.</li>
+<li>Our implementation must keep up with the updates of the product: our integration must not prevent future updates of the SSOT.</li>
+<li>The closer we stay to the official features of the product, the fewer customizations we need, which simplifies future updates.</li>
+<li>Fewer customizations mean fewer problems, so we use standard constructs.</li>
+<li>The product must support interface roles.</li>
 </ul>
-<p>We have demo versions of both products available:</p>
+<p>Demo versions of both products are available:</p>
 <ul>
 <li><a href="https://demo.netbox.dev/">demo.netbox.dev</a>: registration required.</li>
 <li><a href="https://demo.nautobot.com">demo.nautobot.com</a>: username <code>demo</code>, password <code>nautobot</code>.</li>
 <li><a href="https://next.demo.nautobot.com">next.demo.nautobot.com</a>: username <code>demo</code>, password <code>nautobot</code>.</li>
 </ul>
-<p>From the demos, we can see that the next version of Nautobot offers the ability to assign roles to interfaces, a feature not available in the current versions of Netbox or Nautobot. There was a <a href="https://github.com/nautobot/nautobot/issues/5841">bug</a> in the demo, but it should be resolved and integrated into the demo now.</p>
-<p>Therefore, the decision is clear: Nautobot, in its upcoming version, will be the product we use to implement our SSOT.</p>
+<p>The demos show that the next version of Nautobot can assign roles to interfaces, a feature that is not available in the current versions of NetBox or Nautobot. The demo had a <a href="https://github.com/nautobot/nautobot/issues/5841">bug</a>, which should now be resolved and integrated in the demo.</p>
+<p>The decision is therefore clear: we use the upcoming version of Nautobot to implement our SSOT.</p>
 
 
 

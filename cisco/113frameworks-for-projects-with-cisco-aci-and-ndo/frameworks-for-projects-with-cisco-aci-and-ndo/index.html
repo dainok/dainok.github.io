@@ -484,26 +484,18 @@ Everything here is free. If it helps you, you can
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/cisco.png" /></p>
 <p>When we develop an automation system for Cisco ACI and NDO, we can choose among several frameworks:</p>
 <ul>
-<li><strong>APIs:</strong> maximum flexibility, but they require significant effort and strong programming skills.<ul>
+<li><strong>APIs:</strong> maximum flexibility, but they require significant effort and strong programming skills.</li>
 <li><strong>APIC:</strong> API-first approach, with the documentation available directly through the Web UI.</li>
 <li><strong>NDO:</strong> APIs are available, but beware of potential breaking changes. The <a href="https://developer.cisco.com/docs/nexus-dashboard-orchestrator/latest/api-reference/">documentation</a> is online (via OpenAPI/Swagger), along with a <a href="https://developer.cisco.com/docs/nexus-dashboard-orchestrator/latest/api-changelog/">changelog of breaking changes</a>.</li>
-</ul>
-</li>
-<li><strong>Ansible:</strong> a simplified framework that does not require programming experience.<ul>
+<li><strong>Ansible:</strong> a simplified framework that does not require programming experience.</li>
 <li><strong>APIC:</strong> a fairly complete <a href="https://docs.ansible.com/ansible/latest/collections/cisco/aci/index.html">Ansible collection</a> is available.</li>
 <li><strong>NDO:</strong> a fairly complete <a href="https://docs.ansible.com/ansible/latest/collections/cisco/mso/index.html">Ansible collection</a> is also available.</li>
-</ul>
-</li>
-<li><strong>Terraform:</strong> more complex and requiring prior expertise; best suited for greenfield environments.<ul>
+<li><strong>Terraform:</strong> more complex and requiring prior expertise; best suited for greenfield environments.</li>
 <li><strong>APIC:</strong> a fairly complete <a href="https://registry.terraform.io/providers/CiscoDevNet/aci/latest">Terraform provider</a> is available.</li>
 <li><strong>NDO:</strong> a <a href="https://registry.terraform.io/providers/CiscoDevNet/mso/latest">Terraform provider</a> exists, but with several limitations.</li>
-</ul>
-</li>
-<li><strong><a href="https://netascode.cisco.com/">NaC (Network as Code)</a>:</strong> a framework that abstracts the complexity of Terraform.<ul>
+<li><strong><a href="https://netascode.cisco.com/">NaC (Network as Code)</a>:</strong> a framework that abstracts the complexity of Terraform.</li>
 <li><strong>APIC:</strong> a <a href="https://registry.terraform.io/modules/netascode/nac-aci/aci">specific module</a> is available, with some limitations.</li>
 <li><strong>NDO:</strong> a <a href="https://registry.terraform.io/modules/netascode/nac-ndo/mso/latest">specific module</a> exists, but with more significant limitations.</li>
-</ul>
-</li>
 </ul>
 <p>For NDO specifically, I recommend using <strong><a href="https://netascode.cisco.com/">NaC</a></strong> whenever possible, because it greatly simplifies automation. Objects in NDO must be created and deleted in a specific sequence. Terraform (and therefore NaC) implements the correct sequence out of the box, which lets projects move much faster.</p>
 <p>We dive deeper into NaC in a dedicated article.</p>
