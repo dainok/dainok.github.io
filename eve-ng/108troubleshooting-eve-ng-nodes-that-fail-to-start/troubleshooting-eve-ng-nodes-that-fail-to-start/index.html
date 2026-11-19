@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#the-wrapper" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The wrapper
+        The Wrapper
       
     </span>
   </a>
@@ -501,56 +501,56 @@ Everything here is free. If it helps you, you can
 <h1 id="troubleshooting-eve-ng-nodes-that-fail-to-start">Troubleshooting EVE-NG nodes that fail to start<a class="headerlink" href="#troubleshooting-eve-ng-nodes-that-fail-to-start" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
-<p>In this article, we will explore how to troubleshoot EVE-NG nodes that fail to start properly. The symptom is straightforward yet frustrating: when attempting to start a node, it appears to launch but then shuts down after a few seconds without any explanation.</p>
-<p>Unfortunately, some architectural decisions made early on have made it challenging to surface these types of backend errors to the user. This was a deliberate choice, based on the assumption that with correct usage, such failures would be extremely rare. This assumption held true for the most part, but in those few error cases, users remain helpless.</p>
-<p>Here, we will walk through the correct troubleshooting steps. We will connect to the EVE-NG system via SSH as the root user and manually replicate the backend process to identify the failure point.</p>
+<p>In this article, we will explore how to troubleshoot EVE-NG nodes that fail to start properly. The symptom is simple yet frustrating: when you start a node, it appears to launch but shuts down after a few seconds without any explanation.</p>
+<p>Some architectural decisions made early on make it hard to surface backend errors to the user. It was a deliberate choice: with correct usage, such failures should be extremely rare. That held true for the most part, but in the few cases where it does not, the user is left helpless.</p>
+<p>Here, we will walk through the troubleshooting steps. We will connect to the EVE-NG system via SSH as root and replicate the backend process manually to find the point of failure.</p>
 <h2 id="logs">Logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h2>
-<p>Logs are located in <code>/opt/unetlab/data/Logs</code> (note that <strong>UNetLab</strong> was the predecessor of <strong>EVE-NG</strong>, and much of the original structure remains intact). The primary file of interest is <code>unl_wrapper.txt</code>, which records all operations performed by the wrapper, the program that mediates communication between the node and the backend. Specifically, the wrapper manages node start, stop, and console operations.</p>
-<p>Run the following command:</p>
+<p>Logs are located in <code>/opt/unetlab/data/Logs</code> (note that <strong>UNetLab</strong> was the predecessor of <strong>EVE-NG</strong>, and much of its original structure remains). The file we need is <code>unl_wrapper.txt</code>, which records all the operations performed by the wrapper, the program that mediates communication between the node and the backend. Specifically, the wrapper manages the start, stop and console operations of a node.</p>
+<p>Follow the log with this command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>tail<span class="w"> </span>-f<span class="w"> </span>/opt/unetlab/data/Logs/unl_wrapper.txt
 </code></pre></div>
-<p>Start the problematic node and observe the output. Key lines to note include:</p>
+<p>Start the failing node and watch the output. The key lines are:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Aug 01 10:07:03 INFO: CWD is /opt/unetlab/tmp/5/1fdf27c0-5e97-4706-a9da-1a82b01c0fde/2
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Aug 01 10:07:03 INFO: starting /opt/unetlab/wrappers/qemu_wrapper -C 54179 -T 5 -D 2 -t "vIOS" -F /opt/qemu-2.4.0/bin/qemu-system-x86_64 -d 0 -- -nographic -device e1000,netdev=net0,mac=50:05:00:02:00:00 -netdev tap,id=net0,ifname=vun003000500200,script=no ...
 </code></pre></div>
-<h2 id="the-wrapper">The wrapper<a class="headerlink" href="#the-wrapper" title="Permanent link">&para;</a></h2>
-<p>As mentioned, the wrapper handles communication between the backend and the node. It launches the node and manages the console.</p>
+<h2 id="the-wrapper">The Wrapper<a class="headerlink" href="#the-wrapper" title="Permanent link">&para;</a></h2>
+<p>As mentioned, the wrapper handles the communication between the backend and the node. It launches the node and manages the console.</p>
 <p>The lines above reveal:</p>
 <ul>
-<li>The current working directory where the wrapper runs (<code>/opt/unetlab/tmp/5/1fdf27c0-5e97-4706-a9da-1a82b01c0fde/2</code>)</li>
-<li>The wrapper executable being run (<code>/opt/unetlab/wrappers/qemu_wrapper</code>)</li>
-<li>The command the wrapper executes to launch the node (<code>/opt/qemu-2.4.0/bin/qemu-system-x86_64</code> along with parameters)</li>
+<li>The current working directory of the wrapper (<code>/opt/unetlab/tmp/5/1fdf27c0-5e97-4706-a9da-1a82b01c0fde/2</code>).</li>
+<li>The wrapper executable (<code>/opt/unetlab/wrappers/qemu_wrapper</code>).</li>
+<li>The command the wrapper runs to launch the node (<code>/opt/qemu-2.4.0/bin/qemu-system-x86_64</code> and its parameters).</li>
 </ul>
-<p>Running the wrapper directly hides any errors from the virtualization software (QEMU in this case). To diagnose, we want to launch the node directly, bypassing the wrapper. Note two simplifications here:</p>
+<p>The wrapper hides the errors raised by the virtualization software (QEMU in this case). To see them, we launch the node directly, bypassing the wrapper. This involves two simplifications:</p>
 <ul>
-<li>We run the node as root, which has fewer restrictions</li>
-<li>We launch the node directly, without wrapper mediation</li>
+<li>We run the node as root, which has fewer restrictions.</li>
+<li>We launch the node directly, without the wrapper.</li>
 </ul>
-<p>In all cases analyzed, these simplifications did not materially affect error reproduction. If an error surfaces, it is likely the root cause. If not, the issue may relate to the user permissions or the wrapper itself.</p>
-<p>The command the wrapper uses is visible: the <code>-F</code> parameter specifies the binary, and all arguments after <strong>--</strong> are passed to it. Other flags set tenant ID (<code>-T</code>), node ID (<code>-D</code>), console port (<code>-C</code>), and terminal title (<code>-t</code>). In busy EVE-NG installations, the terminal title corresponds to the node name, which helps identify the process or logs.</p>
+<p>In all the cases I analyzed, these simplifications did not prevent the error from reproducing. If an error appears, it is likely the root cause. If not, the problem may lie in the user's permissions or in the wrapper itself.</p>
+<p>The command the wrapper uses is visible in the log: the <code>-F</code> parameter specifies the binary, and all the arguments after <code>--</code> are passed to it. The other flags set the tenant ID (<code>-T</code>), the node ID (<code>-D</code>), the console port (<code>-C</code>) and the terminal title (<code>-t</code>). The terminal title is the node name, which helps to find the right process or log lines on a busy EVE-NG server.</p>
 <h2 id="manually-starting-the-node">Manually Starting the Node<a class="headerlink" href="#manually-starting-the-node" title="Permanent link">&para;</a></h2>
-<p>To identify errors, start by SSH-ing into the EVE-NG server as the root user and navigate to the node’s working directory using the command:</p>
+<p>Connect to the EVE-NG server via SSH as root and go to the working directory of the node:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>/opt/unetlab/tmp/5/1fdf27c0-5e97-4706-a9da-1a82b01c0fde/2
 </code></pre></div>
-<p>From there, launch the node binary directly by executing the command specified after the <code>-F</code> flag, including all parameters following <strong>--</strong> except for the <code>-d</code> debug flag. For example:</p>
+<p>From there, launch the node binary directly: run the program specified after the <code>-F</code> flag with all the parameters that follow <code>--</code>. The <code>-d</code> debug flag of the wrapper is not passed. For example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/opt/qemu-2.4.0/bin/qemu-system-x86_64<span class="w"> </span>-nographic<span class="w"> </span>-device<span class="w"> </span>e1000,netdev<span class="o">=</span>net0,mac<span class="o">=</span><span class="m">50</span>:05:00:02:00:00<span class="w"> </span>-netdev<span class="w"> </span>tap,id<span class="o">=</span>net0,ifname<span class="o">=</span>vun003000500200,script<span class="o">=</span>no<span class="w"> </span>...<span class="w"> </span>-cpu<span class="w"> </span>host
 </code></pre></div>
-<p>Removing the <code>-d</code> flag ensures that error messages are output directly to the terminal. For example, in my case, the error was:</p>
+<p>Without the <code>-d</code> flag, error messages are printed directly to the terminal. In my case, the error was:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>qemu-system-x86_64: -drive file=virtioa.qcow2,if=virtio,bus=0,unit=0,cache=none: Could not open 'virtioa.qcow2': No such file or directory
 </code></pre></div>
-<p>This indicates the disk image file <code>virtioa.qcow2</code> was likely deleted after the initial node startup. Performing a wipe and restart usually resolves this by recreating the image.</p>
+<p>This indicates that the disk image <code>virtioa.qcow2</code> was probably deleted after the node first started. Wiping the node and starting it again usually fixes the problem, because the image is recreated.</p>
 <h2 id="example-troubleshooting-iol-nodes">Example: Troubleshooting IOL Nodes<a class="headerlink" href="#example-troubleshooting-iol-nodes" title="Permanent link">&para;</a></h2>
-<p>The procedure is the same for IOL nodes. For instance, logs might show:</p>
+<p>The procedure is the same for IOL nodes. For instance, the log might show:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Aug 01 10:29:58 INFO: CWD is /opt/unetlab/tmp/5/1fdf27c0-5e97-4706-a9da-1a82b01c0fde/3
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Aug 01 10:29:58 INFO: starting /opt/unetlab/wrappers/iol_wrapper -C 47265 -L 3 -T 5 -D 3 -t "R3" -k 0 -F /opt/unetlab/addons/iol/bin/x86_64_crb_linux_l2-adventerprisek9-ms.bin -d 0 -e 1 -s 0 -- -n 1024 -q -m 1024
 </code></pre></div>
 <p>Change to the node directory:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>/opt/unetlab/tmp/5/1fdf27c0-5e97-4706-a9da-1a82b01c0fde/3
 </code></pre></div>
-<p>Run the node binary manually (note the required instance number at the end):</p>
+<p>Run the node binary manually (note the instance number required at the end):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>/opt/unetlab/addons/iol/bin/x86_64_crb_linux_l2-adventerprisek9-ms.bin<span class="w"> </span>-n<span class="w"> </span><span class="m">1024</span><span class="w"> </span>-q<span class="w"> </span>-m<span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="m">1</span>
 </code></pre></div>
-<p>The appended number <code>1</code> specifies the IOL instance.</p>
+<p>The number <code>1</code> at the end is the IOL instance.</p>
 
 
 
