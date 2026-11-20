@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#what-makes-an-image-iac-ready" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What makes an image IaC-ready
+        What Makes an Image IaC-Ready
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Getting started
+        Getting Started
       
     </span>
   </a>
@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#building-iac-ready-images" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Building IaC-ready images
+        Building IaC-Ready Images
       
     </span>
   </a>
@@ -493,82 +493,89 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:eve-ng" class="md-tag">eve-ng</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:iac" class="md-tag">iac</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2026-04-12">12 April 2026</time></span></p>
 <h1 id="eve-ng-cli-iac-ready-images">EVE-NG CLI - IaC-ready images<a class="headerlink" href="#eve-ng-cli-iac-ready-images" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a> <a class="md-tag" href="../../../tags/#tag:iac">iac</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
-<p>In the first post I described the three components of this framework. The EVE-NG CLI handles lab creation; node configuration (coming later) handles feature deployment. But both of those depend on one thing being true: every node in the lab must be reachable via SSH from the moment it boots, before any topology-specific configuration has been applied.</p>
-<p>That's what IaC-ready images are for.</p>
-<h2 id="what-makes-an-image-iac-ready">What makes an image IaC-ready<a class="headerlink" href="#what-makes-an-image-iac-ready" title="Permanent link">&para;</a></h2>
-<p>An IaC-ready image is a standard EVE-NG node image that has been pre-configured with three things:</p>
+<p>In the first post, I described the three components of this framework. The EVE-NG CLI handles lab creation, and node configuration (coming later) handles feature deployment. Both depend on one thing being true: every node in the lab must be reachable via SSH from the moment it boots, before any topology-specific configuration has been applied.</p>
+<p>That is what IaC-ready images are for.</p>
+<h2 id="what-makes-an-image-iac-ready">What Makes an Image IaC-Ready<a class="headerlink" href="#what-makes-an-image-iac-ready" title="Permanent link">&para;</a></h2>
+<p>An IaC-ready image is a standard EVE-NG node image pre-configured with three things:</p>
 <ul>
-<li><strong>A known administrative user</strong> with SSH access enabled</li>
-<li><strong>A dedicated management VRF</strong> — keeping OOB traffic entirely separate from the lab topology</li>
-<li><strong>A management interface</strong> bound to that VRF, configured to get an IPv4 address via DHCP</li>
+<li><strong>A known administrative user</strong> with SSH access enabled.</li>
+<li><strong>A dedicated management VRF</strong>, which keeps the OOB traffic entirely separate from the lab topology.</li>
+<li><strong>A management interface</strong> bound to that VRF and configured to get an IPv4 address via DHCP.</li>
 </ul>
-<p>When the CLI imports a lab, it attaches the OOB management network to <code>nat0</code> on the EVE-NG host automatically. Every node gets a DHCP address over that network at boot — regardless of what's happening on the data-plane interfaces. From that point on, it's reachable over SSH and ready for automated configuration.</p>
-<p>The design is intentionally minimal. The image makes no assumptions about the lab topology; it just guarantees reachability. Everything else is handled at the node configuration layer.</p>
-<p><strong>IOL images are a special case</strong> because IOL loads its startup configuration from an external file (not baked into the image), the CLI can push the minimal OOB config at lab creation time without any pre-configuration step. For QEMU-based images, the config must be embedded in the image itself — which is what the build process below handles.</p>
-<p><strong>IaC-ready images cannot be shared publicly</strong> due to copyright. Each image must be built from a legally-obtained source by the person running the framework.</p>
-<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>Clone the repository on your EVE-NG server and install the dependencies:</p>
+<p>When the CLI imports a lab, it attaches the OOB management network to <code>nat0</code> on the EVE-NG host automatically. Every node gets a DHCP address over that network at boot, regardless of what happens on the data-plane interfaces. From that point on, the node is reachable over SSH and ready for automated configuration.</p>
+<p>The design is intentionally minimal. The image makes no assumptions about the lab topology: it only guarantees reachability. Everything else is handled at the node configuration layer.</p>
+<p><strong>IOL images are a special case.</strong> IOL loads its startup configuration from an external file (not baked into the image), so the CLI can push the minimal OOB configuration at lab creation time without any pre-configuration step. For QEMU-based images, the configuration must be embedded in the image itself, which is what the build process below handles.</p>
+<p><strong>IaC-ready images cannot be shared publicly</strong> because of copyright. The person running the framework must build each image from a legally obtained source.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>We clone the repository on the EVE-NG server and install the dependencies:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>user@your-eveng-server
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dainok/eveng-cli
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span><span class="w"> </span>eveng-cli
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>pip<span class="w"> </span>install<span class="w"> </span>poetry
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>poetry<span class="w"> </span>install
 </code></pre></div>
-<p>Then install the Ansible collections required by the build playbooks:</p>
+<p>Then we install the <a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a> collections required by the build playbooks:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>playbooks
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>poetry<span class="w"> </span>run<span class="w"> </span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.yml
 </code></pre></div>
-<h2 id="building-iac-ready-images">Building IaC-ready images<a class="headerlink" href="#building-iac-ready-images" title="Permanent link">&para;</a></h2>
-<p>Inside the <strong>playbooks</strong> directory there is one playbook per supported image type:</p>
+<h2 id="building-iac-ready-images">Building IaC-Ready Images<a class="headerlink" href="#building-iac-ready-images" title="Permanent link">&para;</a></h2>
+<p>The <code>playbooks</code> directory contains one playbook per supported image type:</p>
 <ul>
-<li><code>playbook-c8000v.yml</code></li>
-<li><code>playbook-csr1000vng.yml</code></li>
-<li><code>playbook-iol.yml</code></li>
-<li><code>playbook-nxosv9k.yml</code></li>
-<li><code>playbook-viosl2.yml</code></li>
-<li><code>playbook-vios.yml</code></li>
-<li><code>playbook-vyos.yml</code></li>
+<li><code>playbook-c8000v.yml</code>.</li>
+<li><code>playbook-csr1000vng.yml</code>.</li>
+<li><code>playbook-iol.yml</code>.</li>
+<li><code>playbook-nxosv9k.yml</code>.</li>
+<li><code>playbook-viosl2.yml</code>.</li>
+<li><code>playbook-vios.yml</code>.</li>
+<li><code>playbook-vyos.yml</code>.</li>
 </ul>
 <p>Each playbook follows the same three-step process:</p>
 <ul>
-<li>Searches a source directory for matching image files and copies them into <code>/opt/unetlab/addons</code></li>
-<li>Boots a temporary node using the copied image and applies the OOB configuration</li>
-<li>Boots the configured image again and verifies it can reach both <code>pnet0</code> (the EVE-NG host interface) and the internet</li>
+<li>It searches a source directory for matching image files and copies them into <code>/opt/unetlab/addons</code>.</li>
+<li>It boots a temporary node with the copied image and applies the OOB configuration.</li>
+<li>It boots the configured image again and verifies that it can reach both <code>pnet0</code> (the EVE-NG host interface) and the Internet.</li>
 </ul>
-<p>For Cisco images, you'll need the source files from a legally-obtained distribution. In my case I downloaded <code>refplat-20241223-fcs-iso.zip</code> from <a href="https://software.cisco.com/download/home/286193282/type/286326381/release">Cisco's software portal (CML)</a> and extracted the contents into <code>/opt/unetlab-downloads</code>. Then:</p>
+<p>For Cisco images, we need the source files from a legally obtained distribution. In my case, I downloaded <code>refplat-20241223-fcs-iso.zip</code> from the <a href="https://software.cisco.com/download/home/286193282/type/286326381/release">Cisco software portal (CML)</a> and extracted the contents into <code>/opt/unetlab-downloads</code>. Then:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>playbooks
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>poetry<span class="w"> </span>run<span class="w"> </span>./playbook-vios.yml<span class="w"> </span>-e<span class="w"> </span><span class="nv">search_dir</span><span class="o">=</span>/opt/unetlab-downloads
 </code></pre></div>
 <p><img alt="iac-build" src="../images/iac-build.png" /></p>
-<p>Once complete, the configured images appear in <code>/opt/unetlab/addons/qemu</code>, each with the <code>-iac</code> suffix in their name — for example, <code>vios-adventerprisek9-m.spa.159-3.m9-iac</code>. That suffix is how the CLI (and you) can tell at a glance which images support IaC and which don't.</p>
-<p>To build all supported images at once, there is a convenience script used in CI before each release:</p>
+<p>When it completes, the configured images appear in <code>/opt/unetlab/addons/qemu</code>, each with the <code>-iac</code> suffix in its name, for example <code>vios-adventerprisek9-m.spa.159-3.m9-iac</code>. That suffix lets the CLI (and you) tell at a glance which images support IaC and which do not.</p>
+<p>To build all the supported images at once, a convenience script used in CI before each release is available:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./rebuild_all_templates.sh
 </code></pre></div>
-<p>This wipes all existing <code>-iac</code> images and rebuilds them from scratch — useful both for testing and for an initial full setup.</p>
+<p>This wipes all the existing <code>-iac</code> images and rebuilds them from scratch, which is useful both for testing and for an initial full setup.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>If a playbook fails, you can run the three steps manually to isolate where the problem is.</p>
-<p><strong>Step 1 — Copy the image only</strong> (skip configuration):</p>
+<p>If a playbook fails, we can run the three steps manually to isolate the problem.</p>
+<p><strong>Step 1, copy the image only</strong> (skip the configuration):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>./playbook-vios.yml<span class="w"> </span>-e<span class="w"> </span><span class="nv">search_dir</span><span class="o">=</span>/opt/unetlab-downloads<span class="w"> </span>-e<span class="w"> </span><span class="nv">template_config</span><span class="o">=</span><span class="nb">false</span>
 </code></pre></div>
 <p><img alt="iac-build-copy-only" src="../images/iac-build-copy-only.png" /></p>
-<p><strong>Step 2 — Apply the OOB configuration</strong> to an already-copied image:</p>
+<p><strong>Step 2, apply the OOB configuration</strong> to an already copied image:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>config_scripts/vios_config.py<span class="w"> </span>vios-adventerprisek9-m.spa.159-3.m9-iac
 </code></pre></div>
 <p><img alt="iac-build-config-only" src="../images/iac-build-config-only.png" /></p>
-<p><strong>Step 3 — Verify reachability</strong> of the configured image:</p>
+<p><strong>Step 3, verify the reachability</strong> of the configured image:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>poetry<span class="w"> </span>run<span class="w"> </span>config_scripts/vios_test.py<span class="w"> </span>vios-adventerprisek9-m.spa.159-3.m9-iac
 </code></pre></div>
 <p><img alt="iac-build-verify-only" src="../images/iac-build-verify-only.png" /></p>
-<p>Running these in sequence lets you pinpoint whether the failure is in image discovery, in the configuration step, or in the connectivity verification.</p>
-<p>Once your IaC-ready images are in place, you can reference them from the <code>-iac</code> suffix in your HLD YAML files — and the EVE-NG CLI will pick them automatically when importing a lab. The next post will cover the HLD format in detail.</p>
+<p>Running these steps in sequence lets us pinpoint whether the failure is in image discovery, in the configuration step or in the connectivity verification.</p>
+<p>Once the IaC-ready images are in place, we can reference them through the <code>-iac</code> suffix in our HLD YAML files, and the EVE-NG CLI picks them automatically when importing a lab. The next post covers the HLD format in detail.</p>
 
 
 

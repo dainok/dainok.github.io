@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#install-the-custom-kernel-for-unetlab" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install the custom kernel for UNetLab
+        Install the Custom Kernel for UNetLab
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#add-nodes-to-the-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Add nodes to the cluster
+        Add Nodes to the Cluster
       
     </span>
   </a>
@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#configure-a-dedicated-datastore" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configure a dedicated datastore
+        Configure a Dedicated Datastore
       
     </span>
   </a>
@@ -498,45 +498,45 @@ Everything here is free. If it helps you, you can
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/proxmox.png" /></p>
 <p>UNetLab requires a cluster with one or more correctly configured PVE hosts. This page contains all the commands needed to configure a PVE host.</p>
-<h2 id="install-the-custom-kernel-for-unetlab">Install the custom kernel for UNetLab<a class="headerlink" href="#install-the-custom-kernel-for-unetlab" title="Permanent link">&para;</a></h2>
-<p>To enable <strong>L1</strong> links, UNetLab needs a kernel with a specific patch. The kernel and patch are released in the <a href="https://github.com/dainok/unetlab-kernel">unetlab-kernel repository</a>. You can either download the correct release or compile your own using the provided script.</p>
+<h2 id="install-the-custom-kernel-for-unetlab">Install the Custom Kernel for UNetLab<a class="headerlink" href="#install-the-custom-kernel-for-unetlab" title="Permanent link">&para;</a></h2>
+<p>To enable <strong>L1</strong> links, UNetLab needs a kernel with a specific patch. The kernel and the patch are released in the <a href="https://github.com/dainok/unetlab-kernel">unetlab-kernel repository</a>. You can either download the correct release or compile your own with the provided script.</p>
 <p>To download the custom kernel, run the following commands:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>/usr/src
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TAG</span><span class="o">=</span><span class="m">6</span>.8.8-3
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>wget<span class="w"> </span>https://github.com/dainok/unetlab-kernel/releases/download/<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>/proxmox-headers-<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>-pve-unl_<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>_amd64.deb
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>wget<span class="w"> </span>https://github.com/dainok/unetlab-kernel/releases/download/<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>/proxmox-kernel-<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>-pve-unl_<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>_amd64.deb
 </code></pre></div>
-<p>Now, install the custom kernel:</p>
+<p>Now install the custom kernel:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>apt-get<span class="w"> </span>update
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>dpkg<span class="w"> </span>-i<span class="w"> </span>proxmox--<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>-pve-unldeb
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>dpkg<span class="w"> </span>-i<span class="w"> </span>proxmox-*-<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>-pve-unl_<span class="si">${</span><span class="nv">TAG</span><span class="si">}</span>_amd64.deb
 </code></pre></div>
-<p>Once finished, reboot the host:</p>
+<p>When it is done, reboot the host:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>reboot
 </code></pre></div>
-<h2 id="add-nodes-to-the-cluster">Add nodes to the cluster<a class="headerlink" href="#add-nodes-to-the-cluster" title="Permanent link">&para;</a></h2>
+<h2 id="add-nodes-to-the-cluster">Add Nodes to the Cluster<a class="headerlink" href="#add-nodes-to-the-cluster" title="Permanent link">&para;</a></h2>
 <p>Create a cluster and add the current node:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/cluster/config<span class="w"> </span>-clustername<span class="w"> </span>unetlab<span class="w"> </span>-nodeid<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
-<p>Retrieve the fingerprint value using the following command:</p>
+<p>Retrieve the fingerprint value with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/cluster/config/join<span class="w"> </span>-output-format<span class="w"> </span>json-pretty<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>pve_fp
 </code></pre></div>
 <p>Next, add the remaining hosts to the cluster by running the following command on each host:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/cluster/config/join<span class="w"> </span>-fingerprint<span class="w"> </span>&lt;<span class="w"> </span>*pve_fp*<span class="w"> </span>&gt;<span class="w"> </span>-hostname<span class="w"> </span>&lt;<span class="w"> </span>*primary<span class="w"> </span>ip*<span class="w"> </span>&gt;<span class="w"> </span>-password<span class="w"> </span>&lt;<span class="w"> </span>*rootpassword*<span class="w"> </span>&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/cluster/config/join<span class="w"> </span>-fingerprint<span class="w"> </span>&lt;pve_fp&gt;<span class="w"> </span>-hostname<span class="w"> </span>&lt;primary_ip&gt;<span class="w"> </span>-password<span class="w"> </span>&lt;root_password&gt;
 </code></pre></div>
 <p>Finally, verify that all nodes have been added:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/cluster/config/nodes
 </code></pre></div>
-<h2 id="configure-a-dedicated-datastore">Configure a dedicated datastore<a class="headerlink" href="#configure-a-dedicated-datastore" title="Permanent link">&para;</a></h2>
-<p>In this specific case, there is a separate disk to be dedicated to UNetLab. Let’s partition, format, and mount it:</p>
+<h2 id="configure-a-dedicated-datastore">Configure a Dedicated Datastore<a class="headerlink" href="#configure-a-dedicated-datastore" title="Permanent link">&para;</a></h2>
+<p>In this specific case, a separate disk is dedicated to UNetLab. Let's partition, format and mount it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"start=2048, type=83"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sfdisk<span class="w"> </span>/dev/sdb
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>mkfs<span class="w"> </span>-t<span class="w"> </span>ext4<span class="w"> </span>/dev/sdb1
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>mkdir<span class="w"> </span>/unetlab
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"/dev/sdb1 /unetlab ext4 defaults 0 0"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/fstab
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>mount<span class="w"> </span>/unetlab
 </code></pre></div>
-<p>Before proceeding, perform the same operation on any other Proxmox hosts.</p>
-<p>Next, add the directory so it can be used as a datastore:</p>
+<p>Before proceeding, repeat the same operation on any other Proxmox host.</p>
+<p>Next, add the directory so that it can be used as a datastore:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/storage<span class="w"> </span>-storage<span class="w"> </span>unetlab<span class="w"> </span>-type<span class="w"> </span>dir<span class="w"> </span>-path<span class="w"> </span>/unetlab<span class="w"> </span>-shared<span class="w"> </span><span class="m">0</span><span class="w"> </span>-nodes<span class="w"> </span>proxmox1,proxmox2<span class="w"> </span>-content<span class="w"> </span>images,rootdir,iso,vztmpl
 </code></pre></div>
 

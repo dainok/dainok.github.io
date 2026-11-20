@@ -457,6 +457,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:docker" class="md-tag">docker</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:unetlab" class="md-tag">unetlab</a>
       
     
@@ -466,81 +473,81 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-07-22">22 July 2024</time></span></p>
 <h1 id="unetlab-v2-addressing-limitations">UNetLab v2 addressing limitations<a class="headerlink" href="#unetlab-v2-addressing-limitations" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:docker">docker</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/unetlab.png" /></p>
 <p>In recent years, my focus has shifted towards network automation. I still need a unified network emulator platform, but the prerequisites have evolved. Before diving into the new requirements, let's highlight the limitations of UNetLab:</p>
 <ul>
-<li><strong>Per Host Pod Limit:</strong> Each host can run up to 256 independent pods due to the console port limit.</li>
-<li><strong>Per Lab Node Limit:</strong> Each pod/lab can run up to 127 nodes due to the console port limit.</li>
-<li><strong>Per User Pod Limit:</strong> Each user can run only one pod/lab at a time due to the console port limit.</li>
-<li><strong>Single Host:</strong> No support for distributed installations of UNetLab (OVS can be used, but many frame types are filtered by default).</li>
-<li><strong>Config Management:</strong> Using expect scripts for getting and putting startup-configs is slow, non-predictive, and cannot cover all node types.</li>
-<li><strong>No Support for Dynamips Serial Interfaces.</strong></li>
-<li><strong>No Topology Changes:</strong> Topology changes are not allowed while the lab is running, by design.</li>
+<li><strong>Per-host pod limit:</strong> each host can run up to 256 independent pods because of the console port limit.</li>
+<li><strong>Per-lab node limit:</strong> each pod or lab can run up to 127 nodes because of the console port limit.</li>
+<li><strong>Per-user pod limit:</strong> each user can run only one pod or lab at a time because of the console port limit.</li>
+<li><strong>Single host:</strong> there is no support for distributed installations of UNetLab (we can use OVS, but many frame types are filtered by default).</li>
+<li><strong>Config management:</strong> using expect scripts to get and put startup configurations is slow, unpredictable and cannot cover all node types.</li>
+<li><strong>No support for Dynamips serial interfaces.</strong></li>
+<li><strong>No topology changes:</strong> by design, we cannot change the topology while the lab is running.</li>
 </ul>
-<p>The console port limit exists because each node console has a fixed port calculated as follows:</p>
+<p>The console port limit exists because each node console has a fixed port, calculated as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ts_port = 32768 + 128 * tenant_id + device_id
 </code></pre></div>
-<p>Additionally, no more than 512 IOL nodes can run in the same lab because the <code>device_id</code> must be unique for each tenant.</p>
+<p>Moreover, no more than 512 IOL nodes can run in the same lab, because the <code>device_id</code> must be unique for each tenant.</p>
 <p>UNetLab v2 must address these issues and meet new requirements:</p>
 <ul>
 <li>Run a distributed lab (across local or geographically distributed nodes).</li>
 <li>Support an unlimited number of nodes in a lab.</li>
 <li>Allow each user to customize a lab without affecting the original copy.</li>
-<li>Link serial interfaces between IOL and Dynamips.</li>
-<li>Configure nodes via Ansible/NAPALM/other tools.</li>
+<li>Link the serial interfaces between IOL and Dynamips.</li>
+<li>Configure the nodes via <a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a>, NAPALM or other tools.</li>
 </ul>
-<p>I knew how to create a distributed network emulator but needed an easy way to run nodes within a dedicated namespace. The answer came from <a href="https://github.com/vrnetlab/vrnetlab">vrnetlab</a>: using <a href="https://www.docker.com/">Docker</a>.</p>
-<p>Due to the limitations of UNetLab, I decided to rewrite it from scratch. Although <a href="https://www.eve-ng.net/">EVE-NG</a>, a fork of UNetLab, works to overcome these limitations, I pursued a new path.</p>
+<p>I knew how to create a distributed network emulator, but I needed an easy way to run nodes within a dedicated namespace. The answer came from <a href="https://github.com/vrnetlab/vrnetlab">vrnetlab</a>: using <a href="https://www.docker.com/">Docker</a>.</p>
+<p>Because of the limitations of UNetLab, I decided to rewrite it from scratch. <a href="https://www.eve-ng.net/">EVE-NG</a>, a fork of UNetLab, works to overcome these limitations, but I pursued a new path.</p>
 <h2 id="unetlab-v2-architecture">UNetLab v2 Architecture<a class="headerlink" href="#unetlab-v2-architecture" title="Permanent link">&para;</a></h2>
 <p>The architecture may seem complex, but it was straightforward to implement.</p>
-<p><img alt="unatlabv2-flows" src="../images/unatlabv2-flows.png" />
-UNetLab v2 was based on:</p>
+<p><img alt="unatlabv2-flows" src="../images/unatlabv2-flows.png" /></p>
+<p>UNetLab v2 was based on:</p>
 <ul>
-<li><strong>Docker:</strong> Controllers, routers, and lab nodes run inside Docker containers.</li>
-<li><strong>Python:</strong> Replaces C, PHP, and Bash with Python 3.</li>
-<li><strong>Python-Flask + NGINX:</strong> Implements and exposes APIs.</li>
-<li><strong>Memcached:</strong> Caches authentication for better user experience.</li>
-<li><strong>Celery + Redis:</strong> Manages asynchronous long tasks in the background.</li>
-<li><strong>MariaDB:</strong> Stores all data, user information, and running labs.</li>
-<li><strong>Git:</strong> Manages version control for original labs.</li>
-<li><strong>jQuery + Bootstrap:</strong> Implements the UI as a single-page application.</li>
-<li><strong>iptables + Linux bridge:</strong> Allows SSH connections to just-started lab nodes.</li>
-<li><strong>IOL, QEMU, and Dynamips:</strong> Runs lab nodes.</li>
+<li><strong>Docker:</strong> controllers, routers and lab nodes run inside Docker containers.</li>
+<li><strong>Python:</strong> replaces C, PHP and Bash with Python 3.</li>
+<li><strong>Python-Flask + NGINX:</strong> implements and exposes the APIs.</li>
+<li><strong>Memcached:</strong> caches authentication for a better user experience.</li>
+<li><strong>Celery + Redis:</strong> manages long asynchronous tasks in the background.</li>
+<li><strong>MariaDB:</strong> stores all the data, user information and running labs.</li>
+<li><strong><a href="../../../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">Git</a>:</strong> manages version control for the original labs.</li>
+<li><strong>jQuery + Bootstrap:</strong> implements the UI as a single-page application.</li>
+<li><strong>iptables + Linux bridge:</strong> allows SSH connections to just-started lab nodes.</li>
+<li><strong>IOL, QEMU and Dynamips:</strong> run the lab nodes.</li>
 </ul>
-<p>A UNetLab v2 cluster must have at least one node, which can be physical or virtual. The first node is the master, containing a controller and a router, while additional nodes contain only routers. Each node also runs multiple lab nodes. Controllers, routers, and lab nodes are Docker instances.</p>
+<p>A UNetLab v2 cluster must have at least one node, which can be physical or virtual. The first node is the master and contains a controller and a router, while the additional nodes contain only routers. Each node also runs multiple lab nodes. Controllers, routers and lab nodes are Docker instances.</p>
 <p>The controller container:</p>
 <ul>
-<li>Exposes the web UI and APIs to user clients, routers, and lab nodes.</li>
+<li>Exposes the web UI and the APIs to user clients, routers and lab nodes.</li>
 <li>Receives registration requests from routers and lab nodes.</li>
 <li>Manages lab nodes via routers.</li>
-<li>Contacts lab nodes via Ansible/NAPALM/etc.</li>
+<li>Contacts lab nodes via Ansible, NAPALM, etc.</li>
 <li>Provides routing tables to routers.</li>
-<li>Accessible via SSH using port 2222.</li>
+<li>Is accessible via SSH on port 2222.</li>
 </ul>
 <p>The router containers:</p>
 <ul>
 <li>Register with the controller.</li>
-<li>Expose Docker Remote API and lab node API.</li>
+<li>Expose the Docker Remote API and the lab node API.</li>
 <li>Obtain routing tables from the controller.</li>
 <li>Route lab packets between nodes and routers.</li>
-<li>Ensure connectivity between the controller and remote lab nodes via OpenVPN.</li>
+<li>Ensure connectivity between the controller and the remote lab nodes via OpenVPN.</li>
 </ul>
 <p>The node containers:</p>
 <ul>
 <li>Register with the controller.</li>
-<li>Run emulated nodes (IOL, Dynamips, or QEMU).</li>
-<li>Bind a management interface of emulated nodes to a local bridge.</li>
-<li>Route packets between the local router and the emulated node for non-management interfaces.</li>
+<li>Run emulated nodes (IOL, Dynamips or QEMU).</li>
+<li>Bind a management interface of the emulated nodes to a local bridge.</li>
+<li>Route packets between the local router and the emulated node for the non-management interfaces.</li>
 <li>Manage emulated links (up/down).</li>
 </ul>
-<p>Since the controller and routers know both inside and outside IP addresses, users can deploy UNetLab v2 nodes anywhere (in the same LAN, AWS, Google Compute Engine, Azure, behind a firewall). Each UNetLab v2 cluster requires the following ports:</p>
+<p>Since the controller and the routers know both the inside and the outside IP addresses, users can deploy UNetLab v2 nodes anywhere (in the same LAN, AWS, Google Compute Engine, Azure, behind a firewall). Each UNetLab v2 cluster requires the following ports:</p>
 <ul>
-<li><strong>TCP: 2222:</strong> SSH connection to the controller.</li>
-<li><strong>TCP: 80/443:</strong> HTTP/HTTPS requests to the controller.</li>
-<li><strong>TCP: 5443:</strong> HTTPS requests to the router.</li>
-<li><strong>UDP: 5005:</strong> Routed packets between different UNetLab v2 nodes.</li>
-<li><strong>UDP: 1194:</strong> Network reachability between the controller and remote lab nodes.</li>
+<li><strong>TCP 2222:</strong> SSH connection to the controller.</li>
+<li><strong>TCP 80/443:</strong> HTTP/HTTPS requests to the controller.</li>
+<li><strong>TCP 5443:</strong> HTTPS requests to the router.</li>
+<li><strong>UDP 5005:</strong> routed packets between different UNetLab v2 nodes.</li>
+<li><strong>UDP 1194:</strong> network reachability between the controller and the remote lab nodes.</li>
 </ul>
 <p>UNetLab v2 was never completed, but the source code is available on <a href="https://github.com/dainok/unetlab/tree/archive_2.0.0-dev">GitHub</a>.</p>
 

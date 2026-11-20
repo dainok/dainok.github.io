@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#scenario-1-multi-tenant-infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scenario 1: multi-tenant infrastructure
+        Scenario 1: Multi-Tenant Infrastructure
       
     </span>
   </a>
@@ -428,10 +428,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#scenario-2-different-physically-separated-security-zones" class="md-nav__link">
+  <a href="#scenario-2-physically-separated-security-zones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scenario 2: different physically separated, security zones
+        Scenario 2: Physically Separated Security Zones
       
     </span>
   </a>
@@ -439,10 +439,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#requiremens-for-a-working-disjoint-l2-domains" class="md-nav__link">
+  <a href="#requirements-for-working-disjoint-l2-domains" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requiremens for a working disjoint L2 domains
+        Requirements for Working Disjoint L2 Domains
       
     </span>
   </a>
@@ -453,7 +453,7 @@ Everything here is free. If it helps you, you can
   <a href="#configure-disjoint-l2-domains-with-a-zero-downtime-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configure disjoint L2 domains with a zero-downtime approach
+        Configure Disjoint L2 Domains with a Zero-Downtime Approach
       
     </span>
   </a>
@@ -501,6 +501,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
       
     
@@ -511,45 +518,52 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:design" class="md-tag">design</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ucs" class="md-tag">ucs</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2017-01-31">31 January 2017</time></span></p>
 <h1 id="disjoint-l2-domains-on-cisco-ucs">Disjoint L2 domains on Cisco UCS<a class="headerlink" href="#disjoint-l2-domains-on-cisco-ucs" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:design">design</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:ucs">ucs</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/cisco.png" /></p>
-<p>This post will cover disjoint L2 domains on Cisco UCS-B and why/when you would implement it.</p>
-<h2 id="scenario-1-multi-tenant-infrastructure">Scenario 1: multi-tenant infrastructure<a class="headerlink" href="#scenario-1-multi-tenant-infrastructure" title="Permanent link">&para;</a></h2>
-<p>Suppose your current UCS-B infrastructure is configured to support a single, physically L2 separated, tenant:</p>
+<p>This post covers disjoint L2 domains on Cisco UCS-B, and why and when to implement them.</p>
+<h2 id="scenario-1-multi-tenant-infrastructure">Scenario 1: Multi-Tenant Infrastructure<a class="headerlink" href="#scenario-1-multi-tenant-infrastructure" title="Permanent link">&para;</a></h2>
+<p>Suppose your current UCS-B infrastructure is configured to support a single, physically L2-separated tenant:</p>
 <p><img alt="disjoint-l2-1" src="../images/disjoint-l2-1.png" /></p>
-<p>And suppose you need to share the UCS-B infrastructure with multiple, physically L2 separated, tenant:</p>
+<p>Now suppose you need to share the UCS-B infrastructure with multiple, physically L2-separated tenants:</p>
 <p><img alt="disjoint-l2-2" src="../images/disjoint-l2-2.png" /></p>
-<h2 id="scenario-2-different-physically-separated-security-zones">Scenario 2: different physically separated, security zones<a class="headerlink" href="#scenario-2-different-physically-separated-security-zones" title="Permanent link">&para;</a></h2>
+<h2 id="scenario-2-physically-separated-security-zones">Scenario 2: Physically Separated Security Zones<a class="headerlink" href="#scenario-2-physically-separated-security-zones" title="Permanent link">&para;</a></h2>
 <p>Suppose your current UCS-B infrastructure is configured to support a single L2 uplink:</p>
 <p><img alt="disjoint-l2-3" src="../images/disjoint-l2-3.png" /></p>
-<p>And suppose you need some Virtual Machine on a different, physically L2 isolated, security zone:</p>
+<p>Now suppose you need some virtual machines in a different, physically L2-isolated security zone:</p>
 <p><img alt="disjoint-l2-4" src="../images/disjoint-l2-4.png" /></p>
-<h2 id="requiremens-for-a-working-disjoint-l2-domains">Requiremens for a working disjoint L2 domains<a class="headerlink" href="#requiremens-for-a-working-disjoint-l2-domains" title="Permanent link">&para;</a></h2>
-<p>The configuration is pretty simple, but you need to be 100% sure about:</p>
+<h2 id="requirements-for-working-disjoint-l2-domains">Requirements for Working Disjoint L2 Domains<a class="headerlink" href="#requirements-for-working-disjoint-l2-domains" title="Permanent link">&para;</a></h2>
+<p>The configuration is pretty simple, but you must be 100% sure about the following points:</p>
 <ol>
-<li>All port related to the new port-channel must be in shutdown state, otherwise, after adding new port-channels on Fabric Interconnects, UCS-B will use them to carry old VLANs too and it will be a mess because new port-channels don't carry old VLANs.</li>
-<li>VLANs must be unique: you cannot configure the same VLAN on more than one uplink/domain, otherwise, UCS-B won't know which uplink/domain owns wich VLAN.</li>
-<li>Each server must have a vnic dedicated to a single uplink/domain: you cannot use a single vnic to carry VLAN from multiple uplink/domain, otherwise UCS-B won't know to what uplink pins the vnic.</li>
+<li>All the ports related to the new port-channel must be in the shutdown state. Otherwise, after you add the new port-channels on the Fabric Interconnects, UCS-B uses them to carry the old VLANs too, and it becomes a mess because the new port-channels do not carry the old VLANs.</li>
+<li>VLANs must be unique: you cannot configure the same VLAN on more than one uplink/domain. Otherwise, UCS-B does not know which uplink/domain owns which VLAN.</li>
+<li>Each server must have a vNIC dedicated to a single uplink/domain: you cannot use a single vNIC to carry VLANs from multiple uplinks/domains. Otherwise, UCS-B does not know which uplink to pin the vNIC to.</li>
 </ol>
-<h2 id="configure-disjoint-l2-domains-with-a-zero-downtime-approach">Configure disjoint L2 domains with a zero-downtime approach<a class="headerlink" href="#configure-disjoint-l2-domains-with-a-zero-downtime-approach" title="Permanent link">&para;</a></h2>
+<h2 id="configure-disjoint-l2-domains-with-a-zero-downtime-approach">Configure Disjoint L2 Domains with a Zero-Downtime Approach<a class="headerlink" href="#configure-disjoint-l2-domains-with-a-zero-downtime-approach" title="Permanent link">&para;</a></h2>
 <ol>
-<li>On Nexus switches, configure all ports dedicated to the new port-channels in shutdown state.</li>
-<li>On UCS Manageri (Equipment → Chassis → Fabric Interconnect A|B → Physical Ports → Ethernet Ports), configure all ports dedicated to the new port-channels as "Uplink Port" and disable them:
+<li>On the Nexus switches, configure all the ports dedicated to the new port-channels in the shutdown state.</li>
+<li>On UCS Manager (<code>Equipment</code> → <code>Chassis</code> → <code>Fabric Interconnect A|B</code> → <code>Physical Ports</code> → <code>Ethernet Ports</code>), configure all the ports dedicated to the new port-channels as "Uplink Port" and disable them:
    <img alt="disjoint-l2-5" src="../images/disjoint-l2-5.png" /></li>
-<li>On UCD Manager (LAN → LAN Cloud → Fabirc A|B → Port Channels), add a new port-channel assigning the ports dedicated to the new port-channel, and disable the port-channel:
+<li>On UCS Manager (<code>LAN</code> → <code>LAN Cloud</code> → <code>Fabric A|B</code> → <code>Port Channels</code>), add a new port-channel, assign the ports dedicated to it, and disable the port-channel:
    <img alt="disjoint-l2-6" src="../images/disjoint-l2-6.png" /></li>
-<li>On UCS Manager (LAN → Lan Cloud → VLANs), add all VLANs assigned to the new port-channel:
+<li>On UCS Manager (<code>LAN</code> → <code>LAN Cloud</code> → <code>VLANs</code>), add all the VLANs assigned to the new port-channel:
    <img alt="disjoint-l2-7" src="../images/disjoint-l2-7.png" /></li>
-<li>On UCS Manager (LAN → right click → LAN Uplinks Manager → VLANs → VLAN Manager → Fabric A|B), assign all VLANs (both old one and new one) to a port-channel. This is the most critical phase, so be sure you assign each VLAN to a single uplink/port-channel on both Fabric Interconnects:
+<li>On UCS Manager (<code>LAN</code> → right click → <code>LAN Uplinks Manager</code> → <code>VLANs</code> → <code>VLAN Manager</code> → <code>Fabric A|B</code>), assign all the VLANs (both old and new) to a port-channel. This is the most critical phase, so make sure you assign each VLAN to a single uplink/port-channel on both Fabric Interconnects:
    <img alt="disjoint-l2-8" src="../images/disjoint-l2-8.png" /></li>
-<li>On UCS Manager, enable port-channels.</li>
-<li>On Cisco Nexus, configure and enable virtual port-channels</li>
+<li>On UCS Manager, enable the port-channels.</li>
+<li>On the Cisco Nexus switches, configure and enable the virtual port-channels.</li>
 </ol>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>

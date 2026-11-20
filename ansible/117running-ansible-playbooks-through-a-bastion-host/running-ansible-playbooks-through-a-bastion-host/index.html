@@ -471,14 +471,14 @@ Everything here is free. If it helps you, you can
 <p>In many environments, a particularly secure host, the bastion host, handles all the management operations that operators perform on production systems. It is usually subject to audits and continuous verification.</p>
 <p><img alt="ansible-with-bastion-host" src="../images/ansible-with-bastion-host.png" /></p>
 <p>Ansible can work through a bastion host, but the configuration depends on the protocol used. Here we limit ourselves to SSH.</p>
-<p>In our lab, our computer (Linux or macOS) is the Ansible controller, and the <a href="https://www.eve-ng.net/">EVE-NG</a> server is the bastion host: the devices are reachable only from the EVE-NG server.</p>
+<p>In our lab, our computer (Linux or macOS) is the Ansible controller, and the <a href="https://www.eve-ng.net/">EVE-NG</a> server is the bastion host: the devices are reachable only from the <a href="../../../eve-ng/101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/">EVE-NG</a> server.</p>
 <p>Note that the local Python environment is used, not that of the bastion host, so any library or module errors refer to the local system. The bastion host is only a bridge: it needs no special configuration, except public key authentication.</p>
 <h2 id="ssh-via-bastion-host">SSH via Bastion Host<a class="headerlink" href="#ssh-via-bastion-host" title="Permanent link">&para;</a></h2>
 <p>As the diagram above shows, we must be able to connect via SSH to the EVE-NG server using public key authentication. We therefore exchange the keys, manually or with a dedicated command, so that we can connect automatically to the bastion host as the user <code>dev</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span>dev@172.25.82.110
 </code></pre></div>
 <p>At this point, we use the <code>ansible_ssh_common_args</code> parameter to force the connections through the bastion host.</p>
-<p>We can set the <code>ansible_ssh_common_args</code> variable at the playbook level:</p>
+<p>We can set the <code>ansible_ssh_common_args</code> variable at the <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbook</a> level:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ansible.builtin.set_fact</span><span class="p">:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">ansible_ssh_common_args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">      </span><span class="no">-o ProxyCommand="ssh</span>

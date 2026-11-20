@@ -449,33 +449,33 @@ Everything here is free. If it helps you, you can
 <h1 id="unetlab-the-evolution-of-iou-web">UNetLab the evolution of iou-web<a class="headerlink" href="#unetlab-the-evolution-of-iou-web" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/unetlab.png" /></p>
-<p>In 2013, I realized that iou-web was too limited. I needed a "unified" approach to emulate a network, including firewalls, load balancers, and more. Additionally, multicasting using IOL was problematic. I had several new prerequisites:</p>
+<p>In 2013, I realized that iou-web was too limited. I needed a "unified" approach to emulate a network, including firewalls, load balancers and more. Multicasting with IOL was also problematic. I had several new prerequisites:</p>
 <ul>
 <li>Include vendor virtual appliances in labs.</li>
 <li>Integrate real IOS images in labs.</li>
 <li>Possibly include emulators from different vendors.</li>
 <li>Support multi-user environments.</li>
 </ul>
-<p>I completely rewrote <strong>iou-web</strong> to create an extendable network emulator system. The core idea was:</p>
+<p>I rewrote <strong>iou-web</strong> completely to create an extensible network emulator. The core idea was:</p>
 <ul>
 <li>Each node (emulated device) must be attached to a common layer.</li>
-<li>A suitable common layer could be an Ethernet Linux bridge (with OVS support).</li>
+<li>A suitable common layer is an Ethernet Linux bridge (with OVS support).</li>
 </ul>
-<p>On October 6th, 2014, <strong>UNetLab</strong>, also known as <strong>UNL</strong>, was released to the public. Developed in PHP using a REST API framework and a single-page application (jQuery), UNetLab quickly gained popularity, with five to six hundred daily users within a few months. Although I wanted to name it UNL, the website URL was unavailable.</p>
+<p>On October 6th, 2014, <strong>UNetLab</strong>, also known as <strong>UNL</strong>, was released to the public. It was developed in PHP with a REST API framework and a single-page application (jQuery), and within a few months it gained five to six hundred daily users. I wanted to name it UNL, but the website URL was not available.</p>
 <p><img alt="unetlab-boot" src="../images/unetlab-boot.png" /></p>
 <p><img alt="unetlab-login" src="../images/unetlab-login.png" /></p>
 <p><img alt="unetlab-topology" src="../images/unetlab-topology.png" /></p>
-<p>Initially, I considered including Huawei eNSP, but since eNSP nodes required a specific string, no one was able to run eNSP nodes outside of eNSP.</p>
-<p>UNetLab was used by thousands of people monthly from around the world, providing immense satisfaction and giving me hands-on experience managing widely distributed production software.</p>
-<p>In 2015, due to limited spare time, a group of enthusiasts forked UNetLab, leading to the release of <a href="https://www.eve-ng.net/">EVE-NG</a> on January 5th, 2017. However, I am not part of the EVE-NG team.</p>
+<p>Initially, I considered including Huawei eNSP, but eNSP nodes required a specific string, so nobody was able to run eNSP nodes outside of eNSP.</p>
+<p>Thousands of people around the world used UNetLab every month. It gave me immense satisfaction and hands-on experience in managing widely distributed production software.</p>
+<p>In 2015, because I had limited spare time, a group of enthusiasts forked UNetLab, and <a href="https://www.eve-ng.net/">EVE-NG</a> was released on January 5th, 2017. I am not part of the <a href="../../../eve-ng/101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/">EVE-NG</a> team.</p>
 <p><img alt="uentlab-complex-topology" src="../images/uentlab-complex-topology.png" /></p>
 <p>In 2014, I had an interesting chat with a member of the Cisco VIRL team during CLEUR 2014 in Milan.</p>
 <p><img alt="unl-virl-guys" src="../images/unl-virl-guys.png" /></p>
 <p>The old historical UNetLab repository is available to the public on <a href="https://github.com/dainok/unetlab/tree/archive_1.0.0-13">GitHub</a>.</p>
-<p>Also, refer to these resources that mention UNetLab:</p>
+<p>Other resources that mention UNetLab:</p>
 <ul>
-<li><a href="https://packetpushers.net/podcast/pq-show-61-unetlab-project/">Packet Pushers PQ Show 61: The UNetLab Project</a></li>
-<li><a href="https://ieeexplore.ieee.org/abstract/document/7905375">Approaches and algorithms of virtual telecommunication networks analysis in UNetLab environment (IEEE conference)</a></li>
+<li><a href="https://packetpushers.net/podcast/pq-show-61-unetlab-project/">Packet Pushers PQ Show 61: The UNetLab Project</a>.</li>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/7905375">Approaches and algorithms of virtual telecommunication networks analysis in UNetLab environment (IEEE conference)</a>.</li>
 </ul>
 
 

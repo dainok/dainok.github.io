@@ -539,7 +539,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">if</span> <span class="n">all_ritm_closed</span><span class="p">(</span><span class="n">ritm_list</span><span class="p">):</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        <span class="n">close_req</span><span class="p">(</span><span class="n">req_sys_id</span><span class="p">)</span>
 </code></pre></div>
-<p>We then pass the variables to the Ansible playbook for execution.</p>
+<p>We then pass the variables to the Ansible <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbook</a> for execution.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Run Ansible</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">result</span> <span class="o">=</span> <span class="n">run_ansible_network</span><span class="p">(</span><span class="o">**</span><span class="n">variables</span><span class="p">)</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">rc</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">rc</span>

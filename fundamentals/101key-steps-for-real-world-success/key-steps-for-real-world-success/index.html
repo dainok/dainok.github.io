@@ -608,7 +608,7 @@ Everything here is free. If it helps you, you can
 <li><strong>Standardize processes and define use cases:</strong> automation requires a clear process. We must be able to define and standardize each step we plan to automate.</li>
 <li><strong>Modeling:</strong> part of the design phase, this step is crucial and often underappreciated. We must map and visualize each process, because this groundwork shapes the entire project.</li>
 <li><strong>Configuration approach:</strong> the choice between a golden configuration and a differential approach has a deep impact on the project, and it is often a long-term commitment.</li>
-<li><strong>Inventory:</strong> the inventory is not just a device list, but a structured set of input data for specific configurations.</li>
+<li><strong><a href="../../../ansible/104ansible-inventory/ansible-inventory/">Inventory</a>:</strong> the inventory is not just a device list, but a structured set of input data for specific configurations.</li>
 <li><strong>Maintain an up-to-date lab:</strong> each automation project should include a test environment for continuous development and validation.</li>
 <li><strong>Prepare for large-scale outages:</strong> at scale, unmanaged errors can have significant repercussions. Accounting for potential issues is crucial.</li>
 <li><strong>Document thoroughly:</strong> proper documentation keeps the automated processes maintainable.</li>
@@ -670,7 +670,7 @@ Everything here is free. If it helps you, you can
 <p>In our scenario, the ACLs manage the primary, secondary and decommissioned sites, and each ACL is "permit" only, with an implicit deny at the end. This ACL structure, however, does not work directly with the Ansible <code>cisco.ios.ios_acls</code> module, which requires specific network and wildcard inputs. We can either:</p>
 <ul>
 <li>Simplify our data model to match the requirements of the Ansible module, which makes it less readable and limits its flexibility.</li>
-<li>Use advanced techniques to bridge the data model and the framework of choice, such as Jinja filters in Ansible.</li>
+<li>Use advanced techniques to bridge the data model and the framework of choice, such as Jinja <a href="../../../ansible/113ansible-parsers-and-filters/ansible-parsers-and-filters/">filters</a> in Ansible.</li>
 </ul>
 <h2 id="configuration-approach">Configuration Approach<a class="headerlink" href="#configuration-approach" title="Permanent link">&para;</a></h2>
 <p>The choice between a golden configuration and an incremental approach depends not only on the capabilities of the devices, but also on the operational workflow. The choice is pivotal: once made, changing it often requires extensive redevelopment.</p>
@@ -682,8 +682,8 @@ Everything here is free. If it helps you, you can
 <h2 id="prepare-for-large-scale-outages">Prepare for Large-Scale Outages<a class="headerlink" href="#prepare-for-large-scale-outages" title="Permanent link">&para;</a></h2>
 <p>Automation is essential to manage infrastructure at scale, but any error can affect multiple devices. A robust testing framework reduces this risk without eliminating it, so we should establish procedures for large-scale recovery.</p>
 <h2 id="development-environment">Development Environment<a class="headerlink" href="#development-environment" title="Permanent link">&para;</a></h2>
-<p>The development environment should be standardized, fully documented and reproducible. For Ansible projects, I recommend defining the Python dependencies in a <code>requirements.txt</code> file and the Ansible collections in a <code>requirements.yml</code> file, which gives us an isolated Python environment dedicated to Ansible.</p>
-<p>Tracking the changes of the environment is essential. I prefer Git for this, together with tools like:</p>
+<p>The development environment should be standardized, fully documented and reproducible. For Ansible projects, I recommend defining the Python dependencies in a <code>requirements.txt</code> file and the Ansible <a href="../../../ansible/136ansible-galaxy/ansible-galaxy/">collections</a> in a <code>requirements.yml</code> file, which gives us an isolated Python environment dedicated to Ansible.</p>
+<p>Tracking the changes of the environment is essential. I prefer <a href="../../201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">Git</a> for this, together with tools like:</p>
 <ul>
 <li><code>.gitignore</code> to keep the environment clean.</li>
 <li>Linters to ensure consistent code syntax.</li>

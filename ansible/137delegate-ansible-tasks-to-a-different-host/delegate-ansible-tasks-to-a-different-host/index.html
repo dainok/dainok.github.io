@@ -479,7 +479,7 @@ Everything here is free. If it helps you, you can
 <h1 id="delegate-ansible-tasks-to-a-different-host">Delegate Ansible tasks to a different host<a class="headerlink" href="#delegate-ansible-tasks-to-a-different-host" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
-<p>By default, each task runs on the host that is being configured. In various scenarios, however, tasks need to be executed across multiple hosts in a specific sequence. A common example is a web server that must be taken offline from the load balancer before being modified. A typical playbook for this scenario would:</p>
+<p>By default, each task runs on the host that is being configured. In various scenarios, however, tasks need to be executed across multiple hosts in a specific sequence. A common example is a web server that must be taken offline from the load balancer before being modified. A typical <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbook</a> for this scenario would:</p>
 <ul>
 <li>Reconfigure the load balancer to take the web server offline.</li>
 <li>Reconfigure the web server.</li>
@@ -514,7 +514,7 @@ Everything here is free. If it helps you, you can
 <p>There are some important points to keep in mind when using <code>delegate_to</code>:</p>
 <ul>
 <li><code>delegate_to</code> <strong>cannot be used with loops (with_items)</strong>. We can work around this limitation by including a separate task, as shown above.</li>
-<li><code>delegate_to</code> <strong>does not work correctly with a bastion host</strong>. If misconfigured, we might get the following error:</li>
+<li><code>delegate_to</code> <strong>does not work correctly with a <a href="../../117running-ansible-playbooks-through-a-bastion-host/running-ansible-playbooks-through-a-bastion-host/">bastion host</a></strong>. If misconfigured, we might get the following error:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>fatal: [sw6.example.com -&gt; sw1.example.com(169.254.1.101)]: FAILED! =&gt; {"changed": false, "msg": "unable to connect to socket /Users/dainese/.ansible/pc/ff42547828. See the socket path issue category in Network Debug and Troubleshooting Guide"}
 </code></pre></div>

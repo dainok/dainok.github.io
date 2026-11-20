@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#the-orchestrator" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The orchestrator
+        The Orchestrator
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#the-web-interface" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The web interface
+        The Web Interface
       
     </span>
   </a>
@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#the-agent" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The agent
+        The Agent
       
     </span>
   </a>
@@ -490,39 +490,39 @@ Everything here is free. If it helps you, you can
 <h1 id="unetlab-v3-architecture">UNetLab v3 architecture<a class="headerlink" href="#unetlab-v3-architecture" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/unetlab.png" /></p>
-<p>UNetLab's architecture involves several components that need to interact with each other and report task progress to the user. We can identify the following components:</p>
+<p>The architecture of UNetLab involves several components that must interact with each other and report the progress of tasks to the user. We can identify the following components:</p>
 <ul>
-<li>The web interface allows users to interact with UNetLab, manage users, and labs.</li>
-<li>Proxmox hosts manage the nodes and networks of the labs according to instructions received from users and notify the status of the nodes.</li>
-<li>The orchestrator, which is the engine that manages tasks and input received from the user through the web interface and from the hosts via a specific agent.</li>
+<li>The web interface lets users interact with UNetLab and manage users and labs.</li>
+<li>The <a href="../../106proxmox-optimizing-virtualization/proxmox-optimizing-virtualization/">Proxmox</a> hosts manage the nodes and networks of the labs according to the instructions received from the users, and notify the status of the nodes.</li>
+<li>The orchestrator is the engine that manages the tasks and the input received from the user through the web interface and from the hosts through a specific agent.</li>
 </ul>
-<h2 id="the-orchestrator">The orchestrator<a class="headerlink" href="#the-orchestrator" title="Permanent link">&para;</a></h2>
-<p>At first glance, we can imagine a Redis server collecting input from users (via the web interface) and from hosts. The orchestrator receives messages from Redis and forwards them, transforming them, to the web interface or to agents running on the hosts.</p>
+<h2 id="the-orchestrator">The Orchestrator<a class="headerlink" href="#the-orchestrator" title="Permanent link">&para;</a></h2>
+<p>At first glance, we can imagine a Redis server that collects the input from the users (via the web interface) and from the hosts. The orchestrator receives the messages from Redis, transforms them and forwards them to the web interface or to the agents running on the hosts.</p>
 <p>In this sense, the orchestrator is a background daemon.</p>
 <p>We can imagine two types of data stored in Redis:</p>
 <ul>
-<li>Actions: for example, starting a specific node.</li>
-<li>Messages: for example, a notification that a node was successfully started.</li>
+<li><strong>Actions:</strong> for example, starting a specific node.</li>
+<li><strong>Messages:</strong> for example, a notification that a node started successfully.</li>
 </ul>
-<h2 id="the-web-interface">The web interface<a class="headerlink" href="#the-web-interface" title="Permanent link">&para;</a></h2>
-<p>The web interface is served through Django and receives user input, transforming it into tasks sent to the orchestrator via Redis. Similarly, it receives messages to notify users via Redis.</p>
-<h2 id="the-agent">The agent<a class="headerlink" href="#the-agent" title="Permanent link">&para;</a></h2>
-<p>On the Proxmox hosts, we can envision an agent running that:</p>
+<h2 id="the-web-interface">The Web Interface<a class="headerlink" href="#the-web-interface" title="Permanent link">&para;</a></h2>
+<p>The web interface is served through Django. It receives the user input and transforms it into tasks sent to the orchestrator via Redis. Similarly, it receives the messages used to notify users via Redis.</p>
+<h2 id="the-agent">The Agent<a class="headerlink" href="#the-agent" title="Permanent link">&para;</a></h2>
+<p>On the Proxmox hosts, we can envision an agent that:</p>
 <ul>
-<li>Executes requested actions, such as starting a node.</li>
+<li>Executes the requested actions, such as starting a node.</li>
 <li>Notifies the outcome of the requested actions.</li>
-<li>Regularly reports the system's status (host, nodes, templates, networks...).</li>
-<li>Executes actions not natively supported by Proxmox (see the previously mentioned L1 links).</li>
+<li>Regularly reports the status of the system (host, nodes, templates, networks...).</li>
+<li>Executes actions that Proxmox does not support natively (see the L1 links mentioned before).</li>
 </ul>
-<p>Regarding system status notifications, we can imagine that the agent only reports actual changes to reduce the workload of the orchestrator and the web interface. If you recall, the old version of UNetLab performed continuous polling to check the status of nodes. This significantly burdened both the client-side web interface and the server-side resources.</p>
-<p>We could also imagine that at regular intervals, a complete set of information is sent to avoid any discrepancies that might grow over time.</p>
+<p>Regarding the status notifications, we can imagine that the agent reports only the actual changes, to reduce the workload of the orchestrator and the web interface. If you recall, the old version of UNetLab polled continuously to check the status of the nodes. This put a significant burden on both the client-side web interface and the server-side resources.</p>
+<p>We can also imagine that, at regular intervals, the agent sends a complete set of information to avoid any discrepancy that might grow over time.</p>
 <p>The system status should include:</p>
 <ul>
-<li>Host status: reachability, resources used.</li>
-<li>Data store status: available space, user quota usage.</li>
-<li>Network status: which are available, type (L1, L2).</li>
-<li>Node status: which are available, whether they are on or off, resource consumption, associated users, associated images.</li>
-<li>Image status: which are available, their characteristics.</li>
+<li><strong>Host status:</strong> reachability and resources used.</li>
+<li><strong>Data store status:</strong> available space and user quota usage.</li>
+<li><strong>Network status:</strong> which networks are available and their type (L1, L2).</li>
+<li><strong>Node status:</strong> which nodes are available, whether they are on or off, resource consumption, associated users and associated images.</li>
+<li><strong>Image status:</strong> which images are available and their characteristics.</li>
 </ul>
 
 

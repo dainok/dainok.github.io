@@ -537,40 +537,46 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:intermediate" class="md-tag">intermediate</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:passwords" class="md-tag">passwords</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2021-03-18">18 March 2021</time></span></p>
 <h1 id="weak-passwords-and-unauthorized-access">Weak Passwords and Unauthorized Access<a class="headerlink" href="#weak-passwords-and-unauthorized-access" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:passwords">passwords</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/self-defence.png" /></p>
-<p>A few months ago, a new "collection" of data breaches began circulating: someone had taken the time to aggregate cleaned-up data from multiple past breaches into a single consolidated database.
-The result was a well-organized archive containing more than a billion email addresses and corresponding passwords.</p>
-<p>This was nothing new, but due to its compact size and structured format, the dataset became particularly interesting to analyze.</p>
+<p>A few months ago, a new "collection" of data breaches began circulating: someone took the time to aggregate cleaned-up data from multiple past breaches into a single consolidated database. The result was a well-organized archive that contained more than a billion email addresses and the corresponding passwords.</p>
+<p>This was nothing new, but its compact size and structured format made the dataset particularly interesting to analyze.</p>
 <h2 id="we-have-a-problem">We Have a Problem<a class="headerlink" href="#we-have-a-problem" title="Permanent link">&para;</a></h2>
-<p>While reviewing the file, it became clear that we face a significant issue: <strong>many people still do not understand how to manage passwords or the importance of doing so.</strong></p>
-<p>Analyzing only a small, yet statistically significant portion of the database revealed that <strong>the chosen passwords were extremely weak.</strong></p>
+<p>While reviewing the file, it became clear that we face a significant issue: <strong>many people still do not understand how to manage passwords, or why it matters.</strong></p>
+<p>The analysis of a small but statistically significant portion of the database showed that <strong>the chosen passwords were extremely weak.</strong></p>
 <p><img alt="most-used-passwords" src="../images/most-used-passwords.png" /></p>
-<p>The problem is serious because <strong>the same careless behavior individuals use in their private lives often extends into the workplace</strong>. This means that not only are individuals exposing themselves to risks such as identity theft, but <strong>they are also exposing their companies to corporate security breaches.</strong></p>
-<p>It's time to go back to the basics.</p>
+<p>The problem is serious because <strong>the same careless behavior that individuals have in their private lives often extends to the workplace</strong>. This means that individuals expose themselves to risks such as identity theft, and <strong>they also expose their companies to corporate security breaches.</strong></p>
+<p>It is time to go back to the basics.</p>
 <h2 id="how-attackers-think-about-passwords">How Attackers Think About Passwords<a class="headerlink" href="#how-attackers-think-about-passwords" title="Permanent link">&para;</a></h2>
-<p>From the attacker's perspective, the reasoning is straightforward:</p>
+<p>From the perspective of the attacker, the reasoning is straightforward:</p>
 <ol>
 <li>Define an objective (often financial gain).</li>
-<li>Assess possible targets that can help achieve that objective.</li>
-<li>Select targets that optimize effort—those most vulnerable or with the most available information.</li>
+<li>Assess the possible targets that can help achieve that objective.</li>
+<li>Select the targets that optimize the effort: those that are most vulnerable or have the most available information.</li>
 <li>Execute the attack.</li>
 </ol>
-<p>With access to public online tools, past data breaches, and marketplaces on the Darknet, attackers can easily identify potential victims. Using exposed passwords and personal information, they gain a significant advantage.</p>
+<p>With public online tools, past data breaches and marketplaces on the Darknet, attackers can identify potential victims easily. Exposed passwords and personal information give them a significant advantage.</p>
 <h2 id="the-risks-of-weak-passwords">The Risks of Weak Passwords<a class="headerlink" href="#the-risks-of-weak-passwords" title="Permanent link">&para;</a></h2>
-<p>By obtaining one or more passwords for a target, an attacker can infer patterns in the target's thinking. They can then attempt to access services using known or predictable credentials.</p>
+<p>By obtaining one or more passwords of a target, an attacker can infer patterns in the way the target thinks. The attacker can then try to access services with known or predictable credentials.</p>
 <p>The risks are clear:</p>
 <ul>
 <li>For individuals: <strong>account takeover and identity theft</strong>.</li>
-<li>For organizations: <strong>unauthorized access</strong> to IT and telecommunication systems (as defined in 615-ter of the Italian penal code).</li>
+<li>For organizations: <strong>unauthorized access</strong> to IT and telecommunication systems (as defined in article 615-ter of the Italian penal code).</li>
 </ul>
-<p>This may sound like a distant threat, but the hyper-digital nature of today's world has led to an exponential increase in <strong>account theft reports</strong>. For organizations, this often manifests as <strong>anomalous login activity.</strong></p>
+<p>This may sound like a distant threat, but the hyper-digital nature of today's world has led to an exponential increase in <strong>account theft reports</strong>. For organizations, this often shows up as <strong>anomalous login activity.</strong></p>
 <h2 id="how-not-to-choose-a-password">How <em>Not</em> to Choose a Password<a class="headerlink" href="#how-not-to-choose-a-password" title="Permanent link">&para;</a></h2>
 <p>When creating passwords, many people believe they are being clever, but they often:</p>
 <ul>
@@ -579,40 +585,39 @@ The result was a well-organized archive containing more than a billion email add
 <li>Overlook the consequences of a focused attack.</li>
 <li>Use trivial passwords (e.g., <code>margherita</code>).</li>
 <li>Use predictable keyboard sequences (e.g., <code>1q2w3e4r</code>).</li>
-<li>Apply "creative" formulas they believe to be unbreakable (e.g., <code>googleLaVita3Bella</code>).</li>
+<li>Apply "creative" formulas that they believe to be unbreakable (e.g., <code>googleLaVita3Bella</code>).</li>
 <li>Reuse the same password across multiple sites.</li>
 </ul>
-<p>We must face reality: <strong>every account containing personal data has value.</strong> The real question is <em>how much value</em>—and in the case of email or social media accounts, the answer is generally <strong>a lot</strong>.</p>
-<p>From a corporate perspective, requiring users to set at least 12-character alphanumeric passwords with uppercase, lowercase, and special symbols often results in passwords like <code>PizzaMargherita2012!</code>.</p>
+<p>We must face reality: <strong>every account that contains personal data has value.</strong> The real question is <em>how much value</em>, and for email or social media accounts the answer is generally <strong>a lot</strong>.</p>
+<p>From a corporate perspective, requiring users to set alphanumeric passwords of at least 12 characters, with uppercase, lowercase and special symbols, often results in passwords like <code>PizzaMargherita2012!</code>.</p>
 <h2 id="attacks-against-passwords">Attacks Against Passwords<a class="headerlink" href="#attacks-against-passwords" title="Permanent link">&para;</a></h2>
-<p>Let's return to the attacker's perspective. Given the available information:</p>
+<p>Let's return to the perspective of the attacker. Given the available information:</p>
 <ul>
-<li>If a target reuses the same password across services, a single data breach exposes <strong>all their accounts</strong>—including corporate ones.</li>
+<li>If a target reuses the same password across services, a single data breach exposes <strong>all their accounts</strong>, including the corporate ones.</li>
 <li>If a target uses an algorithmic pattern, once one or two passwords are leaked, an attacker can deduce the formula and generate future credentials.</li>
-<li>If a password is simple, brute force attacks (using ordered probability dictionaries) can crack it quickly.</li>
+<li>If a password is simple, brute force attacks (with ordered probability dictionaries) can crack it quickly.</li>
 </ul>
 <p>In nearly all cases, attackers can compromise at least some accounts.</p>
 <h2 id="choosing-and-managing-passwords">Choosing and Managing Passwords<a class="headerlink" href="#choosing-and-managing-passwords" title="Permanent link">&para;</a></h2>
-<p>Given the threat landscape, each account must be protected by a password that is:</p>
+<p>Given the threat landscape, every account must be protected by a password that is:</p>
 <ul>
-<li><strong>Unique</strong>: otherwise, one breach compromises everything.</li>
-<li><strong>Complex</strong>: otherwise, brute force attacks succeed in minutes.</li>
-<li><strong>Non-mnemonic</strong>: otherwise, attackers can reverse-engineer personal patterns from leaked credentials.</li>
+<li><strong>Unique:</strong> otherwise, one breach compromises everything.</li>
+<li><strong>Complex:</strong> otherwise, brute force attacks succeed in minutes.</li>
+<li><strong>Non-mnemonic:</strong> otherwise, attackers can reverse-engineer personal patterns from leaked credentials.</li>
 </ul>
-<p>This leads to a practical challenge: how do we manage unique, complex, and non-memorable passwords?
-The answer: password managers. Users only need to remember two things:</p>
+<p>This leads to a practical challenge: how do we manage unique, complex and non-memorable passwords? The answer is password managers. Users need to remember only two things:</p>
 <ol>
-<li>The master password for the manager's database.</li>
-<li>Their computer login credentials.</li>
+<li>The master password of the manager's database.</li>
+<li>The login credentials of their computer.</li>
 </ol>
 <h2 id="awareness-and-training">Awareness and Training<a class="headerlink" href="#awareness-and-training" title="Permanent link">&para;</a></h2>
 <p>This brings us to the main point: corporate security.</p>
-<p>After an anomaly or compromise, users are often asked to change their passwords. But if the old password was <code>Cristina43!</code>, the new one will likely be <code>Cristina44!</code>—a useless change that ensures continued attacker access.</p>
-<p>This is why training is crucial. Employees should not follow arbitrary rules they don't understand. Instead, they need awareness—recognizing the personal benefits first, which then naturally extend to the company.</p>
+<p>After an anomaly or a compromise, users are often asked to change their passwords. If the old password was <code>Cristina43!</code>, however, the new one will likely be <code>Cristina44!</code>, a useless change that lets the attacker keep access.</p>
+<p>This is why training is crucial. Employees should not follow arbitrary rules they do not understand. They need awareness: they should recognize the personal benefits first, which then extend naturally to the company.</p>
 <h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
-<p>I, too, once assumed people understood the risks of weak passwords and how to manage them properly. But through conversations, I realized the reality was very different. More importantly, I began to understand the motivations behind their poor choices.</p>
-<p>By sitting down with people, discussing digital security, real-world consequences, and—most importantly—listening, I was able to design a different strategy. This approach proved far more effective than generic "information security awareness" video courses.</p>
-<p>The individuals I had the honor to train not only understood the risks, but also adopted a mindset that allows them to think critically about the digital world. The benefits extended far beyond password security, reaching areas we hadn't even addressed yet.</p>
+<p>I, too, once assumed that people understood the risks of weak passwords and how to manage them properly. Through conversations, I realized that the reality was very different. More importantly, I began to understand the motivations behind their poor choices.</p>
+<p>By sitting down with people, discussing digital security and real-world consequences and, most importantly, listening, I was able to design a different strategy. This approach proved far more effective than generic "information security awareness" video courses.</p>
+<p>The people I had the honor to train not only understood the risks, but also adopted a mindset that lets them think critically about the digital world. The benefits extended far beyond password security, reaching areas we had not even addressed yet.</p>
 
 
 

@@ -441,25 +441,32 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:intermediate" class="md-tag">intermediate</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:troubleshooting" class="md-tag">troubleshooting</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-10-02">02 October 2024</time></span></p>
 <h1 id="strategies-for-troubleshooting-ansible-errors">Strategies for troubleshooting Ansible errors<a class="headerlink" href="#strategies-for-troubleshooting-ansible-errors" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:troubleshooting">troubleshooting</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
 <p>One of the biggest challenges when using Ansible, especially at the beginning, is troubleshooting. You often run into errors that are unclear, poorly described or misleading.</p>
 <p>Let's look at some strategies to resolve otherwise incomprehensible errors.</p>
 <p><code>dos2unix</code>: In rare cases, issues arise from how different operating systems handle text files (line endings). When working in Linux environments, make sure your files use Unix line endings.</p>
-<p><code>yamllint</code> and <code>yamlfmt</code>: Ansible playbooks are written in YAML. Before troubleshooting further, make sure your files are valid, correctly formatted YAML.</p>
+<p><code>yamllint</code> and <code>yamlfmt</code>: Ansible <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbooks</a> are written in YAML. Before troubleshooting further, make sure your files are valid, correctly formatted YAML.</p>
 <p><code>ansible-lint</code>: Ansible playbooks follow a specific structure, which can be validated with the <code>ansible-lint</code> linter.</p>
 <p><strong>Verbosity:</strong> You can make the execution of playbooks more verbose by adding one or more <code>-v</code> flags. Usually, <code>-vvv</code> is enough to reveal hidden errors.</p>
 <p><strong>Simplify:</strong> If the cause of the error is still unclear, simplify the playbook until you isolate the task that causes the issue.</p>
 <p><code>ansible.builtin.debug</code>: The debug feature lets you print the content of variables, which helps to identify anomalies.</p>
 <p><code>type_debug</code>: In addition to checking the content of a variable, make sure its type is correct, especially if you are performing mathematical operations.</p>
 <p><code>fail</code>...<code>when</code>: Using <strong>fail-when</strong> lets you check whether conditional tests return the expected result.</p>
-<p><strong>Facts:</strong> Before using facts, always check that they are available and have the correct values. The <code>to_nice_json</code> filter prints them in a readable format.</p>
+<p><strong>Facts:</strong> Before using facts, always check that they are available and have the correct values. The <code>to_nice_json</code> <a href="../../113ansible-parsers-and-filters/ansible-parsers-and-filters/">filter</a> prints them in a readable format.</p>
 <p><strong>Debugger:</strong> Once you have identified the task that causes the issue, you can enable the debugger:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ansible.builtin.command</span><span class="p">:</span><span class="w"> </span><span class="s">"false"</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">debugger</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">on_failed</span>

@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#common-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Common options
+        Common Options
       
     </span>
   </a>
@@ -453,7 +453,7 @@ Everything here is free. If it helps you, you can
   <a href="#get-a-table-via-snmp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Get a table via SNMP
+        Get a Table via SNMP
       
     </span>
   </a>
@@ -494,6 +494,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:intermediate" class="md-tag">intermediate</a>
       
     
@@ -511,28 +518,35 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:security" class="md-tag">security</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:snmp" class="md-tag">snmp</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2017-03-29">29 March 2017</time></span></p>
 <h1 id="working-with-snmp-on-linux">Working with SNMP on Linux<a class="headerlink" href="#working-with-snmp-on-linux" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a> <a class="md-tag" href="../../../tags/#tag:security">security</a> <a class="md-tag" href="../../../tags/#tag:snmp">snmp</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/linux.png" /></p>
-<p>Every time I need to work with Linux SNMP utilities, I have to re-learn some commands. This post summarizes useful SNMP commands for anyone who needs a reference guide.</p>
-<h2 id="common-options">Common options<a class="headerlink" href="#common-options" title="Permanent link">&para;</a></h2>
-<p>Usually, I need to build a custom and trusted MIB repository. Every SNMP utility can take the following flags:</p>
+<p>Every time I work with the Linux SNMP utilities, I have to re-learn some commands. This post summarizes the useful SNMP commands for anyone who needs a reference guide.</p>
+<h2 id="common-options">Common Options<a class="headerlink" href="#common-options" title="Permanent link">&para;</a></h2>
+<p>I usually need to build a custom and trusted MIB repository. Every SNMP utility accepts the following flags:</p>
 <ul>
-<li><code>-M</code> takes one or more directories where look for an MIB file.</li>
-<li><code>-m</code> selectively load MIB files from the above directories. I usually use <code>ALL</code>.</li>
+<li><code>-M</code> takes one or more directories where to look for MIB files.</li>
+<li><code>-m</code> selectively loads MIB files from the directories above. I usually use <code>ALL</code>.</li>
 </ul>
 <h2 id="snmp-translate">SNMP Translate<a class="headerlink" href="#snmp-translate" title="Permanent link">&para;</a></h2>
-<p>Dealing with MIB files can be a pain. Sometimes is faster and simpler to use the numeric OIDs. But how we can find numeric OID from alphabetic ones and back?</p>
-<p>Find matching MIB files given a regex:</p>
+<p>Dealing with MIB files can be a pain. Sometimes it is faster and simpler to use numeric OIDs. But how can we find the numeric OID from the alphabetic one, and back?</p>
+<p>Find the matching MIB files given a regex:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>snmptranslate<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span>mibs<span class="w"> </span>-TB<span class="w"> </span>sysName
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>SNMPv2-MIB::sysName
 </code></pre></div>
-<p>Print the numeric OID gave an alphabetic ones:</p>
+<p>Print the numeric OID given an alphabetic one:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>snmptranslate<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-On<span class="w"> </span>SNMPv2-MIB::sysName
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>.1.3.6.1.2.1.1.5
 </code></pre></div>
@@ -544,25 +558,25 @@ Everything here is free. If it helps you, you can
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>snmptranslate<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-Os<span class="w"> </span>.1.3.6.1.2.1.1.5
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sysName
 </code></pre></div>
-<p>Print full alphabetic OID, given a numeric ones:</p>
+<p>Print the full alphabetic OID given a numeric one:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>snmptranslate<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-Of<span class="w"> </span>.1.3.6.1.2.1.1.5
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>.iso.org.dod.internet.mgmt.mib-2.system.sysName
 </code></pre></div>
 <h2 id="snmp-get-and-walk">SNMP Get and Walk<a class="headerlink" href="#snmp-get-and-walk" title="Permanent link">&para;</a></h2>
-<p>Getting a single SNMP entry:</p>
+<p>Get a single SNMP entry:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>snmpget<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-v3<span class="w"> </span>-l<span class="w"> </span>authNoPriv<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-a<span class="w"> </span>SHA<span class="w"> </span>-A<span class="w"> </span>password<span class="w"> </span><span class="m">10</span>.1.1.6<span class="w"> </span>sysName
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>SNMPv2-MIB::sysName<span class="w"> </span><span class="o">=</span><span class="w"> </span>No<span class="w"> </span>Such<span class="w"> </span>Instance<span class="w"> </span>currently<span class="w"> </span>exists<span class="w"> </span>at<span class="w"> </span>this<span class="w"> </span>OID
 </code></pre></div>
-<p>The <code>snmpget</code> command does not "walk", so the exact OID must be given:</p>
+<p>The <code>snmpget</code> command does not "walk", so we must provide the exact OID:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>snmpget<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-v3<span class="w"> </span>-l<span class="w"> </span>authNoPriv<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-a<span class="w"> </span>SHA<span class="w"> </span>-A<span class="w"> </span>password<span class="w"> </span><span class="m">10</span>.1.1.6<span class="w"> </span>sysName.0
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>SNMPv2-MIB::sysName.0<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span>router.example.com
 </code></pre></div>
-<p>Because of that, usually <code>snmpwalk</code> is preferred:</p>
+<p>For this reason, <code>snmpwalk</code> is usually preferred:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>snmpwalk<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-v3<span class="w"> </span>-l<span class="w"> </span>authNoPriv<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-a<span class="w"> </span>SHA<span class="w"> </span>-A<span class="w"> </span>password<span class="w"> </span><span class="m">10</span>.1.1.6<span class="w"> </span>sysName
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>SNMPv2-MIB::sysName.0<span class="w"> </span><span class="o">=</span><span class="w"> </span>STRING:<span class="w"> </span>router.example.com
 </code></pre></div>
-<h2 id="get-a-table-via-snmp">Get a table via SNMP<a class="headerlink" href="#get-a-table-via-snmp" title="Permanent link">&para;</a></h2>
-<p>Some SNMP entry can be retrieved individually or aggregated (in a table): those attributes usually contains <code>Table</code> inside the alphabetic OID. Let's retrieve, for example, <code>ifTable</code>:</p>
+<h2 id="get-a-table-via-snmp">Get a Table via SNMP<a class="headerlink" href="#get-a-table-via-snmp" title="Permanent link">&para;</a></h2>
+<p>Some SNMP entries can be retrieved individually or aggregated in a table. Those attributes usually contain <code>Table</code> in the alphabetic OID. Let's retrieve <code>ifTable</code>, for example:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>snmptable<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-v3<span class="w"> </span>-l<span class="w"> </span>authNoPriv<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-a<span class="w"> </span>SHA<span class="w"> </span>-A<span class="w"> </span>password<span class="w"> </span>-Cf<span class="w"> </span>,<span class="w"> </span><span class="m">10</span>.1.1.6<span class="w"> </span>ifTable
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>SNMP<span class="w"> </span>table:<span class="w"> </span>IF-MIB::ifTable
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
@@ -570,8 +584,8 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="m">1</span>,Ethernet0/0,ethernetCsmacd,1500,10000000,0:2:16:cd:7:a0,up,up,0:13:59:40.11,1933415192,81395,19172271,114,102,7142667,129749909,1081118,186805,0,48,0,ccitt.0
 <a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="m">2</span>,Null0,other,1500,4294967295,,up,up,0:0:00:00.00,0,0,0,0,0,0,0,0,0,0,0,0,ccitt.0
 </code></pre></div>
-<p>The above example will delimitate columns using a <code>,</code>, useful to generate a CSV compatible output.</p>
-<p>A large screen readable output can be the following:</p>
+<p>The example above delimits the columns with a <code>,</code>, which is useful to generate CSV-compatible output.</p>
+<p>For a large screen, we can use the following more readable output:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>snmptable<span class="w"> </span>-m<span class="w"> </span>ALL<span class="w"> </span>-M<span class="w"> </span><span class="nv">$HOME</span>/.snmp/mibs<span class="w"> </span>-v3<span class="w"> </span>-l<span class="w"> </span>authNoPriv<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-a<span class="w"> </span>SHA<span class="w"> </span>-A<span class="w"> </span>password<span class="w"> </span>-Cc<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span>.1.1.6<span class="w"> </span>ifTable
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>SNMP<span class="w"> </span>table:<span class="w"> </span>IF-MIB::ifTable
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>

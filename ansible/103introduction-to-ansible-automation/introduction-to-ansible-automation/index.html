@@ -522,18 +522,18 @@ Everything here is free. If it helps you, you can
 <li><strong>Integrated Documentation:</strong> Tasks can include names and comments, which serve as in-line documentation: the purpose of each task is clear without separate documentation files.</li>
 <li><strong>Compliance Checks:</strong> Playbooks can verify whether network devices or systems comply with predefined configurations, ensuring that they adhere to company policies and standards. This improves security and governance.</li>
 <li><strong>Standardization:</strong> Playbooks provide a standard way to execute tasks and manage configurations. This promotes consistency across environments and reduces the variability and errors of manual processes.</li>
-<li><strong>Reusable Code:</strong> Roles and collections can be reused across multiple playbooks. This encourages modular design, reduces duplicated code and saves time when maintaining the automation.</li>
-<li><strong>Sensitive Data Protection:</strong> Ansible Vault encrypts sensitive data such as passwords and API keys, so that they are not exposed in plain text in playbooks.</li>
+<li><strong>Reusable Code:</strong> Roles and <a href="../../136ansible-galaxy/ansible-galaxy/">collections</a> can be reused across multiple playbooks. This encourages modular design, reduces duplicated code and saves time when maintaining the automation.</li>
+<li><strong>Sensitive Data Protection:</strong> <a href="../../114password-management-with-ansible/password-management-with-ansible/">Ansible Vault</a> encrypts sensitive data such as passwords and API keys, so that they are not exposed in plain text in playbooks.</li>
 <li><strong>Troubleshooting:</strong> Individual steps can be isolated and run on their own to find and fix errors, so you can focus on the tasks that cause the problem.</li>
 <li><strong>Multiple Connection Methods:</strong> Ansible can connect to managed nodes via SSH, local connections, WinRM and network connections. This flexibility lets it manage a wide range of devices and platforms in diverse environments.</li>
-<li><strong>User Interfaces:</strong> Tools such as AWX and the automation controller (formerly Ansible Tower) provide graphical interfaces that simplify the execution and monitoring of playbooks, making large-scale automation easier to manage.</li>
+<li><strong>User Interfaces:</strong> Tools such as <a href="../../135orchestrating-playbooks-with-ansible-awx/orchestrating-playbooks-with-ansible-awx/">AWX</a> and the automation controller (formerly Ansible Tower) provide graphical interfaces that simplify the execution and monitoring of playbooks, making large-scale automation easier to manage.</li>
 </ul>
 <p><strong>Cons:</strong></p>
 <ul>
 <li><strong>Performance:</strong> Ansible can be slower than other automation tools, especially in large environments. Optimizing playbooks for speed requires specific strategies.</li>
 <li><strong>Complexity in Statements:</strong> Complex logic, such as conditionals (if-then-else) and loops, is not intuitive to write in a playbook. It makes playbooks harder to read and maintain, and it requires a deeper understanding of the syntax and capabilities of Ansible.</li>
 <li><strong>Troubleshooting:</strong> Debugging playbooks can be complex and time-consuming. Errors can be hard to trace, especially in large playbooks or complex workflows, and effective troubleshooting requires experience with Ansible.</li>
-<li><strong>Limited Callback Plugins:</strong> The options for customizing output and logging via callback plugins are limited. Ansible tends to operate as a stand-alone system, which makes it harder to integrate with some external monitoring and logging tools.</li>
+<li><strong>Limited <a href="../../115enhancing-ansible-output/enhancing-ansible-output/">Callback Plugins</a>:</strong> The options for customizing output and logging via callback plugins are limited. Ansible tends to operate as a stand-alone system, which makes it harder to integrate with some external monitoring and logging tools.</li>
 <li><strong>Breaking Changes:</strong> Major Ansible versions can introduce changes that break existing playbooks. Playbooks must be updated and tested continuously to ensure compatibility, which adds maintenance overhead.</li>
 <li><strong>Module Limitations:</strong> Ansible supports a wide range of platforms, but not equally well. Some platforms lack comprehensive module support, which requires custom modules or workarounds.</li>
 </ul>
@@ -542,8 +542,8 @@ Everything here is free. If it helps you, you can
 <p>These are the core components of Ansible:</p>
 <ul>
 <li><strong>Data Format:</strong> YAML. YAML (YAML Ain't Markup Language) is a human-readable data serialization format used by Ansible to define playbooks and variable files. Its readability makes playbooks easy to write and understand without extensive programming knowledge, and its simple structure reduces the likelihood of syntax errors.</li>
-<li><strong>Templating:</strong> Jinja. Jinja is a templating engine for Python, which Ansible uses to render dynamic content in playbooks. With Jinja, you can use variables, control structures (such as loops and conditionals) and filters to generate configuration files or scripts dynamically, based on the needs of each host.</li>
-<li><strong>Parsers:</strong> TextFSM, NTC Templates, pyATS and TTP. Parsers are tools that Ansible uses to convert raw text into structured data.</li>
+<li><strong>Templating:</strong> Jinja. Jinja is a templating engine for Python, which Ansible uses to render dynamic content in playbooks. With Jinja, you can use variables, control structures (such as loops and conditionals) and <a href="../../113ansible-parsers-and-filters/ansible-parsers-and-filters/">filters</a> to generate configuration files or scripts dynamically, based on the needs of each host.</li>
+<li><strong>Parsers:</strong> <a href="../../../fundamentals/104parsing-text-with-textfsm/parsing-text-with-textfsm/">TextFSM</a>, <a href="../../../fundamentals/204contributing-to-ntc-templates-with-git-and-github/contributing-to-ntc-templates-with-git-and-github/">NTC Templates</a>, pyATS and TTP. Parsers are tools that Ansible uses to convert raw text into structured data.</li>
 <li><strong>Plugins:</strong> Python. Plugins extend the core functionality of Ansible: they are small pieces of Python code that add new capabilities.</li>
 </ul>
 <p>Several interfaces can simplify playbook execution, such as:</p>
@@ -552,7 +552,7 @@ Everything here is free. If it helps you, you can
 <li><strong>Automation controller (formerly Ansible Tower):</strong> A web-based interface with enterprise features such as role-based access control, job scheduling and logging.</li>
 <li><strong>Red Hat Ansible Automation Platform:</strong> A complete enterprise framework for automating across IT operations, including security, network and infrastructure.</li>
 <li><strong>AWX:</strong> The open-source upstream project of the automation controller (formerly Ansible Tower), with a web-based interface and an API to manage playbooks.</li>
-<li><strong>ARA Records Ansible:</strong> A tool that records Ansible playbook runs and provides reporting and analysis.</li>
+<li><strong><a href="../../134ansible-reporting-with-ara/ansible-reporting-with-ara/">ARA</a> Records Ansible:</strong> A tool that records Ansible playbook runs and provides reporting and analysis.</li>
 <li><strong>eNMS:</strong> An open-source network management system that integrates with Ansible to provide automation and orchestration capabilities.</li>
 </ul>
 <h2 id="learning-approach">Learning Approach<a class="headerlink" href="#learning-approach" title="Permanent link">&para;</a></h2>

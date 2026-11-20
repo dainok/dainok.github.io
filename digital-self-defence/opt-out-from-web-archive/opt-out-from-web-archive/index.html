@@ -449,18 +449,18 @@ Everything here is free. If it helps you, you can
 <h1 id="opt-out-from-web-archive">Opt-out from Web Archive<a class="headerlink" href="#opt-out-from-web-archive" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/self-defence.png" /></p>
-<p><a href="https://archive.org/">Web Archive</a> is an online service (non-profit) that has long been recording various websites by archiving them in a virtually permanent manner so that anyone can analyze the history and changes of a specific website.</p>
-<p>I am an advocate of oblivion, and above all, of being in control of one's own data. Additionally, I often use the Web Archive engine for my work and am well aware of the drawbacks that this type of service causes. Although the underlying idea is interesting, I do not like that the service goes to great lengths to make it difficult to opt out.</p>
-<p>There would indeed be a convenient system to instruct search engines (crawlers) on how to treat a specific website. The <code>robots.txt</code> file would allow each website to define what is allowed to be recorded and what is not. However, Web Archive disregards this.</p>
-<p>Let's see then, as of today, how to be partially ignored by Web Archive. I say partially ignored because it seems that the engine continues to visit pages that are not searchable.</p>
-<p>First, the <code>robots.txt</code> file must be configured unnecessarily to instruct Web Archive to ignore the website:</p>
+<p><a href="https://archive.org/">Web Archive</a> is a non-profit online service that has long been recording websites and archiving them in a virtually permanent manner, so that anyone can analyze the history and changes of a specific website.</p>
+<p>I am an advocate of oblivion and, above all, of being in control of one's own data. I also use the Web Archive often for my work, so I know well the drawbacks of this type of service. The underlying idea is interesting, but I do not like that the service goes to great lengths to make opting out difficult.</p>
+<p>A convenient system to instruct search engines (crawlers) on how to treat a specific website already exists: the <code>robots.txt</code> file lets each website define what may be recorded and what may not. Web Archive disregards it.</p>
+<p>Let's see how, as of today, we can be partially ignored by Web Archive. I say partially because the engine seems to keep visiting pages that are not searchable.</p>
+<p>First, we configure the <code>robots.txt</code> file to instruct Web Archive to ignore the website, even though this should not be necessary:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>User-agent: archive.org_bot
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Disallow: /
 </code></pre></div>
-<p>Next, add the <code>verify.txt</code> file to the root of the website with the following content:</p>
+<p>Next, we add a <code>verify.txt</code> file to the root of the website with the following content:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>please remove from archive.org
 </code></pre></div>
-<p>Finally, send an email to <code>info@archive.org</code> requesting the deletion of the domain and associated data from the Web Archive:</p>
+<p>Finally, we send an email to <code>info@archive.org</code> requesting the deletion of the domain and the associated data from the Web Archive:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>I am NAME SURNAME owner of EXAMPLE.COM. I'm officially requesting the immediate removal of my site from all archive.org products. The "User-agent: archive.org_bot Disallow: /" code present in our robots.txt file is not being honored. It can be seen at:
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>https://www.example.com/robots.txt
@@ -479,7 +479,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>EXAMPLE.COM
 </code></pre></div>
 <p>You should receive a confirmation of the deletion shortly.</p>
-<p>Let it be clear, the world will not be better or safer after this action, but it remains an action to consider. More and more services today crawl any public data, even for commercial purposes. Various generative AIs, search engines, surveillance services (<a href="https://www.clearview.ai/">ClearView AI</a>), cybercrime come to mind...</p>
+<p>To be clear, the world will not be better or safer after this action, but it remains an action to consider. More and more services today crawl any public data, even for commercial purposes. Generative AIs, search engines, surveillance services (<a href="https://www.clearview.ai/">ClearView AI</a>) and cybercrime come to mind.</p>
 
 
 

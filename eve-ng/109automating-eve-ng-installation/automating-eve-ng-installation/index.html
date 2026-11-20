@@ -449,8 +449,8 @@ Everything here is free. If it helps you, you can
 <h1 id="automating-eve-ng-installation">Automating EVE-NG installation<a class="headerlink" href="#automating-eve-ng-installation" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
-<p>Installing an EVE-NG server is a task I encounter every time I need to prepare a new course. For this reason, I have created an Ansible playbook that, starting from an Ubuntu Linux Server 22.04 LTS installation, installs EVE-NG as seen in the previous chapters.</p>
-<p>The playbook is available in the <a href="https://github.com/dainok/courses">GitHub repository</a> dedicated to DevNetOps courses. Therefore, let's install <a href="https://www.ansible.com/">Ansible</a> and retrieve the playbook from the GitHub repository:</p>
+<p>I install an EVE-NG server every time I prepare a new course. For this reason, I created an <a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a> playbook that, starting from an Ubuntu Linux Server 22.04 LTS installation, installs EVE-NG as described in the previous chapters.</p>
+<p>The playbook is available in the <a href="https://github.com/dainok/courses">GitHub repository</a> dedicated to the DevNetOps courses. Let's install <a href="https://www.ansible.com/">Ansible</a> and retrieve the playbook from the repository:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dainok/courses
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>courses
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
@@ -460,20 +460,20 @@ Everything here is free. If it helps you, you can
 </code></pre></div>
 <p>At this point, we need to modify the inventory (<code>inventory.yml</code>). In particular, we verify:</p>
 <ul>
-<li>the IP address of the EVE-NG server (<code>ansible_host</code>);</li>
-<li>that it is possible to log in via key (without password) and optionally perform privilege escalation via <code>sudo</code> without being prompted for a password;</li>
-<li>if and how many users we want to create (<code>dev_users</code>).</li>
+<li>The IP address of the EVE-NG server (<code>ansible_host</code>).</li>
+<li>That we can log in with a key (without a password) and, optionally, escalate privileges with <code>sudo</code> without being prompted for a password.</li>
+<li>Whether we want to create users and how many (<code>dev_users</code>).</li>
 </ul>
-<p>To enable users in the <code>sudo</code> group to execute any command without being prompted for a password, it is necessary to modify the file <code>/etc/sudoers</code> with the following configuration:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>%sudo<span class="w"> </span><span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span><span class="w"> </span>NOPASSWD:ALL
+<p>To let the users in the <code>sudo</code> group run any command without a password prompt, we edit the <code>/etc/sudoers</code> file with the following configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>%sudo ALL=(ALL:ALL) NOPASSWD:ALL
 </code></pre></div>
-<p>Finally, we can execute the playbook with the user with which we can log in:</p>
+<p>Finally, we run the playbook with the user we can log in with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./playbook-eveng6-install.yml<span class="w"> </span>-u<span class="w"> </span>ubuntu
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>./playbook-eveng6-install.yml<span class="w"> </span>-u<span class="w"> </span>ubuntu<span class="w"> </span>--tags<span class="w"> </span>upload
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>./playbook-eveng6-install.yml<span class="w"> </span>-u<span class="w"> </span>ubuntu<span class="w"> </span>--tags<span class="w"> </span>python
 </code></pre></div>
-<p>At the end, reboot the EVE-NG server.</p>
-<p>If you need to install EVE-NG 5, please starts from an Ubuntu Linux Server 20.04 LTS installation and use the following playbooks:</p>
+<p>At the end, we reboot the EVE-NG server.</p>
+<p>To install EVE-NG 5, we start from an Ubuntu Linux Server 20.04 LTS installation and use the following playbooks:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./playbook-eveng5-install.yml<span class="w"> </span>-u<span class="w"> </span>ubuntu
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>./playbook-eveng5-install.yml<span class="w"> </span>-u<span class="w"> </span>ubuntu<span class="w"> </span>--tags<span class="w"> </span>upload
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>./playbook-eveng5-install.yml<span class="w"> </span>-u<span class="w"> </span>ubuntu<span class="w"> </span>--tags<span class="w"> </span>python

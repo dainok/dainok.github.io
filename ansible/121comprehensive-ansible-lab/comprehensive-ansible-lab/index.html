@@ -581,21 +581,28 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:ansible" class="md-tag">ansible</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:lab" class="md-tag">lab</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-12-11">11 December 2024</time></span></p>
 <h1 id="comprehensive-ansible-lab">Comprehensive Ansible Lab<a class="headerlink" href="#comprehensive-ansible-lab" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:lab">lab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
 <p>In the final exercise, we put together what we have learned to configure and manage a legacy fabric (based on STP).</p>
 <p>Let's open the <code>Cisco Legacy Core-Access topology</code> lab, start all the devices and make sure they are reachable.</p>
 <p><img alt="leaf-spine-topology-1" src="../images/leaf-spine-topology-1.png" /></p>
 <h2 id="modeling">Modeling<a class="headerlink" href="#modeling" title="Permanent link">&para;</a></h2>
-<p>Before even thinking about writing playbooks, we need to create a model of our environment, which means creating a data structure that can represent our fabric and serve as a working tool. There are many possibilities:</p>
+<p>Before even thinking about writing <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbooks</a>, we need to create a model of our environment, which means creating a data structure that can represent our fabric and serve as a working tool. There are many possibilities:</p>
 <ul>
-<li><a href="https://docs.netbox.dev/en/stable/">NetBox</a> / <a href="https://networktocode.com/nautobot/">Nautobot</a>: I have seen an integration between these applications, Ansible and the devices. A change to a device interface in NetBox / Nautobot triggers an Ansible playbook that modifies the configuration of the physical device.</li>
+<li><a href="https://docs.netbox.dev/en/stable/">NetBox</a> / <a href="https://networktocode.com/nautobot/">Nautobot</a>: I have seen an integration between these applications, Ansible and the devices. A change to a device interface in NetBox / <a href="../../../nautobot/101leveraging-nautobot-as-a-ssot/leveraging-nautobot-as-a-ssot/">Nautobot</a> triggers an Ansible playbook that modifies the configuration of the physical device.</li>
 <li><a href="https://about.gitlab.com/install/">GitLab</a> / <a href="https://github.com/">GitHub</a>: This approach leans more towards Infrastructure as Code. An operator changes the data structure, typically based on CSV / YAML / JSON, and the CI / CD pipeline runs various tests. If everything works, it adjusts the configuration of the devices in production.</li>
 <li>CSV / XLS / YAML: This is the simplest case: a plain file contains the parameters of the structure, and the manual execution of a playbook adjusts the configuration of the devices. Any tests are done manually by the operator.</li>
 </ul>
@@ -605,7 +612,7 @@ Everything here is free. If it helps you, you can
 <li>DNS.</li>
 <li>Hostname and domain.</li>
 <li>NTP.</li>
-<li>SNMP.</li>
+<li><a href="../../../fundamentals/103review-of-snmp-fundamentals/review-of-snmp-fundamentals/">SNMP</a>.</li>
 </ul>
 <p>Operationally, we also need to:</p>
 <ul>
@@ -701,7 +708,7 @@ Everything here is free. If it helps you, you can
 <p>If we had chosen the second format, apparently more convenient, the operator would have had to make sure that an interface is not associated with multiple profiles.</p>
 <p>We therefore use the first format, where the interface is defined as a unique key within the file.</p>
 <h2 id="define-the-inventory">Define the Inventory<a class="headerlink" href="#define-the-inventory" title="Permanent link">&para;</a></h2>
-<p>Next, let's define the inventory file, which for convenience we implement as an INI file:</p>
+<p>Next, let's define the <a href="../../104ansible-inventory/ansible-inventory/">inventory</a> file, which for convenience we implement as an INI file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[all]</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">sw1.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.101</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">sw2.example.com ansible_host</span><span class="o">=</span><span class="s">169.254.1.102</span>
@@ -738,7 +745,7 @@ Everything here is free. If it helps you, you can
 <p>In general, two choices are possible:</p>
 <ul>
 <li>The playbook is invoked manually by an operator: in this case, the best choice is for the operator to enter the credentials interactively.</li>
-<li>The playbook is invoked by an orchestrator: in this case, the credentials will probably be passed as environment variables. The use of a vault is strongly recommended.</li>
+<li>The playbook is invoked by an orchestrator: in this case, the credentials will probably be passed as environment variables. The use of a <a href="../../114password-management-with-ansible/password-management-with-ansible/">vault</a> is strongly recommended.</li>
 </ul>
 <p>For simplicity, we choose the first option: the credentials are entered interactively during playbook execution.</p>
 <h2 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h2>

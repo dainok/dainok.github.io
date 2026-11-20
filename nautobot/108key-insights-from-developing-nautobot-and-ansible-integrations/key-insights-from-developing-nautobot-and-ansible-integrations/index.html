@@ -542,7 +542,7 @@ Everything here is free. If it helps you, you can
 <li>The data structure of Nautobot.</li>
 <li>The REST API of Nautobot.</li>
 <li>Integrating Ansible with Nautobot.</li>
-<li>Running Ansible playbooks from Nautobot.</li>
+<li>Running Ansible <a href="../../../ansible/107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbooks</a> from Nautobot.</li>
 </ul>
 <p>Let's look at the challenges I encountered and the solutions that I left out of the previous posts.</p>
 <h2 id="nautobots-data-structure">Nautobot's Data Structure<a class="headerlink" href="#nautobots-data-structure" title="Permanent link">&para;</a></h2>
@@ -567,7 +567,7 @@ Everything here is free. If it helps you, you can
 <p>This option is appealing, but the shell is available only locally on the instance that runs Nautobot. When Nautobot runs in containers, accessing the shell can be complex or impossible.</p>
 <h2 id="rest-api">REST API<a class="headerlink" href="#rest-api" title="Permanent link">&para;</a></h2>
 <p>REST APIs are useful when they are well documented, which is not the case with Nautobot. The <a href="https://docs.nautobot.com/projects/core/en/stable/user-guide/platform-functionality/rest-api/overview/">documentation</a> includes examples, and local installations provide the documentation of the API calls at <a href="http://localhost:8000/api/docs/">http://localhost:8000/api/docs/</a>. Some features, such as <a href="https://docs.nautobot.com/projects/core/en/v1.4.7/rest-api/filtering/#filtering-by-choice-field">filtering</a>, are poorly documented and require trial and error.</p>
-<p>The <code>device_id</code> filter worked, but <code>device_name</code> returned an error:</p>
+<p>The <code>device_id</code> <a href="../../../ansible/113ansible-parsers-and-filters/ansible-parsers-and-filters/">filter</a> worked, but <code>device_name</code> returned an error:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span><span class="nt">"device_name"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Unknown filter field"</span><span class="p">]}</span>
 </code></pre></div>
 <p>After numerous attempts, I found a <a href="https://github.com/nautobot/nautobot/issues/4370">bug from 2023</a>. Eventually, I realized that the API filters are actually <a href="https://github.com/nautobot/nautobot/blob/develop/nautobot/dcim/filters/__init__.py">FilterSets</a>, so <code>device</code> can filter by name or label.</p>
@@ -580,7 +580,7 @@ Everything here is free. If it helps you, you can
 <h2 id="django-shell-or-rest-api">Django Shell or REST API<a class="headerlink" href="#django-shell-or-rest-api" title="Permanent link">&para;</a></h2>
 <p>I chose the REST API for its broader compatibility, despite the difficulties.</p>
 <h2 id="integrating-ansible-with-nautobot">Integrating Ansible with Nautobot<a class="headerlink" href="#integrating-ansible-with-nautobot" title="Permanent link">&para;</a></h2>
-<p><a href="https://networktocode.com/">network.toCode()</a> provides a <a href="https://galaxy.ansible.com/ui/repo/published/networktocode/nautobot/">specific Ansible collection for Nautobot</a>. I needed a way to use Nautobot as an Ansible inventory without building one from scratch.</p>
+<p><a href="https://networktocode.com/">network.toCode()</a> provides a <a href="https://galaxy.ansible.com/ui/repo/published/networktocode/nautobot/">specific Ansible collection for Nautobot</a>. I needed a way to use Nautobot as an Ansible <a href="../../../ansible/104ansible-inventory/ansible-inventory/">inventory</a> without building one from scratch.</p>
 <p>The <a href="https://nautobot-ansible.readthedocs.io/en/latest/plugins/inventory_inventory.html">plugin documentation</a> is a good starting point and includes examples.</p>
 <p>The challenge is defining a data structure that includes:</p>
 <ul>
@@ -594,7 +594,7 @@ Everything here is free. If it helps you, you can
 <li>The playbook defines the information, except for the group with the correct variables.</li>
 <li>A mix of both.</li>
 </ul>
-<p>I chose to move the information to Nautobot, to experiment with <a href="https://docs.nautobot.com/projects/core/en/v1.1.6/additional-features/custom-fields/">custom fields</a>. In practice, usernames and passwords are stored in a vault; for simplicity, I hardcoded them in the playbook.</p>
+<p>I chose to move the information to Nautobot, to experiment with <a href="https://docs.nautobot.com/projects/core/en/v1.1.6/additional-features/custom-fields/">custom fields</a>. In practice, usernames and passwords are stored in a <a href="../../../ansible/114password-management-with-ansible/password-management-with-ansible/">vault</a>; for simplicity, I hardcoded them in the playbook.</p>
 <p>After testing, I found the correct combination. Two custom fields map to variables:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">compose</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_fields.connection</span>

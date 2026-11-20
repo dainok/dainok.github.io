@@ -508,7 +508,21 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:ci-cd" class="md-tag">ci-cd</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:fundamentals" class="md-tag">fundamentals</a>
       
     
       
@@ -525,22 +539,29 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:gitlab" class="md-tag">gitlab</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:iac" class="md-tag">iac</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2026-01-25">25 January 2026</time></span></p>
 <h1 id="gitlab-as-the-backbone-of-iac">GitLab as the backbone of IaC<a class="headerlink" href="#gitlab-as-the-backbone-of-iac" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:git">git</a> <a class="md-tag" href="../../../tags/#tag:gitlab">gitlab</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ci-cd">ci-cd</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../../../tags/#tag:git">git</a> <a class="md-tag" href="../../../tags/#tag:gitlab">gitlab</a> <a class="md-tag" href="../../../tags/#tag:iac">iac</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/gitlab.png" /></p>
 <p>GitLab has become the de facto standard for managing the software lifecycle within enterprises. It offers a huge number of features and adapts to almost any requirement, which makes it a broad and complex piece of software. For automation, we use GitLab as the foundation to provision our infrastructure as code (IaC).</p>
-<p>In the series of posts about Cisco NDO and Cisco ACI, we saw how NaC (Network as Code) lets us configure our fabric in an IaC model. We also saw how an additional parser implements input data validation and defines configurations starting from simplified data structures designed for our infrastructure.</p>
+<p>In the series of posts about Cisco <a href="../../../cisco/111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/">NDO</a> and Cisco ACI, we saw how <a href="../../../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">NaC</a> (Network as Code) lets us configure our fabric in an IaC model. We also saw how an additional parser implements input data validation and defines configurations starting from simplified data structures designed for our infrastructure.</p>
 <p>The next step is to move the validation, build and configuration process into a CI/CD pipeline, where:</p>
 <ul>
 <li>Continuous Integration (CI): change requests are validated before they become part of the infrastructure configuration.</li>
 <li>Continuous Deployment (CD): after approval by an authorized operator, the configurations are pushed to the production devices.</li>
 </ul>
-<p>The entire system is not limited to Cisco NDO and ACI environments. It can be extended to any ecosystem that can be configured programmatically, in particular with Terraform. In this specific case, I implemented a pipeline that configures Cisco NDO, Cisco ACI, Cisco Intersight and VMware vSphere environments.</p>
+<p>The entire system is not limited to Cisco NDO and ACI environments. It can be extended to any ecosystem that can be configured programmatically, in particular with <a href="../../../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">Terraform</a>. In this specific case, I implemented a pipeline that configures Cisco NDO, Cisco ACI, Cisco Intersight and VMware vSphere environments.</p>
 <h2 id="installing-gitlab">Installing GitLab<a class="headerlink" href="#installing-gitlab" title="Permanent link">&para;</a></h2>
 <p>I installed <a href="https://about.gitlab.com/">GitLab</a> Community Edition on an Ubuntu Linux 24.04 VM:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash

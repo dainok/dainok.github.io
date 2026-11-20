@@ -491,7 +491,7 @@ Everything here is free. If it helps you, you can
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
 <p>Ansible typically works out of the box, without additional configuration. Advanced usage, however, may require some customization. Ansible can be configured through files or variables.</p>
-<p>For example, the <code>DEFAULT_HOST_LIST</code> parameter defines the inventory file. The <a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html#default-host-list">official documentation</a> specifies:</p>
+<p>For example, the <code>DEFAULT_HOST_LIST</code> parameter defines the <a href="../../104ansible-inventory/ansible-inventory/">inventory</a> file. The <a href="https://docs.ansible.com/ansible/latest/reference_appendices/config.html#default-host-list">official documentation</a> specifies:</p>
 <ul>
 <li><code>Default</code>: The default value when not specified otherwise (<code>/etc/ansible/hosts</code>).</li>
 <li><code>INI</code>: How to specify the parameter in an INI configuration file (in this case, the section is <code>[defaults]</code> and the parameter is <code>inventory</code>).</li>
@@ -504,7 +504,7 @@ Everything here is free. If it helps you, you can
 <li>Use the file <code>./ansible.cfg</code> in the current directory.</li>
 <li>Use the file defined by the <code>ANSIBLE_CONFIG</code> environment variable.</li>
 </ul>
-<p>The <code>DEFAULT_HOST_LIST</code> parameter can also be specified on the command line with <code>-i</code>. Additionally, some parameters can be defined within a playbook.</p>
+<p>The <code>DEFAULT_HOST_LIST</code> parameter can also be specified on the command line with <code>-i</code>. Additionally, some parameters can be defined within a <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbook</a>.</p>
 <p>Ansible applies a <a href="https://docs.ansible.com/ansible/latest/reference_appendices/general_precedence.html#general-precedence-rules">precedence</a> to decide which value to use when a parameter is specified more than once. The order is:</p>
 <ul>
 <li>Configuration settings.</li>

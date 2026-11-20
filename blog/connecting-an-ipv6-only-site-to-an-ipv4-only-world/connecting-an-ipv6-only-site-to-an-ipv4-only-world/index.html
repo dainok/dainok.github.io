@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#configuring-the-raspberry-pi-ipv6-and-8021q" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuring the Raspberry Pi (IPv6 and 802.1q)
+        Configuring the Raspberry Pi (IPv6 and 802.1Q)
       
     </span>
   </a>
@@ -453,7 +453,7 @@ Everything here is free. If it helps you, you can
   <a href="#configuring-the-dns64-daemon" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuring the DNS64 daemon
+        Configuring the DNS64 Daemon
       
     </span>
   </a>
@@ -464,7 +464,7 @@ Everything here is free. If it helps you, you can
   <a href="#configuring-the-nat64-service" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuring the NAT64 service
+        Configuring the NAT64 Service
       
     </span>
   </a>
@@ -523,6 +523,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:ipv6" class="md-tag">ipv6</a>
       
     
@@ -539,33 +546,33 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2014-02-17">17 February 2014</time></span></p>
 <h1 id="connecting-an-ipv6-only-site-to-an-ipv4-only-world">Connecting an IPv6 only site to an IPv4 only world<a class="headerlink" href="#connecting-an-ipv6-only-site-to-an-ipv4-only-world" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ipv6">ipv6</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:ipv6">ipv6</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/linux.png" /></p>
-<p>Many Internet provider are not able to offer a native IPv6 Internet connection. Even if there are many ways to send IPv6 packets over an IPv4 network, this post will show how an IPv6 only site can be interconnected to IPv4 only networks. For example we want to configure a small home/branch office using IPv6 only, avoiding slow 6to4 tunnel.</p>
+<p>Many Internet providers cannot offer a native IPv6 Internet connection. There are many ways to send IPv6 packets over an IPv4 network. This post shows how an IPv6-only site can be interconnected to IPv4-only networks. For example, we want to configure a small home or branch office using IPv6 only, avoiding a slow 6to4 tunnel.</p>
 <h2 id="dns64-and-nat64">DNS64 and NAT64<a class="headerlink" href="#dns64-and-nat64" title="Permanent link">&para;</a></h2>
-<p>An IPv6 only host can communicate with an IPv4 only host using NAT64. A NAT64 server is required to translate IPv6 addresses into IPv4 addresses and vice-versa. A virtual subnet will be deployed to map all IPv4 addresses.</p>
-<p>An appropriate DNS server must be deployed: IPv6 only hosts will ask for AAAA DNS record, but IPv4 only host will have A record only. DNS64 is a mechanism to translate AAAA DNS requests into A requests.</p>
+<p>An IPv6-only host can communicate with an IPv4-only host using NAT64. A NAT64 server translates IPv6 addresses into IPv4 addresses and vice versa. A virtual subnet is deployed to map all the IPv4 addresses.</p>
+<p>We must also deploy an appropriate DNS server: IPv6-only hosts ask for AAAA DNS records, but IPv4-only hosts have A records only. DNS64 is a mechanism that translates AAAA DNS requests into A requests.</p>
 <h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link">&para;</a></h2>
-<p>The following scenario is deployed:</p>
+<p>We deploy the following scenario:</p>
 <p><img alt="ipv6-only-site" src="../images/ipv6-only-site.png" /></p>
 <p>Requirements:</p>
 <ul>
-<li>A Linux box is required to implement NAT64 and DNS64 services. Newest Cisco routers can act as a NAT64 and DNS64 servers, but in this case a Raspberry Pi box is used. Two connections are needed:</li>
-<li><code>eth0</code> will be used to connect the Linux box to the Internet, using an IPv4 public address;</li>
-<li><code>eth0.2</code> (802.1q) will be used to connect the IPv6 only network;</li>
-<li>Because IPv6 addresses are not routed to the Internet, ULA (Unique Local Address) are used. ULA address are like private IPv4 address and cannot be routed into the Internet. An ULA IPv6 range should be registered using the <a href="https://www.sixxs.net/tools/grh/ula/" title="SixXS registry">SixXS registry</a>. Two network are required:</li>
-<li><code>fd9f:590a:b158::/64</code> is assigned to IPv6 only hosts;</li>
-<li><code>fd9f:590a:b158:ffff:ffff::/96</code> is used to map IPv6 and IPv4 addresses: because IPv4 are 32 bits long, a 96 bit prefix is needed (however 64 bit prefix should be allocated).</li>
-<li>An additional IPv4 network is needed for the <a href="http://www.litech.org/tayga/" title="TAYGA">TAYGA</a> daemon, used to implement the NAT64 service.</li>
+<li>A Linux box implements the NAT64 and DNS64 services. The newest Cisco routers can act as NAT64 and DNS64 servers too, but in this case we use a Raspberry Pi. Two connections are needed:</li>
+<li><code>eth0</code> connects the Linux box to the Internet, using a public IPv4 address.</li>
+<li><code>eth0.2</code> (802.1Q) connects the IPv6-only network.</li>
+<li>IPv6 addresses are not routed to the Internet, so we use ULAs (Unique Local Addresses). ULAs are like private IPv4 addresses and cannot be routed on the Internet. We should register a ULA IPv6 range with the <a href="https://www.sixxs.net/tools/grh/ula/" title="SixXS registry">SixXS registry</a>. Two networks are required:</li>
+<li><code>fd9f:590a:b158::/64</code> is assigned to the IPv6-only hosts.</li>
+<li><code>fd9f:590a:b158:ffff:ffff::/96</code> maps IPv6 and IPv4 addresses: because IPv4 addresses are 32 bits long, a 96-bit prefix is needed (although a 64-bit prefix should be allocated).</li>
+<li>An additional IPv4 network is needed for the <a href="http://www.litech.org/tayga/" title="TAYGA">TAYGA</a> daemon, which implements the NAT64 service.</li>
 </ul>
-<h2 id="configuring-the-raspberry-pi-ipv6-and-8021q">Configuring the Raspberry Pi (IPv6 and 802.1q)<a class="headerlink" href="#configuring-the-raspberry-pi-ipv6-and-8021q" title="Permanent link">&para;</a></h2>
-<p>In this scenario a Raspberry Pi box is used with a 802.1q link. The following modules must be loaded:</p>
+<h2 id="configuring-the-raspberry-pi-ipv6-and-8021q">Configuring the Raspberry Pi (IPv6 and 802.1Q)<a class="headerlink" href="#configuring-the-raspberry-pi-ipv6-and-8021q" title="Permanent link">&para;</a></h2>
+<p>In this scenario, we use a Raspberry Pi with an 802.1Q link. We must load the following modules:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>cat<span class="w"> </span>/etc/modules
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>snd-bcm2835
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>8021q
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ipv6
 </code></pre></div>
-<p>The eth0.2 interface is used to interconnect IPv6 hosts:</p>
+<p>The <code>eth0.2</code> interface interconnects the IPv6 hosts:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>cat<span class="w"> </span>/etc/network/interfaces
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>auto<span class="w"> </span>lo
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
@@ -579,7 +586,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>netmask<span class="w"> </span><span class="m">64</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span>vlan-raw-device<span class="w"> </span>eth0
 </code></pre></div>
-<p>The <code>radvd</code> daemon must be installed and configured so IPv6 hosts can be autoconfigured:</p>
+<p>We install and configure the <code>radvd</code> daemon so that IPv6 hosts can autoconfigure:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>cat<span class="w"> </span>/etc/radvd.conf
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>interface<span class="w"> </span>eth0.2<span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span>AdvSendAdvert<span class="w"> </span>on<span class="p">;</span>
@@ -591,19 +598,19 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="o">}</span><span class="p">;</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="o">}</span><span class="p">;</span>
 </code></pre></div>
-<p>Finally the Raspberry Pi must be configured as a router (IP forwarding must be enabled):</p>
+<p>Finally, we configure the Raspberry Pi as a router (IP forwarding must be enabled):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>cat<span class="w"> </span>/etc/sysctl.conf
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>...<span class="o">]</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="o">[</span>...<span class="o">]</span>
 </code></pre></div>
-<h2 id="configuring-the-dns64-daemon">Configuring the DNS64 daemon<a class="headerlink" href="#configuring-the-dns64-daemon" title="Permanent link">&para;</a></h2>
-<p>The famous DNS server BIND (a.k.a. named) can be used as a DNS64 server. IPv4 hosts user A records:</p>
+<h2 id="configuring-the-dns64-daemon">Configuring the DNS64 Daemon<a class="headerlink" href="#configuring-the-dns64-daemon" title="Permanent link">&para;</a></h2>
+<p>We can use the well-known DNS server BIND (a.k.a. <code>named</code>) as a DNS64 server. IPv4 hosts use A records:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>dig<span class="w"> </span>+short<span class="w"> </span>@::1<span class="w"> </span>www.routereflector.com<span class="w"> </span>A
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="m">94</span>.141.22.22
 </code></pre></div>
-<p>IPv6 hosts look for AAAA records, so BIND must be configured to translate A records into AAAA ones:</p>
+<p>IPv6 hosts look for AAAA records, so we configure BIND to translate A records into AAAA ones:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>cat<span class="w"> </span>/etc/bind/named.conf.options
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>options<span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="o">[</span>...<span class="o">]</span>
@@ -619,16 +626,15 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="o">}</span><span class="p">;</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="o">}</span><span class="p">;</span>
 </code></pre></div>
-<p>At this point if an AAAA records is requested, an A record is retrieved and mapped to an IPv6 address:</p>
+<p>At this point, if an AAAA record is requested, an A record is retrieved and mapped to an IPv6 address:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>dig<span class="w"> </span>+short<span class="w"> </span>@::1<span class="w"> </span>www.routereflector.com<span class="w"> </span>AAAA
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>fd9f:590a:b158:ffff:ffff:ffff:5e8d:1616
 </code></pre></div>
-<p>The exclude entry is added because this network has not IPv6 reachability. DNS64 translate only domain which does not have AAAA records.
-Without exclusions DNS64 answers with the real AAAA record:</p>
+<p>We add the <code>exclude</code> entry because this network has no IPv6 reachability. DNS64 translates only the domains that do not have AAAA records. Without exclusions, DNS64 answers with the real AAAA record:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>dig<span class="w"> </span>+short<span class="w"> </span>@::1<span class="w"> </span>www.google.com<span class="w"> </span>AAAA
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>2a00:1450:4002:802::1010
 </code></pre></div>
-<p>With the exclusion configured, the DNS64 answers with mapped AAAA records, one for each A record:</p>
+<p>With the exclusion configured, DNS64 answers with mapped AAAA records, one for each A record:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>dig<span class="w"> </span>+short<span class="w"> </span>@::1<span class="w"> </span>www.google.com<span class="w"> </span>A
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="m">173</span>.194.35.50
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="m">173</span>.194.35.51
@@ -642,8 +648,8 @@ Without exclusions DNS64 answers with the real AAAA record:</p>
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>fd9f:590a:b158:ffff:ffff:ffff:adc2:2331
 <a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>fd9f:590a:b158:ffff:ffff:ffff:adc2:2332
 </code></pre></div>
-<h2 id="configuring-the-nat64-service">Configuring the NAT64 service<a class="headerlink" href="#configuring-the-nat64-service" title="Permanent link">&para;</a></h2>
-<p>The TAYGA daemon can be used to convert IPv6 addresses into IPv4 addresses. The same IPv6 prefix configured above must be used:</p>
+<h2 id="configuring-the-nat64-service">Configuring the NAT64 Service<a class="headerlink" href="#configuring-the-nat64-service" title="Permanent link">&para;</a></h2>
+<p>We can use the TAYGA daemon to convert IPv6 addresses into IPv4 addresses. We must use the same IPv6 prefix configured above:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>cat<span class="w"> </span>/etc/tayga.conf
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>tun-device<span class="w"> </span>nat64
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ipv4-addr<span class="w"> </span><span class="m">192</span>.168.255.1
@@ -657,21 +663,21 @@ Without exclusions DNS64 answers with the real AAAA record:</p>
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">CONFIGURE_NAT44</span><span class="o">=</span><span class="s2">"no"</span>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">DAEMON_OPTS</span><span class="o">=</span><span class="s2">""</span>
 </code></pre></div>
-<p>NAT44 is disabled because we want to manually configure it. NAT44 is required to translate private ip addressed located in the 192.168.255.0/24 network to a public IP address currently assigned to eth0 interface:</p>
+<p>We disable NAT44 because we want to configure it manually. NAT44 is required to translate the private IP addresses in the <code>192.168.255.0/24</code> network to the public IP address currently assigned to the <code>eth0</code> interface:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-o<span class="w"> </span>eth0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
 </code></pre></div>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
-<p>And finally IPv4 sites are reachable from IPv6 hosts:</p>
+<p>Finally, IPv4 sites are reachable from IPv6 hosts:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$<span class="w"> </span>ping6<span class="w"> </span>-c1<span class="w"> </span>fd9f:590a:b158:ffff:ffff:ffff:5e8d:1616
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>PING<span class="w"> </span>fd9f:590a:b158:ffff:ffff:ffff:5e8d:1616<span class="o">(</span>fd9f:590a:b158:ffff:ffff:ffff:5e8d:1616<span class="o">)</span><span class="w"> </span><span class="m">56</span><span class="w"> </span>data<span class="w"> </span>bytes
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span>fd9f:590a:b158:ffff:ffff:ffff:5e8d:1616:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">52</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">61</span>.7<span class="w"> </span>ms
 </code></pre></div>
-<p>Also using DNS (mind that /etc/resolv.conf must be properly configured):</p>
+<p>They are reachable through DNS too (note that <code>/etc/resolv.conf</code> must be configured properly):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>ping6<span class="w"> </span>-c1<span class="w"> </span>www.routereflector.com
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>PING<span class="w"> </span>www.routereflector.com<span class="o">(</span>srv-hp9.netsons.net<span class="o">)</span><span class="w"> </span><span class="m">56</span><span class="w"> </span>data<span class="w"> </span>bytes
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span>srv-hp9.netsons.net:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">52</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">60</span>.0<span class="w"> </span>ms
 </code></pre></div>
-<p>Some protocols which embed L3 addresses into L4 datagram (like FTP or SIP) can behave unexpectedly; also DNSSEC cannot be used because of the DNS record manipulation.</p>
+<p>Some protocols that embed L3 addresses into L4 datagrams (like FTP or SIP) can behave unexpectedly. DNSSEC also cannot be used, because of the DNS record manipulation.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.slideshare.net/IOSHints/nat64-and-dns64-in-30-minutes" title="NAT64 and DNS64 in 30 minutes">NAT64 and DNS64 in 30 minutes</a></li>

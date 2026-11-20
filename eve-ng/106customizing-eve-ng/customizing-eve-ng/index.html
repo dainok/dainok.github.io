@@ -512,25 +512,25 @@ Everything here is free. If it helps you, you can
 <h1 id="customizing-eve-ng">Customizing EVE-NG<a class="headerlink" href="#customizing-eve-ng" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
-<p>Let's delve into the most important part: customizing EVE-NG for DevNetOps. In particular, we will proceed to:</p>
+<p>Let's delve into the most important part: customizing EVE-NG for DevNetOps. In particular, we will:</p>
 <ul>
 <li>Configure an internal network dedicated to device management.</li>
-<li>Import the labs from the <a href="https://github.com/dainok/courses">GitHub repository</a> dedicated to DevNetOps courses.</li>
-<li>Compile and install <a href="https://www.python.org/">Python</a> 3.10 (not required in EVE-NG 6)</li>
-<li>Create a user dedicated to development, with a dedicated Pythonenvironment.</li>
-<li>Utilize <a href="https://code.visualstudio.com/">Visual Studio Code</a> for remote development on the EVE-NG server.</li>
+<li>Import the labs from the <a href="https://github.com/dainok/courses">GitHub repository</a> dedicated to DevNetOps courses.</li>
+<li>Compile and install <a href="https://www.python.org/">Python</a> 3.10 (not required in EVE-NG 6).</li>
+<li>Create a user dedicated to development, with a dedicated Python environment.</li>
+<li>Use <a href="https://code.visualstudio.com/">Visual Studio Code</a> for remote development on the EVE-NG server.</li>
 </ul>
 <h2 id="configure-an-internal-management-network">Configure an Internal Management Network<a class="headerlink" href="#configure-an-internal-management-network" title="Permanent link">&para;</a></h2>
-<p>In automation, each lab we create requires a seemingly trivial yet essential characteristic: the IP addresses of the devices must be accessible from the automation system. If the <a href="https://www.eve-ng.net/index.php/features-compare/">EVE-NG PRO</a> version has a native feature (NAT Cloud) that simplifies this, in EVE-NG CE, we need to find a strategy to achieve the same result.</p>
-<p>The goal is to configure an additional network on EVE-NG that allows us to connect the management interfaces of the devices we will use for our labs, whether they are virtual (internal to EVE-NG) or physical (PLC and other external physical devices). The diagram below summarizes our intention:</p>
+<p>In automation, each lab we create requires a seemingly trivial yet essential characteristic: the IP addresses of the devices must be reachable from the automation system. The <a href="https://www.eve-ng.net/index.php/features-compare/">EVE-NG PRO</a> version has a native feature (NAT Cloud) that simplifies this. In EVE-NG CE, we need a strategy to achieve the same result.</p>
+<p>The goal is to configure an additional network on EVE-NG that lets us connect the management interfaces of the devices we use in our labs, whether they are virtual (internal to EVE-NG) or physical (PLCs and other external physical devices). The diagram below summarizes the idea:</p>
 <p><img alt="eveng-topology-with-internal-management-network" src="../images/eveng-topology-with-internal-management-network.png" /></p>
-<p>Firstly, let's clarify the networking of EVE-NG and introduce some concepts in Linux in general.</p>
-<p>A Linux system represents its network interfaces with various names, typically prefixed (<code>eth</code>, <code>ens</code>…) associated with an identifier number. Network interfaces can represent either a physical network card or a virtual network card. In our environment, we find that the physical network card is represented by <code>eth0</code>, but there are other network cards named <code>pnet</code>.</p>
+<p>First, let's clarify the networking of EVE-NG and introduce some Linux concepts.</p>
+<p>A Linux system represents its network interfaces with names that have a prefix (<code>eth</code>, <code>ens</code>...) followed by an identifier number. A network interface can represent either a physical or a virtual network card. In our environment, the physical network card is <code>eth0</code>, but there are other network cards named <code>pnet</code>.</p>
 <p>We can view the network interfaces of the system with one of the following commands:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ifconfig<span class="w"> </span>-a
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ip<span class="w"> </span>link
 </code></pre></div>
-<p>The configured <code>pnet</code> interfaces are actually virtual switches (bridges) configured by default during installation:</p>
+<p>The <code>pnet</code> interfaces are actually virtual switches (bridges) configured by default during installation:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>brctl<span class="w"> </span>show
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>bridge<span class="w"> </span>name<span class="w">     </span>bridge<span class="w"> </span>id<span class="w">               </span>STP<span class="w"> </span>enabled<span class="w">     </span>interfaces
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pnet0<span class="w">           </span><span class="m">8000</span>.2ac1c946eac3<span class="w">       </span>no<span class="w">              </span>eth0
@@ -544,12 +544,12 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>pnet8<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>pnet9<span class="w">           </span><span class="m">8000</span>.000000000000<span class="w">       </span>no
 </code></pre></div>
-<p>In particular, we see that the bridge <code>pnet0</code> is associated with the physical interface <code>eth0</code>. Or, in other words, anything associated with the bridge <code>pnet0</code> will also be transmitted on the <code>eth0</code> network. As we'll see in the web interface, we can add Cloud networks. Cloud networks are simply the <code>pnet</code> bridges. In particular, the <code>pnet0</code> network is also used for web access. In fact, the management IP address is associated with the bridge <code>pnet0</code>, as we can see using one of the following commands:</p>
+<p>In particular, the bridge <code>pnet0</code> is associated with the physical interface <code>eth0</code>. In other words, anything associated with the bridge <code>pnet0</code> is also transmitted on the <code>eth0</code> network. As we will see in the web interface, we can add Cloud networks, which are simply the <code>pnet</code> bridges. The <code>pnet0</code> network is also used for web access: the management IP address is associated with the bridge <code>pnet0</code>, as we can see with one of the following commands:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ifconfig<span class="w"> </span>pnet0
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ip<span class="w"> </span>address<span class="w"> </span>show<span class="w"> </span>pnet0
 </code></pre></div>
-<p>We can then configure an IP address on the <code>pnet9</code> network and connect the management interfaces of the devices to the <code>Cloud9</code> network.</p>
-<p>EVE-NG, based on Ubuntu Linux Server 20.04 LTS, configures networks via the <code>/etc/network/interfaces</code> file. In particular, we need to configure the part related to the <code>pnet9</code> bridge as follows:</p>
+<p>We can then configure an IP address on the <code>pnet9</code> network and connect the management interfaces of the devices to the <code>Cloud9</code> network.</p>
+<p>EVE-NG is based on Ubuntu Linux Server 20.04 LTS and configures the network through the <code>/etc/network/interfaces</code> file. We configure the part related to the <code>pnet9</code> bridge as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># Cloud devices
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>auto pnet9
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>iface pnet9 inet static
@@ -558,57 +558,57 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    bridge_ports none
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    bridge_stp off
 </code></pre></div>
-<p>We use the <a href="https://en.wikipedia.org/wiki/Link-local_address">APIPA</a> network, defined to be local. In this sense, in an Enterprise context, we have reasonable certainty of not overlapping with other networks. The remaining <code>pnet2</code> - <code>pnet9</code> interfaces can be deleted.</p>
+<p>We use the <a href="https://en.wikipedia.org/wiki/Link-local_address">APIPA</a> network, which is defined to be local. In an enterprise context, this gives us reasonable certainty of not overlapping with other networks. We can delete the remaining <code>pnet2</code> to <code>pnet9</code> interfaces.</p>
 <p>We can now reload the modified network configuration:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/etc/init.d/networking<span class="w"> </span>restart
 </code></pre></div>
-<p>If we ever want to associate a physical interface with this bridge, we need to add the line:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bridge_ports<span class="w"> </span>eth1
+<p>If we ever want to associate a physical interface with this bridge, we add the following line:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>bridge_ports eth1
 </code></pre></div>
-<p>For convenience, let's choose to assign IP addresses automatically to the network interfaces connected to the <code>Cloud9</code> network. To do this, we use DHCP via <a href="https://thekelleys.org.uk/dnsmasq/doc.html">Dnsmasq</a>.</p>
-<p>The configuration of Dnsmasq is done via the configuration file <code>/etc/dnsmasq.conf</code>. In particular, we want to have only the DHCP service active and only for the network managed by the <code>pnet9</code> interface. The configuration is therefore:</p>
+<p>For convenience, we assign IP addresses automatically to the network interfaces connected to the <code>Cloud9</code> network. To do so, we use DHCP via <a href="https://thekelleys.org.uk/dnsmasq/doc.html">Dnsmasq</a>.</p>
+<p>We configure Dnsmasq in <code>/etc/dnsmasq.conf</code>. We want only the DHCP service active, and only for the network managed by the <code>pnet9</code> interface. The configuration is:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>port=0
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>interface=pnet9
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>bind-interfaces
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>dhcp-range=169.254.1.2,169.254.1.254,3650d
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>log-dhcp
 </code></pre></div>
-<p>Upon completion, restart the service with:</p>
+<p>When done, restart the service:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>dnsmasq
 </code></pre></div>
-<p>As we'll see later for the automation part, we need a stable association between the IP addresses of the devices and the devices themselves. We cannot rely on dynamic mapping provided by Dnsmasq, but we must define it statically. We can map the hostname that the device will present during the DHCP request and statically map it on Dnsmasq:</p>
+<p>As we will see later for the automation part, we need a stable association between the IP addresses and the devices. We cannot rely on the dynamic mapping provided by Dnsmasq, so we define it statically. We map the hostname that the device presents during the DHCP request to a fixed address in Dnsmasq:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dhcp-host=SW1,169.254.1.101
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>dhcp-host=SW2,169.254.1.102
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>dhcp-host=SW3,169.254.1.103
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>dhcp-host=SW4,169.254.1.104
 </code></pre></div>
-<p>The list must obviously be completed with all the names we will use on this and future labs.</p>
-<p>To complete our environment, the Cloud9 network must have access to the Internet. In other words, outbound traffic needs to be masqueraded (via NAT) using the IP address configured in the <code>pnet0</code> interface.</p>
-<p>We must first enable routing by modifying the file <code>/etc/sysctl.conf</code>:</p>
+<p>The list must be completed with all the names we use in this and future labs.</p>
+<p>To complete our environment, the <code>Cloud9</code> network must have access to the Internet. In other words, outbound traffic must be masqueraded (via NAT) using the IP address configured on the <code>pnet0</code> interface.</p>
+<p>First, we enable routing by editing <code>/etc/sysctl.conf</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>net.ipv4.ip_forward=1
 </code></pre></div>
-<p>Activate the setting by executing:</p>
+<p>We activate the setting with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sysctl<span class="w"> </span>-p
 </code></pre></div>
-<p>Configure NAT using IPTables to masquerade outbound traffic with the address of <code>pnet0</code>:</p>
+<p>We configure NAT with iptables to masquerade outbound traffic with the address of <code>pnet0</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-o<span class="w"> </span>pnet0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
 </code></pre></div>
-<p>To save the changes, use:</p>
+<p>To save the changes, we use:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>iptables-save<span class="w"> </span>&gt;<span class="w"> </span>/etc/iptables/rules.v4
 </code></pre></div>
-<p>Although not necessary, I recommend rebooting the system to ensure that everything is configured correctly.</p>
+<p>Although not strictly necessary, I recommend rebooting the system to make sure everything is configured correctly.</p>
 <h2 id="import-labs">Import Labs<a class="headerlink" href="#import-labs" title="Permanent link">&para;</a></h2>
-<p>Now let's download the labs and make them available directly on the EVE-NG server:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dainok/courses<span class="w"> </span>/opt/courses
+<p>Now we download the labs and make them available directly on the EVE-NG server:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dainok/courses<span class="w"> </span>/opt/courses
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ln<span class="w"> </span>-s<span class="w"> </span><span class="s2">"/opt/courses/EVE-NG labs"</span><span class="w"> </span><span class="s2">"/opt/unetlab/labs/DevNetOps labs"</span>
 </code></pre></div>
-<p>By accessing the web interface of EVE-NG, we should now be able to see the available labs. For example, let's open <code>Simple Network Lab.unl</code>, power on <code>R1</code>, and verify the IP address and connectivity to the Internet:</p>
+<p>By accessing the web interface of EVE-NG, we should now see the available labs. For example, let's open <code>Simple Network Lab.unl</code>, power on <code>R1</code>, and verify the IP address and the connectivity to the Internet:</p>
 <p><img alt="r1-boot" src="../images/r1-boot.png" /></p>
-<p>Now let's verify that we can access the node from the EVE-NG server (user <code>dev</code>) using the <code>admin</code> username and <code>cisco</code> password:</p>
+<p>Now let's verify that we can access the node from the EVE-NG server (user <code>dev</code>) with the username <code>admin</code> and the password <code>cisco</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>ssh<span class="w"> </span>admin@169.254.1.21
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Unable<span class="w"> </span>to<span class="w"> </span>negotiate<span class="w"> </span>with<span class="w"> </span><span class="m">169</span>.254.1.21<span class="w"> </span>port<span class="w"> </span><span class="m">22</span>:<span class="w"> </span>no<span class="w"> </span>matching<span class="w"> </span>key<span class="w"> </span>exchange<span class="w"> </span>method<span class="w"> </span>found.<span class="w"> </span>Their<span class="w"> </span>offer:<span class="w"> </span>diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
 </code></pre></div>
-<p>When accessing very old devices, there may be access problems caused by outdated ciphers. We can re-enable them by acting on the <code>~/.ssh/config</code> file:</p>
+<p>When we access very old devices, outdated ciphers can cause access problems. We can re-enable them in the <code>~/.ssh/config</code> file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Ciphers +aes128-cbc
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>HostKeyAlgorithms +ssh-rsa
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>KexAlgorithms +diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
@@ -618,65 +618,64 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>  ServerAliveCountMax 3
 </code></pre></div>
 <p>At this point, we should be able to SSH into <strong>R1</strong>.</p>
-<p>For completeness, the repository contains the complete <code>dnsmasq.conf</code> file with all reserved DHCP records used in future labs. If no customizations have been made, you can update the system's configuration:</p>
+<p>For completeness, the repository contains the complete <code>dnsmasq.conf</code> file with all the reserved DHCP records used in future labs. If we have made no customizations, we can update the configuration of the system:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cp<span class="w"> </span>-a<span class="w"> </span><span class="s2">"/opt/courses/EVE-NG setup/files/dnsmasq.conf"</span><span class="w"> </span>/etc/dnsmasq.conf
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>dnsmasq
 </code></pre></div>
 <h2 id="compile-and-install-python-310">Compile and Install Python 3.10<a class="headerlink" href="#compile-and-install-python-310" title="Permanent link">&para;</a></h2>
-<p>This step is not required on EVE-NG 6 because Python3.11 is available on Ubuntu Linux Server 22.04.</p>
-<p>Ubuntu Linux Server 20.04 LTS, on which EVE-NG is based, comes with Python 3.8, which is too old to be used with recent versions of frameworks typically used for automation. The latest versions of <a href="https://www.ansible.com/">Ansible</a>, for example, require a higher version.</p>
-<p>So let's proceed to download <a href="https://www.python.org/">Python</a> 3.10:</p>
+<p>This step is not required on EVE-NG 6, because Python 3.11 is available on Ubuntu Linux Server 22.04.</p>
+<p>Ubuntu Linux Server 20.04 LTS, on which EVE-NG is based, comes with Python 3.8, which is too old for recent versions of the frameworks typically used for automation. The latest versions of <a href="https://www.ansible.com/">Ansible</a>, for example, require a newer version.</p>
+<p>Let's download <a href="https://www.python.org/">Python</a> 3.10:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>/usr/src
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>wget<span class="w"> </span>-q<span class="w"> </span>https://www.python.org/ftp/python/3.10.14/Python-3.10.14.tgz
 </code></pre></div>
-<p>Unpack the file, compile the sources, and install the new version:</p>
+<p>We unpack the file, compile the sources and install the new version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>tar<span class="w"> </span>xzf<span class="w"> </span>Python-3.10.14.tgz
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">cd</span><span class="w"> </span>Python-3.10.14
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>./configure<span class="w"> </span>--enable-optimizations
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>make
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>make<span class="w"> </span>install
 </code></pre></div>
-<p>After completion, the new Python interpreter will be available at <code>/usr/local/bin/python3.10</code>.</p>
+<p>When done, the new Python interpreter is available at <code>/usr/local/bin/python3.10</code>.</p>
 <h2 id="create-a-development-environment">Create a Development Environment<a class="headerlink" href="#create-a-development-environment" title="Permanent link">&para;</a></h2>
 <p>Now we can create a user dedicated to development:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>useradd<span class="w"> </span>-m<span class="w"> </span>dev<span class="w"> </span>-s<span class="w"> </span>/bin/bash
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>passwd<span class="w"> </span>dev
 </code></pre></div>
-<p>We can also create a dedicated Python environment using the previously installed interpreter:</p>
+<p>We can also create a dedicated Python environment using the interpreter installed earlier:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>su<span class="w"> </span>-<span class="w"> </span>dev
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>python3.10<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 </code></pre></div>
-<p>For convenience, let's configure the shell to load the Python environment upon new login. Add to the <code>.profile</code> file:</p>
+<p>For convenience, we configure the shell to load the Python environment at every new login. We add the following line to the <code>.profile</code> file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">source</span><span class="w"> </span>~/venv/bin/activate
 </code></pre></div>
-<p>Finally, let's configure SSH authentication to occur via keys. From our desktop, copy our public key to the <code>~/.ssh/authorized_keys</code> file:</p>
+<p>Finally, we configure SSH authentication with keys. From our desktop, we copy our public key to the <code>~/.ssh/authorized_keys</code> file:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span>dev@172.25.82.167
 </code></pre></div>
-<p>Now we can connect to the EVE-NG server with the <code>dev</code> user without needing to enter the password. While we're at it, let's create a directory we'll use for development:</p>
+<p>Now we can connect to the EVE-NG server as <code>dev</code> without entering the password. While we are at it, we create a directory for development:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>mkdir<span class="w"> </span>src
 </code></pre></div>
 <h2 id="use-visual-studio-code-for-remote-development">Use Visual Studio Code for Remote Development<a class="headerlink" href="#use-visual-studio-code-for-remote-development" title="Permanent link">&para;</a></h2>
-<p>To complete the configuration of our environment, we need to set up <a href="https://code.visualstudio.com/">Visual Studio Code</a> to develop remotely on the EVE-NG server using the <code>dev</code> user created earlier.</p>
-<p>Start the instance of Visual Studio Code installed on our desktop, go to <code>Extensions</code>, and install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> plugin.</p>
-<p>Add a new host by going to <code>Remote Explorer</code> → <code>Remotes</code> → <code>SSH</code> → ➕:</p>
+<p>To complete the configuration, we set up <a href="https://code.visualstudio.com/">Visual Studio Code</a> to develop remotely on the EVE-NG server with the <code>dev</code> user created earlier.</p>
+<p>We start Visual Studio Code on our desktop, go to <code>Extensions</code> and install the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a> plugin.</p>
+<p>We add a new host by going to <code>Remote Explorer</code> → <code>Remotes</code> → <code>SSH</code> → ➕:</p>
 <ul>
-<li>Specify the command to connect to the host: <code>ssh dev@172.25.82.167 -A</code></li>
-<li>Specify where to save the new host, typically in <code>.ssh/config</code></li>
+<li>Specify the command to connect to the host: <code>ssh dev@172.25.82.167 -A</code>.</li>
+<li>Specify where to save the new host, typically <code>.ssh/config</code>.</li>
 </ul>
 <p>At this point, we should be able to connect to the EVE-NG server:</p>
 <p><img alt="vscode-remote-ssh" src="../images/vscode-remote-ssh.png" /></p>
 <p>We can now enrich our development environment by installing the following plugins for remote use:</p>
 <ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.ansible">Ansible by Red Hat</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja">Jinja by wholroyd</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions">GitHub Actions by GitHub</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform">HashiCorp Terraform by HashiCorp</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja">Jinja by wholroyd</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance by Microsoft</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python by Microsoft</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=4ops.terraform">Terraform by Anton Kulikov</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=andytruett.TextFSM-Syntax">TextFSM Template Syntax by andytruett</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">YAML by Red Hat</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.ansible">Ansible by Red Hat</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions">GitHub Actions by GitHub</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform">HashiCorp Terraform by HashiCorp</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=wholroyd.jinja">Jinja by wholroyd</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance">Pylance by Microsoft</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python by Microsoft</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=4ops.terraform">Terraform by Anton Kulikov</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=andytruett.TextFSM-Syntax">TextFSM Template Syntax by andytruett</a>.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml">YAML by Red Hat</a>.</li>
 </ul>
 <p><img alt="vscode-plugins" src="../images/vscode-plugins.png" /></p>
 

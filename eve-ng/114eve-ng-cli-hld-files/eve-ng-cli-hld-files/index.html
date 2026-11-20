@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#the-hld-format" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The HLD format
+        The HLD Format
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#topology-linear" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Topology: linear
+        Topology: Linear
       
     </span>
   </a>
@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#topology-ring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Topology: ring
+        Topology: Ring
       
     </span>
   </a>
@@ -453,7 +453,7 @@ Everything here is free. If it helps you, you can
   <a href="#topology-full-mesh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Topology: full-mesh
+        Topology: Full Mesh
       
     </span>
   </a>
@@ -461,10 +461,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#topology-hub-spoke-spine-leaf-star" class="md-nav__link">
+  <a href="#topology-hub-spoke-spine-leaf-and-star" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Topology: hub-spoke / spine-leaf / star
+        Topology: Hub-Spoke, Spine-Leaf and Star
       
     </span>
   </a>
@@ -475,7 +475,7 @@ Everything here is free. If it helps you, you can
   <a href="#topology-defined" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Topology: defined
+        Topology: Defined
       
     </span>
   </a>
@@ -523,11 +523,11 @@ Everything here is free. If it helps you, you can
 <h1 id="eve-ng-cli-hld-files">EVE-NG CLI - HLD files<a class="headerlink" href="#eve-ng-cli-hld-files" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
-<p>The primary reason EVE-NG CLI exists is to let you build labs from code. Every other command in the shell — folder navigation, image listing, lab inspection — is there to support that core workflow. The real feature is this: describe your network topology in a text file, run one command, and have a fully-wired lab on the server in seconds.</p>
-<p>That text file is the <strong>HLD</strong> — High-Level Design.</p>
-<h2 id="the-hld-format">The HLD format<a class="headerlink" href="#the-hld-format" title="Permanent link">&para;</a></h2>
-<p>An HLD file is a structured YAML document. At its core, it contains a groups key, which holds one or more node groups. Each group defines a set of nodes that share the same image and are wired together in a specific topology.</p>
-<p>You can define as many groups as you need and connect them to each other in arbitrary ways — which makes it possible to describe anything from a simple linear chain to a complex multi-tier network in a single file.</p>
+<p>The primary reason EVE-NG CLI exists is to let you build labs from code. Every other command in the shell (folder navigation, image listing, lab inspection) supports that core workflow. The real feature is this: describe your network topology in a text file, run one command, and get a fully wired lab on the server in seconds.</p>
+<p>That text file is the <strong>HLD</strong> (High-Level Design).</p>
+<h2 id="the-hld-format">The HLD Format<a class="headerlink" href="#the-hld-format" title="Permanent link">&para;</a></h2>
+<p>An HLD file is a structured YAML document. At its core, it contains a <code>groups</code> key, which holds one or more node groups. Each group defines a set of nodes that share the same image and are wired together in a specific topology.</p>
+<p>You can define as many groups as you need and connect them to each other in arbitrary ways. This makes it possible to describe anything from a simple linear chain to a complex multi-tier network in a single file.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">groups</span><span class="p">:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="s">"*linux-adv*-iac.bin"</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">R</span>
@@ -547,48 +547,48 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nt">features</span><span class="p">:</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ospf:area=0</span>
 </code></pre></div>
-<p>Every node in every group is connected to the OOB management network (attached to nat0) by default. If you want to exclude a group from OOB — for example, a group of devices that have no management interface — set use_oob: false on that group.</p>
+<p>Every node in every group is connected by default to the OOB management network (attached to <code>nat0</code>). To exclude a group from OOB, for example a group of devices with no management interface, set <code>use_oob: false</code> on that group.</p>
 <p>Optional per-group parameters:</p>
 <ul>
-<li><code>ram</code> — amount of RAM to allocate to each node (MB)</li>
-<li><code>cpu</code> — number of vCPUs to assign to each node</li>
+<li><code>ram</code>: the amount of RAM to allocate to each node (MB).</li>
+<li><code>cpu</code>: the number of vCPUs to assign to each node.</li>
 </ul>
-<p>The features and interfaces keys are reserved for the upcoming node configuration layer, which will push advanced configuration (OSPF, BGP, MPLS, etc.) to nodes after first boot. That part of the framework is not yet released.</p>
+<p>The <code>features</code> and <code>interfaces</code> keys are reserved for the upcoming node configuration layer, which will push advanced configuration (OSPF, BGP, MPLS, etc.) to the nodes after the first boot. That part of the framework is not released yet.</p>
 <p>Example topology files are available in the <a href="https://github.com/dainok/eveng-cli/tree/master/eveng_cli/tests/hld">GitHub repository</a>.</p>
-<h2 id="topology-linear">Topology: linear<a class="headerlink" href="#topology-linear" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-1-linear-vios.yml">Nodes are connected in a chain</a> — each node linked to the next. Use count to set the number of nodes.</p>
+<h2 id="topology-linear">Topology: Linear<a class="headerlink" href="#topology-linear" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-1-linear-vios.yml">Nodes are connected in a chain</a>, each node linked to the next. Use <code>count</code> to set the number of nodes.</p>
 <p><img alt="topology-linear" src="../images/topology-linear.png" /></p>
-<p>Useful for simulating a simple WAN backbone, a sequence of routers along a path, or any scenario where traffic flows in a single direction along a chain.</p>
-<h2 id="topology-ring">Topology: ring<a class="headerlink" href="#topology-ring" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-2-ring-vios.yml">Nodes are connected in a closed loop</a> — the last node connects back to the first. Use count to set the number of nodes.</p>
+<p>This is useful for simulating a simple WAN backbone, a sequence of routers along a path, or any scenario where traffic flows in a single direction along a chain.</p>
+<h2 id="topology-ring">Topology: Ring<a class="headerlink" href="#topology-ring" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-2-ring-vios.yml">Nodes are connected in a closed loop</a>: the last node connects back to the first. Use <code>count</code> to set the number of nodes.</p>
 <p><img alt="topology-ring" src="../images/topology-ring.png" /></p>
-<p>A natural fit for OSPF ring topologies, resilient metro networks, or anywhere you need a loop with no single point of failure.</p>
-<h2 id="topology-full-mesh">Topology: full-mesh<a class="headerlink" href="#topology-full-mesh" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-2-full-mesh-vios.yml">Every node is connected directly to every other node</a>. Use count to set the number of nodes.</p>
+<p>This is a natural fit for OSPF ring topologies, resilient metro networks, or anywhere you need a loop with no single point of failure.</p>
+<h2 id="topology-full-mesh">Topology: Full Mesh<a class="headerlink" href="#topology-full-mesh" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-2-full-mesh-vios.yml">Every node is connected directly to every other node</a>. Use <code>count</code> to set the number of nodes.</p>
 <p><img alt="topology-full-mesh" src="../images/topology-full-mesh.png" /></p>
-<p>Ideal for BGP full-mesh iBGP scenarios, or any topology where all nodes need direct adjacency.</p>
-<h2 id="topology-hub-spoke-spine-leaf-star">Topology: hub-spoke / spine-leaf / star<a class="headerlink" href="#topology-hub-spoke-spine-leaf-star" title="Permanent link">&para;</a></h2>
-<p>This topology type creates a two-tier structure. A set of nodes acts as <strong>hubs</strong>; the rest are <strong>spokes</strong>, each connected to all hubs. Required parameters:</p>
+<p>This is ideal for iBGP full-mesh scenarios, or any topology where all nodes need a direct adjacency.</p>
+<h2 id="topology-hub-spoke-spine-leaf-and-star">Topology: Hub-Spoke, Spine-Leaf and Star<a class="headerlink" href="#topology-hub-spoke-spine-leaf-and-star" title="Permanent link">&para;</a></h2>
+<p>This topology type creates a two-tier structure. A set of nodes acts as <strong>hubs</strong>, and the rest are <strong>spokes</strong>, each connected to all the hubs. The required parameters are:</p>
 <ul>
-<li><code>hubs</code> — number of hub nodes</li>
-<li><code>count</code> — number of spoke nodes</li>
-<li><code>connect_hubs</code> — set to true to interconnect hubs in full-mesh; false to leave them isolated</li>
+<li><code>hubs</code>: the number of hub nodes.</li>
+<li><code>count</code>: the number of spoke nodes.</li>
+<li><code>connect_hubs</code>: set to <code>true</code> to interconnect the hubs in a full mesh, or <code>false</code> to leave them isolated.</li>
 </ul>
-<p>The same topology type covers three different patterns depending on how you configure it:</p>
-<p><strong><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-3-hubs-spoke-vios.yml">Hub-spoke</a></strong> — multiple hubs, connected to each other, each spoke connected to all hubs. A classic WAN or DMVPN layout.</p>
+<p>The same topology type covers three different patterns, depending on how you configure it:</p>
+<p><strong><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-3-hubs-spoke-vios.yml">Hub-spoke</a>:</strong> multiple hubs, connected to each other, with each spoke connected to all the hubs. This is a classic WAN or DMVPN layout.</p>
 <p><img alt="topology-hub-spokes" src="../images/topology-hub-spokes.png" /></p>
-<p><strong><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-3-spine-leaf-vios.yml">Spine-leaf</a></strong> — multiple hubs (spines) that are *not* interconnected (connect_hubs: false), each leaf connected to all spines. The standard data centre fabric topology.</p>
+<p><strong><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-3-spine-leaf-vios.yml">Spine-leaf</a>:</strong> multiple hubs (spines) that are <em>not</em> interconnected (<code>connect_hubs: false</code>), with each leaf connected to all the spines. This is the standard data center fabric topology.</p>
 <p><img alt="topology-spine-leaf" src="../images/topology-spine-leaf.png" /></p>
-<p><strong><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-3-star-vios.yml">Star</a></strong> — a single hub (hubs: 1), all spokes connected to it. Simple and effective for scenarios with a central aggregation point.</p>
+<p><strong><a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-3-star-vios.yml">Star</a>:</strong> a single hub (<code>hubs: 1</code>) with all the spokes connected to it. It is simple and effective for scenarios with a central aggregation point.</p>
 <p><img alt="topology-star" src="../images/topology-star.png" /></p>
-<h2 id="topology-defined">Topology: defined<a class="headerlink" href="#topology-defined" title="Permanent link">&para;</a></h2>
-<p>For anything that doesn't fit a regular pattern, the <a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-4-defined-vios.yml">defined topology</a> lets you specify connectivity explicitly. You provide a list of links, each containing the names of the nodes to connect, separated by a comma.</p>
+<h2 id="topology-defined">Topology: Defined<a class="headerlink" href="#topology-defined" title="Permanent link">&para;</a></h2>
+<p>For anything that does not fit a regular pattern, the <a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-4-defined-vios.yml">defined topology</a> lets you specify connectivity explicitly. You provide a list of links, each containing the names of the nodes to connect, separated by a comma.</p>
 <p><img alt="topology-defined-1" src="../images/topology-defined-1.png" /></p>
-<p>Node names are built from the group's prefix and a sequential number (R1, R2, SW1, etc.).</p>
+<p>Node names are built from the prefix of the group and a sequential number (<code>R1</code>, <code>R2</code>, <code>SW1</code>, etc.).</p>
 <p>The defined topology is also the mechanism for <a href="https://github.com/dainok/eveng-cli/blob/master/eveng_cli/tests/hld/hld-9-loops.yml">connecting nodes across different groups</a>:</p>
 <p><img alt="topology-defined-2" src="../images/topology-defined-2.png" /></p>
-<p>This makes it possible to model multi-tier topologies — core, distribution, access — entirely within a single HLD file.</p>
-<p>The HLD format is still evolving. If you have a topology that's hard to express with the current types, or a use case that would benefit from a new topology mode, open an issue on GitHub or leave a comment below.</p>
+<p>This makes it possible to model multi-tier topologies (core, distribution, access) entirely within a single HLD file.</p>
+<p>The HLD format is still evolving. If you have a topology that is hard to express with the current types, or a use case that would benefit from a new topology mode, open an issue on GitHub or leave a comment below.</p>
 
 
 

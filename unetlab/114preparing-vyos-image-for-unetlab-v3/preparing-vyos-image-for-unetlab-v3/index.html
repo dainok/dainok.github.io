@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#backup-and-export" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backup and export
+        Backup and Export
       
     </span>
   </a>
@@ -508,28 +508,28 @@ Everything here is free. If it helps you, you can
 <h1 id="preparing-vyos-image-for-unetlab-v3">Preparing VyOS image for UNetLab v3<a class="headerlink" href="#preparing-vyos-image-for-unetlab-v3" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/unetlab.png" /></p>
-<p>As our first image, we choose to use VyOS, which is publicly available on <a href="https://github.com/vyos/vyos-nightly-build/releases">GitHub</a>. We will work from a single host, and later we can distribute our image. Let's download the image to the host:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>-O-<span class="w"> </span>https://github.com/vyos/vyos-nightly-build/releases/download/1.5-rolling-202409220007/vyos-1.5-rolling-202409220007-generic-amd64.iso<span class="w"> </span>&gt;<span class="w"> </span>/var/tmp/pveupload-0000
+<p>As our first image, we choose VyOS, which is publicly available on <a href="https://github.com/vyos/vyos-nightly-build/releases">GitHub</a>. We work from a single host, and later we can distribute our image. Let's download the image to the host:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>-O-<span class="w"> </span>https://github.com/vyos/vyos-nightly-build/releases/download/1.5-rolling-202409220007/vyos-1.5-rolling-202409220007-generic-amd64.iso<span class="w"> </span>&gt;<span class="w"> </span>/var/tmp/pveupload-0000
 </code></pre></div>
-<p>The image name must strictly follow the regex <code>/var/tmp/pveupload-[0-9a-f]+</code>.</p>
-<p>Upload the image to the <code>unetlab</code> datastore with the correct name:</p>
+<p>The file name must strictly follow the regex <code>/var/tmp/pveupload-[0-9a-f]+</code>.</p>
+<p>We upload the image to the <code>unetlab</code> datastore with the correct name:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/storage/unetlab/upload<span class="w"> </span>-content<span class="w"> </span>iso<span class="w"> </span>-filename<span class="w"> </span>vyos-vyos-1.5-202409220007.iso<span class="w"> </span>-tmpfilename<span class="w"> </span>/var/tmp/pveupload-0000
 </code></pre></div>
-<p>Delete the image from the temporary directory:</p>
+<p>We delete the image from the temporary directory:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>rm<span class="w"> </span>-f<span class="w"> </span>/var/tmp/pveupload*
 </code></pre></div>
 <h2 id="preparing-the-template">Preparing the Template<a class="headerlink" href="#preparing-the-template" title="Permanent link">&para;</a></h2>
-<p>Next, let's create a temporary VM to install and configure VyOS:</p>
+<p>Next, we create a temporary VM to install and configure VyOS:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu<span class="w"> </span>-cores<span class="w"> </span><span class="m">1</span><span class="w"> </span>-cpu<span class="w"> </span>host<span class="w"> </span>-cdrom<span class="w"> </span>unetlab:iso/vyos-vyos-1.5-202409220007.iso,media<span class="o">=</span>cdrom<span class="w"> </span>-memory<span class="w"> </span><span class="m">2048</span><span class="w"> </span>-name<span class="w"> </span>template-vyos-vyos-1.5-202409220007<span class="w"> </span>-net0<span class="w"> </span>virtio,bridge<span class="o">=</span>vmbr0<span class="w"> </span>-ostype<span class="w"> </span>other<span class="w"> </span>-scsihw<span class="w"> </span>virtio-scsi-single<span class="w"> </span>-sockets<span class="w"> </span><span class="m">1</span><span class="w"> </span>-tags<span class="w"> </span><span class="s2">"unl;template"</span><span class="w"> </span>-virtio0<span class="w"> </span>unetlab:2,format<span class="o">=</span>qcow2,backup<span class="o">=</span><span class="m">1</span>,iothread<span class="o">=</span>on<span class="w"> </span>-vmid<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-serial0<span class="w"> </span>socket<span class="w"> </span>-vga<span class="w"> </span>none
 </code></pre></div>
-<p>In this case, we have disabled the graphical card and added a serial interface to be used as a terminal.</p>
-<p>Start the virtual machine:</p>
+<p>In this case, we disabled the graphics card and added a serial interface to use as a terminal.</p>
+<p>We start the virtual machine:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/1000/status/start
 </code></pre></div>
-<p>At this point, access the Proxmox host's web interface. Log in with the user <code>vyos</code> and password <code>vyos</code>, then install the operating system onto the disk with the command:</p>
+<p>At this point, we open the console of the VM from the web interface of the Proxmox host. We log in with the user <code>vyos</code> and the password <code>vyos</code>, then install the operating system on the disk with the command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>install image
 </code></pre></div>
-<p>The installation will guide you through a few questions:</p>
+<p>The installation guides us through a few questions:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[...]
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Would you like to continue? [y/N] y
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>What would you like to name this image? (Default: 1.5-rolling-202409220007)
@@ -545,8 +545,8 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>Which file would you like as boot config? (Default: 1)
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>[...]
 </code></pre></div>
-<p>Once the installation is complete, reboot the node with the <code>reboot</code> command.</p>
-<p>As soon as the node is back online, let's configure it to be used by UNetLab. Specifically, we need to set up a management interface, ideally in a dedicated VRF:</p>
+<p>Once the installation is complete, we reboot the node with the <code>reboot</code> command.</p>
+<p>As soon as the node is back online, we configure it for UNetLab. Specifically, we set up a management interface, ideally in a dedicated VRF:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>configure
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>set vrf name mgmt
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>set vrf name mgmt table 100
@@ -557,39 +557,39 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>commit
 <a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>save
 </code></pre></div>
-<p>Shut down the node:</p>
+<p>We shut down the node:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/1000/status/shutdown
 </code></pre></div>
-<p>Remove the CDROM and set the boot order:</p>
+<p>We remove the CD-ROM and set the boot order:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/nodes/proxmox1/qemu/1000/config<span class="w"> </span>-delete<span class="w"> </span>cdrom
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/nodes/proxmox1/qemu/9001/config<span class="w"> </span>-boot<span class="w"> </span><span class="nv">legacy</span><span class="o">=</span>c
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/nodes/proxmox1/qemu/1000/config<span class="w"> </span>-boot<span class="w"> </span><span class="nv">legacy</span><span class="o">=</span>c
 </code></pre></div>
-<p>Now convert the node into a template:</p>
+<p>Now we convert the node into a template:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/1000/template
 </code></pre></div>
 <h2 id="verifying-the-template">Verifying the Template<a class="headerlink" href="#verifying-the-template" title="Permanent link">&para;</a></h2>
-<p>Before continuing, let's verify that the template works correctly. Create a node from the template and check that the first interface has an IP configured via DHCP, and that SSH access is possible with the username and password:</p>
+<p>Before continuing, let's verify that the template works correctly. We create a node from the template and check that the first interface gets an IP address via DHCP, and that SSH access works with the username and password:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/1000/clone<span class="w"> </span>-newid<span class="w"> </span><span class="m">10001</span><span class="w"> </span>-full<span class="w"> </span><span class="m">0</span><span class="w"> </span>-name<span class="w"> </span>node-vyos1
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/nodes/proxmox1/qemu/10001/config<span class="w"> </span>-tags<span class="w"> </span><span class="s2">"unl;node;user_root"</span><span class="w"> </span>-net0<span class="w"> </span>virtio,bridge<span class="o">=</span>vmbr0
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/10001/status/start
 </code></pre></div>
-<p>Once finished, shut down the node and delete it:</p>
+<p>Once finished, we shut down the node and delete it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/10001/status/stop
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>pvesh<span class="w"> </span>delete<span class="w"> </span>/nodes/proxmox1/qemu/10001
 </code></pre></div>
-<p>If you notice that the template has issues, you can revert it back to a VM and reconfigure it.</p>
+<p>If the template has issues, we can convert it back to a VM and reconfigure it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/1000/config<span class="w"> </span>-template<span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-<h2 id="backup-and-export">Backup and export<a class="headerlink" href="#backup-and-export" title="Permanent link">&para;</a></h2>
-<p>Finally, create a backup:</p>
+<h2 id="backup-and-export">Backup and Export<a class="headerlink" href="#backup-and-export" title="Permanent link">&para;</a></h2>
+<p>Finally, we create a backup:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/vzdump<span class="w"> </span>-storage<span class="w"> </span><span class="nb">local</span><span class="w"> </span>-vmid<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-mode<span class="w"> </span>stop
 </code></pre></div>
-<p>You can retrieve the file <code>/var/lib/vz/dump/vzdump-qemu-1000-*.vma*</code> which is the image of our template. This file can be used to recreate the template on other nodes. For simplicity, rename it to <code>vzdump-qemu-template-vyos-vyos-1.5-202409220007.vma</code>.</p>
+<p>We can retrieve the file <code>/var/lib/vz/dump/vzdump-qemu-1000-*.vma*</code>, which is the image of our template. We can use this file to recreate the template on other nodes. For simplicity, we rename it to <code>vzdump-qemu-template-vyos-vyos-1.5-202409220007.vma</code>.</p>
 <h2 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h2>
-<p>If the <code>unetlab</code> datastore is not shared among all hosts in the cluster, you can copy the backup to the other hosts:</p>
+<p>If the <code>unetlab</code> datastore is not shared among all the hosts in the cluster, we copy the backup to the other hosts:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>scp<span class="w"> </span>/var/lib/vz/dump/template-vyos-vyos-1.5-202409220007.vma<span class="w"> </span>root@172.25.82.158:/var/lib/vz/dump
 </code></pre></div>
-<p>Then, import the backup, assigning a new ID to the template:</p>
+<p>Then we import the backup, assigning a new ID to the template:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox2/qemu<span class="w"> </span>-vmid<span class="w"> </span><span class="m">1001</span><span class="w"> </span>-archive<span class="w"> </span>local:backup/vzdump-qemu-template-vyos-vyos-1.5-202409220007.vma
 </code></pre></div>
 

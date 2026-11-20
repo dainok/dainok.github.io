@@ -508,36 +508,36 @@ Everything here is free. If it helps you, you can
 <h1 id="testing-stretched-networks-with-proxmox">Testing stretched networks with Proxmox<a class="headerlink" href="#testing-stretched-networks-with-proxmox" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/proxmox.png" /></p>
-<p>Let's explore how Proxmox's SDN functionality works. We'll use the SDN structure to implement extended L2 networks, enabling us to run labs across multiple hosts.</p>
+<p>Let's explore how the SDN functionality of Proxmox works. We use the SDN structure to implement extended L2 networks, so that we can run labs across multiple hosts.</p>
 <h2 id="create-an-sdn-zone">Create an SDN Zone<a class="headerlink" href="#create-an-sdn-zone" title="Permanent link">&para;</a></h2>
-<p>First, create a zone:</p>
+<p>First, we create a zone:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/cluster/sdn/zones<span class="w"> </span>-type<span class="o">=</span>vxlan<span class="w"> </span>-zone<span class="o">=</span>unlzone1<span class="w"> </span>-peers<span class="o">=</span><span class="m">172</span>.25.82.157,172.25.82.158<span class="w"> </span>-ipam<span class="o">=</span>pve
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/cluster/sdn/zones
 </code></pre></div>
-<p>In the <strong>peers</strong> list, add all the IP addresses of the Proxmox hosts.</p>
+<p>In the <strong>peers</strong> list, we add the IP addresses of all the Proxmox hosts.</p>
 <h2 id="create-a-bridge-associated-with-the-zone">Create a Bridge Associated with the Zone<a class="headerlink" href="#create-a-bridge-associated-with-the-zone" title="Permanent link">&para;</a></h2>
-<p>Next, create a bridge linked to the zone for connecting the nodes:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/cluster/sdn/vnets<span class="w"> </span>-vnet<span class="o">=</span>unlnet1<span class="w"> </span>-tag<span class="o">=</span><span class="m">1000004</span><span class="w"> </span>-zone<span class="o">=</span>unlzone
+<p>Next, we create a bridge linked to the zone to connect the nodes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/cluster/sdn/vnets<span class="w"> </span>-vnet<span class="o">=</span>unlnet1<span class="w"> </span>-tag<span class="o">=</span><span class="m">1000004</span><span class="w"> </span>-zone<span class="o">=</span>unlzone1
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/cluster/sdn/zones
 </code></pre></div>
-<p>Then, associate the network with the nodes as shown in the previous steps.</p>
-<p>If configured correctly, nodes running on different hosts should be able to ping each other, using both native VLAN and tagged VLAN.</p>
+<p>Then we associate the network with the nodes as shown in the previous steps.</p>
+<p>If everything is configured correctly, nodes running on different hosts can ping each other, using both the native VLAN and a tagged VLAN.</p>
 <h2 id="design-considerations">Design Considerations<a class="headerlink" href="#design-considerations" title="Permanent link">&para;</a></h2>
-<p>From a design perspective, we need to decide how to manage zones and networks within UNetLab: should we create a single zone with all Vnets, or a zone for each Vnet?</p>
-<p>According to the <a href="https://pve.proxmox.com/pve-docs/chapter-pvesdn.html#pvesdn_config_zone">official documentation</a>,) a zone defines a virtually separated network. The documentation lacks detail, so we need to understand the constructs created at the OS level.</p>
-<p>When creating the zone, we specified the IP addresses of the Proxmox hosts sharing that zone. This configuration is written to <strong>/etc/pve/sdn/zones.cfg</strong> and generates the <strong>/etc/network/interfaces.d/sdn</strong> file. No network namespace configurations (<strong>ip netns</strong>) are present.</p>
-<p>We can deduce that the zone is a Proxmox-defined structure that translates into VXLAN interfaces. Since UNetLab won't use L3 networks, we can use a single zone for the entire UNetLab cluster.</p>
+<p>From a design perspective, we need to decide how to manage zones and networks within UNetLab: should we create a single zone with all the Vnets, or a zone for each Vnet?</p>
+<p>According to the <a href="https://pve.proxmox.com/pve-docs/chapter-pvesdn.html#pvesdn_config_zone">official documentation</a>, a zone defines a virtually separated network. The documentation lacks detail, so we need to understand the constructs created at the OS level.</p>
+<p>When we created the zone, we specified the IP addresses of the Proxmox hosts that share it. Proxmox writes this configuration to <code>/etc/pve/sdn/zones.cfg</code> and generates the <code>/etc/network/interfaces.d/sdn</code> file. There are no network namespace configurations (<code>ip netns</code>).</p>
+<p>We can deduce that the zone is a Proxmox-defined structure that translates into VXLAN interfaces. Since UNetLab does not use L3 networks, we can use a single zone for the entire UNetLab cluster.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>During my initial test, the two VyOS nodes couldn't communicate. By connecting to the two Proxmox servers via SSH, we can see how the SDN configuration translates at the OS level.</p>
-<p>Network interfaces of the nodes are associated with a bridge:</p>
+<p>During my first test, the two VyOS nodes could not communicate. By connecting to the two Proxmox servers via SSH, we can see how the SDN configuration translates at the OS level.</p>
+<p>The network interfaces of the nodes are associated with a bridge:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brctl<span class="w"> </span>show<span class="w"> </span>unlnet3
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bridge name     bridge id               STP enabled     interfaces
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>unlnet3         8000.6659fe6b9723       no              tap10001i1
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                                                        vxlan_unlnet3
 </code></pre></div>
-<p>The TAP interface belongs to the node, while the VXLAN interface allows communication with nodes on other hosts.</p>
-<p>Check the forwarding table for frames with:</p>
+<p>The TAP interface belongs to the node, while the VXLAN interface allows communication with the nodes on other hosts.</p>
+<p>We check the forwarding table for frames with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bridge<span class="w"> </span>fdb<span class="w"> </span>show<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>vxlan
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>66:59:fe:6b:97:23 dev vxlan_unlnet3 vlan 1 master unlnet3 permanent
@@ -547,8 +547,8 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ba:2f:72:71:47:0a dev vxlan_unlnet4 master unlnet4 permanent
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>00:00:00:00:00:00 dev vxlan_unlnet4 dst 172.25.82.158 self permanent
 </code></pre></div>
-<p>The MAC addresses on the right should match the network interfaces of nodes running on the remote host. In my case, the remote VyOS node had its network interfaces reversed, resulting in an incorrect connection.</p>
-<p>Further verification can be done by analyzing the traffic between hosts:</p>
+<p>The MAC addresses on the left should match the network interfaces of the nodes running on the remote host. In my case, the remote VyOS node had its network interfaces reversed, which resulted in an incorrect connection.</p>
+<p>We can verify further by analyzing the traffic between the hosts:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>tcpdump<span class="w"> </span>-i<span class="w"> </span>vmbr0<span class="w"> </span>-nn<span class="w"> </span>udp<span class="w"> </span>and<span class="w"> </span>port<span class="w"> </span><span class="m">4789</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>IP 192.168.0.1 &gt; 192.168.0.3: ICMP echo request, id 35144, seq 2, length 64

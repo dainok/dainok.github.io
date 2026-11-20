@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#local-internet-connection" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Local Internet connection
+        Local Internet Connection
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#off-path-firewall-filtering" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Off-path firewall filtering
+        Off-Path Firewall Filtering
       
     </span>
   </a>
@@ -479,7 +479,21 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:design" class="md-tag">design</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:firewall" class="md-tag">firewall</a>
       
     
       
@@ -495,89 +509,89 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2023-03-02">02 March 2023</time></span></p>
 <h1 id="off-path-firewall-with-traffic-engineering">Off-Path firewall with Traffic Engineering<a class="headerlink" href="#off-path-firewall-with-traffic-engineering" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:firewall">firewall</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
-<p>I used to deploy a simple network architecture for two main reasons.</p>
+<p>I usually deploy simple network architectures for two reasons:</p>
 <ul>
-<li>They are easy to debug/troubleshoot</li>
-<li>Engineers who came after can easily understand and manage them.</li>
+<li>They are easy to debug and troubleshoot.</li>
+<li>The engineers who come after can understand and manage them easily.</li>
 </ul>
-<p>With these rules in mind, I usually deploy in-line firewalls, meaning that traffic is routed through a firewall that is placed "in the path":</p>
+<p>With these rules in mind, I usually deploy in-line firewalls, meaning that traffic is routed through a firewall placed "in the path":</p>
 <p><img alt="inline-firewall" src="../images/inline-firewall.png" /></p>
-<p>Sometimes things are complicated, and we need to deploy "off-path" firewalls, and traffic is partially routed through the firewall:</p>
+<p>Sometimes things are more complicated, and we need to deploy "off-path" firewalls, where traffic is only partially routed through the firewall:</p>
 <p><img alt="off-path-firewall" src="../images/off-path-firewall.png" /></p>
-<p>There are many reasons why we want to do so.</p>
+<p>There are many reasons to do so:</p>
 <ul>
-<li>We want to test a new firewall</li>
-<li>We do not have enough budget for a big firewall to manage the entire traffic.</li>
+<li>We want to test a new firewall.</li>
+<li>We do not have enough budget for a firewall big enough to manage the entire traffic.</li>
 <li>We must exclude some latency-sensitive traffic.</li>
 </ul>
-<p>In 99% of the scenarios, an in-line firewall is fine; let us examine how to approach the remaining 1%.</p>
-<h2 id="local-internet-connection">Local Internet connection<a class="headerlink" href="#local-internet-connection" title="Permanent link">&para;</a></h2>
+<p>In 99% of the scenarios, an in-line firewall is fine. Let's see how to approach the remaining 1%.</p>
+<h2 id="local-internet-connection">Local Internet Connection<a class="headerlink" href="#local-internet-connection" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>Requisite #1: We need to use the local Internet connection if available and use the MPLS if not.</p>
+<p>Requirement #1: We need to use the local Internet connection if available and use the MPLS if not.</p>
 </blockquote>
-<p>Solving this requisite is easy: we must implement a conditional static default route. The firewall is used only if the Internet connection through it is working.</p>
-<p>Depending on the firewall model, we can use native features and dynamic routing to accomplish the configuration. However, for the sake of this post, we want to solve the requisite by acting on the L3 switch only.</p>
-<p>Network engineers are used to implement an ICMP probe, reaching <code>8.8.8.8</code>, to test the Internet connection. I read even official documents suggesting that, but that's a bad practice because <a href="https://groups.google.com/g/public-dns-discuss/c/p1o62SJElck">Google apply rate limits</a>:</p>
-<p>We want to implement two DNS probes using at least two different DNS OpenDNS servers.</p>
+<p>Solving this requirement is easy: we implement a conditional static default route. The firewall is used only if the Internet connection through it is working.</p>
+<p>Depending on the firewall model, we can use native features and dynamic routing to accomplish this. For the sake of this post, however, we solve the requirement by acting on the L3 switch only.</p>
+<p>Network engineers are used to implementing an ICMP probe to <code>8.8.8.8</code> to test the Internet connection. I have even read official documents that suggest it, but it is a bad practice because <a href="https://groups.google.com/g/public-dns-discuss/c/p1o62SJElck">Google applies rate limits</a>.</p>
+<p>Instead, we implement two DNS probes using two different OpenDNS servers:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ip sla 1
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> dns www.cisco.com name-server 208.67.222.222 source-ip 192.168.1.1
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> timeout 5000
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> frequency 10
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> dns www.cisco.com name-server 208.67.222.222 source-ip 192.168.1.1
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> timeout 5000
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> frequency 10
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ip sla schedule 1 life forever start-time now
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ip sla 2
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> dns www.google.com name-server 208.67.220.220 source-ip 192.168.1.1
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> timeout 5000
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> frequency 10
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> dns www.google.com name-server 208.67.220.220 source-ip 192.168.1.1
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> timeout 5000
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> frequency 10
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ip sla schedule 2 life forever start-time now
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>track 1 ip sla 1 reachability
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>track 2 ip sla 2 reachability
 </code></pre></div>
-<p>DNS providers can rate limit requests with unusual record types, excessive duplicate queries, excessive DNS records, or those sent from malicious client IPs to add entropy to our nameserver requests. Because we use a 10 s frequency, we can assume that it is safe.</p>
-<p>We also need to couple the probes above using the OR logical operator</p>
+<p>DNS providers can rate limit requests with unusual record types, excessive duplicate queries, excessive DNS records, or requests sent from client IPs flagged as malicious. Because we use a 10 s frequency, we can assume it is safe.</p>
+<p>We combine the probes above with the OR logical operator:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>track 3 list boolean or
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> object 1
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> object 2
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> delay down 12 up 30
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> object 1
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> object 2
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> delay down 12 up 30
 </code></pre></div>
-<p>To avoid flapping, we introduced a delay before changing the state.</p>
-<p>Finally, we configured the default static route associated with the probe.</p>
+<p>To avoid flapping, we introduce a delay before the state changes.</p>
+<p>Finally, we configure the default static route associated with the probe:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ip route 0.0.0.0 0.0.0.0 192.168.1.254 track 3
 </code></pre></div>
 <p>{{&lt; img src="internet-traffic.png" alt="Active and backup Internet path (L3 diagram)" &gt;}}</p>
-<p>With this configuration, traffic to the Internet is routed through the firewall if the Internet connection via the firewall itself is working. Otherwise, the default route from the MPLS is used.</p>
-<p>Attention should be paid to convergence time, especially when the local Internet connection goes down.</p>
-<h2 id="off-path-firewall-filtering">Off-path firewall filtering<a class="headerlink" href="#off-path-firewall-filtering" title="Permanent link">&para;</a></h2>
+<p>With this configuration, Internet traffic is routed through the firewall if the Internet connection via the firewall itself is working. Otherwise, the default route from the MPLS is used.</p>
+<p>We should pay attention to the convergence time, especially when the local Internet connection goes down.</p>
+<h2 id="off-path-firewall-filtering">Off-Path Firewall Filtering<a class="headerlink" href="#off-path-firewall-filtering" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>Requisite #2: We must selectively filter some network conversations. We cannot forward anything to the firewall because it does not have sufficient bandwidth or computational resources.</p>
+<p>Requirement #2: We must filter some network conversations selectively. We cannot forward everything to the firewall because it does not have sufficient bandwidth or computational resources.</p>
 </blockquote>
-<p>Solving this requirement requires PBR or Policy-Based Routing. We use PBR when we need to make an exception to the normal routing. We want to select, based on protocol, source/destination IP, and port, network flows to be routed through the firewall. The firewall is configured "on-a-stick," meaning that a single interface is used to receive and transmit the allowed network traffic.</p>
+<p>Solving this requirement needs PBR (Policy-Based Routing). We use PBR when we need to make an exception to the normal routing. We want to select, based on protocol, source/destination IP and port, the network flows to be routed through the firewall. The firewall is configured "on a stick", meaning that a single interface receives and transmits the allowed traffic.</p>
 <p><img alt="off-path-firewall-w-flows" src="../images/off-path-firewall-w-flows.png" /></p>
-<p>We must define the network traffic to be filtered using an ACL.</p>
+<p>We define the traffic to be filtered with an ACL:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ip access-list extended FILTERED
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> permit ip 192.168.20.0 0.0.0.255 any
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> permit ip any 192.168.20.0 0.0.0.255
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> permit ip 192.168.20.0 0.0.0.255 any
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> permit ip any 192.168.20.0 0.0.0.255
 </code></pre></div>
-<p>We must match both ingress and egress traffic. A route map forwards traffic through the firewall.</p>
+<p>We must match both ingress and egress traffic. A route map forwards the traffic through the firewall:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>route-map FILTERED permit 10
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a> match ip address FILTERED
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a> set ip next-hop verify-availability 192.168.1.254
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a> match ip address FILTERED
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a> set ip next-hop verify-availability 192.168.1.254
 </code></pre></div>
-<p>In a non-HA firewall configuration, we can implement the conditional PBR:</p>
+<p>In a non-HA firewall configuration, we can implement a conditional PBR:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>route-map FILTERED permit 10
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a> match ip address FILTERED
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a> set ip next-hop verify-availability 192.168.1.254 1 track 11
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a> match ip address FILTERED
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a> set ip next-hop verify-availability 192.168.1.254 1 track 11
 </code></pre></div>
-<p>Finally, we need to apply the route map to any L3 interface, excluding the interface where the firewall is placed:</p>
+<p>Finally, we apply the route map to every L3 interface, excluding the interface where the firewall is attached:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>interface Ethernet0/1
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> ip policy route-map FILTERED
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a> ip policy route-map FILTERED
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>interface Ethernet0/2
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a> ip policy route-map FILTERED
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a> ip policy route-map FILTERED
 </code></pre></div>
 <p>With this configuration, the ingress traffic matching the ACL is forwarded to the firewall.</p>
 <h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
-<p>Again, this design should not be used unless specific requirements exist. However, this works well. Automation tools should be considered to manage large environments properly. The more human dependent is, the more errors (and outages) will be.</p>
+<p>Again, this design should not be used unless specific requirements exist. It works well, though. For large environments, we should consider automation tools: the more human-dependent the process, the more errors (and outages) we will have.</p>
 
 
 

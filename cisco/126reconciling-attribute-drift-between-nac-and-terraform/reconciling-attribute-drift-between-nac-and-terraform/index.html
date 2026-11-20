@@ -493,6 +493,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:iac" class="md-tag">iac</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:netascode" class="md-tag">netascode</a>
       
     
@@ -509,9 +516,9 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2026-03-15">15 March 2026</time></span></p>
 <h1 id="reconciling-attribute-drift-between-nac-and-terraform">Reconciling attribute drift Between NaC and Terraform<a class="headerlink" href="#reconciling-attribute-drift-between-nac-and-terraform" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:netascode">netascode</a> <a class="md-tag" href="../../../tags/#tag:terraform">terraform</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:iac">iac</a> <a class="md-tag" href="../../../tags/#tag:netascode">netascode</a> <a class="md-tag" href="../../../tags/#tag:terraform">terraform</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/terraform.png" /></p>
-<p>In the previous post, we saw how to import an infrastructure defined through NaC into Terraform. We stopped when <code>terraform plan</code> reported differences in some attribute values:</p>
+<p>In the <a href="../../125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">previous post</a>, we saw how to import an infrastructure defined through NaC into Terraform. We stopped when <code>terraform plan</code> reported differences in some attribute values:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># module.aci.module.aci_bridge_domain["NTS_TRAINING/WEB"].aci_rest_managed.fvBD will be updated in-place
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>~ resource "aci_rest_managed" "fvBD" {
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    + annotation  = "orchestrator:terraform"
@@ -541,7 +548,7 @@ Everything here is free. If it helps you, you can
 <p>This is an educational post: nobody should run this process in a production environment, because it is highly likely to cause a service disruption.</p>
 <h2 id="cosmetic-or-non-relevant-attributes">Cosmetic or Non-Relevant Attributes<a class="headerlink" href="#cosmetic-or-non-relevant-attributes" title="Permanent link">&para;</a></h2>
 <p>Some attributes are purely cosmetic and have no real impact on the operation of a Cisco ACI fabric.</p>
-<p>For example, <code>annotation</code> may contain a reference to who created and manages the object. By default, Ansible and Terraform set this parameter, and so does NDO. If NDO is used in the infrastructure, this parameter must be set correctly.</p>
+<p>For example, <code>annotation</code> may contain a reference to who created and manages the object. By default, <a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a> and Terraform set this parameter, and so does <a href="../../111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/">NDO</a>. If NDO is used in the infrastructure, this parameter must be set correctly.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a># module.aci.module.aci_vrf["NTS_TRAINING/PROD"].aci_rest_managed.fvRsCtxToExtRouteTagPol will be updated in-place
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>~ resource "aci_rest_managed" "fvRsCtxToExtRouteTagPol" {
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    + annotation  = "orchestrator:terraform"

@@ -449,27 +449,27 @@ Everything here is free. If it helps you, you can
 <h1 id="iou-web-the-beginning">iou-web the beginning<a class="headerlink" href="#iou-web-the-beginning" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/unetlab.png" /></p>
-<p>I've been working with network simulators since around 2011 when I decided to pursue my CCIE R&amp;S certification. Around that time, another pivotal event set me on the path of development: Cisco released a binary called IOL (IOS on Linux), which essentially simulated a Cisco IOS router. Unlike other solutions, the resources required to simulate this router were significantly lower.</p>
-<p>Back then, GNS3 was the only available option, which used Dynamips to emulate the hardware needed to run official IOS images. However, the emulated platforms were limited, and manual optimization was required to minimize resource usage. I faced two major issues that were deal-breakers for me:</p>
+<p>I have been working with network simulators since around 2011, when I decided to pursue my CCIE R&amp;S certification. Around that time, another pivotal event set me on the path of development: Cisco released a binary called IOL (IOS on Linux), which essentially simulated a Cisco IOS router. Unlike other solutions, it required significantly fewer resources to simulate this router.</p>
+<p>Back then, GNS3 was the only available option. It used Dynamips to emulate the hardware needed to run official IOS images. The emulated platforms were limited, though, and we had to optimize them manually to minimize resource usage. I faced two major issues that were deal-breakers for me:</p>
 <ul>
 <li>I was working with two different computers, and synchronizing the environment between them with GNS3 was complicated.</li>
 <li>The combination of GNS3 and Dynamips was unstable.</li>
 </ul>
 <p>I decided to create my own interface to manage simulators based on IOL. After a few months, iou-web was born: a PHP-based web interface that orchestrated the creation and management of labs for IOL. My requirements were:</p>
 <ul>
-<li><strong>Portability:</strong> Labs must be exportable and importable.</li>
-<li><strong>Stability:</strong> Running labs must be stable, avoiding crashes.</li>
-<li><strong>Performance:</strong> Labs must run on a cheap laptop or VM.</li>
+<li><strong>Portability:</strong> labs must be exportable and importable.</li>
+<li><strong>Stability:</strong> running labs must be stable and avoid crashes.</li>
+<li><strong>Performance:</strong> labs must run on a cheap laptop or VM.</li>
 </ul>
-<p>Meanwhile, I discovered that Cisco had developed similar software internally called <strong>WebIOL</strong>. WebIOL was developed in Perl and was released exclusively for Cisco employees, featuring basic labs from the Cisco 360 program.</p>
-<p>After a couple of alpha versions, <strong>iou-web</strong> was publicly released on January 23rd, 2012.</p>
+<p>Meanwhile, I discovered that Cisco had developed similar software internally, called <strong>WebIOL</strong>. WebIOL was developed in Perl and released exclusively to Cisco employees, with basic labs from the Cisco 360 program.</p>
+<p>After a couple of alpha versions, I released <strong>iou-web</strong> publicly on January 23rd, 2012.</p>
 <p><img alt="iou-web-topology" src="../images/iou-web-topology.png" /></p>
-<p>Unlike GNS3, which supported real IOS images via Dynamips, iou-web supported only IOL. However, because IOL was faster than Dynamips, many users preferred iou-web.</p>
+<p>Unlike GNS3, which supported real IOS images via Dynamips, iou-web supported only IOL. IOL was faster than Dynamips, though, so many users preferred iou-web.</p>
 <p>Basically, iou-web, often referred to as <strong>webiou</strong>, was a web interface for IOU. It allowed users to:</p>
 <ul>
-<li><strong>Create Network Topologies:</strong> Easily build network topologies for IOU through a user-friendly web interface.</li>
-<li><strong>Manage Devices:</strong> Start and stop devices with simple web-based controls.</li>
-<li><strong>Visualize Topologies:</strong> View a graphical L2 diagram of the network topology for better understanding and management.</li>
+<li><strong>Create network topologies:</strong> build topologies for IOU easily through a user-friendly web interface.</li>
+<li><strong>Manage devices:</strong> start and stop devices with simple web-based controls.</li>
+<li><strong>Visualize topologies:</strong> view a graphical L2 diagram of the network topology for better understanding and management.</li>
 </ul>
 <p>The old historical iou-web repository is available to the public on <a href="https://github.com/dainok/iou-web">GitHub</a>.</p>
 

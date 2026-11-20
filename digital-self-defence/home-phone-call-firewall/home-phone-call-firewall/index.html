@@ -441,28 +441,35 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:digital-self-defence" class="md-tag">digital-self-defence</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:firewall" class="md-tag">firewall</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2022-07-13">13 July 2022</time></span></p>
 <h1 id="home-phone-call-firewall">Home phone call firewall<a class="headerlink" href="#home-phone-call-firewall" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:firewall">firewall</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/self-defence.png" /></p>
-<p>I have a "landline" VoIP number, used by my parents to reach me when my phone is turned off. Apparently, landlines number are preferred by spammers, so I wrote a simple firewall zero-trust configuration for my FRITZ!Box.</p>
-<p>The firewall is permitting all numbers included in the address book.</p>
+<p>I have a "landline" VoIP number that my parents use to reach me when my phone is turned off. Landline numbers are apparently preferred by spammers, so I wrote a simple zero-trust firewall configuration for my FRITZ!Box.</p>
+<p>The firewall permits all the numbers included in the address book.</p>
 <p>Let's see how to configure it:</p>
 <ol>
-<li>Add all trusted numbers to the phone book (<code>Telephony</code> → <code>Telephone Book</code>).</li>
-<li>Optionally configure an answering machine (<code>Telephony</code> → <code>Answering Machine</code>).</li>
+<li>Add all the trusted numbers to the phone book (<code>Telephony</code> → <code>Telephone Book</code>).</li>
+<li>Optionally, configure an answering machine (<code>Telephony</code> → <code>Answering Machine</code>).</li>
 <li>Configure the firewall (<code>Telephony</code> → <code>Call Handling</code> → <code>Call Diversion</code>) as follows:</li>
 </ol>
 <p><img alt="call-diversion" src="../images/call-diversion.png" /></p>
 <p>In my case:</p>
 <ul>
-<li>all trusted incoming calls are routed to a telephone connected to port FON1;</li>
-<li>the answering machine on FRITZ!Box is disabled;</li>
-<li>I'm using the answering machine provided by the VoIP provider.</li>
+<li>All trusted incoming calls are routed to a telephone connected to port FON1.</li>
+<li>The answering machine on the FRITZ!Box is disabled.</li>
+<li>I use the answering machine provided by the VoIP provider.</li>
 </ul>
 
 

@@ -445,7 +445,21 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:ci-cd" class="md-tag">ci-cd</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:fundamentals" class="md-tag">fundamentals</a>
       
     
       
@@ -462,13 +476,20 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:gitlab" class="md-tag">gitlab</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:iac" class="md-tag">iac</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2026-02-08">08 February 2026</time></span></p>
 <h1 id="gitlab-cicd-iac-in-action">GitLab CI/CD + IaC in action<a class="headerlink" href="#gitlab-cicd-iac-in-action" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:git">git</a> <a class="md-tag" href="../../../tags/#tag:gitlab">gitlab</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ci-cd">ci-cd</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../../../tags/#tag:git">git</a> <a class="md-tag" href="../../../tags/#tag:gitlab">gitlab</a> <a class="md-tag" href="../../../tags/#tag:iac">iac</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/gitlab.png" /></p>
 <p>Let's see in practice how to change our infrastructure with GitLab and the pipeline we created.</p>
 <p>We open our GitLab repository, select the file to modify and edit it with the Web IDE:</p>
@@ -487,7 +508,7 @@ Everything here is free. If it helps you, you can
 </code></pre></div>
 <p>We defined a duplicated VLAN. We modify our code again, fix the error and check the new execution:</p>
 <p><img alt="ci-pipeline" src="../images/ci-pipeline.png" /></p>
-<p>All the jobs completed successfully: the data has been validated and a plan has been prepared for each environment. We can open the plan jobs to review the operations that Terraform will execute:</p>
+<p>All the jobs completed successfully: the data has been validated and a plan has been prepared for each environment. We can open the plan jobs to review the operations that <a href="../../../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">Terraform</a> will execute:</p>
 <p><img alt="terraform-plan" src="../images/terraform-plan.png" /></p>
 <p>If we are satisfied, we go to <code>Code</code> → <code>Merge requests</code> and create a new MR:</p>
 <p><img alt="create-merge-request" src="../images/create-merge-request.png" /></p>

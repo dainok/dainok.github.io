@@ -438,6 +438,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:api" class="md-tag">api</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
       
     
@@ -454,7 +461,7 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2026-01-11">11 January 2026</time></span></p>
 <h1 id="filtering-cisco-api-output">Filtering Cisco API Output<a class="headerlink" href="#filtering-cisco-api-output" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:api">api</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/cisco.png" /></p>
 <p>Previously, we created a simple script that prints a table of the CDP neighbors of all the interfaces in the fabric. While writing it, we realized that it could be optimized.</p>
 <p>To optimize the script, we need to change the way we retrieve the data.</p>
@@ -475,7 +482,7 @@ Everything here is free. If it helps you, you can
 <li><code>and(...)</code>.</li>
 <li><code>or(...)</code>.</li>
 </ul>
-<p>Now we can improve our script that shows the CDP neighbors by querying just two classes: <code>fabricNode</code> and <code>cdpAdjEp</code>. We can then combine the two results as follows:</p>
+<p>Now we can improve our script that shows the CDP neighbors by querying just two <a href="../../107cisco-aci-classes/cisco-aci-classes/">classes</a>: <code>fabricNode</code> and <code>cdpAdjEp</code>. We can then combine the two results as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Print output</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbor_list</span><span class="p">:</span>

@@ -438,6 +438,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:firewall" class="md-tag">firewall</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:fundamentals" class="md-tag">fundamentals</a>
       
     
@@ -454,7 +461,7 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-06-07">07 June 2025</time></span></p>
 <h1 id="introduction-to-palo-alto-firewall-automation">Introduction to Palo Alto firewall automation<a class="headerlink" href="#introduction-to-palo-alto-firewall-automation" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:firewall">firewall</a> <a class="md-tag" href="../../../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/paloalto-strata.png" /></p>
 <p>Firewall automation is still a relatively under-discussed topic compared to the automation of network devices. This is likely due to complexity: firewall policies tend to be a long list of rules, created by different people for different (application) purposes and aggregated together. The order of the rules is often crucial and has a direct impact on performance, so creating a model to describe them is far from simple. Other tasks can be automated, but in my experience they are of relatively minor importance.</p>
 <p>Let's take a step back and identify the activities a security engineer performs throughout the lifecycle of a firewall:</p>
@@ -467,10 +474,10 @@ Everything here is free. If it helps you, you can
 <ul>
 <li>Web User Interface.</li>
 <li>Command Line Interface (CLI) via SSH.</li>
-<li>XML API.</li>
+<li><a href="../../203automating-palo-alto-firewall-via-xml-api/automating-palo-alto-firewall-via-xml-api/">XML API</a>.</li>
 <li>External Dynamic Lists.</li>
 <li>SDKs (Python, PHP).</li>
-<li>Frameworks (Ansible, Terraform).</li>
+<li>Frameworks (<a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a>, <a href="../../../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">Terraform</a>).</li>
 <li>Direct configuration changes.</li>
 </ul>
 <p>In complex environments, <strong>Panorama</strong> is often used to manage all the firewalls centrally. We can interact with Panorama in all the same ways described for individual firewalls.</p>

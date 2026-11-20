@@ -514,7 +514,7 @@ Everything here is free. If it helps you, you can
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
 <p>A playbook is a YAML file that lists, in sequence, the operations to perform on a device or a group of devices. Each playbook is made of one or more <strong>plays</strong>, which can include <code>pre_tasks</code>, <code>tasks</code>, and <code>post_tasks</code>.</p>
 <p><img alt="ansible-playbook-structure" src="../images/ansible-playbook-structure.png" /></p>
-<p>Variables play a crucial role when planning and writing playbooks. They can be defined at different levels: configuration, playbook, inventory, environment, files or <code>facts</code>. It is helpful to have a way to print the value of all the defined variables.</p>
+<p>Variables play a crucial role when planning and writing playbooks. They can be defined at different levels: configuration, playbook, <a href="../../104ansible-inventory/ansible-inventory/">inventory</a>, environment, files or <code>facts</code>. It is helpful to have a way to print the value of all the defined variables.</p>
 <p>Let's start by opening the <code>Cisco Legacy Core-Access topology</code> lab and making sure that all devices are active and reachable.</p>
 <h2 id="printing-all-variables">Printing All Variables<a class="headerlink" href="#printing-all-variables" title="Permanent link">&para;</a></h2>
 <p>As we know, a playbook is a YAML file containing a list of <strong>plays</strong>. Each <strong>play</strong> defines the operations to perform and where to run them:</p>
@@ -704,7 +704,7 @@ Everything here is free. If it helps you, you can
 <p>You can install all the collections specified in the file with a single command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>-r<span class="w"> </span>collections/requirements.yml
 </code></pre></div>
-<p>Later, we will see how to create and publish your own collection on Ansible Galaxy.</p>
+<p>Later, we will see how to create and publish your own collection on <a href="../../136ansible-galaxy/ansible-galaxy/">Ansible Galaxy</a>.</p>
 <p>The playbooks used in this article can be downloaded from <a href="https://github.com/dainok/courses/tree/master/Ansible/07.%20Playbooks">GitHub</a>.</p>
 
 

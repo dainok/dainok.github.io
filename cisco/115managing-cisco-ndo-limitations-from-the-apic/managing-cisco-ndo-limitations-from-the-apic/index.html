@@ -534,7 +534,7 @@ Everything here is free. If it helps you, you can
 </ul>
 <p>This is far from a trivial consideration, and to understand it fully we need to analyze how NDO creates objects on the APIC.</p>
 <h2 id="objects-created-by-apic-vs-ndo">Objects Created by APIC vs. NDO<a class="headerlink" href="#objects-created-by-apic-vs-ndo" title="Permanent link">&para;</a></h2>
-<p>When I create an object manually on the APIC, the <code>annotation</code> field is empty. If I create it through Terraform or Ansible, the field is populated with the name of the framework used.</p>
+<p>When I create an object manually on the APIC, the <code>annotation</code> field is empty. If I create it through <a href="../../125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">Terraform</a> or <a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a>, the field is populated with the name of the framework used.</p>
 <p>When NDO creates the object, we get:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>annotation: orchestrator:msc-shadow:no
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>children -&gt; fvSiteAssociated -&gt; children -&gt; fvRemoteId
@@ -585,7 +585,7 @@ Everything here is free. If it helps you, you can
 <p>It is also likely that the names of the objects depend on the associated template: changing the template means changing the name, and changing the name means deleting the object on the APIC and recreating it from scratch, with all its dependencies.</p>
 <p>My approach is therefore to define networks as shared, unless we are certain that they will always remain strictly local. Of course, we must consider the architectural limits, to make sure we do not exceed the allowed number of objects per type.</p>
 <h2 id="safeguarding-the-critical-tenant">Safeguarding the Critical Tenant<a class="headerlink" href="#safeguarding-the-critical-tenant" title="Permanent link">&para;</a></h2>
-<p>Each ACI fabric includes an infrastructure tenant, which defines its basic functionality and connectivity. The production workload tenants are added on top of it.</p>
+<p>Each <a href="../../101introduction-to-cisco-aci/introduction-to-cisco-aci/">ACI</a> fabric includes an infrastructure tenant, which defines its basic functionality and connectivity. The production workload tenants are added on top of it.</p>
 <p>In my view, we must consider managing the infrastructure tenant separately from the production tenants: both can be handled through Infrastructure as Code, but they have different characteristics and requirements.</p>
 <p>The Infra tenant is prepared at the beginning and changes very rarely. An error on the Infra tenant can compromise the entire fabric.</p>
 <p>The production tenants are modified constantly. An error affects only the specific tenant.</p>

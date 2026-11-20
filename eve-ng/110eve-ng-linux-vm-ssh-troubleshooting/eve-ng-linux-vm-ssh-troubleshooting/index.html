@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#lab-scenario" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Lab scenario
+        Lab Scenario
       
     </span>
   </a>
@@ -468,7 +468,28 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:docker" class="md-tag">docker</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:eve-ng" class="md-tag">eve-ng</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:linux" class="md-tag">linux</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:troubleshooting" class="md-tag">troubleshooting</a>
       
     
   </nav>
@@ -477,63 +498,63 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-09-20">20 September 2025</time></span></p>
 <h1 id="eve-ng-linux-vm-ssh-troubleshooting">EVE-NG Linux VM SSH troubleshooting<a class="headerlink" href="#eve-ng-linux-vm-ssh-troubleshooting" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:docker">docker</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a> <a class="md-tag" href="../../../tags/#tag:troubleshooting">troubleshooting</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
 <p><strong>Special thanks to <a href="https://www.linkedin.com/in/cianfarani-carlo-b7a86478/">Carlo Cianfarani</a> for providing this post.</strong></p>
-<p>In this post we will explore how to troubleshoot and fix an issue on EVE-NG involving Linux VMs connected through a virtual router instance (Cisco XRd) implemented as docker container. Some time ago, indeed, I managed to extend EVE-NG to support docker containers.</p>
-<h2 id="lab-scenario">Lab scenario<a class="headerlink" href="#lab-scenario" title="Permanent link">&para;</a></h2>
+<p>In this post, we explore how to troubleshoot and fix an issue on EVE-NG involving Linux VMs connected through a virtual router instance (Cisco XRd) implemented as a Docker container. Some time ago, I managed to extend EVE-NG to support Docker containers.</p>
+<h2 id="lab-scenario">Lab Scenario<a class="headerlink" href="#lab-scenario" title="Permanent link">&para;</a></h2>
 <p><img alt="xrd-lab" src="../images/xrd-lab.png" /></p>
-<p>In the scenario depicted, Linux VM ethernet interfaces (e.g. plain <code>e1000</code> or paravirtualized <code>virtio-net</code>) are attached to two different IP subnets, each implemented by a Linux bridge. Linux VMs run on QEMU hypervisor which, at userspace level, starts a multithreaded process for each VM. Essentially, there is a main thread plus additional threads, one for each VM’s assigned vCPU.</p>
-<p>We can check how EVE-NG networking is implemented under the hood by using:</p>
+<p>In the scenario depicted, the Ethernet interfaces of the Linux VMs (e.g., plain <code>e1000</code> or paravirtualized <code>virtio-net</code>) are attached to two different IP subnets, each implemented by a Linux bridge. The Linux VMs run on the QEMU hypervisor, which starts a multithreaded process in userspace for each VM: a main thread plus additional threads, one for each vCPU assigned to the VM.</p>
+<p>We can check how EVE-NG networking is implemented under the hood with:</p>
 <p><img alt="brctl-show" src="../images/brctl-show.png" /></p>
-<p>In the above <code>vnet0_1</code> and <code>vnet0_2</code> are both Linux bridge implementing ethernet links connecting the VMs to the virtual router’s interfaces. <code>vunl0_1_0</code> and <code>vunl0_2_0</code> are Linux TAP network devices implementing the VM virtual ethernet interfaces’ backend.</p>
+<p>In the output above, <code>vnet0_1</code> and <code>vnet0_2</code> are both Linux bridges that implement the Ethernet links connecting the VMs to the interfaces of the virtual router. <code>vunl0_1_0</code> and <code>vunl0_2_0</code> are Linux TAP network devices that implement the backend of the virtual Ethernet interfaces of the VMs.</p>
 <p><img alt="ethtool-1" src="../images/ethtool-1.png" /></p>
 <p><img alt="ethtool-2" src="../images/ethtool-2.png" /></p>
-<p><code>vnet0_3_1</code> and <code>vnet0_3_2</code> on the other hand are Linux <code>veth</code> network devices where the paired <code>veth</code> lives inside the docker container’s network namespace.</p>
+<p><code>vnet0_3_1</code> and <code>vnet0_3_2</code>, on the other hand, are Linux <code>veth</code> network devices whose paired <code>veth</code> lives inside the network namespace of the Docker container.</p>
 <p><img alt="ethtool-3" src="../images/ethtool-3.png" /></p>
 <p><img alt="ethtool-4" src="../images/ethtool-4.png" /></p>
 <p><img alt="ip-link-1" src="../images/ip-link-1.png" /></p>
 <p><img alt="ip-link-2" src="../images/ip-link-2.png" /></p>
-<p>The following command enters the <strong>XRd</strong> container’s namespaces (PID, network and User) and confirms the associations between <code>veth</code> pairs.</p>
+<p>The following command enters the namespaces (PID, network and user) of the <strong>XRd</strong> container and confirms the associations between the <code>veth</code> pairs.</p>
 <p><img alt="docker-inspect-1" src="../images/docker-inspect-1.png" /></p>
 <p><img alt="nsenter" src="../images/nsenter.png" /></p>
-<p>In this lab you can successfully ping both local and remote IP addresses, however SSH to the remote VM fail! Let’s try to troubleshoot it.</p>
-<p>When attempting SSH from Linux VM1 to VM2 we can check <code>TcpInSegs</code>, <code>TcpInErrs</code> and <code>TcpInCsumErrors</code> counters on VM2 keep increment of the same amount (4 packets for each run).</p>
+<p>In this lab, we can ping both local and remote IP addresses successfully, but SSH to the remote VM fails. Let's troubleshoot it.</p>
+<p>When we attempt SSH from Linux VM1 to VM2, we can check the <code>TcpInSegs</code>, <code>TcpInErrs</code> and <code>TcpInCsumErrors</code> counters on VM2: they keep incrementing by the same amount (4 packets for each run).</p>
 <p><img alt="nstat-1" src="../images/nstat-1.png" /></p>
-<p>That means VM2 is receiving TCP SYN packets (segments) with an invalid TCP checksum. To confirm it, I used Linux <a href="https://www.kernel.org/doc/html/v5.0/trace/ftrace.html">ftrace</a> framework exposed via <a href="https://www.trace-cmd.org/">trace-cmd</a> frontend.</p>
-<p>The virtual router instance connected to the Linux bridges is a Cisco XRd docker container running IOS-XR 7.10.2. From a networking perspective each docker container runs into a Linux network namespace other than the root (or default) network namespace. EVE-NG manages to create a veth pair for any ethernet link connected to it. In our scenario, a veth network device is connected to a Linux bridge within the root network namespace while the paired one lives within the container’s dedicated network namespace. By using ftrace we can dig into the Linux <code>sk_buff</code> kernel structures involved, by checking the value of <code>ip_summed</code> field we’re interested in (<code>skb</code> → <code>ip_summed</code>).</p>
-<p>From Linux host viewpoint, ftrace reports TCP SYN packets handled from VM1 ethernet TAP backend in the RX path as seen with <code>ip_summed</code> set to 3 while TCP packets handled in RX path from veth device connected to the remote bridge as seen with <code>ip_summed</code> set to <code>0</code>.</p>
-<p>From Linux kernel C header files <a href="https://github.com/torvalds/linux/blob/cbf658dd09419f1ef9de11b9604e950bdd5c170b/include/linux/skbuff.h#L247">/include/linux/skbuff.h</a></p>
+<p>This means VM2 is receiving TCP SYN packets (segments) with an invalid TCP checksum. To confirm it, I used the Linux <a href="https://www.kernel.org/doc/html/v5.0/trace/ftrace.html">ftrace</a> framework through the <a href="https://www.trace-cmd.org/">trace-cmd</a> frontend.</p>
+<p>The virtual router instance connected to the Linux bridges is a Cisco XRd Docker container running IOS-XR 7.10.2. From a networking perspective, each Docker container runs in a Linux network namespace other than the root (or default) network namespace. EVE-NG creates a veth pair for every Ethernet link connected to the container. In our scenario, one veth device is connected to a Linux bridge in the root network namespace, while its pair lives in the dedicated network namespace of the container. With ftrace, we can dig into the Linux <code>sk_buff</code> kernel structures involved, checking the value of the field we are interested in (<code>skb</code> → <code>ip_summed</code>).</p>
+<p>From the viewpoint of the Linux host, ftrace reports that the TCP SYN packets handled by the TAP backend of the Ethernet interface of VM1 in the RX path have <code>ip_summed</code> set to <code>3</code>, while the TCP packets handled in the RX path by the veth device connected to the remote bridge have <code>ip_summed</code> set to <code>0</code>.</p>
+<p>These values are defined in the Linux kernel C header <a href="https://github.com/torvalds/linux/blob/cbf658dd09419f1ef9de11b9604e950bdd5c170b/include/linux/skbuff.h#L247">/include/linux/skbuff.h</a>:</p>
 <p><img alt="skbuff" src="../images/skbuff.png" /></p>
-<p>Those values correspond to <code>CHECKSUM_PARTIAL</code> and <code>CHECKSUM_NONE</code> respectively. To get a clear understanding of what was really going on, I asked on stackoverflow opening this <a href="https://unix.stackexchange.com/questions/797717/tcp-checksum-offloading-on-virtio-net-paravirtualized-interfaces">discussion</a>.</p>
+<p>They correspond to <code>CHECKSUM_PARTIAL</code> and <code>CHECKSUM_NONE</code>, respectively. To understand clearly what was really going on, I opened this <a href="https://unix.stackexchange.com/questions/797717/tcp-checksum-offloading-on-virtio-net-paravirtualized-interfaces">discussion</a> on Stack Exchange.</p>
 <p><img alt="trace-cmd-1" src="../images/trace-cmd-1.png" /></p>
 <p><img alt="trace-cmd-2" src="../images/trace-cmd-2.png" /></p>
-<p>Linux ftrace framework allows us to enable static tracepoints built inside the kernel. Here tracepoints <code>netif_receive_skb_entry</code>, <code>netif_rx_entry</code> within the relevant kernel network functions implemented by the host Linux kernel and exposed to the low-level device driver code have been enabled. Next in the reporting step the tracing file (trace.dat) has been filtered using the -F option (inessential trace entries for ARP request and reply were filtered).</p>
-<p>According to the above trace, <code>qemu-system-x86-11472</code> process with PID <code>11472</code> is the main thread (Linux lightweighted processes) running VM1’s QEMU instance. The RX path processing on <code>vunl0_1_0</code> TAP interface is run in the context of this process (note that EVE-NG assigned node-id 1 to VM1 node hence the name <code>vunl0_1_0</code> for the VM1virtual ethernet’s backend).</p>
+<p>The Linux ftrace framework lets us enable static tracepoints built into the kernel. Here we enabled the tracepoints <code>netif_receive_skb_entry</code> and <code>netif_rx_entry</code>, which sit within the relevant kernel network functions implemented by the host Linux kernel and exposed to the low-level device driver code. Then, in the reporting step, we filtered the trace file (<code>trace.dat</code>) with the <code>-F</code> option (nonessential trace entries for ARP requests and replies were filtered out).</p>
+<p>According to the trace above, the process <code>qemu-system-x86-11472</code> with PID <code>11472</code> is the main thread (Linux lightweight process) running the QEMU instance of VM1. The RX path processing on the <code>vunl0_1_0</code> TAP interface runs in the context of this process (EVE-NG assigned node ID 1 to the VM1 node, hence the name <code>vunl0_1_0</code> for the backend of the virtual Ethernet interface of VM1).</p>
 <p><img alt="ps-1" src="../images/ps-1.png" /></p>
-<p>Likewise, <code>spp-17445</code> is the Pid for the thread running within the XRd docker container. This thread runs the driver code handling the RX path processing for the <code>vnet0_3_2</code> veth device paired with the corresponding veth device within the XRd container’s network namespace (even in this case EVE-NG assigned node-id <code>3</code> to the XRd node).</p>
+<p>Likewise, <code>spp-17445</code> is the PID of the thread running within the XRd Docker container. This thread runs the driver code that handles the RX path processing for the <code>vnet0_3_2</code> veth device, paired with the corresponding veth device within the network namespace of the XRd container (here too, EVE-NG assigned node ID <code>3</code> to the XRd node).</p>
 <p><img alt="ps-2" src="../images/ps-2.png" /></p>
-<p>As we can see, attempting to SSH from VM1 to VM2 results in VM1 sending out TCP SYN packets having the <code>sk_buff</code>’s <code>ip_summed</code> field set to <code>3</code> (<code>CHECKSUM_PARTIAL</code>). That means VM1 kernel network stack is sending out TCP packets with an incomplete/incorrect TCP checksum.</p>
-<p>After spending many hours troubleshooting, I identified the issue: by default, VM’s exposed ethernet interfaces (e.g. <code>e1000</code> or <code>virtio-net</code>) have TCP/UDP checksum offloading enabled. Namely Linux kernel network stack assumes that the underlying “NIC hardware” will compute and fill in the correct TCP/UDP checksum into outgoing packets.</p>
-<p>The problem is that the virtual NIC, in its TX path, does not perform that computation at all. As a result, TCP/UDP packets are sent with zeroed or corrupted checksum fields. On the receiving side, in RX path processing, they are delivered to the VM Linux kernel’s network stack that discards these invalid packets.</p>
+<p>As we can see, when we try SSH from VM1 to VM2, VM1 sends out TCP SYN packets with the <code>ip_summed</code> field of the <code>sk_buff</code> set to <code>3</code> (<code>CHECKSUM_PARTIAL</code>). This means the network stack of the VM1 kernel sends out TCP packets with an incomplete TCP checksum.</p>
+<p>After many hours of troubleshooting, I identified the issue: by default, the Ethernet interfaces exposed to the VMs (e.g., <code>e1000</code> or <code>virtio-net</code>) have TCP/UDP checksum offloading enabled. The network stack of the Linux kernel assumes that the underlying "NIC hardware" computes and fills in the correct TCP/UDP checksum in outgoing packets.</p>
+<p>The problem is that the virtual NIC does not perform that computation at all in its TX path. As a result, TCP/UDP packets are sent with zeroed or corrupted checksum fields. On the receiving side, in the RX path processing, they are delivered to the network stack of the VM Linux kernel, which discards these invalid packets.</p>
 <h2 id="the-fix">The Fix<a class="headerlink" href="#the-fix" title="Permanent link">&para;</a></h2>
-<p>The solution is straightforward: disable TX checksum offloading at the virtual NIC level. This can be done from within the Linux VM as follows (note that disabling RX checksum offloading is not an option since it is not configurable).</p>
+<p>The solution is straightforward: disable TX checksum offloading at the virtual NIC level. We can do it from within the Linux VM as follows (note that disabling RX checksum offloading is not an option, since it is not configurable).</p>
 <p><img alt="ethtool-5" src="../images/ethtool-5.png" /></p>
 <p><img alt="ethtool-7" src="../images/ethtool-7.png" /></p>
-<p>Of course we need to do the same on the remote Linux VM:</p>
+<p>Of course, we need to do the same on the remote Linux VM:</p>
 <p><img alt="ethtool-8" src="../images/ethtool-8.png" /></p>
-<p>And voilà, magically SSH to the remote VM works!</p>
+<p>And SSH to the remote VM works.</p>
 <p><img alt="ssh-1" src="../images/ssh-1.png" /></p>
-<p>To be honest, a different kind of fix is available. According to Cisco <a href="https://xrdocs.io/virtual-routing/tutorials/2022-08-25-user-interface-and-knobs-for-xrd/">documentation</a> there is an optional flag (<code>chksum</code>) applicable for XRd interfaces. It can be set on interfaces basis by setting the relevant Linux environment variables passed to the container (<code>XR_MGMT_INTERFACES</code> for management interfaces and <code>XR_INTERFACES</code> for dataplane interfaces). It is supposed to force the virtual router to compute the relevant TCP/UDP checksum for ingress packets coming from that interface.</p>
-<p>Let’s check the current setting for those environment variables:</p>
+<p>A different kind of fix is also available. According to the Cisco <a href="https://xrdocs.io/virtual-routing/tutorials/2022-08-25-user-interface-and-knobs-for-xrd/">documentation</a>, there is an optional flag (<code>chksum</code>) applicable to the XRd interfaces. We can set it per interface through the Linux environment variables passed to the container (<code>XR_MGMT_INTERFACES</code> for management interfaces and <code>XR_INTERFACES</code> for data-plane interfaces). It forces the virtual router to compute the relevant TCP/UDP checksum for the ingress packets coming from that interface.</p>
+<p>Let's check the current setting of those environment variables:</p>
 <p><img alt="docker-inspect-2" src="../images/docker-inspect-2.png" /></p>
-<p>From the above <code>XR_INTERFACE</code> environment variable, the chksum flag is clear for the first two XRd interfaces (<code>Gi0/0/0/0</code> and <code>Gi0/0/0/1</code>) used in the lab. Let’s try to set the <code>chksum</code> flag for the <code>Gi0/0/0/0</code> interface only (the XRd ingress interface for traffic coming from VM1 to VM2). To do it, we proceed to stop &amp; wipe the XRd node. This way the XRd docker container is restarted from scratch.</p>
+<p>In the <code>XR_INTERFACES</code> environment variable above, the <code>chksum</code> flag is not set for the first two XRd interfaces (<code>Gi0/0/0/0</code> and <code>Gi0/0/0/1</code>) used in the lab. Let's try to set the <code>chksum</code> flag for the <code>Gi0/0/0/0</code> interface only (the XRd ingress interface for the traffic coming from VM1 to VM2). To do so, we stop and wipe the XRd node, so that the XRd Docker container restarts from scratch.</p>
 <p><img alt="docker-inspect-3" src="../images/docker-inspect-3.png" /></p>
-<p>Attempt to SSH to VM2 still fails, however we can confirm TCP packets get received from VM2 with the correct TCP checksum (<code>TcpInErrs</code> or <code>TcpInCsumErrors</code> no longer keep incrementing on VM2).</p>
+<p>SSH to VM2 still fails, but we can confirm that VM2 receives TCP packets with the correct TCP checksum (<code>TcpInErrs</code> and <code>TcpInCsumErrors</code> no longer keep incrementing on VM2).</p>
 <p><img alt="nstat-2" src="../images/nstat-2.png" /></p>
-<p>In the next step we fix the issue the other way around by setting the chksum flag for the <code>Gi0/0/0/1</code> interface</p>
+<p>In the next step, we fix the issue the other way around by setting the <code>chksum</code> flag for the <code>Gi0/0/0/1</code> interface:</p>
 <p><img alt="docker-inspect-4" src="../images/docker-inspect-4.png" /></p>
-<p>And eventually it does work as well !</p>
+<p>And this works as well.</p>
 <p><img alt="ssh-2" src="../images/ssh-2.png" /></p>
 
 

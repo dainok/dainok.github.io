@@ -428,10 +428,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-frida-server-on-android-device" class="md-nav__link">
+  <a href="#installing-frida-server-on-the-android-device" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installing Frida server on Android device
+        Installing Frida Server on the Android Device
       
     </span>
   </a>
@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#running-an-application-without-certificate-pinning" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Running an application without certificate pinning
+        Running an Application Without Certificate Pinning
       
     </span>
   </a>
@@ -479,7 +479,28 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:android" class="md-tag">android</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:digital-self-defence" class="md-tag">digital-self-defence</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:frida" class="md-tag">frida</a>
       
     
   </nav>
@@ -488,18 +509,18 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2022-07-23">23 July 2022</time></span></p>
 <h1 id="disable-android-certificate-pinning-with-frida">Disable Android Certificate Pinning with Frida<a class="headerlink" href="#disable-android-certificate-pinning-with-frida" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:android">android</a> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:frida">frida</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/frida.png" /></p>
-<p>During security assessment on Smarthome applications, I usually need to analyze encrypted HTTPS communications. Applications usually check for valid certificates, but also check that certificates are signed by a specific issuer. This is called "Certificate Pinning", even if it's not recommended, it's widely used:</p>
+<p>During security assessments of smart home applications, I usually need to analyze encrypted HTTPS communications. Applications usually check for valid certificates, but they also check that the certificates are signed by a specific issuer. This is called "Certificate Pinning". It is not recommended, but it is widely used:</p>
 <blockquote>
 <p>Caution: Certificate Pinning is not recommended for Android applications due to the high risk of future server configuration changes, such as changing to another Certificate Authority, rendering the application unable to connect to the server without receiving a client software update.</p>
 </blockquote>
-<p>To decypher HTTPS connection protected with Certificate Pinning, we need a different approach: Frida, a Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers.</p>
+<p>To decrypt an HTTPS connection protected with Certificate Pinning, we need a different approach: Frida, a dynamic instrumentation toolkit for developers, reverse engineers and security researchers.</p>
 <h2 id="installing-frida-on-kali-linux">Installing Frida on Kali Linux<a class="headerlink" href="#installing-frida-on-kali-linux" title="Permanent link">&para;</a></h2>
 <p>Let's prepare our Kali Linux:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>android-tools-adb<span class="w"> </span>android-tools-fastboot
 </code></pre></div>
-<p>We are installing an old Python version from sources:</p>
+<p>We install an old Python version from sources:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libssl-dev<span class="w"> </span>libsqlite3-dev<span class="w"> </span>liblzma-dev<span class="w"> </span>libffi-dev<span class="w"> </span>zlib1g-dev
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>wget<span class="w"> </span>https://www.python.org/ftp/python/3.7.12/Python-3.7.12.tgz
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>tar<span class="w"> </span>xzvf<span class="w"> </span>Python-3.7.12.tgz<span class="w"> </span>-o<span class="w"> </span>-C<span class="w"> </span>/opt
@@ -507,16 +528,16 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>./configure<span class="w"> </span>--enable-optimizations
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>make
 </code></pre></div>
-<p>Finally, we are building a virtual environment:</p>
+<p>Finally, we build a virtual environment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>~/.venv-frida
 </code></pre></div>
-<p>Using the above Python interpreter and virtual environment, we can install Frida:</p>
+<p>With the Python interpreter and the virtual environment above, we can install Frida:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>~/.venv-frida/bin/activate
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>pip<span class="w"> </span>install<span class="w"> </span>frida-tools<span class="w"> </span>objection
 </code></pre></div>
-<h2 id="installing-frida-server-on-android-device">Installing Frida server on Android device<a class="headerlink" href="#installing-frida-server-on-android-device" title="Permanent link">&para;</a></h2>
-<p>On a rooted Android device, enable USB Debugging mode. Go to <code>Settings</code> → <code>About Phone</code> → <code>Software Information</code> and click 7 times on <code>Build Number</code>, then go to <code>Settings</code> → <code>Developer Options</code> → <code>Enable</code> → <code>USB Debugging</code> and enable it.</p>
-<p>Connect the phone via USB cable to your computer and restart ADB:</p>
+<h2 id="installing-frida-server-on-the-android-device">Installing Frida Server on the Android Device<a class="headerlink" href="#installing-frida-server-on-the-android-device" title="Permanent link">&para;</a></h2>
+<p>On a rooted Android device, we enable USB Debugging. We go to <code>Settings</code> → <code>About Phone</code> → <code>Software Information</code> and click 7 times on <code>Build Number</code>, then we go to <code>Settings</code> → <code>Developer Options</code> → <code>Enable</code> → <code>USB Debugging</code> and enable it.</p>
+<p>We connect the phone to the computer with a USB cable and restart ADB:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>adb<span class="w"> </span>kill-server
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>adb<span class="w"> </span>devices
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>-<span class="w"> </span>daemon<span class="w"> </span>not<span class="w"> </span>running<span class="p">;</span><span class="w"> </span>starting<span class="w"> </span>now<span class="w"> </span>at<span class="w"> </span>tcp:5037
@@ -524,36 +545,36 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>List<span class="w"> </span>of<span class="w"> </span>devices<span class="w"> </span>attached
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>520011a1a0123143<span class="w">        </span>device
 </code></pre></div>
-<p>Download the proper <a href="https://github.com/frida/frida/releases">Frida version</a>" and an <a href="https://github.com/httptoolkit/frida-android-unpinning">frida-android-unpinning</a>:</p>
+<p>We download the proper <a href="https://github.com/frida/frida/releases">Frida version</a> and <a href="https://github.com/httptoolkit/frida-android-unpinning">frida-android-unpinning</a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>wget<span class="w"> </span>https://github.com/frida/frida/releases/download/15.2.2/frida-server-15.2.2-android-arm64.xz
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/httptoolkit/frida-android-unpinning/main/frida-script.js
 </code></pre></div>
-<p>Upload Frida server to the Android device:</p>
+<p>We upload Frida Server to the Android device:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>unxz<span class="w"> </span>frida-server-15.1.12-android-arm.xz
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>mv<span class="w"> </span>frida-server-15.1.12-android-arm<span class="w"> </span>frida-server
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>adb<span class="w"> </span>push<span class="w"> </span>frida-server<span class="w"> </span>/data/local/tmp/
 </code></pre></div>
-<p>Finally start the Frida server on the Android device:</p>
+<p>Finally, we start Frida Server on the Android device:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>adb<span class="w"> </span>shell
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>su
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>/data/local/tmp/frida-server
 </code></pre></div>
-<p>Open another shell on Kali Linux, using the Python virtual environment built for Frida, and check the network connection between the client (Kali Linux) and server (Android):</p>
+<p>We open another shell on Kali Linux, using the Python virtual environment built for Frida, and check the network connection between the client (Kali Linux) and the server (Android):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>frida-ps<span class="w"> </span>-U
 </code></pre></div>
-<p>The last command should return the list of running processes on the Android.</p>
-<h2 id="running-an-application-without-certificate-pinning">Running an application without certificate pinning<a class="headerlink" href="#running-an-application-without-certificate-pinning" title="Permanent link">&para;</a></h2>
-<p>We are now ready to run an application disabling the certificate pinning. All following commands are run on Kali Linux.</p>
-<p>Identify the package name of the application we want to run:</p>
+<p>The last command should return the list of the processes running on the Android device.</p>
+<h2 id="running-an-application-without-certificate-pinning">Running an Application Without Certificate Pinning<a class="headerlink" href="#running-an-application-without-certificate-pinning" title="Permanent link">&para;</a></h2>
+<p>We are now ready to run an application with certificate pinning disabled. All the following commands run on Kali Linux.</p>
+<p>We identify the package name of the application we want to run:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>adb<span class="w"> </span>shell<span class="w"> </span>pm<span class="w"> </span>list<span class="w"> </span>packages<span class="w"> </span>--user<span class="w"> </span><span class="m">0</span><span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>appname
 </code></pre></div>
-<p>Be sure the application is not running on the Android device:</p>
+<p>We make sure that the application is not running on the Android device:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>frida-ps<span class="w"> </span>-U<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>AppName
 </code></pre></div>
-<p>Start the application:</p>
+<p>We start the application:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>frida<span class="w"> </span>--no-pause<span class="w"> </span>-U<span class="w"> </span>-l<span class="w"> </span>./frida-script.js<span class="w"> </span>-f<span class="w"> </span>com.appname.start
 </code></pre></div>
-<p>The app will start on the smartphone popping up on the screen. All HTTPS connections will have certificate pinning disabled and could be intercepted by MITM Proxy.</p>
+<p>The app starts on the smartphone and pops up on the screen. All HTTPS connections have certificate pinning disabled and can be intercepted by MITM Proxy.</p>
 
 
 

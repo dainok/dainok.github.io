@@ -569,6 +569,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:iot" class="md-tag">iot</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:ot-ics" class="md-tag">ot-ics</a>
       
     
@@ -578,80 +585,79 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-09-05">05 September 2024</time></span></p>
 <h1 id="icsotiot-security-challenges-and-protection-strategies">ICS/OT/IoT Security: challenges and protection strategies<a class="headerlink" href="#icsotiot-security-challenges-and-protection-strategies" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:governance">governance</a> <a class="md-tag" href="../../../tags/#tag:ot-ics">ot-ics</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:governance">governance</a> <a class="md-tag" href="../../../tags/#tag:iot">iot</a> <a class="md-tag" href="../../../tags/#tag:ot-ics">ot-ics</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
-<p>It's time to revisit the ICS/OT world, as it has unique characteristics that influence its processes and tools.</p>
-<p>First, I would categorize this broad field into the following groups:</p>
+<p>It is time to revisit the ICS/OT world, as it has unique characteristics that influence its processes and tools.</p>
+<p>First, I categorize this broad field into three groups:</p>
 <ul>
-<li>Systems localized within a confined area (e.g., a building or campus)</li>
-<li>Systems geographically distributed but accessible through protected/dedicated networks (often SCADA systems fall under this category)</li>
-<li>Systems geographically distributed and connected to the Internet without additional controls (often IoT systems fall under this category).</li>
+<li>Systems localized within a confined area (e.g., a building or campus).</li>
+<li>Systems geographically distributed but accessible through protected or dedicated networks (SCADA systems often fall into this category).</li>
+<li>Systems geographically distributed and connected to the Internet without additional controls (IoT systems often fall into this category).</li>
 </ul>
-<p>I've chosen this classification because, as we'll see in the following posts, it dictates our ability to mitigate risks by implementing additional security measures. Clearly, there are other categorizations we should consider (e.g., based on risk), but this is the one I'd like to use as a starting point.</p>
-<p>Based on my experience, I want to highlight that most ICS/OT/IoT systems have a longer lifespan than the support period of individual components. This is crucial when planning a realistic strategy. Even though certain regulations require that components be upgradable, we will inevitably face situations where we need to protect components that are no longer sold, supported, or maintained.</p>
+<p>I chose this classification because, as we will see in the following posts, it dictates our ability to mitigate risks with additional security measures. Other categorizations are useful too (for example, one based on risk), but this is the one I use as a starting point.</p>
+<p>In my experience, most ICS/OT/IoT systems have a longer lifespan than the support period of their individual components. This is crucial when planning a realistic strategy. Even though some regulations require components to be upgradable, we will inevitably face situations where we need to protect components that are no longer sold, supported or maintained.</p>
 <h2 id="lifespan-vs-support-duration">Lifespan vs. Support Duration<a class="headerlink" href="#lifespan-vs-support-duration" title="Permanent link">&para;</a></h2>
-<p>As previously mentioned, in my experience, ICS/OT/IoT systems often remain operational for longer than the manufacturers of individual components anticipated. In other words, the components (particularly software, but not exclusively) are no longer supported, yet the integrated system is still in use.</p>
-<p>Those familiar with the industrial, medical, maritime, or oil &amp; gas sectors (and I'd add banking as well) encounter this daily: systems are based on components (e.g., Windows) and remain active well beyond the end of their support period. This is unavoidable for three reasons:</p>
+<p>ICS/OT/IoT systems often stay operational for longer than the manufacturers of their components anticipated. In other words, the components (particularly the software, but not only) are no longer supported, yet the integrated system is still in use.</p>
+<p>Anyone familiar with the industrial, medical, maritime or oil &amp; gas sectors (and I would add banking) sees this daily: systems are built on components such as Windows and remain active well beyond the end of their support period. This is unavoidable for three reasons:</p>
 <ol>
-<li>The aforementioned systems are generally untouchable: no changes or updates are permitted because their effects are unknown. In some cases, I've had vendors strongly advise against updating IEC62443-certified products, despite the regulation allowing for it.</li>
-<li>Many of the above systems have a very high acquisition cost (in terms of millions or tens of millions). Decommissioning or even simple refitting incurs unjustifiable costs for a system that is still functional (in the sense that it performs its intended work).</li>
-<li>I've often encountered operational systems supplied by defunct companies, leaving no support available. Here again, the cost of acquiring a new system is unjustifiable.</li>
+<li>These systems are generally untouchable: no changes or updates are permitted because their effects are unknown. In some cases, vendors strongly advised me against updating IEC 62443-certified products, even though the standard allows it.</li>
+<li>Many of these systems have a very high acquisition cost, in the millions or tens of millions. Decommissioning or even a simple refit is an unjustifiable cost for a system that still does the work it was bought for.</li>
+<li>I have often encountered operational systems supplied by defunct companies, with no support available. Here too, the cost of a new system is unjustifiable.</li>
 </ol>
-<p>The three points above mainly stem from the approach of the companies and individuals designing such systems. These systems are built to perform their tasks safely, even under stress. But... when we began discussing Industry 4.0 and started connecting systems designed to work to an IP network, we introduced a new risk: Cyber risk.</p>
-<p>In conversations with suppliers and customers of ICS/OT/IoT systems, I realize that Cyber risk is not even considered. To be honest, as a professional, I find some topological choices rather peculiar.</p>
-<p>In this regard, manufacturers and integrators still need to fully grasp the implications of bringing fragile technologies (from a Cyber perspective) onto IP and connecting them to the Internet.</p>
-<p>Given the topic, I'd add that the regulatory world is moving in a certain direction (see NIS, machinery regulation, IMO...). Will we finally see concrete results? Personally, I'm not so optimistic.</p>
+<p>The three points above mainly stem from the approach of the companies and people who design such systems. They are built to perform their tasks safely, even under stress. When we started talking about Industry 4.0 and connecting systems designed to work in isolation to an IP network, however, we introduced a new risk: cyber risk.</p>
+<p>In conversations with suppliers and customers of ICS/OT/IoT systems, I realize that cyber risk is often not even considered. As a professional, I find some topological choices rather peculiar.</p>
+<p>Manufacturers and integrators still need to grasp the implications of putting fragile technologies (from a cyber perspective) on IP and connecting them to the Internet.</p>
+<p>The regulatory world is moving in a certain direction (see NIS, the machinery regulation, IMO). Will we finally see concrete results? Personally, I am not so optimistic.</p>
 <h2 id="component-lifespan">Component Lifespan<a class="headerlink" href="#component-lifespan" title="Permanent link">&para;</a></h2>
-<p>We've discussed regulations and reality. Now, let's look at some examples demonstrating that component lifespan will inevitably be shorter than system lifespan. As mentioned earlier, systems continue to be used until they fail and repairs become economically unfeasible compared to purchasing a new system.</p>
-<p>Let's examine a few examples.</p>
+<p>Regulations and reality are one thing. Now let's look at some examples showing that the lifespan of a component is inevitably shorter than the lifespan of the system. Systems keep being used until they fail and repairs become more expensive than buying a new system.</p>
 <h3 id="bluetooth">Bluetooth<a class="headerlink" href="#bluetooth" title="Permanent link">&para;</a></h3>
-<p>In the ICS world, I've noticed a preference for using Bluetooth in recent years to simplify system reconfiguration activities. Specifically, Bluetooth is used to remote some control commands (non-emergency). In this case, we should consider the risks introduced by a wireless protocol, but for now, let's focus on the various protocol releases. A new Bluetooth protocol standard is released approximately every 2-3 years. This means that in an industrial system with a lifespan of 15 years, we could find very old and potentially vulnerable protocol releases.</p>
+<p>In recent years, I have noticed a preference for Bluetooth in the ICS world, because it simplifies reconfiguration activities. Specifically, Bluetooth is used to send some non-emergency control commands remotely. We should consider the risks introduced by a wireless protocol, but for now let's focus on the protocol releases. A new Bluetooth standard is released every 2-3 years. In an industrial system with a lifespan of 15 years, we can therefore find very old and potentially vulnerable protocol releases.</p>
 <p><img alt="bluetooth-timeline" src="../images/bluetooth-timeline.png" /></p>
 <h3 id="wifi">WiFi<a class="headerlink" href="#wifi" title="Permanent link">&para;</a></h3>
-<p>A similar discussion applies to the WiFi standard, which has been used in ICS for years to manage mobile parts. Regarding security, in just under 20 years, we've seen four standards (WEP, WPA, WPA2, WPA3) successively introduced to address security issues.</p>
-<p>Today, it's quite common to find ICS systems based on WEP, where the WiFi network is an extension of the wired field network.</p>
+<p>A similar discussion applies to WiFi, which has been used in ICS for years to manage mobile parts. In just under 20 years, four security standards (WEP, WPA, WPA2 and WPA3) were introduced one after the other to address security issues.</p>
+<p>Today, it is quite common to find ICS systems based on WEP, where the WiFi network is an extension of the wired field network.</p>
 <p><img alt="wifi-timeline" src="../images/wifi-timeline.png" /></p>
 <h3 id="hmi">HMI<a class="headerlink" href="#hmi" title="Permanent link">&para;</a></h3>
-<p>Even today, almost all HMI systems I encounter are based on Microsoft Windows. Starting from Windows XP, we've seen 6 different versions over 23 years, approximately one every 4 years. As before, it's equally easy to find ICS/OT systems still running on Windows XP.</p>
+<p>Even today, almost all the HMI systems I encounter are based on Microsoft Windows. Starting from Windows XP, we have seen 6 different versions in 23 years, roughly one every 4 years. It is just as easy to find ICS/OT systems still running Windows XP.</p>
 <p><img alt="windows-timeline" src="../images/windows-timeline.png" /></p>
-<p>And as recent history has shown, there are systems with even older versions, released more than 30 years ago, and just because they're old doesn't <a href="https://www.reddit.com/r/windows/comments/1e82xds/windows_31_saves_the_day_during_crowdstrike/">necessarily mean they need to be replaced</a>.</p>
-<p>On the other hand, with Ubuntu, which I see fairly widespread, an LTS has a <a href="https://ubuntu.com/about/release-cycle">lifespan of about 5 years</a>. Considering that no development is aligned with the latest release, we can assume that a system around 3 years old is already out of support. This doesn't just impact ICS systems but typically OT and IoT systems as well.</p>
+<p>As recent history has shown, some systems run even older versions, released more than 30 years ago, and being old <a href="https://www.reddit.com/r/windows/comments/1e82xds/windows_31_saves_the_day_during_crowdstrike/">does not necessarily mean they need to be replaced</a>.</p>
+<p>Ubuntu is fairly widespread too, and an LTS release has a <a href="https://ubuntu.com/about/release-cycle">lifespan of about 5 years</a>. Since no development is aligned with the latest release, a system that is around 3 years old is already out of support. This affects not only ICS but typically OT and IoT systems as well.</p>
 <h2 id="vulnerability-management">Vulnerability Management<a class="headerlink" href="#vulnerability-management" title="Permanent link">&para;</a></h2>
-<p>Managing vulnerabilities doesn't necessarily mean updating. It means managing risk, which can be done by implementing additional security measures to reduce it.</p>
-<p>When conducting vulnerability assessments, I generally advise against doing so on ICS/OT parts. Here's why:</p>
+<p>Managing vulnerabilities does not necessarily mean updating. It means managing risk, which we can do by implementing additional security measures.</p>
+<p>I generally advise against running vulnerability assessments on ICS/OT components. Here is why:</p>
 <ol>
-<li>ICS/OT systems are extremely fragile, and it's highly likely (I'd say certain) that a VA activity would negatively impact the systems.</li>
-<li>ICS/OT systems are generally untouchable. This means that even if vulnerabilities are found, they can't be mitigated through updates or EDR.</li>
-<li>As mentioned, ICS/OT systems have a long lifespan, so it's likely (again, I'd say certain) that we'll find vulnerabilities due to obsolete systems.</li>
+<li>ICS/OT systems are extremely fragile, and it is highly likely (I would say certain) that a VA activity will negatively impact them.</li>
+<li>ICS/OT systems are generally untouchable. Even if we find vulnerabilities, we cannot mitigate them with updates or EDR.</li>
+<li>As mentioned, ICS/OT systems have a long lifespan, so we will almost certainly find vulnerabilities due to obsolete systems.</li>
 </ol>
-<p>The point I want to make is that in ICS/OT environments, it's almost certain that there will be severe, unpatchable vulnerabilities. Based on this assumption (which, in my experience, has always been true), we can develop our strategy.</p>
-<p>In the IoT world, we can draw similar conclusions, with one complication: IoT systems are generally directly connected to the Internet, with all the associated consequences.</p>
+<p>The point is that in ICS/OT environments there will almost certainly be severe, unpatchable vulnerabilities. In my experience this assumption has always held, and we can build our strategy on it.</p>
+<p>In the IoT world we can draw similar conclusions, with one complication: IoT systems are generally connected directly to the Internet, with all the consequences that follow.</p>
 <h2 id="defense-strategies">Defense Strategies<a class="headerlink" href="#defense-strategies" title="Permanent link">&para;</a></h2>
-<p>We've established that ICS/OT systems are vulnerable and unpatchable. In our vulnerability management plan, we can't rely on patching. Instead, we need to build a series of layers to adequately reduce risk.</p>
-<p>First, I'd start with the so-called Purdue model, which provides a foundation for correctly approaching the problem. Generally, there should be no direct traffic from OT networks to IT/Internet networks and vice versa. The conditional "should" is necessary because, in my experience, the Purdue model is often not applicable today. I often find ICS/OT systems that have (contractual, not technical) requirements for direct Internet access.</p>
+<p>We have established that ICS/OT systems are vulnerable and unpatchable. Our <a href="../../vulnerability-management/vulnerability-management/">vulnerability management</a> plan cannot rely on patching. Instead, we need to build a series of layers that reduce risk adequately.</p>
+<p>I start from the so-called Purdue model, which gives us a foundation for approaching the problem correctly. In general, there should be no direct traffic from OT networks to IT/Internet networks and vice versa. I say "should" because, in my experience, the Purdue model is often not applicable today. I often find ICS/OT systems with contractual (not technical) requirements for direct Internet access.</p>
 <p><img alt="purdue-model-1" src="../images/purdue-model-1.png" /></p>
-<p>My approach today is to create a particularly stringent security perimeter around the ICS/OT environment, inspired by the concept of ZTA (Zero Trust Architecture). Specifically, a combination of firewalls and IDS allows me to control access to ICS/OT systems and monitor any anomalies within the networks. It may sound simple, but consider that:</p>
+<p>My approach today is to create a particularly stringent security perimeter around the ICS/OT environment, inspired by the concept of ZTA (Zero Trust Architecture). A combination of firewalls and IDS lets me control access to ICS/OT systems and monitor anomalies within the networks. It may sound simple, but consider that:</p>
 <ul>
-<li>Many ICS/OT systems reside together on large networks (I've seen thousands of IPs on a single 10.0.0.0/8 network).</li>
-<li>What we see isn't necessarily what's there (there are numerous 3/4/5G gateways implementing an independent, invisible Internet access point directly into the ICS/OT network).</li>
-<li>In many environments, VPN terminators are installed by contract, enabling remote assistance (and, once identified, these might be the lesser evil).</li>
+<li>Many ICS/OT systems reside together on large networks (I have seen thousands of IPs on a single 10.0.0.0/8 network).</li>
+<li>What we see is not necessarily what is there: numerous 3G/4G/5G gateways implement an independent, invisible Internet access point directly into the ICS/OT network.</li>
+<li>In many environments, VPN terminators are installed by contract to enable remote assistance (and, once identified, these might be the lesser evil).</li>
 </ul>
-<p>ICS/OT security, therefore, involves an assessment to understand how chaotic the situation is and what possible paths exist.</p>
+<p>ICS/OT security, therefore, starts with an assessment to understand how chaotic the situation is and which paths exist.</p>
 <h2 id="network-segmentation">Network Segmentation<a class="headerlink" href="#network-segmentation" title="Permanent link">&para;</a></h2>
-<p>We've seen some critical aspects to consider within a proper security strategy. One, in particular, deserves further discussion, though in most cases, it's not feasible.</p>
-<p>We've seen that ICS/OT systems within a company often reside on a single, large network. This means that compromising a single component exposes all systems to the same risk. We also know that ICS/OT systems are untouchable, and changing the addressing scheme isn't an option. In this case, technologies that allow transparent segmentation of L2 networks can help. Personally, I've had experience with the <a href="../../../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">VLAN Insertion</a> feature offered by Palo Alto Networks. Different vendors have similar implementations with the same goal: to segment/micro-segment an L2 network transparently.</p>
-<p>The reason I consider this security measure impractical is that the production world is often under the responsibility of the OT Manager, who comes from the OT world, not IT. I notice a certain skepticism, if not fear, when "IT technologies" are proposed in the OT world. The result is that the OT Manager opposes and shifts responsibility for any production downtime to those who alter the topology.</p>
-<p>In some cases, I've seen people sit down and seek a compromise that satisfies all parties, but in many cases, no one wants to take the risk of changing the status quo, and everything remains the same.</p>
+<p>We have seen some critical aspects of a proper security strategy. One of them deserves further discussion, even though in most cases it is not feasible.</p>
+<p>ICS/OT systems within a company often reside on a single, large network. Compromising one component exposes all systems to the same risk. We also know that ICS/OT systems are untouchable, so changing the addressing scheme is not an option. In this case, technologies that segment L2 networks transparently can help. Personally, I have experience with the <a href="../../../ot-ics/201industrial-network-segmentation-with-vlan-insertion/industrial-network-segmentation-with-vlan-insertion/">VLAN Insertion</a> feature offered by Palo Alto Networks. Other vendors have similar implementations with the same goal: segmenting or micro-segmenting an L2 network transparently.</p>
+<p>I consider this measure impractical in most cases because the production world is often the responsibility of an OT Manager who comes from the OT world, not from IT. I notice a certain skepticism, if not fear, when "IT technologies" are proposed in OT. The OT Manager opposes the change and shifts the responsibility for any production downtime onto whoever alters the topology.</p>
+<p>In some cases, I have seen people sit down and look for a compromise that satisfies everyone. In many cases, however, nobody wants to take the risk of changing the status quo, and everything stays the same.</p>
 <h2 id="network-access">Network Access<a class="headerlink" href="#network-access" title="Permanent link">&para;</a></h2>
-<p>Previously, we discussed how to segment ICS networks to reduce the impact in case of a breach. Now, let's touch on a topic that is both trendy and delicate. The idea behind NAC solutions is to enable network access for permitted devices while keeping out all others. However, there are some important considerations to keep in mind:</p>
+<p>We discussed how to segment ICS networks to reduce the impact of a breach. Now let's touch on a topic that is both trendy and delicate. The idea behind <a href="../../../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">NAC</a> solutions is to enable network access for permitted devices while keeping out all the others. There are some important considerations to keep in mind:</p>
 <ul>
-<li>The fact that a device is allowed access does not reduce the possibility of it being compromised;</li>
-<li>Today's NAC solutions rely on the 802.1x protocol and a series of compromises when this protocol cannot be used.</li>
+<li>A device that is allowed access can still be compromised.</li>
+<li>Today's NAC solutions rely on the 802.1x protocol, plus a series of compromises when this protocol cannot be used.</li>
 </ul>
-<p>In the ICS world, most devices (if not all) do not support 802.1x, which necessitates compromises such as MAB (MAC Authentication Bypass). Additionally, it is important to consider the risk posed by "silent" devices, those that tend to receive traffic more than send it. "Silent" devices might require further compromises.</p>
-<p>I am not demonizing NAC solutions, but I would like to emphasize that security is built in layers, and NAC solutions are just one layer. Like any security measure, they come with their own impacts. You can find more reflections on this topic in the "802.1x bypass" episode of the <a href="https://www.spreaker.com/podcast/info-sec-unplugged--6025156">podcast</a> I host with <a href="https://roccosicilia.com/">Rocco Sicilia</a>.</p>
+<p>In the ICS world, most devices (if not all) do not support 802.1x, which requires compromises such as MAB (MAC Authentication Bypass). We must also consider the risk posed by "silent" devices, those that receive traffic more than they send it, which might require further compromises.</p>
+<p>I am not demonizing NAC solutions, but I want to stress that security is built in layers, and NAC is just one layer. Like any security measure, it has its own impacts. You can find more reflections on this topic in the "802.1x bypass" episode of the <a href="https://www.spreaker.com/podcast/info-sec-unplugged--6025156">podcast</a> I host with <a href="https://roccosicilia.com/">Rocco Sicilia</a>.</p>
 <h2 id="code-security">Code Security<a class="headerlink" href="#code-security" title="Permanent link">&para;</a></h2>
-<p>Finally, I want to address a still very niche topic (unfortunately): the security of code in the context of PLCs. We know that some vulnerabilities related to PLCs are caused by how they are programmed. We can address this, or rather prevent it, by writing correct code. This is not my area of expertise, so I will leave you with the <a href="https://plc-security.com/">Top 20 Secure PLC Coding Practices</a> and encourage you to follow <a href="https://www.linkedin.com/in/sarah-fluchs/">Sarah Flucks</a> on LinkedIn.</p>
+<p>Finally, I want to address a topic that is still very niche, unfortunately: the security of code in the context of PLCs. Some PLC vulnerabilities are caused by how the PLCs are programmed. We can prevent them by writing correct code. This is not my area of expertise, so I leave you with the <a href="https://plc-security.com/">Top 20 Secure PLC Coding Practices</a> and encourage you to follow <a href="https://www.linkedin.com/in/sarah-fluchs/">Sarah Fluchs</a> on LinkedIn.</p>
 
 
 

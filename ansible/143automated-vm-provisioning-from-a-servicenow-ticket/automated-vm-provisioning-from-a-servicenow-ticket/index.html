@@ -544,11 +544,11 @@ Everything here is free. If it helps you, you can
 <li>Storing the access credentials securely in a password manager.</li>
 </ul>
 <p>The result is a VM that is remotely accessible, with the connection details delivered to the end user.</p>
-<p>If we also want a service catalog that lets users select additional software at provisioning time, it is worth defining a controlled set of options upfront. To minimize variability and complexity, I recommend mapping each option to a dedicated Ansible playbook that configures the freshly installed system. For example, we can define a <code>role</code> variable that accepts the following values:</p>
+<p>If we also want a service catalog that lets users select additional software at provisioning time, it is worth defining a controlled set of options upfront. To minimize variability and complexity, I recommend mapping each option to a dedicated Ansible <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbook</a> that configures the freshly installed system. For example, we can define a <code>role</code> variable that accepts the following values:</p>
 <ul>
 <li><code>undefined</code>: no post-installation customization.</li>
 <li><code>tomcat</code>: installs Apache + Tomcat.</li>
-<li><code>www</code>: installs Apache + PHP and pulls the website codebase from a Git repository.</li>
+<li><code>www</code>: installs Apache + PHP and pulls the website codebase from a <a href="../../../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">Git</a> repository.</li>
 </ul>
 <h2 id="servicenow-service-catalog">ServiceNow Service Catalog<a class="headerlink" href="#servicenow-service-catalog" title="Permanent link">&para;</a></h2>
 <p>On the development instance, a Technical Catalog should already be present under <code>Service Catalog</code> → <code>Catalog Definitions</code> → <code>Maintain Catalogs</code>, and within it a catalog item named <code>VM Provisioning</code>.</p>
@@ -556,7 +556,7 @@ Everything here is free. If it helps you, you can
 <p>The catalog item exposes three input variables to the end user.</p>
 <p><img alt="catalog-variables" src="../images/catalog-variables.png" /></p>
 <h2 id="serving-tickets">Serving Tickets<a class="headerlink" href="#serving-tickets" title="Permanent link">&para;</a></h2>
-<p>We reuse the Python polling script introduced in the previous article (available in the <a href="https://github.com/dainok/courses/tree/master/Various/ServiceNow">GitHub repository</a>). Following the same pattern, the script retrieves the values of the RITM, normalizes them and passes them as parameters to the Ansible playbook.</p>
+<p>We reuse the Python polling script introduced in the <a href="../../142servicenow-poll-based-request-processing/servicenow-poll-based-request-processing/">previous article</a> (available in the <a href="https://github.com/dainok/courses/tree/master/Various/ServiceNow">GitHub repository</a>). Following the same pattern, the script retrieves the values of the RITM, normalizes them and passes them as parameters to the Ansible playbook.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Mark ticket as WIP</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">update_ritm</span><span class="p">(</span><span class="n">sys_id</span><span class="p">,</span> <span class="s2">"work_in_progress"</span><span class="p">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -644,7 +644,7 @@ Everything here is free. If it helps you, you can
 <p>All the configuration files are available in the <a href="https://github.com/dainok/courses/tree/master/Various/ServiceNow/cloud-init">GitHub repository</a>.</p>
 <p><strong>Note on VM templates:</strong> if we prefer to clone from a template instead of booting from an ISO, we must make sure that the provisioning process regenerates all the unique identifiers, in particular the SSH host keys and the machine ID, before the VM is handed over.</p>
 <h2 id="ansible-playbook-and-configuration">Ansible Playbook and Configuration<a class="headerlink" href="#ansible-playbook-and-configuration" title="Permanent link">&para;</a></h2>
-<p>Start by adding the vCenter to the Ansible inventory.</p>
+<p>Start by adding the vCenter to the Ansible <a href="../../104ansible-inventory/ansible-inventory/">inventory</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">[vcenter]</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">vcenter.example.com</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
@@ -660,7 +660,7 @@ Everything here is free. If it helps you, you can
 </code></pre></div>
 <p>The playbook performs three main tasks:</p>
 <ol>
-<li><strong>Create the VM</strong>, using a module of the official <code>vmware.vmware</code> collection.</li>
+<li><strong>Create the VM</strong>, using a module of the official <code>vmware.vmware</code> <a href="../../136ansible-galaxy/ansible-galaxy/">collection</a>.</li>
 <li><strong>Power on the VM</strong> and boot from the ISO, using the same collection.</li>
 <li><strong>Wait for the installation to complete</strong>, using a module of the <code>community.vmware</code> collection that can run commands through VMware Tools.</li>
 </ol>

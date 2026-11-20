@@ -457,6 +457,20 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:firewall" class="md-tag">firewall</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:netmiko" class="md-tag">netmiko</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:palo-alto-networks" class="md-tag">palo-alto-networks</a>
       
     
@@ -466,7 +480,7 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-06-14">14 June 2025</time></span></p>
 <h1 id="automating-palo-alto-firewall-via-cli">Automating Palo Alto Firewall via CLI<a class="headerlink" href="#automating-palo-alto-firewall-via-cli" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:firewall">firewall</a> <a class="md-tag" href="../../../tags/#tag:netmiko">netmiko</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/paloalto-strata.png" /></p>
 <p>The first method we discuss is screen scraping, a topic already covered in previous posts. We use screen scraping to automate devices that are designed to be managed via CLI and have no APIs that cover all the scenarios we are interested in. It is commonly used with network devices.</p>
 <p>As we will see, Palo Alto Networks firewalls offer XML-based APIs that make screen scraping less attractive, except in very specific cases.</p>
@@ -483,7 +497,7 @@ Everything here is free. If it helps you, you can
 <ul>
 <li>It defines the data needed to connect to the device.</li>
 <li>It defines the command to execute.</li>
-<li>It connects to the device, sends the command and uses NTC Templates to structure the output.</li>
+<li>It connects to the device, sends the command and uses <a href="../../../fundamentals/204contributing-to-ntc-templates-with-git-and-github/contributing-to-ntc-templates-with-git-and-github/">NTC Templates</a> to structure the output.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">device</span> <span class="o">=</span> <span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">"device_type"</span><span class="p">:</span> <span class="s2">"paloalto_panos"</span><span class="p">,</span>

@@ -497,7 +497,21 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:ci-cd" class="md-tag">ci-cd</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:fundamentals" class="md-tag">fundamentals</a>
       
     
       
@@ -514,20 +528,27 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:gitlab" class="md-tag">gitlab</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:iac" class="md-tag">iac</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2026-02-01">01 February 2026</time></span></p>
 <h1 id="designing-a-gitlab-cicd-pipeline-for-iac">Designing a GitLab CI/CD pipeline for IaC<a class="headerlink" href="#designing-a-gitlab-cicd-pipeline-for-iac" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:git">git</a> <a class="md-tag" href="../../../tags/#tag:gitlab">gitlab</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:aci">aci</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ci-cd">ci-cd</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:fundamentals">fundamentals</a> <a class="md-tag" href="../../../tags/#tag:git">git</a> <a class="md-tag" href="../../../tags/#tag:gitlab">gitlab</a> <a class="md-tag" href="../../../tags/#tag:iac">iac</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/gitlab.png" /></p>
 <p>Our CI/CD process is defined in GitLab by the <code>.gitlab-ci.yml</code> file, located in the root of our repository.</p>
 <p>As mentioned earlier, a pipeline is triggered on every commit to validate the code. Specifically, it performs the following checks:</p>
 <ul>
 <li>Formatting of all the files (linting).</li>
 <li>Syntax and consistency of our infrastructure files (CSV files).</li>
-<li>Creation of the infrastructure change plan (build and Terraform plan).</li>
+<li>Creation of the infrastructure change plan (build and <a href="../../../cisco/125importing-nac-objects-from-cisco-aci-into-terraform/importing-nac-objects-from-cisco-aci-into-terraform/">Terraform</a> plan).</li>
 </ul>
 <p>At this point, the user can create a Merge Request (MR), which is approved after a manual review.</p>
 <p>After the approval, a second pipeline is triggered to apply the changes to the infrastructure.</p>
@@ -611,7 +632,7 @@ Everything here is free. If it helps you, you can
 </ul>
 <p>In this example, we use the merge as the boundary between validation and application. Other variations are possible, for example by using the <code>when</code> option to define additional control points.</p>
 <h2 id="multiple-infrastructures">Multiple Infrastructures<a class="headerlink" href="#multiple-infrastructures" title="Permanent link">&para;</a></h2>
-<p>In my case, the infrastructure consists of Cisco NDO, Cisco ACI, Cisco Intersight (UCS) and VMware vSphere. The complete pipeline defines plan and apply jobs for each site and for each environment:</p>
+<p>In my case, the infrastructure consists of Cisco <a href="../../../cisco/111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/">NDO</a>, Cisco ACI, Cisco Intersight (UCS) and VMware vSphere. The complete pipeline defines plan and apply jobs for each site and for each environment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">stages</span><span class="p">:</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">plan</span>

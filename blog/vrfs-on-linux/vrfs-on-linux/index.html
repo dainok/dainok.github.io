@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#set-fib-rules" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set FIB rules
+        Set FIB Rules
       
     </span>
   </a>
@@ -453,7 +453,7 @@ Everything here is free. If it helps you, you can
   <a href="#ip-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IP configuration
+        IP Configuration
       
     </span>
   </a>
@@ -464,7 +464,7 @@ Everything here is free. If it helps you, you can
   <a href="#connectivity-test" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connectivity test
+        Connectivity Test
       
     </span>
   </a>
@@ -475,7 +475,7 @@ Everything here is free. If it helps you, you can
   <a href="#current-limits" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current limits
+        Current Limits
       
     </span>
   </a>
@@ -523,6 +523,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:linux" class="md-tag">linux</a>
       
     
@@ -532,13 +539,13 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2016-11-29">29 November 2016</time></span></p>
 <h1 id="vrfs-on-linux">VRFs on Linux<a class="headerlink" href="#vrfs-on-linux" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/linux.png" /></p>
-<p>VRF (Virtual Routing and Forwarding) allows having multiple and separated routing tables on the same system.</p>
-<p>On Linux, VRF support has been started on 4.3 kernels. Ubuntu 16.04 brings 4.4 kernels but mind that 4.5 kernels have some important patches too.</p>
-<p>This post will show how to create two different VRFs, one dedicated to a virtual bridge. On each virtual bridge, a virtual router is running. The VM used for the tests below is a Ubuntu 16,.04 installed with EVE-NG.</p>
+<p>VRF (Virtual Routing and Forwarding) allows multiple, separate routing tables on the same system.</p>
+<p>On Linux, VRF support started with the 4.3 kernels. Ubuntu 16.04 ships a 4.4 kernel, but note that the 4.5 kernels have some important patches too.</p>
+<p>This post shows how to create two different VRFs, each dedicated to a virtual bridge. A virtual router runs on each virtual bridge. The VM used for the tests below is an Ubuntu 16.04 installed with <a href="../../../eve-ng/101introduction-to-eve-ng-platform/introduction-to-eve-ng-platform/">EVE-NG</a>.</p>
 <h2 id="create-a-vrf">Create a VRF<a class="headerlink" href="#create-a-vrf" title="Permanent link">&para;</a></h2>
-<p>Two VRFs will be created:</p>
+<p>We create two VRFs:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>red<span class="w"> </span><span class="nb">type</span><span class="w"> </span>vrf<span class="w"> </span>table<span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>green<span class="w"> </span><span class="nb">type</span><span class="w"> </span>vrf<span class="w"> </span>table<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
@@ -551,7 +558,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>green<span class="w">            </span>UNKNOWN<span class="w">        </span>8e:b6:6f:25:64:10<span class="w"> </span>&lt;NOARP,MASTER,UP,LOWER_UP&gt;
 </code></pre></div>
 <h2 id="assign-a-network-interface-to-a-vrf">Assign a Network Interface to a VRF<a class="headerlink" href="#assign-a-network-interface-to-a-vrf" title="Permanent link">&para;</a></h2>
-<p>An EVE-NG switch will be assigned to each VRF:</p>
+<p>We assign an EVE-NG switch to each VRF:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>vnet0_1<span class="w"> </span>master<span class="w"> </span>red
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>vnet0_2<span class="w"> </span>master<span class="w"> </span>green
 </code></pre></div>
@@ -562,8 +569,8 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="m">8</span>:<span class="w"> </span>vnet0_2:<span class="w"> </span>&lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt;<span class="w"> </span>mtu<span class="w"> </span><span class="m">9000</span><span class="w"> </span>qdisc<span class="w"> </span>noqueue<span class="w"> </span>master<span class="w"> </span>green<span class="w"> </span>state<span class="w"> </span>UP<span class="w"> </span>mode<span class="w"> </span>DEFAULT<span class="w"> </span>group<span class="w"> </span>default<span class="w"> </span>qlen<span class="w"> </span><span class="m">1000</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span>link/ether<span class="w"> </span>0a:9d:e0:76:8b:84<span class="w"> </span>brd<span class="w"> </span>ff:ff:ff:ff:ff:ff
 </code></pre></div>
-<h2 id="set-fib-rules">Set FIB rules<a class="headerlink" href="#set-fib-rules" title="Permanent link">&para;</a></h2>
-<p>Prior to the v4.8 kernel, some additional rules must be added to properly forward traffic on interfaces:</p>
+<h2 id="set-fib-rules">Set FIB Rules<a class="headerlink" href="#set-fib-rules" title="Permanent link">&para;</a></h2>
+<p>Before kernel v4.8, we must add some additional rules to forward traffic on the interfaces properly:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ip<span class="w"> </span>rule<span class="w"> </span>add<span class="w"> </span>iif<span class="w"> </span>red<span class="w"> </span>table<span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ip<span class="w"> </span>rule<span class="w"> </span>add<span class="w"> </span>oif<span class="w"> </span>red<span class="w"> </span>table<span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>ip<span class="w"> </span>rule<span class="w"> </span>add<span class="w"> </span>iif<span class="w"> </span>green<span class="w"> </span>table<span class="w"> </span><span class="m">2</span>
@@ -578,18 +585,18 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="m">32766</span>:<span class="w">  </span>from<span class="w"> </span>all<span class="w"> </span>lookup<span class="w"> </span>main
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="m">32767</span>:<span class="w">  </span>from<span class="w"> </span>all<span class="w"> </span>lookup<span class="w"> </span>default
 </code></pre></div>
-<h2 id="ip-configuration">IP configuration<a class="headerlink" href="#ip-configuration" title="Permanent link">&para;</a></h2>
-<p>An IP address and a default route will be assigned to each virtual bridge and VRF:</p>
+<h2 id="ip-configuration">IP Configuration<a class="headerlink" href="#ip-configuration" title="Permanent link">&para;</a></h2>
+<p>We assign an IP address and a default route to each virtual bridge and VRF:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">10</span>.254.0.1/24<span class="w"> </span>dev<span class="w"> </span>vnet0_1
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">10</span>.254.0.1/24<span class="w"> </span>dev<span class="w"> </span>vnet0_2
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span><span class="m">0</span>.0.0.0/0<span class="w"> </span>via<span class="w"> </span><span class="m">10</span>.254.0.2<span class="w"> </span>table<span class="w"> </span><span class="m">1</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>ip<span class="w"> </span>route<span class="w"> </span>add<span class="w"> </span><span class="m">0</span>.0.0.0/0<span class="w"> </span>via<span class="w"> </span><span class="m">10</span>.254.0.2<span class="w"> </span>table<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
-<h2 id="connectivity-test">Connectivity test<a class="headerlink" href="#connectivity-test" title="Permanent link">&para;</a></h2>
-<p>Both virtual routers connected to virtual bridges are configured as follows:</p>
+<h2 id="connectivity-test">Connectivity Test<a class="headerlink" href="#connectivity-test" title="Permanent link">&para;</a></h2>
+<p>Both virtual routers connected to the virtual bridges are configured as follows:</p>
 <ul>
-<li>R1: e0/0:10.254.0.2/24 lo0:1.1.1.1/32</li>
-<li>R2: e0/0:10.254.0.2/24 lo0:2.2.2.2/32</li>
+<li>R1: <code>e0/0</code> 10.254.0.2/24, <code>lo0</code> 1.1.1.1/32.</li>
+<li>R2: <code>e0/0</code> 10.254.0.2/24, <code>lo0</code> 2.2.2.2/32.</li>
 </ul>
 <p>Remember to bind <code>ping</code> (and <code>traceroute</code>) to an interface assigned to the VRF:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>ping<span class="w"> </span>-I<span class="w"> </span>vnet0_1<span class="w"> </span>-c5<span class="w"> </span><span class="m">10</span>.254.0.2
@@ -602,7 +609,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">10</span>.254.0.2:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">255</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.649<span class="w"> </span>ms
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="o">[</span>...<span class="o">]</span>
 </code></pre></div>
-<p>Local networks are reachable, now test the routing:</p>
+<p>The local networks are reachable. Now let's test the routing:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>ping<span class="w"> </span>-I<span class="w"> </span>vnet0_1<span class="w"> </span>-c5<span class="w"> </span><span class="m">1</span>.1.1.1
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>PING<span class="w"> </span><span class="m">1</span>.1.1.1<span class="w"> </span><span class="o">(</span><span class="m">1</span>.1.1.1<span class="o">)</span><span class="w"> </span>from<span class="w"> </span><span class="m">10</span>.254.0.1<span class="w"> </span>vnet0_1:<span class="w"> </span><span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span><span class="w"> </span>bytes<span class="w"> </span>of<span class="w"> </span>data.
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">1</span>.1.1.1:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">255</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.649<span class="w"> </span>ms
@@ -613,13 +620,13 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="m">64</span><span class="w"> </span>bytes<span class="w"> </span>from<span class="w"> </span><span class="m">2</span>.2.2.2:<span class="w"> </span><span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">ttl</span><span class="o">=</span><span class="m">255</span><span class="w"> </span><span class="nv">time</span><span class="o">=</span><span class="m">0</span>.452<span class="w"> </span>ms
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="o">[</span>...<span class="o">]</span>
 </code></pre></div>
-<h2 id="current-limits">Current limits<a class="headerlink" href="#current-limits" title="Permanent link">&para;</a></h2>
+<h2 id="current-limits">Current Limits<a class="headerlink" href="#current-limits" title="Permanent link">&para;</a></h2>
 <p>VRF support on Linux is quite new, so there are many limits:</p>
 <ul>
-<li>most of the applications cannot be VRF aware, even if local services can listen at all VRF (<code>sysctl -w net.ipv4.tcp_l3mdev_accept=1</code> with 4.5 kernels);</li>
-<li>there is no way to start a client command (<code>telnet</code>, <code>ftp</code>, <code>ssh</code>, ...) using a specific VRF.</li>
+<li>Most applications cannot be VRF-aware, even if local services can listen on all VRFs (<code>sysctl -w net.ipv4.tcp_l3mdev_accept=1</code> with 4.5 kernels).</li>
+<li>There is no way to start a client command (<code>telnet</code>, <code>ftp</code>, <code>ssh</code>, ...) in a specific VRF.</li>
 </ul>
-<p>Edit: currently a command can be executed and "attached" to a specific VRF using: <code>ip vrf exec blue ping 8.8.8.8</code></p>
+<p>Edit: we can now execute a command "attached" to a specific VRF with <code>ip vrf exec blue ping 8.8.8.8</code>.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.kernel.org/networking/vrf.html" title="Virtual Routing and Forwarding (VRF)">Virtual Routing and Forwarding (VRF)</a></li>

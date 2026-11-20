@@ -456,49 +456,49 @@ Everything here is free. If it helps you, you can
 <h1 id="creating-templates-for-proxmox">Creating templates for Proxmox<a class="headerlink" href="#creating-templates-for-proxmox" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/proxmox.png" /></p>
-<p>Let's prepare templates to generate nodes for our labs. We'll start with <a href="https://vyos.io/">VyOS</a>, an open-source router and firewall. VyOS is available as a <a href="https://support.vyos.io/support/solutions/articles/103000099218-rolling-release">rolling release</a> and can be downloaded from <a href="https://github.com/vyos/vyos-rolling-nightly-builds/releases">GitHub</a> in ISO format. In this example, we'll use the <code>vyos-1.5-rolling-202407171706-amd64.iso</code> image, downloaded to <strong>/usr/src</strong> on a Proxmox host.</p>
-<p>The <a href="https://docs.vyos.io/en/latest/installation/virtual/proxmox.html">official documentation</a> guides us on creating a VyOS node on Proxmox. We'll go through the steps to create a VyOS template and a basic lab with two interconnected VyOS nodes.</p>
-<p>On my Proxmox host, I've added an external disk named <code>unetlab</code> for storing ISO images:</p>
+<p>Let's prepare the templates that generate the nodes of our labs. We start with <a href="https://vyos.io/">VyOS</a>, an open-source router and firewall. VyOS is available as a <a href="https://support.vyos.io/support/solutions/articles/103000099218-rolling-release">rolling release</a> and can be downloaded in ISO format from <a href="https://github.com/vyos/vyos-rolling-nightly-builds/releases">GitHub</a>. In this example, we use the <code>vyos-1.5-rolling-202407171706-amd64.iso</code> image, downloaded to <code>/usr/src</code> on a Proxmox host.</p>
+<p>The <a href="https://docs.vyos.io/en/latest/installation/virtual/proxmox.html">official documentation</a> guides us through creating a VyOS node on Proxmox. We go through the steps to create a VyOS template and a basic lab with two interconnected VyOS nodes.</p>
+<p>On my Proxmox host, I added an external disk named <code>unetlab</code> to store the ISO images:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/nodes/proxmox1/storage
 </code></pre></div>
 <p><img alt="pvesh-storage-output" src="../images/pvesh-storage-output.png" /></p>
-<p><code>pvesh</code> is the CLI for using Proxmox's REST APIs. Learning to use it now will simplify our future interactions with Proxmox hosts via API.</p>
-<p>Referencing the <a href="https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/upload">Proxmox documentation</a>, we find the required location for the ISO file. Copy the downloaded file and import it:</p>
+<p><code>pvesh</code> is the CLI for the Proxmox REST APIs. Learning it now simplifies our future interactions with Proxmox hosts via API.</p>
+<p>The <a href="https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/upload">Proxmox documentation</a> tells us the required location for the ISO file. We copy the downloaded file and import it:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cp<span class="w"> </span>/usr/src/vyos-1.5-rolling-202407171706-amd64.iso<span class="w"> </span>/var/tmp/pveupload-0001
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/storage/unetlab/upload<span class="w"> </span>-content<span class="w"> </span>iso<span class="w"> </span>-filename<span class="w"> </span>vyos-1.5-rolling-202407171706-amd64.iso<span class="w"> </span>-tmpfilename<span class="w"> </span>/var/tmp/pveupload-0001
 </code></pre></div>
-<p>Verify the ISO file is available:</p>
+<p>We verify that the ISO file is available:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pvesh<span class="w"> </span>get<span class="w"> </span>/nodes/proxmox1/storage/unetlab/content
 </code></pre></div>
 <p><img alt="pvesh-content-output" src="../images/pvesh-content-output.png" /></p>
-<p>Next, create and configure the virtual machine to:</p>
+<p>Next, we create and configure the virtual machine so that it:</p>
 <ul>
-<li>Boot from the ISO image</li>
-<li>Have a dedicated management network interface</li>
+<li>Boots from the ISO image.</li>
+<li>Has a dedicated management network interface.</li>
 </ul>
-<p>Using parameters from the <a href="https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu">Proxmox documentation</a> and the <a href="https://docs.vyos.io/en/latest/installation/virtual/proxmox.html">VyOS documentation</a>:</p>
+<p>We use the parameters from the <a href="https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu">Proxmox documentation</a> and the <a href="https://docs.vyos.io/en/latest/installation/virtual/proxmox.html">VyOS documentation</a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu<span class="w"> </span>-tags<span class="w"> </span>unl,template<span class="w"> </span>-name<span class="w"> </span>template-vyos-vyos-202407171706<span class="w"> </span>-vmid<span class="w"> </span><span class="m">9001</span><span class="w"> </span>-cpu<span class="w"> </span>host<span class="w"> </span>-socket<span class="w"> </span><span class="m">1</span><span class="w"> </span>-cores<span class="w"> </span><span class="m">1</span><span class="w"> </span>-memory<span class="w"> </span><span class="m">2048</span><span class="w"> </span>-scsihw<span class="w"> </span>virtio-scsi-single<span class="w"> </span>-scsi0<span class="w"> </span>unetlab:2<span class="w"> </span>-net0<span class="w"> </span>virtio,bridge<span class="o">=</span>vmbr0<span class="w"> </span>-serial0<span class="w"> </span>socket<span class="w"> </span>-ostype<span class="w"> </span>other<span class="w"> </span>-cdrom<span class="w"> </span>unetlab:iso/vyos-1.5-rolling-202407171706-amd64.iso
 </code></pre></div>
-<p>We have established a naming and tagging standard for our Proxmox templates: each template will have a prefix, and every object will be tagged with <strong>unl</strong> and a specific tag relevant to the object.</p>
-<p>Start the node and configure it via CLI:</p>
+<p>We established a naming and tagging standard for our Proxmox templates: each template has a prefix, and every object is tagged with <code>unl</code> and a specific tag relevant to the object.</p>
+<p>We start the node and configure it via CLI:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/9001/status/start
 </code></pre></div>
-<p>Access the console via the web interface or CLI:</p>
+<p>We access the console via the web interface or the CLI:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>qm<span class="w"> </span>terminal<span class="w"> </span><span class="m">9001</span>
 </code></pre></div>
-<p>If the console is occupied, free it with:</p>
+<p>If the console is occupied, we free it with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>killall<span class="w"> </span>socat
 </code></pre></div>
-<p>Default credentials are:</p>
+<p>The default credentials are:</p>
 <ul>
-<li>Username: <code>vyos</code></li>
-<li>Password: <code>vyos</code></li>
+<li>Username: <code>vyos</code>.</li>
+<li>Password: <code>vyos</code>.</li>
 </ul>
-<p>Install the OS on the disk and reboot:</p>
+<p>We install the OS on the disk and reboot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>install<span class="w"> </span>image
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>reboot
 </code></pre></div>
-<p>Configure the device with a management VRF and a DHCP-configured interface:</p>
+<p>We configure the device with a management VRF and an interface configured via DHCP:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>configure
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>set vrf name mgmt
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>set vrf name mgmt table 100
@@ -508,16 +508,16 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>commit
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>save
 </code></pre></div>
-<p>We configure only one network interface now; additional interfaces will be added when creating nodes from the template. For VyOS, note that each interface is initially assigned a specific MAC address; to use a node as a template, we remove this association with <code>hw-id</code>.</p>
-<p>Exit the console and shut down the node:</p>
+<p>We configure only one network interface for now: additional interfaces are added when we create nodes from the template. In VyOS, each interface is initially assigned a specific MAC address. To use a node as a template, we remove this association with <code>hw-id</code>.</p>
+<p>We exit the console and shut down the node:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/9001/status/stop
 </code></pre></div>
-<p>Remove the no longer needed CD-ROM drive and convert the node to a template:</p>
+<p>We remove the CD-ROM drive, which is no longer needed, and convert the node to a template:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/nodes/proxmox1/qemu/9001/config<span class="w"> </span>-delete<span class="w"> </span>cdrom
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>pvesh<span class="w"> </span><span class="nb">set</span><span class="w"> </span>/nodes/proxmox1/qemu/9001/config<span class="w"> </span>-boot<span class="w"> </span><span class="nv">legacy</span><span class="o">=</span>c
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>pvesh<span class="w"> </span>create<span class="w"> </span>/nodes/proxmox1/qemu/9001/template
 </code></pre></div>
-<p>By following these steps, you've created a reusable VyOS template for Proxmox.</p>
+<p>With these steps, we created a reusable VyOS template for Proxmox.</p>
 
 
 

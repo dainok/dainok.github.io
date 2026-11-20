@@ -515,13 +515,20 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:ansible" class="md-tag">ansible</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:jinja2" class="md-tag">jinja2</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-09-16">16 September 2024</time></span></p>
 <h1 id="ansible-statements">Ansible statements<a class="headerlink" href="#ansible-statements" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:jinja2">jinja2</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
 <p>If you have some experience with programming languages, you might find the constructs of Ansible a bit clunky. Let's break them down with practical examples.</p>
 <h2 id="conditionals-if-then-else">Conditionals (if, then, else)<a class="headerlink" href="#conditionals-if-then-else" title="Permanent link">&para;</a></h2>
@@ -553,7 +560,7 @@ Everything here is free. If it helps you, you can
 <li>The type of a variable depends on the data it holds (Ansible uses weak typing).</li>
 <li>Jinja often produces strings, which may need to be converted.</li>
 <li>Ansible automatically converts strings into lists or dictionaries when needed.</li>
-<li>Before mathematical operations, convert variables explicitly with Jinja filters such as <code>| int</code> or <code>| float</code>.</li>
+<li>Before mathematical operations, convert variables explicitly with Jinja <a href="../../113ansible-parsers-and-filters/ansible-parsers-and-filters/">filters</a> such as <code>| int</code> or <code>| float</code>.</li>
 </ul>
 <p>The best approach is to always check how Ansible handles each case. You can use debug tools to inspect the type and the value of your variables:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ansible.builtin.debug</span><span class="p">:</span>
@@ -621,7 +628,7 @@ Everything here is free. If it helps you, you can
 </code></pre></div>
 <p>In this example, we run a (fictional) command until the output contains the word <code>ready</code>. The execution stops with an error after 5 failed attempts, with 10 seconds between attempts.</p>
 <h2 id="configuring-ntp-with-ios_config">Configuring NTP with ios_config<a class="headerlink" href="#configuring-ntp-with-ios_config" title="Permanent link">&para;</a></h2>
-<p>Let's see how to configure NTP peers with the <code>ios_config</code> module. Before writing the playbook, we review the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_config_module.html">official documentation</a> and think about how we would configure NTP peers manually. The typical process is:</p>
+<p>Let's see how to configure NTP peers with the <code>ios_config</code> module. Before writing the <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbook</a>, we review the <a href="https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_config_module.html">official documentation</a> and think about how we would configure NTP peers manually. The typical process is:</p>
 <ul>
 <li>Configure the NTP servers.</li>
 <li>Verify the NTP servers configured on the device.</li>

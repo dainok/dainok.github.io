@@ -556,6 +556,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:lab" class="md-tag">lab</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:unetlab" class="md-tag">unetlab</a>
       
     
@@ -565,18 +572,18 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-09-13">13 September 2024</time></span></p>
 <h1 id="lab-modeling-for-unetlab-v3">Lab modeling for UNetLab v3<a class="headerlink" href="#lab-modeling-for-unetlab-v3" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:lab">lab</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/unetlab.png" /></p>
-<p>We’ve run a series of field tests to check if the idea we’re working on is feasible and functional. The results are positive, the APIs support most of the key features (but not all).</p>
+<p>We ran a series of field tests to check whether the idea we are working on is feasible and functional. The results are positive: the APIs support most of the key features (but not all).</p>
 <p>Our next step is to define and model the data structure of the lab environment.</p>
-<p>One of UNetLab’s main issues was that users had to manually build a lab, node by node, setting up interfaces, addresses, and routing before getting a functional environment. We're addressing this by introducing two states:</p>
+<p>One of the main issues of UNetLab was that users had to build a lab manually, node by node, setting up interfaces, addresses and routing before getting a functional environment. We address this by introducing two states:</p>
 <ul>
-<li><strong>HLL (High Level Lab):</strong> A rough outline of the lab in terms of nodes, links, and features.</li>
-<li><strong>LLL (Low Level Lab):</strong> A detailed lab generated from the HLL.</li>
+<li><strong>HLL (High Level Lab):</strong> a rough outline of the lab in terms of nodes, links and features.</li>
+<li><strong>LLL (Low Level Lab):</strong> a detailed lab generated from the HLL.</li>
 </ul>
-<p>Below, we’ll describe the data structure. Full examples are available in the <a href="https://github.com/dainok/unetlab/tree/3.0.0-dev/unetlab/tests/labs">UNetLab repository</a>.</p>
+<p>Below, we describe the data structure. Full examples are available in the <a href="https://github.com/dainok/unetlab/tree/3.0.0-dev/unetlab/tests/labs">UNetLab repository</a>.</p>
 <h2 id="nodes-and-features">Nodes and Features<a class="headerlink" href="#nodes-and-features" title="Permanent link">&para;</a></h2>
-<p>Here’s an example with 4 VyOS nodes configured with Loopback and OSPF on all interfaces:</p>
+<p>Here is an example with 4 VyOS nodes configured with a loopback and OSPF on all interfaces:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">nodes</span><span class="p">:</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vyos-vyos</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">R</span>
@@ -585,9 +592,9 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loopback</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ospf:area=0</span>
 </code></pre></div>
-<p>Features reference specific Ansible playbooks that configure each node. Variables can be passed with <code>:</code>. The nodes will be named R1, R2, R3, and R4.</p>
+<p>Features reference specific <a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a> playbooks that configure each node. Variables can be passed with <code>:</code>. The nodes are named R1, R2, R3 and R4.</p>
 <h2 id="topology">Topology<a class="headerlink" href="#topology" title="Permanent link">&para;</a></h2>
-<p>The 4 nodes can be connected in a full-mesh:</p>
+<p>The 4 nodes can be connected in a full mesh:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">topologies</span><span class="p">:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">full-mesh</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">match</span><span class="p">:</span>
@@ -624,22 +631,22 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.0/8</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">mask</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
 </code></pre></div>
-<p>Addressing is configured on an interface-by-interface basis, using the first match. The subnet mask can be set either manually or automatically. In the latter case, the interfaces are assigned as follows:</p>
+<p>Addressing is configured interface by interface, using the first match. The subnet mask can be set manually or automatically. In the latter case, the interfaces are assigned as follows:</p>
 <ul>
-<li>Loopback interfaces get a <code>/32</code> subnet,</li>
-<li>Tunnel interfaces get a <code>/31</code> subnet,</li>
-<li>Ethernet interfaces get the smallest subnet needed to cover all connected hosts.</li>
+<li>Loopback interfaces get a <code>/32</code> subnet.</li>
+<li>Tunnel interfaces get a <code>/31</code> subnet.</li>
+<li>Ethernet interfaces get the smallest subnet needed to cover all the connected hosts.</li>
 </ul>
 <p>To keep it simple, network allocation follows a sequential order based on the first available segment.</p>
-<p>In the given example:</p>
+<p>In the example above:</p>
 <ul>
-<li>Loopback interfaces get an address starting from the <code>192.168.0.1/32</code> network,</li>
-<li>Ethernet interfaces get an address starting from the <code>10.0.0.0</code> network with the smallest mask required for all expected addresses.</li>
+<li>Loopback interfaces get an address starting from the <code>192.168.0.1/32</code> network.</li>
+<li>Ethernet interfaces get an address starting from the <code>10.0.0.0</code> network, with the smallest mask required for all the expected addresses.</li>
 </ul>
-<p>Additionally, interfaces not involved in the topology are disabled.</p>
+<p>Interfaces not involved in the topology are disabled.</p>
 <h2 id="from-hll-to-lll">From HLL to LLL<a class="headerlink" href="#from-hll-to-lll" title="Permanent link">&para;</a></h2>
-<p>Once the user has defined the HLL, they can confirm and generate the detailed topology (or LLL). Any changes made to the HLL will regenerate the LLL, overwriting any customizations. However, it will be possible to modify the LLL, which from this point on becomes the only relevant version.</p>
-<p>Here’s an example of what the LLL might look like:</p>
+<p>Once the user has defined the HLL, they can confirm it and generate the detailed topology (the LLL). Any change made to the HLL regenerates the LLL, overwriting any customizations. It will be possible to modify the LLL, which from that point on becomes the only relevant version.</p>
+<p>Here is an example of what the LLL might look like:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">lll</span><span class="p">:</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">groups</span><span class="p">:</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Nodes R (vyos-vyos)</span>
@@ -661,7 +668,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="nt">Ethernet3</span><span class="p">:</span>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">          </span><span class="nt">ipv4_address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.4/31</span>
 </code></pre></div>
-<p>Links could be generated like this:</p>
+<p>Links can be generated like this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">links</span><span class="p">:</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9E510FC0-B9D6-459E-9EF0-9113607D2502</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">R1:Ethernet1 - R2:Ethernet1</span>
@@ -672,27 +679,27 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="nt">interface</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ethernet1</span>
 </code></pre></div>
 <h2 id="customizations">Customizations<a class="headerlink" href="#customizations" title="Permanent link">&para;</a></h2>
-<p>Once the LLD has been generated, the user can customize it without altering the HLD, which is preserved for historical reasons.</p>
+<p>Once the LLL has been generated, the user can customize it without altering the HLL, which is preserved for historical reasons.</p>
 <p>Each node can be modified individually or through a group, with node-specific settings taking priority over group settings.</p>
-<p>Links can be customized in terms of bandwidth, delay, and packet drop.</p>
+<p>Links can be customized in terms of bandwidth, delay and packet drop.</p>
 <h2 id="management-network">Management Network<a class="headerlink" href="#management-network" title="Permanent link">&para;</a></h2>
-<p>The management network is mandatory: management interfaces are reserved and therefore not considered by the LLD.</p>
+<p>The management network is mandatory: management interfaces are reserved and therefore not considered by the LLL.</p>
 <h2 id="internet-connectivity">Internet Connectivity<a class="headerlink" href="#internet-connectivity" title="Permanent link">&para;</a></h2>
-<p>In this initial approach, we haven't included Internet connectivity. However, we can imagine a special node that, once connected to the topology, will enable Internet access.</p>
+<p>In this initial approach, we did not include Internet connectivity. We can imagine a special node that, once connected to the topology, enables Internet access.</p>
 <h2 id="lab-interconnection">Lab Interconnection<a class="headerlink" href="#lab-interconnection" title="Permanent link">&para;</a></h2>
-<p>In this first version, we haven't considered linking labs together. However, we can envision special <strong>shared</strong> links that allow multiple labs to interconnect.</p>
-<p>Since each link references a virtual network, once a virtual network is defined, it can be attached to all labs using its UUID.</p>
+<p>In this first version, we did not consider linking labs together. We can envision special <strong>shared</strong> links that allow multiple labs to interconnect.</p>
+<p>Since each link references a virtual network, once a virtual network is defined it can be attached to all labs using its UUID.</p>
 <h2 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h2>
-<p>Any metadata describing the lab will be grouped under a specific key:</p>
+<p>Any metadata describing the lab is grouped under a specific key:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">meta</span><span class="p">:</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Andrea Dainese</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test Lab 1</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">First test lab</span>
 </code></pre></div>
 <h2 id="working-on-a-lab">Working on a Lab<a class="headerlink" href="#working-on-a-lab" title="Permanent link">&para;</a></h2>
-<p>When a user wants to work on a specific lab (run or modify it), a copy with a unique UUID will be created. Depending on permissions, this copy can be read, modified, or executed. The user always works on the instance copy and never on the original.</p>
-<p>Based on permissions, the user can save the copy by either overwriting the original or saving it as a new copy. Users running a copy will not experience any changes unless they reload it from the original.</p>
-<p>Closing a lab essentially means deleting the instance copy and all associated files.</p>
+<p>When a user wants to work on a specific lab (run it or modify it), a copy with a unique UUID is created. Depending on the permissions, this copy can be read, modified or executed. The user always works on the instance copy and never on the original.</p>
+<p>Based on the permissions, the user can save the copy by overwriting the original or by saving it as a new copy. Users running a copy do not see any changes unless they reload it from the original.</p>
+<p>Closing a lab means deleting the instance copy and all the associated files.</p>
 <p>To make node names editable, each node is assigned a UUID. Interface names are static and depend on the node type (template).</p>
 
 

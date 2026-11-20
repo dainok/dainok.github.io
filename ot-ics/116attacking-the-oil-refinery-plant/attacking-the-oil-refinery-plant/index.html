@@ -545,7 +545,7 @@ Everything here is free. If it helps you, you can
 <h2 id="reconnaissance-phase">Reconnaissance Phase<a class="headerlink" href="#reconnaissance-phase" title="Permanent link">&para;</a></h2>
 <p>The Bottle Filling system operated automatically. The Oil Refinery, instead, requires the supervision of an operator who interacts with it via an HMI: in particular, the operator decides when to move from one processing phase to the next.</p>
 <p>We analyze how the PLC registers change while we interact with the HMI.</p>
-<p>For this purpose, I developed a small tool that continuously monitors the Modbus registers to determine which ones are in use. The tool is available in <a href="https://github.com/dainok/courses/tree/master/Various/Modbus%20tools">my GitHub repository</a>.</p>
+<p>For this purpose, I developed a small tool that continuously monitors the <a href="../../102introduction-to-modbus-protocol/introduction-to-modbus-protocol/">Modbus</a> registers to determine which ones are in use. The tool is available in <a href="https://github.com/dainok/courses/tree/master/Various/Modbus%20tools">my GitHub repository</a>.</p>
 <p>A real attack would be much more complex, because the attacker has no visual feedback from the HMI or from the system itself.</p>
 <p>To monitor the behavior of the PLC continuously, we run:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./modbus_monitor.py<span class="w"> </span>-i<span class="w"> </span><span class="m">172</span>.26.104.22<span class="w"> </span>-p<span class="w"> </span><span class="m">502</span><span class="w"> </span>-t<span class="w"> </span>holding

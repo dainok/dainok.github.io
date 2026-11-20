@@ -497,7 +497,7 @@ Everything here is free. If it helps you, you can
 <h1 id="patching-the-proxmox-kernel">Patching the Proxmox kernel<a class="headerlink" href="#patching-the-proxmox-kernel" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/proxmox.png" /></p>
-<p>Proxmox offers various constructs for building virtual networks. We'll focus on using bridges to emulate physical links, as we did in UNetLab v1.</p>
+<p>Proxmox offers various constructs for building virtual networks. We focus on bridges to emulate physical links, as we did in UNetLab v1.</p>
 <p>Linux bridges handle frames differently:</p>
 <ul>
 <li>Broadcast frames are forwarded to all ports.</li>
@@ -505,65 +505,52 @@ Everything here is free. If it helps you, you can
 <li>Peer-to-peer frames are not forwarded.</li>
 <li>All other frames are forwarded to all ports.</li>
 </ul>
-<p>Key files in the <a href="https://github.com/torvalds/linux/tree/master/net/bridge">Linux Kernel sources</a> are <code>br_input.c</code> and <code>br_sysfs_br.c</code>.</p>
-<p>In <code>br_input.c</code>, the <code>br_handle_frame</code> function decides whether to forward or discard frames based on the destination MAC address. Frames with destination <code>0x01</code> are always discarded. A <a href="https://interestingtraffic.nl/2017/11/21/an-oddly-specific-post-about-group_fwd_mask/">mask</a> called <code>fwd_mask</code> affects the function's outcome in some cases.</p>
-<p>We aim to introduce the mask concept for the <code>0x01</code> case as well.</p>
-<p>In <code>br_sysfs_br.c</code>, the <code>set_group_fwd_mask</code> function sometimes prevents evaluating the <code>group_fwd_mask</code>. We will modify this to always evaluate the mask.</p>
-<p>With a modified kernel, you can control the <code>/sys/class/net/vmbr1/bridge/group_fwd_mask</code> mask to enable or disable forwarding any packet. Our modified kernel allows values up to <code>65535</code>, forwarding any frame, achieving our goal.</p>
-<p>Proxmox offers various constructs for building virtual networks. We'll focus on using bridges to emulate physical links, as we did in UNetLab v1.</p>
-<p>Linux bridges handle frames differently:</p>
-<ul>
-<li>Broadcast frames are forwarded to all ports.</li>
-<li>Multicast frames are forwarded to a subset of ports.</li>
-<li>Peer-to-peer frames are not forwarded.</li>
-<li>All other frames are forwarded to all ports.</li>
-</ul>
-<p>Key files in the <a href="https://github.com/torvalds/linux/tree/master/net/bridge">Linux Kernel sources</a> are <code>br_input.c</code> and <code>br_sysfs_br.c</code>.</p>
-<p>In <code>br_input.c</code>, the <code>br_handle_frame</code> function decides whether to forward or discard frames based on the destination MAC address. Frames with destination <code>0x01</code> are always discarded. A <a href="https://interestingtraffic.nl/2017/11/21/an-oddly-specific-post-about-group_fwd_mask/">mask</a> called <code>fwd_mask</code> affects the function's outcome in some cases.</p>
-<p>We aim to introduce the mask concept for the <code>0x01</code> case as well.</p>
-<p>In <code>br_sysfs_br.c</code>, the <code>set_group_fwd_mask</code> function sometimes prevents evaluating the <code>group_fwd_mask</code>. We will modify this to always evaluate the mask.</p>
-<p>With a modified kernel, you can control the <code>/sys/class/net/vmbr1/bridge/group_fwd_mask</code> mask to enable or disable forwarding any packet. Our modified kernel allows values up to <code>65535</code>, forwarding any frame, achieving our goal.</p>
+<p>The key files in the <a href="https://github.com/torvalds/linux/tree/master/net/bridge">Linux kernel sources</a> are <code>br_input.c</code> and <code>br_sysfs_br.c</code>.</p>
+<p>In <code>br_input.c</code>, the <code>br_handle_frame</code> function decides whether to forward or discard a frame based on the destination MAC address. Frames with destination <code>0x01</code> are always discarded. A <a href="https://interestingtraffic.nl/2017/11/21/an-oddly-specific-post-about-group_fwd_mask/">mask</a> called <code>fwd_mask</code> affects the outcome of the function in some cases.</p>
+<p>We want to introduce the mask concept for the <code>0x01</code> case as well.</p>
+<p>In <code>br_sysfs_br.c</code>, the <code>set_group_fwd_mask</code> function sometimes prevents the evaluation of <code>group_fwd_mask</code>. We modify it to always evaluate the mask.</p>
+<p>With the modified kernel, we can control the <code>/sys/class/net/vmbr1/bridge/group_fwd_mask</code> mask to enable or disable the forwarding of any packet. Our modified kernel accepts values up to <code>65535</code>, which forwards any frame and achieves our goal.</p>
 <h2 id="compiling-the-kernel">Compiling the Kernel<a class="headerlink" href="#compiling-the-kernel" title="Permanent link">&para;</a></h2>
-<p>To compile a kernel for Proxmox, you'll need a system with Proxmox VE installed.</p>
-<p>Install dependencies:</p>
+<p>To compile a kernel for Proxmox, we need a system with Proxmox VE installed.</p>
+<p>We install the dependencies:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>build-essential<span class="w"> </span>dh-make<span class="w"> </span>dh-python<span class="w"> </span>sphinx-common<span class="w"> </span>asciidoc-base<span class="w"> </span>bison<span class="w"> </span>dwarves<span class="w"> </span>flex<span class="w"> </span>libdw-dev<span class="w"> </span>libelf-dev<span class="w"> </span>libiberty-dev<span class="w"> </span>libnuma-dev<span class="w"> </span>libslang2-dev<span class="w"> </span>libssl-dev<span class="w"> </span>lintian<span class="w"> </span>lz4<span class="w"> </span>python3-dev<span class="w"> </span>xmlto<span class="w"> </span>zlib1g-dev
 </code></pre></div>
-<p>Remove conflicting packages:</p>
+<p>We remove the conflicting packages:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>apt-get<span class="w"> </span>purge<span class="w"> </span>-y<span class="w"> </span>proxmox-headers<span class="se">\*</span>
 </code></pre></div>
-<p>Check the installed kernel version:</p>
+<p>We check the installed kernel version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uname<span class="w"> </span>-r
 </code></pre></div>
-<p>Find the commit titled "update ABI file for 6.8.4-2-pve" in the <a href="https://git.proxmox.com/">Proxmox Kernel sources</a>. The corresponding commit is <a href="https://git.proxmox.com/?p=pve-kernel.git;a=commit;h=4cab886f26f9c8638593b8c553996c97ca9acc21">4cab886f26f9c8638593b8c553996c97ca9acc21</a>.</p>
-<p>Clone the repository:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git://git.proxmox.com/git/pve-kernel.git<span class="w"> </span>/usr/src/pve-kernel
+<p>In the <a href="https://git.proxmox.com/">Proxmox kernel sources</a>, we find the commit titled "update ABI file for 6.8.4-2-pve". The corresponding commit is <a href="https://git.proxmox.com/?p=pve-kernel.git;a=commit;h=4cab886f26f9c8638593b8c553996c97ca9acc21">4cab886f26f9c8638593b8c553996c97ca9acc21</a>.</p>
+<p>We clone the repository:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>git://git.proxmox.com/git/pve-kernel.git<span class="w"> </span>/usr/src/pve-kernel
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>/usr/src/pve-kernel
 </code></pre></div>
-<p>Checkout the specific version:</p>
+<p>We check out the specific version:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>4cab886f26f9c8638593b8c553996c97ca9acc21
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>make<span class="w"> </span>clean
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>make<span class="w"> </span>build-dir-fresh
 </code></pre></div>
-<p>Modify <code>/usr/src/pve-kernel/Makefile</code>, adding <code>-unl</code> to the <code>EXTRAVERSION</code> variable. Edit <code>br_input.c</code> and <code>br_sysfs_br.c</code> in <code>/usr/src/pve-kernel/submodules/ubuntu-kernel/net/bridge</code>.</p>
-<p>Compile the kernel:</p>
+<p>We modify <code>/usr/src/pve-kernel/Makefile</code>, adding <code>-unl</code> to the <code>EXTRAVERSION</code> variable. Then we edit <code>br_input.c</code> and <code>br_sysfs_br.c</code> in <code>/usr/src/pve-kernel/submodules/ubuntu-kernel/net/bridge</code>.</p>
+<p>We compile the kernel:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make
 </code></pre></div>
-<p>Install the newly compiled packages on each Proxmox host:</p>
+<p>We install the newly compiled packages on each Proxmox host:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>dpkg<span class="w"> </span>-i<span class="w"> </span>/usr/src/pve-kernel/unl.deb
 </code></pre></div>
 <h2 id="enabling-the-transparent-bridge">Enabling the Transparent Bridge<a class="headerlink" href="#enabling-the-transparent-bridge" title="Permanent link">&para;</a></h2>
-<p>Activate the patch by modifying the mask for each bridge:</p>
+<p>We activate the patch by modifying the mask of each bridge:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">65535</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/class/net/br1/bridge/group_fwd_mask
 </code></pre></div>
 <h2 id="updating-the-patch">Updating the Patch<a class="headerlink" href="#updating-the-patch" title="Permanent link">&para;</a></h2>
-<p>The <a href="https://github.com/dainok/unetlab-kernel/">unetlab-kernel repository</a> contains updated scripts and precompiled packages. To update the patch:</p>
+<p>The <a href="https://github.com/dainok/unetlab-kernel/">unetlab-kernel repository</a> contains updated scripts and precompiled packages. To update the patch:</p>
 <ul>
-<li>Save original <code>br_input.c</code> and <code>br_sysfs_br.c</code> files to a safe location.</li>
-<li>Modify files according to the latest patch.</li>
-<li>Create a new patch using <code>diff -Naur</code>.</li>
+<li>Save the original <code>br_input.c</code> and <code>br_sysfs_br.c</code> files in a safe location.</li>
+<li>Modify the files according to the latest patch.</li>
+<li>Create a new patch with <code>diff -Naur</code>.</li>
 <li>Update the patch.</li>
 </ul>
-<p>Precompiled patches and packages are available on <a href="https://github.com/dainok/unetlab-kernel/">GitHub</a>.</p>
+<p>The precompiled patches and packages are available on <a href="https://github.com/dainok/unetlab-kernel/">GitHub</a>.</p>
 
 
 

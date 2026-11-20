@@ -552,106 +552,105 @@ Everything here is free. If it helps you, you can
 <h1 id="assume-breach-design">Assume breach design<a class="headerlink" href="#assume-breach-design" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:governance">governance</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
-<p>There is much discussion around Zero Trust Architecture (ZTA), but it seems the concept of Assume Breach Design has yet to be formalized. Or, at least, a Google search does not yield results. The term <em>Assume Breach Paradigm</em> is used, and I want to apply it to infrastructure design. So, I am appropriating (in a manner of speaking) the term and explaining why changing the mindset could be beneficial.</p>
-<p>As always, the idea stems from field experience, when I realize that infrastructure design, from a cybersecurity perspective, follows a traditional approach. In the 1990s and 2000s, it was common to implement a DMZ network, a server network, and sometimes a client network. Policies were designed based on application needs and were never formalized. This approach, still frequently used today, relies on the classic 3-tier architecture of web applications: clients, servers, and databases, which had to be implemented separately. From a security standpoint, this led to logically separating these components through a firewall.</p>
-<p>What I see today is precisely the consequence of this: systems are separated based on an application logic, not a security logic. The result is that companies have security zones that separate application components (Internet, DMZ, client, server, OT, Guest), and policies derive from application needs, not security requirements.</p>
-<p>A case in point: server networks typically contain the backend and databases for the entire company. If one is compromised, the whole network is at risk.</p>
-<p>A second equally telling example: I imagine anyone who has implemented firewall policies based on an application request. The vast majority of firewall policies originate from application needs, and their impact is rarely evaluated because rejecting the request is not an option.</p>
+<p>There is much discussion around Zero Trust Architecture (ZTA), but the concept of Assume Breach Design seems not to have been formalized yet. At least, a Google search does not return results. The term <em>Assume Breach Paradigm</em> is used, and I want to apply it to infrastructure design. So I am appropriating the term, in a manner of speaking, and explaining why changing the mindset could be beneficial.</p>
+<p>As always, the idea comes from field experience: I realize that infrastructure design, from a cybersecurity perspective, follows a traditional approach. In the 1990s and 2000s, it was common to implement a DMZ network, a server network and sometimes a client network. Policies were designed based on application needs and were never formalized. This approach, still frequently used today, relies on the classic 3-tier architecture of web applications (clients, servers and databases), which had to be implemented separately. From a security standpoint, this led to separating these components logically with a firewall.</p>
+<p>What I see today is precisely the consequence of this: systems are separated based on application logic, not security logic. The result is that companies have security zones that separate application components (Internet, DMZ, client, server, OT, Guest), and policies derive from application needs, not from security requirements.</p>
+<p>A case in point: server networks typically contain the backend and the databases of the entire company. If one is compromised, the whole network is at risk.</p>
+<p>A second, equally telling example: I imagine that anyone who has implemented firewall policies has done so based on an application request. The vast majority of firewall policies originate from application needs, and their impact is rarely evaluated because rejecting the request is not an option.</p>
 <h2 id="policy-design">Policy Design<a class="headerlink" href="#policy-design" title="Permanent link">&para;</a></h2>
-<p>The first attempt at a mindset shift was almost ten years ago. I was in a position to influence the network and security architecture of the company I was working for, and following the advice of an ISO27001 auditor, I formalized the interactions between different security zones.</p>
-<p>The idea was to publish a manifesto so that everyone in the company would know the rules governing the firewalls.</p>
+<p>The first attempt at a mindset shift was almost ten years ago. I was in a position to influence the network and security architecture of the company I worked for and, following the advice of an ISO 27001 auditor, I formalized the interactions between the different security zones.</p>
+<p>The idea was to publish a manifesto so that everyone in the company would know the rules that govern the firewalls.</p>
 <p>Here are some examples:</p>
 <ul>
-<li>The server network cannot receive connections from the Internet;</li>
-<li>The DMZ network can access the server network only through HTTP/HTTPS protocols;</li>
-<li>Server and DMZ networks could only access the Internet on a specific list of addresses/protocols.</li>
+<li>The server network cannot receive connections from the Internet.</li>
+<li>The DMZ network can access the server network only through the HTTP/HTTPS protocols.</li>
+<li>The server and DMZ networks can access the Internet only on a specific list of addresses and protocols.</li>
 </ul>
-<p>All rules were designed to reduce the risk of compromise or lateral movement. But there were some fundamental errors.</p>
-<p>The first error (mine) was that the evaluation was conducted by me, and at the time, my experience was primarily in defensive security. A few years later, when I began working on offensive security as well, I realized that while the approach was correct, the assumptions were incomplete.</p>
-<p>The second error (company-wide) was failing to give this work the importance it deserved. It was seen as an obstacle created by a paranoid technician rather than a document meant to design secure applications within the company.</p>
-<p>Specifically, the 3-tier paradigm was converted to Client (Internet) - Reverse Proxy (DMZ) - Server. It goes without saying that a reverse proxy, without any functionality other than forwarding connections from the Internet to the internal network, has the sole consequence of exposing the internal network directly to the Internet. This should be obvious, but even today, I find several configurations like this.</p>
-<p>The last consequence was that when I left that company, the manifesto was shelved and forgotten.</p>
+<p>All the rules were designed to reduce the risk of compromise or lateral movement, but there were some fundamental errors.</p>
+<p>The first error (mine) was that I conducted the evaluation myself, and at the time my experience was primarily in defensive security. A few years later, when I began working on offensive security as well, I realized that the approach was correct but the assumptions were incomplete.</p>
+<p>The second error (company-wide) was failing to give this work the importance it deserved. It was seen as an obstacle created by a paranoid technician, rather than as a document meant to design secure applications within the company.</p>
+<p>Specifically, the 3-tier paradigm was converted to Client (Internet) - Reverse Proxy (DMZ) - Server. A reverse proxy with no functionality other than forwarding connections from the Internet to the internal network has only one consequence: it exposes the internal network directly to the Internet. This should be obvious, but even today I find several configurations like this.</p>
+<p>The last consequence was that, when I left that company, the manifesto was shelved and forgotten.</p>
 <h2 id="a-technical-matter">A Technical Matter<a class="headerlink" href="#a-technical-matter" title="Permanent link">&para;</a></h2>
-<p>Anyway, the experience helped me over the years to provide an approach to technical teams that needed to organize firewall policies. Shifting the focus from policy to the needs of the systems before deciding where to place them helps prevent problems rather than chasing them.</p>
-<p>The formalization of policies never worked because it was seen by companies as a technical issue, not related to the business.</p>
-<p>Particularly, the words a CEO said to me a few years ago were illuminating: cybersecurity is a technical problem, and thus it is entrusted to the CIO.</p>
+<p>The experience helped me over the years to offer an approach to the technical teams that need to organize firewall policies. Shifting the focus from the policy to the needs of the systems, before deciding where to place them, helps prevent problems instead of chasing them.</p>
+<p>The formalization of the policies never worked because companies saw it as a technical issue, unrelated to the business.</p>
+<p>In particular, the words a CEO said to me a few years ago were illuminating: cybersecurity is a technical problem, and thus it is entrusted to the CIO.</p>
 <h2 id="the-purpose-of-the-dmz">The Purpose of the DMZ<a class="headerlink" href="#the-purpose-of-the-dmz" title="Permanent link">&para;</a></h2>
-<p>Another factor that drove me to rethink the approach to defending companies is my frequent task of analyzing firewall policies to bring order and logic. Almost always, I find NAT rules that allow direct access from the Internet to internal systems. Often these are necessities related to specific applications, IoT systems, cameras, or building automation in general.</p>
-<p>In all these cases, there is a DMZ, which prompts me to ask what the purpose of having a DMZ is if internal systems are still directly exposed.</p>
+<p>Another factor that drove me to rethink the approach to defending companies is my frequent task of analyzing firewall policies to bring order and logic. Almost always, I find NAT rules that allow direct access from the Internet to internal systems. Often these are needs related to specific applications, <a href="../../../blog/building-an-iot-testing-lab/building-an-iot-testing-lab/">IoT</a> systems, cameras or building automation in general.</p>
+<p>In all these cases there is a DMZ, which makes me ask what the purpose of having a DMZ is if internal systems are still directly exposed.</p>
 <p>What I discovered is that the DMZ is often created without a clear understanding of the concept behind it.</p>
-<p>Originally, the DMZ network was intended to be the most at-risk segment of the infrastructure: the policies governing traffic to and from the DMZ were meant to be particularly stringent. Some might call this the Zero Trust approach today.</p>
-<p>Going back many years, systems in the DMZ network did not have Internet access. This was because if a system was compromised, it could not communicate outward.</p>
+<p>Originally, the DMZ network was meant to be the segment of the infrastructure most at risk: the policies that govern the traffic to and from the DMZ were meant to be particularly stringent. Some might call this the Zero Trust approach today.</p>
+<p>Many years ago, the systems in the DMZ network did not have Internet access. If a system was compromised, it could not communicate outward.</p>
 <p>Over the years, this paradigm has crumbled (like many others) because many application frameworks require external resources (XML schemas, telemetry, licenses).</p>
 <p>The concept of "containment" in the DMZ has gradually eroded, and today a DMZ network risks becoming just another network. Quite frequently, I find:</p>
 <ul>
-<li>Databases residing in the DMZ;</li>
-<li>DMZ networks that can access the Internet indiscriminately;</li>
-<li>Internal systems that can access the DMZ indiscriminately;</li>
-<li>Unrestricted Internet access from the DMZ and internal networks;</li>
-<li>Weak systems exposed on the Internet, residing in the DMZ or even internal networks;</li>
-<li>Reverse proxies that map internal systems to the Internet without providing any security mechanism.</li>
+<li>Databases residing in the DMZ.</li>
+<li>DMZ networks that can access the Internet indiscriminately.</li>
+<li>Internal systems that can access the DMZ indiscriminately.</li>
+<li>Unrestricted Internet access from the DMZ and the internal networks.</li>
+<li>Weak systems exposed on the Internet, residing in the DMZ or even in internal networks.</li>
+<li>Reverse proxies that map internal systems to the Internet without any security mechanism.</li>
 </ul>
 <p>I could go on, but I believe the point is clear.</p>
 <h2 id="defense-in-depth">Defense in Depth<a class="headerlink" href="#defense-in-depth" title="Permanent link">&para;</a></h2>
-<p>The idea behind the <em>Defense in Depth</em> paradigm is to protect a system from cyberattacks using a multi-layered approach. In other words, we should not rely on a single protection (the firewall), but foresee multiple layers that can act together if one or more protections fail.</p>
+<p>The idea behind the <em>Defense in Depth</em> paradigm is to protect a system from cyberattacks with a multi-layered approach. In other words, we should not rely on a single protection (the firewall), but provide multiple layers that can act together if one or more protections fail.</p>
 <p>To be clear, a defense layer could consist of:</p>
 <ul>
-<li>Firewall</li>
-<li>VPN</li>
-<li>Anti-malware</li>
-<li>MFA</li>
-<li>Monitoring</li>
-<li>Vulnerability scanner</li>
-<li>IDS/IPS</li>
-<li>Physical security</li>
+<li>Firewall.</li>
+<li>VPN.</li>
+<li>Anti-malware.</li>
+<li>MFA.</li>
+<li>Monitoring.</li>
+<li>Vulnerability scanner.</li>
+<li>IDS/IPS.</li>
+<li>Physical security.</li>
 </ul>
-<p>Defense in Depth is promoted by the <a href="https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-nsas-top10-cybersecurity-mitigation-strategies.pdf">NSA</a>, which advises associating each layer with one or more of the five cybersecurity functions as defined in the <a href="https://www.nist.gov/cyberframework">cybersecurity framework formalized by NIST</a>.</p>
-<p>I find the Defense In Depth approach absolutely correct, but, in my opinion, it risks being too technical and thus disconnected from the business. In a way, it was the mistake I made: not being able to speak to the business side, I could not secure the space I needed.</p>
+<p>Defense in Depth is promoted by the <a href="https://www.nsa.gov/portals/75/documents/what-we-do/cybersecurity/professional-resources/csi-nsas-top10-cybersecurity-mitigation-strategies.pdf">NSA</a>, which advises associating each layer with one or more of the five cybersecurity functions defined in the <a href="https://www.nist.gov/cyberframework">cybersecurity framework formalized by NIST</a>.</p>
+<p>I find the Defense in Depth approach absolutely correct but, in my opinion, it risks being too technical and thus disconnected from the business. In a way, it was the mistake I made: unable to speak to the business side, I could not secure the space I needed.</p>
 <h2 id="zero-trust-architecture">Zero Trust Architecture<a class="headerlink" href="#zero-trust-architecture" title="Permanent link">&para;</a></h2>
-<p>ZTA, unfortunately, is becoming a mantra. ZTA is defined by NIST in the document <a href="https://www.nist.gov/publications/zero-trust-architecture">SP 800-207</a>, which should be studied before discussing ZTA. I will try to summarize some points useful for my reflections, quoting directly from the original document.</p>
+<p>ZTA, unfortunately, is becoming a mantra. NIST defines ZTA in the document <a href="https://www.nist.gov/publications/zero-trust-architecture">SP 800-207</a>, which should be studied before discussing ZTA. I summarize some points that are useful for my reflections, quoting directly from the original document.</p>
 <blockquote>
 <p>That is, authorized and approved subjects (combination of user, application (or service), and device) can access the data to the exclusion of all other subjects (i.e., attackers). To take this one step further, the word "resource" can be substituted for "data" so that ZT and ZTA are about resource access (e.g., printers, compute resources, Internet of Things IoT actuators) and not just data access.</p>
 </blockquote>
-<p>ZTA pertains to data access, where the data can reside on any system, including printers, IoT systems, and, of course, servers, databases, and so on. The subject is, therefore, digital data in any form.</p>
+<p>ZTA pertains to data access, where the data can reside on any system, including printers, IoT systems and, of course, servers, databases and so on. The subject is digital data in any form.</p>
 <blockquote>
 <p>Access to resources is determined by dynamic policy—including the observable state of client identity, application/service, and the requesting asset—and may include other behavioral and environmental attributes.</p>
 </blockquote>
-<p>Data access is determined by dynamic policies built on who is requesting the data, who holds the data. Policies may consider other environmental or behavioral attributes.</p>
+<p>Data access is determined by dynamic policies built on who requests the data and who holds it. Policies may consider other environmental or behavioral attributes.</p>
 <blockquote>
 <p>Requesting asset state can include device characteristics such as software versions installed, network location, time/date of request, previously observed behavior, and installed credentials. Behavioral attributes include, but not limited to, automated subject analytics, device analytics, and measured deviations from observed usage patterns.</p>
 </blockquote>
-<p>Today we build policies based on the identity of the source and destination. The destination identity typically consists of an IP address and port. The source identity is slightly more complex, considering not only the IP address but also the associated user. In more complex infrastructures, the source is also validated according to specific requirements concerning patch status and the presence of anti-malware.</p>
-<p>We rarely use attributes related to location and time. Even less frequently, we use behavioral attributes (e.g., if the client behaves differently from expected).</p>
-<p>The ZTA approach would require allowing access to data only when strictly necessary. To achieve this, we would need to:</p>
+<p>Today we build policies based on the identity of the source and the destination. The identity of the destination typically consists of an IP address and a port. The identity of the source is slightly more complex, because it considers not only the IP address but also the associated user. In more complex infrastructures, the source is also validated against specific requirements on patch status and the presence of anti-malware.</p>
+<p>We rarely use attributes related to location and time. Even less frequently, we use behavioral attributes (e.g., whether the client behaves differently than expected).</p>
+<p>The ZTA approach requires allowing access to data only when strictly necessary. To achieve this, we would need to:</p>
 <ul>
-<li>Identify the source in terms of device, user, application requesting the data, the client's location, the time of the request, the source's behavior, and compliance status;</li>
-<li>Identify the means by which the request arrives (Internet, VPN, private network, encryption...);</li>
-<li>Identify the requested data and the operation being requested.</li>
+<li>Identify the source in terms of device, user, application that requests the data, location of the client, time of the request, behavior of the source and compliance status.</li>
+<li>Identify the means by which the request arrives (Internet, VPN, private network, encryption, etc.).</li>
+<li>Identify the requested data and the requested operation.</li>
 </ul>
-<p>Although technologies capable of implementing almost all (but not all) features required by</p>
-<p>ZTA exist, it is still not a paradigm widely implemented today.</p>
+<p>Technologies that implement almost all (but not all) the features required by ZTA exist, but it is still not a paradigm that is widely implemented today.</p>
 <p>The reason, in my opinion, is always the same: ZTA is seen as a technical approach, detached from the business.</p>
 <h2 id="assume-breach-design_1">Assume Breach Design<a class="headerlink" href="#assume-breach-design_1" title="Permanent link">&para;</a></h2>
-<p>Let's move on to the assume breach paradigm applied to design. The core idea is quite simple: my architectural choices are guided by the assessment of the risk of a potential breach. We could call it risk-based design, but in my opinion, the term would be less effective.</p>
+<p>Let's move on to the assume breach paradigm applied to design. The core idea is quite simple: my architectural choices are guided by the assessment of the risk of a potential breach. We could call it risk-based design, but in my opinion the term would be less effective.</p>
 <p>There are two important premises:</p>
 <ul>
-<li>It is necessary to be able to thoroughly assess the possible attack paths against the infrastructure.</li>
-<li>It is necessary to be able to evaluate the impact of potential breaches on the business.</li>
+<li>We must be able to assess thoroughly the possible attack paths against the infrastructure.</li>
+<li>We must be able to evaluate the impact of potential breaches on the business.</li>
 </ul>
-<p>The first point requires specific offensive skills that are different from those of someone who designs and defends an infrastructure. Those who do not make use of these skills will make substantial mistakes in designing defenses.</p>
+<p>The first point requires specific offensive skills that differ from those of someone who designs and defends an infrastructure. Those who do not use these skills will make substantial mistakes in designing the defenses.</p>
 <p>The second point requires the ability to conduct a Business Impact Analysis (BIA) for each attack scenario.</p>
 <p>Only after these assessments can we determine which defenses to implement. In this sense, Defense in Depth and ZTA are consequences of Assume Breach Design, not its premises.</p>
-<p>Let's return to the example of particularly large server networks that contain backends and databases for all company applications. The consequence of this design is that if one is compromised, the attacker can move relatively easily to all critical business systems. If we correctly assess this scenario, we realize that it is unacceptable. At this point, we can implement a microsegmentation technology and try to reduce the traffic flows between these hosts. But we can also consider monitoring technologies that allow us to identify traffic anomalies. Both approaches have pros and cons, and there is no one-size-fits-all solution. The assessment of business risk helps us determine the available budget, and consequently, we can select the solution that best fits our context.</p>
-<p>I can, therefore, break down ZTA into parts and decide where it is important. The decision is based on a risk analysis of attack scenarios: in other words, Assume Breach Design.</p>
+<p>Let's return to the example of particularly large server networks that contain the backends and databases of all the company applications. The consequence of this design is that, if one is compromised, the attacker can move relatively easily to all the critical business systems. If we assess this scenario correctly, we realize that it is unacceptable. At this point, we can implement a microsegmentation technology and try to reduce the traffic flows between these hosts. We can also consider monitoring technologies that identify traffic anomalies. Both approaches have pros and cons, and there is no one-size-fits-all solution. The assessment of the business risk helps us determine the available budget and, consequently, select the solution that best fits our context.</p>
+<p>I can, therefore, break down ZTA into parts and decide where it is important. The decision is based on a risk analysis of the attack scenarios: in other words, Assume Breach Design.</p>
 <h2 id="post-breach">Post Breach<a class="headerlink" href="#post-breach" title="Permanent link">&para;</a></h2>
-<p>All the infrastructures I know have grown gradually and without structure. In other words, there is never any documentation that describes how the infrastructure, in terms of servers and applications, was created. On the one hand, the task would be impossible with traditional tools, while on the other, the assume breach paradigm forces us to think about how we would respond to an attack.</p>
-<p>In almost all cases (and I am being optimistic), if we notice an ongoing attack within our infrastructure, we are not able to say for sure how far the attack has spread. In other words, we do not know how to eradicate the attack from the infrastructure unless we completely rebuild it.</p>
-<p>The Infrastructure as Code paradigm can help us build our infrastructure (or part of it) starting from text files. The use of microservices and containers allows us to do the same in the application domain. If we start to embrace this mindset, we realize that we can rebuild the entire infrastructure at any moment, and the build process can serve as documentation.</p>
-<p>The advantages are immediate: documentation, standardization, compliance... However, the complexity of the tools remains a barrier to adoption for many organizations. The rigidity of the infrastructure is actually an apparent problem that reveals the underlying operational chaos.</p>
+<p>All the infrastructures I know have grown gradually and without structure. In other words, there is never any documentation that describes how the infrastructure, in terms of servers and applications, was created. On the one hand, the task would be impossible with traditional tools. On the other, the assume breach paradigm forces us to think about how we would respond to an attack.</p>
+<p>In almost all cases (and I am being optimistic), if we notice an ongoing attack in our infrastructure, we cannot say for sure how far it has spread. In other words, we do not know how to eradicate the attack from the infrastructure unless we rebuild it completely.</p>
+<p>The Infrastructure as Code paradigm can help us build our infrastructure (or part of it) from text files. Microservices and containers allow us to do the same in the application domain. If we embrace this mindset, we realize that we can rebuild the entire infrastructure at any moment, and the build process can serve as documentation.</p>
+<p>The advantages are immediate: documentation, standardization, compliance, and so on. The complexity of the tools, however, remains a barrier to adoption for many organizations. The rigidity of the infrastructure is an apparent problem that reveals the underlying operational chaos.</p>
 <h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
-<p>The Assume Breach Design approach aims to bring business back to the center of decision-making. The infrastructure exists to serve one purpose: the company's business. The protections that technical teams decide on today are implemented to safeguard the company's business.</p>
-<p>Putting business back at the center means shifting cybersecurity from being a technical matter to a business necessity.</p>
-<p>For too many years, I have seen IT departments considered as a black hole that absorbs budget. The effects of this mindset are clear to everyone. Maybe it's time for a change.</p>
+<p>The Assume Breach Design approach aims to bring the business back to the center of decision-making. The infrastructure exists to serve one purpose: the business of the company. The protections that the technical teams decide on today are implemented to safeguard that business.</p>
+<p>Putting the business back at the center means shifting cybersecurity from a technical matter to a business necessity.</p>
+<p>For too many years, I have seen IT departments treated as a black hole that absorbs budget. The effects of this mindset are clear to everyone. Maybe it is time for a change.</p>
 
 
 

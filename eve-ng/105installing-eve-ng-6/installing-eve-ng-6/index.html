@@ -449,54 +449,54 @@ Everything here is free. If it helps you, you can
 <h1 id="installing-eve-ng-6">Installing EVE-NG 6<a class="headerlink" href="#installing-eve-ng-6" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:eve-ng">eve-ng</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/eve-ng.png" /></p>
-<p>EVE-NG is installed from packages downloaded from the <a href="http://www.eve-ng.net/jammy">official repository</a> via APT. All the following commands should be executed by the <code>root</code> user via SSH.</p>
-<p>First, we add the official repository and the GPG key to verify the packages:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>http://www.eve-ng.net/jammy/eczema@ecze.com.gpg.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/trusted.gpg.d/eve-ng.gpg
+<p>EVE-NG is installed from packages downloaded via APT from the <a href="http://www.eve-ng.net/jammy">official repository</a>. We run all the following commands as the <code>root</code> user via SSH.</p>
+<p>First, we add the official repository and the GPG key used to verify the packages:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>http://www.eve-ng.net/jammy/eczema@ecze.com.gpg.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/trusted.gpg.d/eve-ng.gpg
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/apt/sources.list.d/eve-ng.list</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s">deb [arch=amd64] http://www.eve-ng.net/jammy jammy main</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s"># deb-src [arch=amd64] http://www.eve-ng.net/jammy jammy main</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s">deb [arch=amd64] http://www.eve-ng.net/jammy jammy main</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s"># deb-src [arch=amd64] http://www.eve-ng.net/jammy jammy main</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s">EOF</span>
 </code></pre></div>
-<p>Next, we can reload the repositories, upgrade the system, and install <a href="https://www.eve-ng.net/index.php/community/">EVE-NG CE</a> along with other packages we will use later:</p>
+<p>Next, we reload the repositories, upgrade the system and install <a href="https://www.eve-ng.net/index.php/community/">EVE-NG CE</a> along with other packages we will use later:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>apt-get<span class="w"> </span>update
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>apt-get<span class="w"> </span>-y<span class="w"> </span>upgrade
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>dnsmasq<span class="w"> </span>eve-ng<span class="w"> </span>iptables-persistent<span class="w"> </span>libbz2-dev<span class="w"> </span>libffi-dev<span class="w"> </span>libgdbm-dev<span class="w"> </span>libncurses5-dev<span class="w"> </span>libnss3-dev<span class="w"> </span>libreadline-dev<span class="w"> </span>libsqlite3-dev<span class="w"> </span>libssl-dev<span class="w"> </span>python3-pip<span class="w"> </span>zlib1g-dev
 </code></pre></div>
-<p>If prompted on how to handle existing configuration file versions, answer:</p>
+<p>If we are prompted on how to handle the existing configuration file versions, we answer:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>install the package maintainer's version
 </code></pre></div>
-<p>Before rebooting the system, we set a password for the <strong>root</strong> user and enable root login:</p>
+<p>Before rebooting the system, we set a password for the <code>root</code> user and enable root login:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>passwd
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/#PermitRootLogin./PermitRootLogin Yes/'</span><span class="w"> </span>/etc/ssh/sshd_config
 </code></pre></div>
-<p>Afterward, perform an initial reboot:</p>
+<p>Then we perform an initial reboot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>reboot
 </code></pre></div>
-<p>Once again, connect via SSH using the <code>root</code> user, keeping in mind that the IP address may have changed. Then, complete the configuration by:</p>
+<p>We connect again via SSH as <code>root</code>, keeping in mind that the IP address may have changed. Then we complete the configuration by:</p>
 <ul>
-<li>changing the password for the <code>root</code> user</li>
-<li>setting the hostname to <code>eve-ng</code></li>
-<li>setting the domain to <code>example.com</code></li>
-<li>configuring the network according to our environment</li>
-<li>if working on a physical server, adding an NTP server, for example</li>
-<li>selecting the appropriate option for how the system can access the Internet</li>
+<li>Changing the password of the <code>root</code> user.</li>
+<li>Setting the hostname to <code>eve-ng</code>.</li>
+<li>Setting the domain to <code>example.com</code>.</li>
+<li>Configuring the network according to our environment.</li>
+<li>Adding an NTP server, for example, if we work on a physical server.</li>
+<li>Selecting the appropriate option for how the system accesses the Internet.</li>
 </ul>
-<p>The system will reboot again. Once it is reachable again, the EVE-NG web interface will be accessible on port 80 via HTTP. By default, you can log in with the <code>admin</code> user and the password <code>eve</code>.</p>
+<p>The system reboots again. Once it is reachable, the EVE-NG web interface is available on port 80 via HTTP. By default, we can log in with the <code>admin</code> user and the password <code>eve</code>.</p>
 <p><img alt="eveng-login-2" src="../images/eveng-login-2.png" /></p>
-<p>Log in with the <code>admin</code> user and change the password to a more secure one by clicking on <code>admin</code> at the top right:</p>
+<p>We log in as <code>admin</code> and change the password to a more secure one by clicking on <code>admin</code> at the top right:</p>
 <p><img alt="eveng-change-password-2" src="../images/eveng-change-password-2.png" /></p>
-<p>The last step to have a functional installation is to copy some device images into the system. Begin by copying the files for <a href="https://www.eve-ng.net/index.php/documentation/howtos/howto-add-cisco-iol-ios-on-linux/">IOL (IOS on Linux)</a>:</p>
+<p>The last step to get a functional installation is to copy some device images into the system. We start with the files for <a href="https://www.eve-ng.net/index.php/documentation/howtos/howto-add-cisco-iol-ios-on-linux/">IOL (IOS on Linux)</a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>scp<span class="w"> </span>i86bi_LinuxL2-AdvEnterpriseK9-M_152_May_2018.bin<span class="w"> </span>root@172.25.82.167:/opt/unetlab/addons/iol/bin/
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>scp<span class="w"> </span>i86bi_linux_l2-adventerprisek9-ms.SSA.high_iron_20190423.bin<span class="w"> </span>root@172.25.82.167:/opt/unetlab/addons/iol/bin/
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>scp<span class="w"> </span>iourc<span class="w"> </span>root@172.25.82.167:/opt/unetlab/addons/iol/bin/
 </code></pre></div>
-<p>Then, SSH into the EVE-NG server as the <code>root</code> user and ensure the permissions are correct:</p>
+<p>Then we SSH into the EVE-NG server as <code>root</code> and make sure the permissions are correct:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>/opt/unetlab/wrappers/unl_wrapper<span class="w"> </span>-a<span class="w"> </span>fixpermissions
 </code></pre></div>
-<p>We also verify the presence of hardware-assisted virtualization functionality: the following command yields an output confirming that hardware-assisted virtualization is enabled.</p>
+<p>We also verify that hardware-assisted virtualization is available: the following command returns output only if it is enabled.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>egrep<span class="w"> </span><span class="s2">"vmx|svm"</span><span class="w"> </span>/proc/cpuinfo
 </code></pre></div>
-<p>Finally, verify that the image is usable by creating a small lab with a single <strong>IOL</strong> node. Start the node and wait a few seconds to connect to the node's console.</p>
+<p>Finally, we verify that the image is usable by creating a small lab with a single <strong>IOL</strong> node. We start the node and wait a few seconds before connecting to its console.</p>
 <p><img alt="eveng-iol-boot-2" src="../images/eveng-iol-boot-2.png" /></p>
 
 

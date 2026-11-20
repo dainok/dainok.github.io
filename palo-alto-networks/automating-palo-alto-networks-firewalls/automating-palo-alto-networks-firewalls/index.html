@@ -619,6 +619,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:firewall" class="md-tag">firewall</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:palo-alto-networks" class="md-tag">palo-alto-networks</a>
       
     
@@ -628,14 +635,14 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2022-02-02">02 February 2022</time></span></p>
 <h1 id="automating-palo-alto-networks-firewalls">Automating Palo Alto Networks firewalls<a class="headerlink" href="#automating-palo-alto-networks-firewalls" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:firewall">firewall</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/paloalto-strata.png" /></p>
-<p>I spent a few Twitch sessions talking about the automation of Palo Alto Networks firewalls. We used approaches different from the ones we used with Cisco devices. At first, we developed a few simple Ansible playbooks. In the last sessions, we developed a very small Django web application to enable and disable network flows programmatically.</p>
+<p>I spent a few Twitch sessions talking about the automation of Palo Alto Networks firewalls. We used approaches different from the ones we used with Cisco devices. At first, we developed a few simple Ansible <a href="../../../ansible/107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbooks</a>. In the last sessions, we developed a very small Django web application to enable and disable network flows programmatically.</p>
 <h2 id="ansible-with-palo-alto-networks-firewalls">Ansible with Palo Alto Networks Firewalls<a class="headerlink" href="#ansible-with-palo-alto-networks-firewalls" title="Permanent link">&para;</a></h2>
 <p>The Palo Alto Networks module for Ansible has some prerequisites:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>pan-os-python<span class="w"> </span>pan-python<span class="w"> </span>pandevice<span class="w"> </span>xmltodict<span class="w"> </span>requests<span class="w"> </span>requests_toolbelt
 </code></pre></div>
-<p>Then we install the PAN-OS Ansible collection:</p>
+<p>Then we install the PAN-OS Ansible <a href="../../../ansible/136ansible-galaxy/ansible-galaxy/">collection</a>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>paloaltonetworks.panos
 </code></pre></div>
 <p>The <code>interpreter_python</code> option in the <code>ansible.cfg</code> file must point to the interpreter that has the PAN-OS libraries installed. This is important when we use a virtual environment.</p>
@@ -653,7 +660,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">provider</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>
 <h3 id="sending-operational-commands">Sending Operational Commands<a class="headerlink" href="#sending-operational-commands" title="Permanent link">&para;</a></h3>
-<p>The <code>panos_op</code> module sends commands to the firewall. The module translates the given command into XML and uses the XML API. Some commands can fail, so the best way is to specify the commands with the XML syntax. The following command fails:</p>
+<p>The <code>panos_op</code> module sends commands to the firewall. The module translates the given command into XML and uses the <a href="../../203automating-palo-alto-firewall-via-xml-api/automating-palo-alto-firewall-via-xml-api/">XML API</a>. Some commands can fail, so the best way is to specify the commands with the XML syntax. The following command fails:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="s">'show</span><span class="nv"> </span><span class="s">arp</span><span class="nv"> </span><span class="s">management'</span><span class="w"> </span><span class="c1"># Fails with "show -&gt; arp has unexpected text."</span>
 </code></pre></div>
 <p>The following command works:</p>
@@ -677,7 +684,7 @@ Everything here is free. If it helps you, you can
 <p>The <a href="https://github.com/dainok/twitch-sessions/blob/main/S01E05-ansible-with-panw/playbook-5-provisioning-from-file.yml" title="playbook-5-provisioning-from-file.yml">fifth playbook</a> implements this approach.</p>
 <p>Pros and cons of this approach:</p>
 <ul>
-<li>The entire firewall configuration can be stored in a CMDB file (pro).</li>
+<li>The entire firewall configuration can be stored in a <a href="../../../blog/a-cmdb-for-it-infrastructures/a-cmdb-for-it-infrastructures/">CMDB</a> file (pro).</li>
 <li>The firewall configuration is always consistent (pro).</li>
 <li>We can configure almost everything (pro).</li>
 <li>We do not need to run checks before inserting a specific configuration in a running firewall (pro).</li>

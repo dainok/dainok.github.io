@@ -417,10 +417,10 @@ Everything here is free. If it helps you, you can
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configure-primary-ip-address" class="md-nav__link">
+  <a href="#configure-the-primary-ip-address" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configure primary IP address
+        Configure the Primary IP Address
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#device-custom-attributes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Device custom attributes
+        Device Custom Attributes
       
     </span>
   </a>
@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#interface-profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interface profiles
+        Interface Profiles
       
     </span>
   </a>
@@ -510,55 +510,55 @@ Everything here is free. If it helps you, you can
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/nautobot.png" /></p>
 <p>Integrating Ansible with Nautobot involves two main aspects:</p>
 <ul>
-<li>Reading information from Nautobot using Ansible.</li>
-<li>Running Ansible playbooks to update device configurations.</li>
+<li>Reading information from Nautobot with Ansible.</li>
+<li>Running Ansible <a href="../../../ansible/107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbooks</a> to update device configurations.</li>
 </ul>
-<p>Let's focus on the first point: to make Nautobot's information available in Ansible, we need to use a <a href="https://docs.ansible.com/ansible/latest/inventory_guide/intro_dynamic_inventory.html">dynamic inventory</a>. <a href="https://networktocode.com/">Network to Code</a> provides a <a href="https://galaxy.ansible.com/ui/repo/published/networktocode/nautobot">specific Ansible collection for Nautobot</a> that includes an inventory plugin. You can install this collection with:</p>
+<p>Let's focus on the first point. To make the information in Nautobot available to Ansible, we need a <a href="https://docs.ansible.com/ansible/latest/inventory_guide/intro_dynamic_inventory.html">dynamic inventory</a>. <a href="https://networktocode.com/">Network to Code</a> provides a <a href="https://galaxy.ansible.com/ui/repo/published/networktocode/nautobot">specific Ansible collection for Nautobot</a> that includes an <a href="../../../ansible/104ansible-inventory/ansible-inventory/">inventory</a> plugin. We can install the <a href="../../../ansible/136ansible-galaxy/ansible-galaxy/">collection</a> with:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>networktocode.nautobot
 </code></pre></div>
-<p>Before configuring the inventory, ensure the following information is completed in Nautobot for your device:</p>
+<p>Before configuring the inventory, we make sure the following information is complete in Nautobot for the device:</p>
 <ul>
-<li>IP address for device access</li>
-<li>Username and password for device access</li>
-<li>Connection method used by Ansible to access the device</li>
-<li>Device interfaces with associated profiles</li>
+<li>The IP address for device access.</li>
+<li>The username and password for device access.</li>
+<li>The connection method Ansible uses to access the device.</li>
+<li>The device interfaces with the associated profiles.</li>
 </ul>
-<h2 id="configure-primary-ip-address">Configure primary IP address<a class="headerlink" href="#configure-primary-ip-address" title="Permanent link">&para;</a></h2>
-<p>To configure the management IP address, follow these steps:</p>
-<p><strong>Create a network prefix:</strong> Navigate to <code>IPAM</code> → <code>Prefixes</code> → <code>Add</code>:</p>
+<h2 id="configure-the-primary-ip-address">Configure the Primary IP Address<a class="headerlink" href="#configure-the-primary-ip-address" title="Permanent link">&para;</a></h2>
+<p>To configure the management IP address, we follow these steps:</p>
+<p><strong>Create a network prefix:</strong> navigate to <code>IPAM</code> → <code>Prefixes</code> → <code>Add</code>:</p>
 <p><img alt="ipam-add-prefix" src="../images/ipam-add-prefix.png" /></p>
-<p><strong>Create an IP address:</strong> Go to <code>IPAM</code> → <code>IP Addresses</code> → <code>Add</code>:</p>
+<p><strong>Create an IP address:</strong> go to <code>IPAM</code> → <code>IP Addresses</code> → <code>Add</code>:</p>
 <p><img alt="ipam-add-ip" src="../images/ipam-add-ip.png" /></p>
-<p><strong>Associate the IP address with a device interface:</strong> Go to <code>Devices</code> → <code>Devices</code> → select the device → <code>Interfaces</code> → edit the management interface → <code>IP Addresses</code> and select the newly created IP address:</p>
+<p><strong>Associate the IP address with a device interface:</strong> go to <code>Devices</code> → <code>Devices</code>, select the device, then <code>Interfaces</code>, edit the management interface, open <code>IP Addresses</code> and select the newly created IP address:</p>
 <p><img alt="associate-device-ip" src="../images/associate-device-ip.png" /></p>
-<p><strong>Set the interface's IP address as the primary address:</strong> Go to Devices → <code>Devices</code> → select the device → <code>Primary IPv4</code> → select the correct IP address:</p>
+<p><strong>Set the IP address of the interface as the primary address:</strong> go to <code>Devices</code> → <code>Devices</code>, select the device, then <code>Primary IPv4</code> and select the correct IP address:</p>
 <p><img alt="set-interface-ip" src="../images/set-interface-ip.png" /></p>
-<h2 id="device-custom-attributes">Device custom attributes<a class="headerlink" href="#device-custom-attributes" title="Permanent link">&para;</a></h2>
-<p>Next, create two custom attributes to define the parameters Ansible will use to connect to the devices.</p>
-<p>Go to <code>Extensibility</code> → <code>Custom Fields</code> and add the <code>connection</code> and <code>network_os</code> attributes, both associated with the <code>dcim|device</code> type:</p>
+<h2 id="device-custom-attributes">Device Custom Attributes<a class="headerlink" href="#device-custom-attributes" title="Permanent link">&para;</a></h2>
+<p>Next, we create two custom attributes to define the parameters Ansible uses to connect to the devices.</p>
+<p>We go to <code>Extensibility</code> → <code>Custom Fields</code> and add the <code>connection</code> and <code>network_os</code> attributes, both associated with the <code>dcim|device</code> type:</p>
 <p><img alt="add-custom-fields" src="../images/add-custom-fields.png" /></p>
-<p>Now, populate the attributes for each device:</p>
+<p>Now we populate the attributes for each device:</p>
 <ul>
-<li><code>connection</code>:  <code>ansible.netcommon.network_cli</code></li>
-<li><code>network_os</code>: <code>cisco.ios.ios</code></li>
+<li><code>connection</code>: <code>ansible.netcommon.network_cli</code>.</li>
+<li><code>network_os</code>: <code>cisco.ios.ios</code>.</li>
 </ul>
 <p><img alt="set-custom-fields" src="../images/set-custom-fields.png" /></p>
-<h2 id="interface-profiles">Interface profiles<a class="headerlink" href="#interface-profiles" title="Permanent link">&para;</a></h2>
-<p>Define the profiles to be associated with the interfaces. Assume we have three profiles initially:</p>
+<h2 id="interface-profiles">Interface Profiles<a class="headerlink" href="#interface-profiles" title="Permanent link">&para;</a></h2>
+<p>We define the profiles to associate with the interfaces. Let's assume we have three profiles initially:</p>
 <ul>
-<li><code>access</code>: for interfaces connecting PCs</li>
-<li><code>isl</code>: for inter-switch link interfaces</li>
-<li><code>trunk</code>: for interfaces connecting servers or firewalls</li>
+<li><code>access</code>: for interfaces connecting PCs.</li>
+<li><code>isl</code>: for inter-switch link interfaces.</li>
+<li><code>trunk</code>: for interfaces connecting servers or firewalls.</li>
 </ul>
-<p>Go to <code>Organization</code> → <code>Roles</code> → <code>Add</code> and add the three profiles of type <code>dcim|interface</code>:</p>
+<p>We go to <code>Organization</code> → <code>Roles</code> → <code>Add</code> and add the three profiles of type <code>dcim|interface</code>:</p>
 <p><img alt="add-organization-role" src="../images/add-organization-role.png" /></p>
-<p>Finally, associate some interfaces with the newly defined roles by going to <code>Devices</code> → <code>Devices</code> → select the device → <code>Interfaces</code>:</p>
+<p>Finally, we associate some interfaces with the newly defined roles by going to <code>Devices</code> → <code>Devices</code>, selecting the device and opening <code>Interfaces</code>:</p>
 <p><img alt="associate-device-interface" src="../images/associate-device-interface.png" /></p>
 <h2 id="ansible-inventory">Ansible Inventory<a class="headerlink" href="#ansible-inventory" title="Permanent link">&para;</a></h2>
-<p>Define the Ansible inventory file that will read configurations from Nautobot. Following the <a href="https://nautobot-ansible.readthedocs.io/en/latest/plugins/inventory_inventory.html">official documentation</a> we can create an <code>inventory.yml</code> file configured to return the necessary information:</p>
+<p>We define the Ansible inventory file that reads the configuration from Nautobot. Following the <a href="https://nautobot-ansible.readthedocs.io/en/latest/plugins/inventory_inventory.html">official documentation</a>, we create an <code>inventory.yml</code> file that returns the necessary information:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networktocode.nautobot.inventory</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">api_endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:8000</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ced15098774a01a54fb7f4fcfadba56e9e68a8c0</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;NAUTOBOT_API_TOKEN&gt;</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">validate_certs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">config_context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">interfaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -575,20 +575,20 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">device_roles</span>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">role</span>
 </code></pre></div>
-<p>This simple configuration isn't suitable for a production environment, but it allows us to:</p>
+<p>This simple configuration is not suitable for a production environment, but it allows us to:</p>
 <ul>
-<li>Retrieve a list of devices with the parameters needed by Ansible.</li>
+<li>Retrieve a list of devices with the parameters Ansible needs.</li>
 <li>Retrieve the list of interfaces for each device with the associated profile.</li>
-<li>Group devices into three different groups.</li>
+<li>Group devices into groups.</li>
 </ul>
-<p>Verify the inventory functionality with the command:</p>
+<p>We verify that the inventory works with the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ansible-inventory<span class="w"> </span>-i<span class="w"> </span>inventory.yml<span class="w"> </span>--list
 </code></pre></div>
 <p>The output should include:</p>
 <ul>
-<li>For each device, the variables <code>ansible_connection</code>, <code>ansible_host</code>, and <code>ansible_network_os</code>.</li>
-<li>For each device, the <code>interfaces</code> list containing all interfaces.</li>
-<li>For each interface, the variables <code>description</code>, <code>enabled</code>, <code>role</code>, and <code>status</code>.</li>
+<li>For each device, the variables <code>ansible_connection</code>, <code>ansible_host</code> and <code>ansible_network_os</code>.</li>
+<li>For each device, the <code>interfaces</code> list containing all the interfaces.</li>
+<li>For each interface, the variables <code>description</code>, <code>enabled</code>, <code>role</code> and <code>status</code>.</li>
 </ul>
 <p>The Ansible inventory can be downloaded from <a href="https://github.com/dainok/courses/tree/master/Nautobot/05.%20Integrating%20Ansible%20with%20Nautobot">GitHub</a>.</p>
 

@@ -476,39 +476,39 @@ Everything here is free. If it helps you, you can
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:beginner">beginner</a> <a class="md-tag" href="../../../tags/#tag:proxmox">proxmox</a> <a class="md-tag" href="../../../tags/#tag:unetlab">unetlab</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/proxmox.png" /></p>
 <p>During the development of the first version of UNetLab, I dedicated significant time to creating a flexible QEMU/KVM orchestrator. At that time, virtualization-ready images were rare. Choosing a specific QEMU version or parameter could determine the success or failure of virtualizing a particular device.</p>
-<p>Years later, the landscape has changed completely: virtualization is almost always an option, as vendors use virtualized environments to create labs. Most vendors now release images for both VMware and QEMU/KVM.</p>
-<p>However, IOU remains a topic of interest: a lightweight image simulating a Cisco IOS XE environment. We can think of IOU as a container that doesn’t use standard networking. It could potentially be transformed into a container, but that’s another story.</p>
-<p>By foregoing IOU (and Dynamips), we can simplify virtualization management. Specifically, we can rely on an existing hypervisor. For years, I considered <a href="https://www.vmware.com/products/esxi-and-esx.html">ESXi</a>, but after the <a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-completes-acquisition-vmware">Broadcom acquisition</a>, I explored other options. After analyzing various environments, including <a href="https://libvirt.org/">libvirt</a>, I decided on <a href="https://www.proxmox.com/">Proxmox</a> for several reasons:</p>
+<p>Years later, the landscape has changed completely: virtualization is almost always an option, because vendors use virtualized environments to build labs. Most vendors now release images for both VMware and QEMU/KVM.</p>
+<p>IOU remains a topic of interest, though: it is a lightweight image that simulates a Cisco IOS XE environment. We can think of IOU as a container that does not use standard networking. It could be transformed into a container, but that is another story.</p>
+<p>By forgoing IOU (and Dynamips), we can simplify virtualization management. Specifically, we can rely on an existing hypervisor. For years, I considered <a href="https://www.vmware.com/products/esxi-and-esx.html">ESXi</a>, but after the <a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-completes-acquisition-vmware">Broadcom acquisition</a>, I explored other options. After analyzing various environments, including <a href="https://libvirt.org/">libvirt</a>, I chose <a href="https://www.proxmox.com/">Proxmox</a> for several reasons:</p>
 <ul>
-<li>It’s a type 2 hypervisor, allowing OS modifications if needed.</li>
-<li>It provides REST APIs, which we need to verify.</li>
+<li>It runs on top of a standard Linux OS, which we can modify if needed.</li>
+<li>It provides REST APIs, which we still need to verify.</li>
 <li>It allows kernel modifications to simulate physical links.</li>
-<li>It’s well-supported and under active development.</li>
-<li>It’s open source.</li>
+<li>It is well supported and under active development.</li>
+<li>It is open source.</li>
 <li>It scales horizontally and supports VXLAN.</li>
-<li>It natively supports LXC (though not Docker).</li>
+<li>It supports LXC natively (but not Docker).</li>
 </ul>
-<p>On paper, Proxmox seems the perfect base for UNetLab v3. However, during development, we aim to abstract the UNetLab-Proxmox interaction to allow hypervisor substitution without rewriting code.</p>
+<p>On paper, Proxmox looks like the perfect base for UNetLab v3. During development, however, we want to abstract the interaction between UNetLab and Proxmox, so that we can substitute the hypervisor without rewriting code.</p>
 <h2 id="scalability">Scalability<a class="headerlink" href="#scalability" title="Permanent link">&para;</a></h2>
-<p>A key factor for UNetLab v3 is scalability. UNetLab v1 was designed for scale-up, i.e., increasing host resources, which is costly and limited.</p>
-<p>In UNetLab v2, I considered implementing an MPLS-like network to simulate physical links between nodes on different hosts. This had two issues:</p>
+<p>Scalability is a key factor for UNetLab v3. UNetLab v1 was designed to scale up, i.e., by increasing the resources of the host, which is costly and limited.</p>
+<p>For UNetLab v2, I considered implementing an MPLS-like network to simulate the physical links between nodes on different hosts. This had two issues:</p>
 <ul>
-<li>Slow performance, as packet handling was in user-space, not kernel-space.</li>
-<li>Complexity, as writing a new network protocol was required.</li>
+<li>Slow performance, because packets were handled in user space, not kernel space.</li>
+<li>Complexity, because it required writing a new network protocol.</li>
 </ul>
-<p>For UNetLab v3, I plan to use VXLAN to extend networks between hosts. This has both advantages and disadvantages:</p>
+<p>For UNetLab v3, I plan to use VXLAN to extend the networks between hosts. It has both advantages and disadvantages:</p>
 <ul>
-<li>VXLAN is natively supported by hypervisors and OS.</li>
-<li>VXLAN doesn’t allow physical link simulation (some frames are filtered).</li>
+<li>Hypervisors and operating systems support VXLAN natively.</li>
+<li>VXLAN does not allow the simulation of physical links (some frames are filtered).</li>
 </ul>
 <p>The solution is to divide the problem:</p>
 <ul>
-<li>L1 links, implemented as in UNetLab v1, will be intra-host only.</li>
-<li>L2 links, implemented via VXLAN, will extend labs across multiple hosts.</li>
-<li>On lab startup, an algorithm will define node groups within the same host and distribute them across hosts, allowing user modifications.</li>
+<li>L1 links, implemented as in UNetLab v1, are intra-host only.</li>
+<li>L2 links, implemented via VXLAN, extend labs across multiple hosts.</li>
+<li>At lab startup, an algorithm defines groups of nodes on the same host and distributes them across the hosts, allowing user modifications.</li>
 </ul>
-<p>The complexity lies in the last point, but it’s theoretically feasible. The open question remains whether nodes can be moved between servers and how to manage this.</p>
-<p>By following these principles and leveraging modern tools, UNetLab v3 aims to be a powerful, flexible, and scalable network emulator for the next generation of network professionals.</p>
+<p>The complexity lies in the last point, but it is theoretically feasible. The open question is whether we can move nodes between servers, and how to manage it.</p>
+<p>By following these principles and leveraging modern tools, UNetLab v3 aims to be a powerful, flexible and scalable network emulator for the next generation of network professionals.</p>
 
 
 

@@ -502,7 +502,7 @@ Everything here is free. If it helps you, you can
 <ul>
 <li>NDO has limitations, and using <a href="https://netascode.cisco.com">NaC (Network as Code)</a> on NDO adds more. We must always validate how our specific use case is handled.</li>
 <li>Some objects are configured through NDO while others are managed directly on the APIC, so it is essential to validate the final outcome.</li>
-<li>With Cisco NaC, <a href="https://netascode.cisco.com/docs/data_models/ndo/schema/template/">the deployment sequence of the templates should not exceed three steps</a>.</li>
+<li>With Cisco <a href="../../124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">NaC</a>, <a href="https://netascode.cisco.com/docs/data_models/ndo/schema/template/">the deployment sequence of the templates should not exceed three steps</a>.</li>
 </ul>
 <p>In the example above, we need to reduce the deployment sequence from four steps to three. The template with Contracts and Filters and the template with VRFs are independent from each other, so they can either be merged or deployed simultaneously.</p>
 <p>From the customer's perspective, there is often an additional requirement: stretching networks across multiple sites <strong>without service disruption</strong>. We must factor this expectation into both the design and the automation workflow.</p>

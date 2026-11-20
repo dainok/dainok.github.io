@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#post-mortem-risks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Post mortem risks
+        Post-Mortem Risks
       
     </span>
   </a>
@@ -428,10 +428,10 @@ Everything here is free. If it helps you, you can
 </li>
       
         <li class="md-nav__item">
-  <a href="#domainserviceaccount-retirement" class="md-nav__link">
+  <a href="#domain-service-and-account-retirement" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Domain/Service/Account retirement
+        Domain, Service and Account Retirement
       
     </span>
   </a>
@@ -451,10 +451,10 @@ Everything here is free. If it helps you, you can
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#robust-3rd-party-email-account" class="md-nav__link">
+  <a href="#robust-third-party-email-account" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Robust 3rd party email account
+        Robust Third-Party Email Account
       
     </span>
   </a>
@@ -465,7 +465,7 @@ Everything here is free. If it helps you, you can
   <a href="#personal-domain-with-email-sub-addressing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Personal domain with email sub-addressing
+        Personal Domain with Email Sub-Addressing
       
     </span>
   </a>
@@ -540,60 +540,56 @@ Everything here is free. If it helps you, you can
 <h1 id="post-mortem-account-security">Post-mortem account security<a class="headerlink" href="#post-mortem-account-security" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
-<p>In the last few years, I started to work (pro bono) on a different topic: personal digital security. In this post, I want to discuss post-mortem security: how to minimize family threats after death.</p>
-<p>My concern is related to email security: what a malicious actor can do if he can access my mailbox? He could access, via password recovery, multiple attached accounts (e.g. social networks, e-commerce, utilities...). Many of those accounts could affect family security.</p>
-<p>The obvious solution requires planning the death: giving instructions and passwords to relatives, so they can properly manage accounts. But it's not so simple:</p>
+<p>In the last few years, I started working (pro bono) on a different topic: personal digital security. In this post, I want to discuss post-mortem security: how to minimize the threats to the family after death.</p>
+<p>My concern is email security. What can a malicious actor do if they gain access to my mailbox? Through password recovery, they could access multiple attached accounts (social networks, e-commerce, utilities...), and many of those accounts could affect the security of my family.</p>
+<p>The obvious solution is to plan for death: give instructions and passwords to relatives, so they can manage the accounts properly. It is not that simple, though:</p>
 <ul>
-<li>relatives could not have the right skills to properly handle accounts;</li>
-<li>accounts could be closed without notice.</li>
+<li>Relatives may not have the skills to handle the accounts properly.</li>
+<li>Accounts could be closed without notice.</li>
 </ul>
-<p>This post summarizes some thoughts I made while listening to <a href="https://inteltechniques.com/podcast.html" title="The Privacy, Security, and OSINT Show">The Privacy, Security, and OSINT Show Podcast by Micheal Bazzel</a>, especially on <a href="https://inteltechniques.com/blog/2022/04/29/the-privacy-security-osint-show-episode-259/" title="EPISODE 259-Leaving Kindle">episode 259</a>.</p>
-<h2 id="post-mortem-risks">Post mortem risks<a class="headerlink" href="#post-mortem-risks" title="Permanent link">&para;</a></h2>
-<p>When an email account is dismissed, it could be impersonated by a malicious actor pretending to be the original owner.</p>
+<p>This post summarizes some thoughts I had while listening to <a href="https://inteltechniques.com/podcast.html" title="The Privacy, Security, and OSINT Show">The Privacy, Security, and OSINT Show Podcast by Michael Bazzell</a>, especially <a href="https://inteltechniques.com/blog/2022/04/29/the-privacy-security-osint-show-episode-259/" title="EPISODE 259-Leaving Kindle">episode 259</a>.</p>
+<h2 id="post-mortem-risks">Post-Mortem Risks<a class="headerlink" href="#post-mortem-risks" title="Permanent link">&para;</a></h2>
+<p>When an email account is dismissed, a malicious actor can impersonate the original owner.</p>
 <p><img alt="impersonating" src="../images/impersonating.png" /></p>
-<p>The above post is a good example of what a malicious actor can do. And no particular skill is required to do that. Just find <a href="https://www.expireddomains.net/expired-domains/" title="Expired Domains">interesting domains</a> and pick up some interesting ones. Reactivate the domain, register a catch-all domain address and impersonate the original owner. Try to recover associated accounts, and present yourself as the original owner...</p>
-<p>Scary, at least to me.</p>
-<h2 id="domainserviceaccount-retirement">Domain/Service/Account retirement<a class="headerlink" href="#domainserviceaccount-retirement" title="Permanent link">&para;</a></h2>
-<p>But death is not the only event we should care about. Maybe a service could be retired, an account suspended, closed, or migrated to other users.</p>
+<p>The post above is a good example of what a malicious actor can do, and no particular skill is required. Just find <a href="https://www.expireddomains.net/expired-domains/" title="Expired Domains">interesting domains</a> and pick some. Reactivate the domain, register a catch-all address and impersonate the original owner. Try to recover the associated accounts, and present yourself as the original owner...</p>
+<p>This is scary, at least to me.</p>
+<h2 id="domain-service-and-account-retirement">Domain, Service and Account Retirement<a class="headerlink" href="#domain-service-and-account-retirement" title="Permanent link">&para;</a></h2>
+<p>Death is not the only event we should care about. A service can be retired, and an account can be suspended, closed or migrated to other users:</p>
 <blockquote>
 <p>CTemplar is closing and the last day of operation for this email service will be on May 26 of 2022.</p>
 </blockquote>
-<p>In some cases we could lose an Interned Domain too:</p>
+<p>In some cases, we could also lose an Internet domain:</p>
 <blockquote>
 <p>(EU) Domain names that are not reinstated will remain suspended until 30 June 2021. They will then be withdrawn as from 1 July 2021. On 1 January 2022, all the withdrawn domain names will be revoked. They will then start to be made available for registration by other entities.</p>
 </blockquote>
 <h2 id="solutions">Solutions<a class="headerlink" href="#solutions" title="Permanent link">&para;</a></h2>
-<p>I didn't find any good solutions yet. I currently evaluating two scenarios &amp; solutions.</p>
-<h3 id="robust-3rd-party-email-account">Robust 3rd party email account<a class="headerlink" href="#robust-3rd-party-email-account" title="Permanent link">&para;</a></h3>
-<p>In this scenario, I'm using a large email account provider (e.g. Google). I'm assuming:</p>
+<p>I have not found a good solution yet. I am currently evaluating two scenarios.</p>
+<h3 id="robust-third-party-email-account">Robust Third-Party Email Account<a class="headerlink" href="#robust-third-party-email-account" title="Permanent link">&para;</a></h3>
+<p>In this scenario, I use an account from a large email provider (e.g., Google). I assume that:</p>
 <ul>
-<li>the domain (e.g. gmail.com) won't be closed for years;</li>
-<li>the account won't be reused (maybe closed/suspended but not reused).</li>
+<li>The domain (e.g., gmail.com) will not be closed for years.</li>
+<li>The account will not be reused (it may be closed or suspended, but not reused).</li>
 </ul>
-<p>In this scenario, after death, nobody can access my email account for years, except the ones that have specific instructions to do that (username, password, token).</p>
-<p>This solution does not cover:</p>
+<p>In this scenario, after my death, nobody can access my email account for years, except the people who have specific instructions to do so (username, password, token).</p>
+<p>This solution does not cover unexpected account suspension or closure. In that case, I need to migrate all the associated accounts to another email address. It is doable, even if boring.</p>
+<h3 id="personal-domain-with-email-sub-addressing">Personal Domain with Email Sub-Addressing<a class="headerlink" href="#personal-domain-with-email-sub-addressing" title="Permanent link">&para;</a></h3>
+<p>In this scenario, I use an account on a personal domain (e.g., adainese.it). I assume that:</p>
 <ul>
-<li>unexpected account suspension/closure.</li>
+<li>I register a domain with the TLD of the country I live in (let's avoid another .EU-style scenario).</li>
+<li>I use sub-addressing (see below).</li>
 </ul>
-<p>In this case, I need to migrate all associated accounts to another email. Doable, even if boring.</p>
-<h3 id="personal-domain-with-email-sub-addressing">Personal domain with email sub-addressing<a class="headerlink" href="#personal-domain-with-email-sub-addressing" title="Permanent link">&para;</a></h3>
-<p>In this scenario, I'm using a personal domain account (e.g. adainese.it). I'm assuming:</p>
-<ul>
-<li>I'm registering a domain with the TLD associated with the country I live in (let's avoid another .EU style scenario);</li>
-<li>I'm using sub-addressing (see later).</li>
-</ul>
-<p>We know that sooner or (hopefully) later, the domain won't be renewed and thus it will be available to anyone. We also know that sooner or later our domain will be part of a data breach, and associated with our physical identity.</p>
-<p>We could use sub-addressing to minimize the risk associated with password recovery. Sub-addressing allows you to use the <code>+</code> symbol to create multiple aliases, so you could use <code>yourname+randomstring@example.com</code> as the email address.</p>
-<p>Is this enough? Not really, because sooner or later the service provider will send any unsolicited email uncovering the email address used to log in.</p>
+<p>We know that sooner or (hopefully) later the domain will not be renewed and will become available to anyone. We also know that sooner or later our domain will be part of a data breach and associated with our physical identity.</p>
+<p>We can use sub-addressing to minimize the risk associated with password recovery. Sub-addressing lets us use the <code>+</code> symbol to create multiple aliases, so we can use <code>yourname+randomstring@example.com</code> as the email address.</p>
+<p>Is this enough? Not really, because sooner or later a service provider will send an unsolicited email that reveals the email address used to log in.</p>
 <h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
-<p>In my point of view, there is no final solution yet. Both solutions could be used, both minimize different risks and leave open others.</p>
+<p>In my view, there is no final solution yet. Both solutions can be used: each minimizes different risks and leaves others open.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://datatracker.ietf.org/doc/html/rfc5233" title="Sieve Email Filtering: Subaddress Extension">Sieve Email Filtering: Subaddress Extension</a></li>
-<li><a href="https://www.gov.uk/guidance/registering-and-renewing-eu-domain-names-in-the-uk" title="Registering and renewing .eu domain names in the UK">Registering and renewing .eu domain names in the UK</a></li>
-<li><a href="https://ctemplar.com/ctemplar-is-shutting-down/" title="CTemplar is shutting down">CTemplar is shutting down</a></li>
-<li><a href="https://mastodon.social/interact/108274062191145538?type=reblog" title="Expired domain threat scenario">Expired domain threat scenario</a></li>
-<li><a href="https://inteltechniques.com/podcast.html" title="The Privacy, Security, and OSINT Show">The Privacy, Security, and OSINT Show</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc5233" title="Sieve Email Filtering: Subaddress Extension">Sieve Email Filtering: Subaddress Extension</a>.</li>
+<li><a href="https://www.gov.uk/guidance/registering-and-renewing-eu-domain-names-in-the-uk" title="Registering and renewing .eu domain names in the UK">Registering and renewing .eu domain names in the UK</a>.</li>
+<li><a href="https://ctemplar.com/ctemplar-is-shutting-down/" title="CTemplar is shutting down">CTemplar is shutting down</a>.</li>
+<li><a href="https://mastodon.social/interact/108274062191145538?type=reblog" title="Expired domain threat scenario">Expired domain threat scenario</a>.</li>
+<li><a href="https://inteltechniques.com/podcast.html" title="The Privacy, Security, and OSINT Show">The Privacy, Security, and OSINT Show</a>.</li>
 </ul>
 
 

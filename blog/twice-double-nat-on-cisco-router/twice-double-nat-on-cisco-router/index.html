@@ -432,7 +432,7 @@ Everything here is free. If it helps you, you can
   <a href="#companya-router" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CompanyA router
+        CompanyA Router
       
     </span>
   </a>
@@ -443,7 +443,7 @@ Everything here is free. If it helps you, you can
   <a href="#cpea-router" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CPEA router
+        CPEA Router
       
     </span>
   </a>
@@ -454,7 +454,7 @@ Everything here is free. If it helps you, you can
   <a href="#cpeb-router" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CPEB router
+        CPEB Router
       
     </span>
   </a>
@@ -465,7 +465,7 @@ Everything here is free. If it helps you, you can
   <a href="#companyb-router" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CompanyB router
+        CompanyB Router
       
     </span>
   </a>
@@ -522,6 +522,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
       
     
@@ -545,23 +552,23 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2017-02-01">01 February 2017</time></span></p>
 <h1 id="twice-double-nat-on-cisco-router">Twice (double) NAT on Cisco router<a class="headerlink" href="#twice-double-nat-on-cisco-router" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/cisco.png" /></p>
-<p>When different companies must be connected, it's a common request that each company want a the other one present itself with a specific subnet. And usually companies don't agree about IP ranges. A Twice NAT configuration also called double NAT) can help a lot.</p>
-<p>In this scenario, the two companies want to be interconnected with a MPLS network for a couple of services:</p>
+<p>When we connect different companies, it is a common request that each company wants the other one to present itself with a specific subnet. Usually, companies do not agree on IP ranges. A Twice NAT configuration (also called double NAT) can help a lot.</p>
+<p>In this scenario, the two companies want to be interconnected through an MPLS network for a couple of services:</p>
 <ul>
-<li>CompanyA server (10.1.1.100) must reach CompanyB webserver (10.2.2.200)</li>
-<li>CompanyA is responsible (pay) for the connectivity</li>
+<li>The CompanyA server (<code>10.1.1.100</code>) must reach the CompanyB web server (<code>10.2.2.200</code>).</li>
+<li>CompanyA is responsible for (and pays for) the connectivity.</li>
 </ul>
-<p>Because of IP address allocations:</p>
+<p>Because of the IP address allocations:</p>
 <ul>
-<li>CompanyA wants CompanyB present itself as <code>10.1.255.100</code></li>
-<li>CompanyA wants to place ISP's router on <code>10.155.255.0/24</code></li>
-<li>CompanyB wants CompanyA present itself as <code>10.2.255.200</code></li>
-<li>CompanyB wants to place ISP's router on <code>10.255.255.0/24</code></li>
+<li>CompanyA wants CompanyB to present itself as <code>10.1.255.100</code>.</li>
+<li>CompanyA wants to place the ISP router on <code>10.155.255.0/24</code>.</li>
+<li>CompanyB wants CompanyA to present itself as <code>10.2.255.200</code>.</li>
+<li>CompanyB wants to place the ISP router on <code>10.255.255.0/24</code>.</li>
 </ul>
 <p><img alt="twicenat" src="../images/twicenat.png" /></p>
-<p>The following table describe who NAT what:</p>
+<p>The following table describes who translates what:</p>
 <table>
 <thead>
 <tr>
@@ -594,32 +601,32 @@ Everything here is free. If it helps you, you can
 </table>
 <p>In other words:</p>
 <ul>
-<li>ServerA (<code>10.1.1.100</code>) calls ServerB using <code>10.1.255.100</code></li>
-<li>CPEB translate the packages so ServerA's source is <code>10.2.255.200</code> and ServerB's destination is <code>10.2.2.200</code></li>
+<li>ServerA (<code>10.1.1.100</code>) calls ServerB using <code>10.1.255.100</code>.</li>
+<li>CPEB translates the packets so that the source of ServerA is <code>10.2.255.200</code> and the destination of ServerB is <code>10.2.2.200</code>.</li>
 </ul>
-<p>Why is that useful?</p>
-<p>On many companies I can see internal routing table messed up including external IP addresses without caring about too much. It's obvious that:</p>
+<p>Why is this useful?</p>
+<p>In many companies, I see internal routing tables messed up with external IP addresses, without much care. It is obvious that:</p>
 <ul>
-<li>sooner or later you cannot interconnect companies because of overlapping IP addresses</li>
-<li>you cannot interconnect companies that force you a specific IP address as a source</li>
+<li>Sooner or later, we cannot interconnect companies because of overlapping IP addresses.</li>
+<li>We cannot interconnect companies that force a specific IP address as the source.</li>
 </ul>
 <h2 id="relevant-configuration">Relevant Configuration<a class="headerlink" href="#relevant-configuration" title="Permanent link">&para;</a></h2>
-<p>The following paragraphs show relevant configurations only.</p>
-<h3 id="companya-router">CompanyA router<a class="headerlink" href="#companya-router" title="Permanent link">&para;</a></h3>
-<p>CompanyA router want to reach CompanyB using <code>10.1.255.0/24</code>, so a route must be configured:</p>
+<p>The following sections show only the relevant configurations.</p>
+<h3 id="companya-router">CompanyA Router<a class="headerlink" href="#companya-router" title="Permanent link">&para;</a></h3>
+<p>The CompanyA router wants to reach CompanyB using <code>10.1.255.0/24</code>, so we configure a route:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ip route 10.1.255.0 255.255.255.0 10.155.255.1
 </code></pre></div>
-<h3 id="cpea-router">CPEA router<a class="headerlink" href="#cpea-router" title="Permanent link">&para;</a></h3>
-<p>Because CompanyA is providing connectivity, the whole MPLS must know where CompanyA is. So a default gateway could be a good choice:</p>
+<h3 id="cpea-router">CPEA Router<a class="headerlink" href="#cpea-router" title="Permanent link">&para;</a></h3>
+<p>Because CompanyA provides the connectivity, the whole MPLS network must know where CompanyA is. A default gateway can be a good choice:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ip route 0.0.0.0 0.0.0.0 10.155.255.254
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>router ospf 1
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> default-information originate
 </code></pre></div>
-<h3 id="cpeb-router">CPEB router<a class="headerlink" href="#cpeb-router" title="Permanent link">&para;</a></h3>
+<h3 id="cpeb-router">CPEB Router<a class="headerlink" href="#cpeb-router" title="Permanent link">&para;</a></h3>
 <p>CPEB must know where CompanyB is:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ip route 10.2.2.0 255.255.255.0 10.255.255.254
 </code></pre></div>
-<p>If ServerA call ServerB, the CPEB router can see a packet from <code>10.1.1.100</code> to <code>10.1.255.100</code>. In this case the packet is flowing from the <code>outside</code> interface to the <code>inside</code> one. Following the <a href="http://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html" title="NAT Order of Operation">NAT Order of Operation</a>, the packet is routed before the translation (NAT). But (I guess) because the CPEB does't know where is <code>10.1.255.100</code> so the NAT translation cannot be completed. CPEB must also announce the network called from CompanyA (<code>10.1.255.0/24</code>):</p>
+<p>If ServerA calls ServerB, the CPEB router sees a packet from <code>10.1.1.100</code> to <code>10.1.255.100</code>. In this case, the packet flows from the <code>outside</code> interface to the <code>inside</code> one. According to the <a href="http://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html" title="NAT Order of Operation">NAT Order of Operation</a>, the router routes the packet before the translation (NAT). I guess that, because CPEB does not know where <code>10.1.255.100</code> is, it cannot complete the NAT translation. CPEB must also announce the network that CompanyA calls (<code>10.1.255.0/24</code>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ip route 10.1.255.0 255.255.255.0 Null0
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>ip prefix-list STATIC-TO-OSPF permit 10.1.255.0/24
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>route-map STATIC-TO-OSPF permit 10
@@ -627,7 +634,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>router ospf 1
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> redistribute static subnets route-map STATIC-TO-OSPF
 </code></pre></div>
-<p>The interface facing the customer is configured as inside, the one facing the MPLS is the outside:</p>
+<p>The interface facing the customer is configured as inside, and the one facing the MPLS network is the outside:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>interface Ethernet0/0
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a> ip address 1.1.1.2 255.255.255.252
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a> ip nat outside
@@ -635,27 +642,27 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a> ip address 10.255.255.1 255.255.255.0
 <a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a> ip nat inside
 </code></pre></div>
-<p>Finally we want to:</p>
+<p>Finally, we want to:</p>
 <ul>
-<li>expose the outside ServerA (<code>10.1.1.100</code>) using <code>10.2.255.200</code></li>
-<li>expose the inside ServerB (<code>10.2.2.200</code>) using <code>10.1.255.100</code></li>
+<li>Expose the outside ServerA (<code>10.1.1.100</code>) using <code>10.2.255.200</code>.</li>
+<li>Expose the inside ServerB (<code>10.2.2.200</code>) using <code>10.1.255.100</code>.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ip nat outside source static 10.1.1.100 10.2.255.200
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ip nat inside source static 10.2.2.200 10.1.255.100
 </code></pre></div>
-<h3 id="companyb-router">CompanyB router<a class="headerlink" href="#companyb-router" title="Permanent link">&para;</a></h3>
-<p>CompanyB router want to reach CompanyA using <code>10.2.255.0/24</code>, so a route must be configured:</p>
+<h3 id="companyb-router">CompanyB Router<a class="headerlink" href="#companyb-router" title="Permanent link">&para;</a></h3>
+<p>The CompanyB router wants to reach CompanyA using <code>10.2.255.0/24</code>, so we configure a route:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ip route 10.2.255.0 255.255.255.0 10.255.255.1
 </code></pre></div>
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
-<p>Just ping or start a connection from ServerA to ServerB using (<code>10.1.255.100</code>):</p>
+<p>We ping or start a connection from ServerA to ServerB using <code>10.1.255.100</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>CPEB#show ip nat translations
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Pro Inside global      Inside local       Outside local      Outside global
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>--- ---                ---                10.2.255.200       10.1.1.100
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>tcp 10.1.255.100:80    10.2.2.200:80      10.2.255.200:46711 10.1.1.100:46711
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>--- 10.1.255.100       10.2.2.200         ---                ---
 </code></pre></div>
-<p>Outside global (translated into outside local) call inside global (translated to inside local).</p>
+<p>The outside global address (translated into the outside local one) calls the inside global address (translated into the inside local one).</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.cisco.com/c/en/us/support/docs/ip/network-address-translation-nat/6209-5.html" title="NAT Order of Operation">NAT Order of Operation</a></li>

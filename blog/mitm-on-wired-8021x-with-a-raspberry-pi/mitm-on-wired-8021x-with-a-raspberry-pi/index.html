@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#introduction-nac-solutions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Introduction: NAC solutions
+        Introduction: NAC Solutions
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#switch-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Switch configuration
+        Switch Configuration
       
     </span>
   </a>
@@ -453,7 +453,7 @@ Everything here is free. If it helps you, you can
   <a href="#defense-strategies" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Defense strategies
+        Defense Strategies
       
     </span>
   </a>
@@ -483,7 +483,21 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:802-1x" class="md-tag">802-1x</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
       
     
       
@@ -506,67 +520,67 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-03-10">10 March 2024</time></span></p>
 <h1 id="mitm-on-wired-8021x-with-a-raspberry-pi">MITM on wired 802.1x with a Raspberry PI<a class="headerlink" href="#mitm-on-wired-8021x-with-a-raspberry-pi" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:802-1x">802-1x</a> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
-<p>In recent years, Network Access Control (NAC) solutions based on the 802.1x protocol have gained significant traction. Like all security solutions, it is crucial to carefully evaluate their functionality to integrate them into a proper Cybersecurity strategy.</p>
-<p>I understand that this evaluation requires highly specific technical knowledge, and often those assessing rely on what is described in datasheets. This post serves three purposes:</p>
+<p>In recent years, Network Access Control (<a href="../../../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">NAC</a>) solutions based on the 802.1x protocol have gained significant traction. Like any security solution, they must be evaluated carefully before we integrate them into a proper cybersecurity strategy.</p>
+<p>I understand that this evaluation requires very specific technical knowledge, and those who assess these solutions often rely on what the datasheets say. This post has three purposes:</p>
 <ul>
-<li>to raise awareness that incorrectly assessing a security solution exposes organizations to threats;</li>
-<li>to describe the steps by which a threat actor can exploit weaknesses in NAC solutions,</li>
-<li>to be informative and therefore understandable even to non-technical individuals.</li>
+<li>To raise awareness that assessing a security solution incorrectly exposes organizations to threats.</li>
+<li>To describe the steps a threat actor can follow to exploit the weaknesses of NAC solutions.</li>
+<li>To be informative, and understandable even to non-technical readers.</li>
 </ul>
-<h2 id="introduction-nac-solutions">Introduction: NAC solutions<a class="headerlink" href="#introduction-nac-solutions" title="Permanent link">&para;</a></h2>
-<p>First and foremost, an overview of NAC or Network Access Control solutions is necessary. These solutions are based on the 802.1x protocol to authenticate and authorize connected devices. Some solutions, through additional components, also assess device behavior to identify any anomalies.</p>
-<p>The problem these solutions aim to solve is related to unauthorized access to Ethernet ports by unauthorized devices. Specifically, these solutions protect ports naturally accessible to individuals, particularly in offices and public areas.</p>
-<p>Over time, these solutions have evolved to not only authenticate but also authorize and profile connected devices. In other words, it is possible to dynamically configure Ethernet ports based on connected devices. This functionality greatly aids in improving and automating the management of large and dynamic campus areas.</p>
-<p>Device authentication is based on the 802.1x protocol: the switch requests authentication from the device, and authentications are validated through external servers. Authentication can occur via username and password or through certificates. Once the device is authenticated, the channel is active until the session expires, which must then be renewed.</p>
-<p>Over time, solutions have evolved to support multiple connected devices, such as:</p>
+<h2 id="introduction-nac-solutions">Introduction: NAC Solutions<a class="headerlink" href="#introduction-nac-solutions" title="Permanent link">&para;</a></h2>
+<p>First, we need an overview of NAC (Network Access Control) solutions. They are based on the 802.1x protocol to authenticate and authorize connected devices. Some solutions, through additional components, also assess the behavior of the devices to identify anomalies.</p>
+<p>These solutions address the problem of unauthorized devices accessing Ethernet ports. Specifically, they protect the ports that people can reach easily, particularly in offices and public areas.</p>
+<p>Over time, these solutions have evolved: they authenticate, authorize and profile the connected devices. In other words, we can configure Ethernet ports dynamically based on the connected devices. This greatly helps to improve and automate the management of large and dynamic campus networks.</p>
+<p>Device authentication is based on the 802.1x protocol: the switch requests authentication from the device, and external servers validate the authentication. Authentication can use a username and password or certificates. Once the device is authenticated, the channel stays active until the session expires and must be renewed.</p>
+<p>Solutions have also evolved to support multiple connected devices, such as:</p>
 <ul>
-<li>Phone with cascaded computers;</li>
-<li>Computers with virtual machines;</li>
+<li>A phone with a computer cascaded behind it.</li>
+<li>A computer with virtual machines.</li>
 <li>...</li>
 </ul>
-<p>However, in the real world, there are numerous devices that do not implement the 802.1x protocol. NAC solutions have further "evolved" (perhaps it would be more correct to say "devolved"), authenticating devices based on their MAC address: this functionality is called MAB or MAC Address Bypass. It is evident that the term "bypass" cannot be associated with a security feature, and indeed, we recall that NAC solutions are also used for automation.</p>
-<p>The most important consideration, however, concerns how an authenticated session is established. 802.1x allows authentication of the channel, not individual packets. Specifically, the switch associates the authenticated session with the MAC address of the device. An attacker can thus insert a malicious device between the authenticated device and the switch, exploiting the authenticated channel.</p>
-<p>The final consideration concerns what I call "silent" devices. For NAC solutions to work, connected devices must support 802.1x or transmit at least one packet to make their MAC address known to the switch. Some devices are designed to receive data but not transmit it, making it impossible to use any NAC solution.</p>
-<h2 id="switch-configuration">Switch configuration<a class="headerlink" href="#switch-configuration" title="Permanent link">&para;</a></h2>
-<p>Switch configuration should be carefully evaluated to minimize risks, which, as we will see later, are still present.</p>
-<p>Each Ethernet port can be configured in various modes depending on the vendor. Examining Cisco switches, the modes are:</p>
+<p>In the real world, however, many devices do not implement the 802.1x protocol. NAC solutions have "evolved" further (it would be more correct to say "devolved"), authenticating devices based on their MAC address: this functionality is called MAB, or MAC Address Bypass. The term "bypass" cannot be associated with a security feature, and we should remember that NAC solutions are also used for automation.</p>
+<p>The most important consideration concerns how an authenticated session is established. 802.1x authenticates the channel, not the individual packets. The switch associates the authenticated session with the MAC address of the device. An attacker can therefore insert a malicious device between the authenticated device and the switch, and exploit the authenticated channel.</p>
+<p>The final consideration concerns what I call "silent" devices. For NAC solutions to work, the connected devices must support 802.1x or transmit at least one packet, so that the switch learns their MAC address. Some devices are designed to receive data but not to transmit it, which makes it impossible to use any NAC solution.</p>
+<h2 id="switch-configuration">Switch Configuration<a class="headerlink" href="#switch-configuration" title="Permanent link">&para;</a></h2>
+<p>We should evaluate the switch configuration carefully to minimize the risks, which, as we will see later, are still present.</p>
+<p>Each Ethernet port can be configured in different modes, depending on the vendor. On Cisco switches, the modes are:</p>
 <ul>
-<li>Multi-Host: once the port is authenticated by the connected device, any other device can use the channel (for example, in the case of virtual machines).</li>
-<li>Multi-Domain: each connected device, belonging to a specific VLAN, must be authenticated (for example, in the case of cascaded phones and computers).</li>
-<li>Multi-Auth: each MAC address that appears on the Ethernet port must be authenticated.</li>
-<li>MAB: no real authentication is performed, but only a check that the MAC address is enabled.</li>
+<li><strong>Multi-Host:</strong> once the connected device authenticates the port, any other device can use the channel (for example, virtual machines).</li>
+<li><strong>Multi-Domain:</strong> each connected device, belonging to a specific VLAN, must authenticate (for example, a phone and a computer cascaded).</li>
+<li><strong>Multi-Auth:</strong> each MAC address that appears on the Ethernet port must authenticate.</li>
+<li><strong>MAB:</strong> no real authentication is performed, only a check that the MAC address is enabled.</li>
 </ul>
-<p>Where possible, the preference should be, in order, Multi-Auth, Multi-Domain, Multi-Host, MAB (note: definitions depend on the vendor, the important thing is to understand the concept).</p>
+<p>Where possible, the preference should be, in order, Multi-Auth, Multi-Domain, Multi-Host and MAB (the definitions depend on the vendor: the important thing is to understand the concept).</p>
 <h2 id="mitm-on-8021x">MITM on 802.1x<a class="headerlink" href="#mitm-on-8021x" title="Permanent link">&para;</a></h2>
-<p>From the attacker's perspective, in the worst-case scenario, inserting oneself between an authenticated device and a switch means being transparent. Specifically, it means, in order:</p>
+<p>From the attacker's perspective, in the worst-case scenario, inserting a device between an authenticated device and a switch means being transparent. Specifically, the attacker must, in order:</p>
 <ol>
-<li>forwarding any data to and from the switch without applying any filters to local frames;</li>
-<li>waiting for the channel to be authenticated;</li>
-<li>emitting data using only the MAC address and IP address of the authenticated device.</li>
+<li>Forward any data to and from the switch without applying any filters to the local frames.</li>
+<li>Wait for the channel to be authenticated.</li>
+<li>Emit data using only the MAC address and the IP address of the authenticated device.</li>
 </ol>
-<p>There are two possible ways to implement the above:</p>
+<p>There are two ways to implement this:</p>
 <ol>
-<li>building a software switch running in user-space, probably resulting in less optimal performance;</li>
-<li>leveraging components offered by Linux, thus working in kernel-space with better performance, albeit with some limitations.</li>
+<li>Build a software switch running in user space, which probably results in lower performance.</li>
+<li>Use the components offered by Linux, working in kernel space with better performance, albeit with some limitations.</li>
 </ol>
-<p>With reference to the second approach, the three steps translate operationally into:</p>
+<p>With the second approach, the three steps translate operationally into:</p>
 <ol>
-<li>compiling a custom kernel so that all frames are forwarded by Linux Bridge;</li>
-<li>reading the MAC address of the connected device;</li>
-<li>analyzing passing data until obtaining the IP address of the connected device and the MAC address of the gateway;</li>
-<li>configuring a Linux Bridge, iptables, and ebtables so that it is possible to communicate with the outside using the MAC address and IP address of the connected device;</li>
-<li>activating a covert channel that allows the malicious device to be exploited remotely.</li>
+<li>Compiling a custom kernel so that Linux Bridge forwards all the frames.</li>
+<li>Reading the MAC address of the connected device.</li>
+<li>Analyzing the passing data until we obtain the IP address of the connected device and the MAC address of the gateway.</li>
+<li>Configuring a Linux Bridge, iptables and ebtables so that we can communicate with the outside using the MAC address and the IP address of the connected device.</li>
+<li>Activating a covert channel that allows us to exploit the malicious device remotely.</li>
 </ol>
-<p>The result will be a device practically invisible and remotely manageable.</p>
-<h2 id="defense-strategies">Defense strategies<a class="headerlink" href="#defense-strategies" title="Permanent link">&para;</a></h2>
-<p>Programming a device to transparently exploit an authenticated 802.1x session is not simple but not overly complex either. Therefore, it is necessary to consider the risk that ports with promiscuous access may be compromised as described above.</p>
-<p>For several years, my approach has been to consider networks with promiscuous access akin to DMZ networks: high-risk areas that require high visibility and very restrictive policies. No assumptions can be made about the security of connected devices.</p>
-<p>A first approach is therefore to increase visibility by adding behavioral analysis of devices: if a printer starts communicating with an unknown remote site, uploading more or less significant data, a red flag should go up somewhere.</p>
-<p>A second approach involves using a zero-trust approach, creating policies that allow only what is strictly necessary, thus limiting the scope of action of any malicious devices. In this regard, the use of Private VLANs can further reduce the attack surface. However, it is always necessary to keep in mind how a device is authenticated: for example, if a specific computer is authenticated based on the user using it, and if following user authentication, firewalls use the user's IP address as the basis for evaluating policies, then this mechanism cannot be considered secure. Indeed, the hypothetical malicious device mentioned above will use the same IP address assigned to the user.</p>
-<p>A third approach, less common but extremely effective, involves using an additional layer consisting of IPSec or similar protocols. This approach, which I like a lot, considers promiscuous networks as if they were public networks: users who authenticate on these networks must use VPN systems to access internal company networks.</p>
-<p>There is an additional approach, partially applicable, that involves encrypting the device-to-switch channel to make it unusable for MITM attacks. MACSec (802.1ae) is the standard that implements this functionality, but it is not currently natively implemented on endpoint devices. Third-party agents, such as <a href="https://www.cisco.com/go/anyconnect">Cisco AnyConnect</a>, are available and can be installed on client operating systems.</p>
+<p>The result is a practically invisible, remotely manageable device.</p>
+<h2 id="defense-strategies">Defense Strategies<a class="headerlink" href="#defense-strategies" title="Permanent link">&para;</a></h2>
+<p>Programming a device to exploit an authenticated 802.1x session transparently is not simple, but it is not overly complex either. We must therefore consider the risk that ports with promiscuous access are compromised as described above.</p>
+<p>For several years, my approach has been to treat networks with promiscuous access like DMZ networks: high-risk areas that require high visibility and very restrictive policies. We cannot make any assumption about the security of the connected devices.</p>
+<p>A first approach is to increase visibility by adding behavioral analysis of the devices: if a printer starts communicating with an unknown remote site and uploads a more or less significant amount of data, a red flag should go up somewhere.</p>
+<p>A second approach is to apply zero trust, creating policies that allow only what is strictly necessary and limiting the scope of action of any malicious device. In this regard, Private VLANs can further reduce the attack surface. We must always keep in mind how a device is authenticated: for example, if a computer is authenticated based on the user using it, and the firewalls evaluate the policies based on the IP address of that user, we cannot consider this mechanism secure. The malicious device described above uses the same IP address assigned to the user.</p>
+<p>A third approach, less common but extremely effective, is to add a layer based on IPsec or similar protocols. I like this approach a lot: it treats promiscuous networks as public networks, so users who authenticate on them must use VPN systems to reach the internal company networks.</p>
+<p>One more approach, partially applicable, is to encrypt the channel between the device and the switch to make it unusable for MITM attacks. MACsec (802.1AE) is the standard that implements this functionality, but endpoint devices do not implement it natively at the moment. Third-party agents, such as <a href="https://www.cisco.com/go/anyconnect">Cisco AnyConnect</a>, can be installed on the client operating systems.</p>
 
 
 

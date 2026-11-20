@@ -551,57 +551,57 @@ Everything here is free. If it helps you, you can
 <h2 id="required-information">Required Information<a class="headerlink" href="#required-information" title="Permanent link">&para;</a></h2>
 <p>Before we begin, we need the following data:</p>
 <ul>
-<li>User identifier (POD)</li>
-<li>Lab identifier</li>
-<li>Node identifiers to analyze</li>
-<li>Interface identifiers to analyze</li>
-<li>Network identifiers to analyze</li>
-<li>Execution space identifier</li>
+<li>The user identifier (POD).</li>
+<li>The lab identifier.</li>
+<li>The identifiers of the nodes to analyze.</li>
+<li>The identifiers of the interfaces to analyze.</li>
+<li>The identifiers of the networks to analyze.</li>
+<li>The execution space identifier.</li>
 </ul>
 <h2 id="user-identifier-pod">User Identifier (POD)<a class="headerlink" href="#user-identifier-pod" title="Permanent link">&para;</a></h2>
-<p>The user identifier is visible to an administrator under <code>Management</code> → <code>User Management</code>.</p>
+<p>An administrator can see the user identifier under <code>Management</code> → <code>User Management</code>.</p>
 <p><img alt="eveng-users" src="../images/eveng-users.png" /></p>
 <p>In this example, the POD assigned to my user is <strong>5</strong>.</p>
 <h2 id="lab-identifier">Lab Identifier<a class="headerlink" href="#lab-identifier" title="Permanent link">&para;</a></h2>
-<p>The lab identifier can be found by opening the lab and navigating to <code>Lab Details</code>.</p>
+<p>We can find the lab identifier by opening the lab and navigating to <code>Lab Details</code>.</p>
 <p><img alt="eveng-lab-id" src="../images/eveng-lab-id.png" /></p>
 <p>For instance, my lab identifier is <code>3b327c21-1585-499d-9a0d-4281e05f4532</code>.</p>
-<p>If we open the lab file with a text editor, the identifier is the <code>id</code> attribute of the <code>lab</code> object.</p>
+<p>If we open the lab file with a text editor, the identifier is the <code>id</code> attribute of the <code>lab</code> object.</p>
 <p><img alt="eveng-xml-lab-1" src="../images/eveng-xml-lab-1.png" /></p>
 <h2 id="node-identifiers">Node Identifiers<a class="headerlink" href="#node-identifiers" title="Permanent link">&para;</a></h2>
-<p>Each node is identified by a number that can be viewed by opening the lab and navigating to <code>Nodes</code>.</p>
+<p>Each node is identified by a number that we can see by opening the lab and navigating to <code>Nodes</code>.</p>
 <p><img alt="eveng-lab-nodes" src="../images/eveng-lab-nodes.png" /></p>
-<p>If we open the lab file with a text editor, the identifier is the <code>id</code> attribute of the node object.</p>
+<p>If we open the lab file with a text editor, the identifier is the <code>id</code> attribute of the node object.</p>
 <p><img alt="eveng-xml-lab-2" src="../images/eveng-xml-lab-2.png" /></p>
 <h2 id="interface-identifiers">Interface Identifiers<a class="headerlink" href="#interface-identifiers" title="Permanent link">&para;</a></h2>
-<p>Each interface is identified by a number, which can be viewed by opening the lab file with a text editor. The interface identifier is the <code>id</code> attribute of the interface object.</p>
+<p>Each interface is identified by a number, which we can see by opening the lab file with a text editor. The interface identifier is the <code>id</code> attribute of the interface object.</p>
 <p><img alt="eveng-xml-lab-3" src="../images/eveng-xml-lab-3.png" /></p>
-<p>Each interface is associated with a network (<code>network_id</code>), which represents the network to which the interface is connected.</p>
+<p>Each interface is associated with a network (<code>network_id</code>), which represents the network the interface is connected to.</p>
 <p>There is a key difference between QEMU and IOL node interfaces:</p>
 <ul>
-<li>QEMU node interfaces start from identifier <code>0</code> and increment sequentially.</li>
-<li>IOL node interfaces follow the formula: <code>ID = X + Y × 16</code> where <code>X</code> and <code>Y</code> are the slot and interface identifiers present in the <code>EthernetX/Y</code> name.</li>
+<li>QEMU node interfaces start from identifier <code>0</code> and increment sequentially.</li>
+<li>IOL node interfaces follow the formula <code>ID = X + Y × 16</code>, where <code>X</code> and <code>Y</code> are the slot and interface identifiers present in the <code>EthernetX/Y</code> name.</li>
 </ul>
 <h2 id="network-identifiers">Network Identifiers<a class="headerlink" href="#network-identifiers" title="Permanent link">&para;</a></h2>
-<p>Each network segment is identified by a number that can be viewed by opening the lab and navigating to <code>Networks</code>.</p>
+<p>Each network segment is identified by a number that we can see by opening the lab and navigating to <code>Networks</code>.</p>
 <p><img alt="eveng-lab-networks" src="../images/eveng-lab-networks.png" /></p>
-<p>A network can be either a point-to-point link or a network object. A network object is an L2 network implemented by a Linux bridge rather than an EVE-NG node. In this view, only explicitly created networks will be displayed, while all point-to-point networks remain hidden.</p>
-<p>If we open the lab file with a text editor, the identifier is the ID attribute of the network object.</p>
+<p>A network can be either a point-to-point link or a network object. A network object is an L2 network implemented by a Linux bridge rather than by an EVE-NG node. This view displays only the explicitly created networks, while all the point-to-point networks remain hidden.</p>
+<p>If we open the lab file with a text editor, the identifier is the <code>id</code> attribute of the network object.</p>
 <p><img alt="eveng-xml-lab-4" src="../images/eveng-xml-lab-4.png" /></p>
-<p>The <strong>visibility</strong> flag determines if a network is visible from the web interface. For example, while four networks are present, only two are visible in the web interface:</p>
+<p>The <strong>visibility</strong> flag determines whether a network is visible in the web interface. For example, four networks are present, but only two are visible in the web interface:</p>
 <ul>
-<li>Network R2-R7 (<code>id=3</code>)</li>
-<li>Network R5-R7 (<code>id=2</code>)</li>
-<li>Shared Network (<code>id=4</code>)</li>
-<li>Mgmt Network (<code>id=1</code>)</li>
+<li>Network R2-R7 (<code>id=3</code>).</li>
+<li>Network R5-R7 (<code>id=2</code>).</li>
+<li>Shared Network (<code>id=4</code>).</li>
+<li>Mgmt Network (<code>id=1</code>).</li>
 </ul>
-<p>When creating a point-to-point link, the network name is set using the node name and source interface.</p>
+<p>When we create a point-to-point link, the network name is set using the node name and the source interface.</p>
 <h2 id="execution-space-identifier">Execution Space Identifier<a class="headerlink" href="#execution-space-identifier" title="Permanent link">&para;</a></h2>
 <p>The execution space is represented by a number associated with an open lab. This number remains assigned until the lab is closed.</p>
-<p>We can access the database using the following command with the password eve:</p>
+<p>We can access the database with the following command and the password <code>eve</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>eve_ng_db
 </code></pre></div>
-<p>The execution space identifier can be retrieved via a database query, knowing the lab ID</p>
+<p>Knowing the lab ID, we can retrieve the execution space identifier with a database query:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mysql&gt; SELECT * FROM lab WHERE uuid="3b327c21-1585-499d-9a0d-4281e05f4532";
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>+----+--------------------------------------+---------------+-----------------+-----+
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>| id | uuid                                 | path          | name            | pod |
@@ -611,30 +611,30 @@ Everything here is free. If it helps you, you can
 </code></pre></div>
 <p>In our case, the execution space identifier is <code>3</code>.</p>
 <h2 id="node-interfaces">Node Interfaces<a class="headerlink" href="#node-interfaces" title="Permanent link">&para;</a></h2>
-<p>At this point, we have all the necessary values to identify the interfaces in our system. Each interface is constructed as follows: <code>vunAAABBBBCCCDD</code></p>
+<p>At this point, we have all the values we need to identify the interfaces in our system. Each interface name is built as follows: <code>vunAAABBBBCCCDD</code>.</p>
 <p>Where:</p>
 <ul>
-<li><code>AAA</code>: Decimal execution space identifier</li>
-<li><code>BBBB</code>: Decimal POD identifier</li>
-<li><code>CCC</code>: Decimal node identifier</li>
-<li><code>DD</code>: Hexadecimal interface identifier</li>
+<li><code>AAA</code>: the decimal execution space identifier.</li>
+<li><code>BBBB</code>: the decimal POD identifier.</li>
+<li><code>CCC</code>: the decimal node identifier.</li>
+<li><code>DD</code>: the hexadecimal interface identifier.</li>
 </ul>
-<p>The first interface of node R2 in our lab (execution space 3, POD 5) has the prefix: <code>vun0030005002</code></p>
+<p>The first interface of node R2 in our lab (execution space 3, POD 5) has the prefix <code>vun0030005002</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>ifconfig<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>vun0030005002
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>vun0030005002​00:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>vun0030005002​10:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>vun0030005002​20:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>vun0030005002​30:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>vun003000500200:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>vun003000500210:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>vun003000500220:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>vun003000500230:<span class="w"> </span><span class="nv">flags</span><span class="o">=</span><span class="m">4163</span>&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;<span class="w">  </span>mtu<span class="w"> </span><span class="m">9000</span>
 </code></pre></div>
-<p>Since R2 is an IOL node, its interfaces are <code>0</code>, <code>16</code> (<code>0x10</code>), <code>32</code> (<code>0x20</code>), and <code>64</code> (<code>0x30</code>)**.</p>
-<p>Each interface can be part of a network implemented via a Linux bridge. Linux bridges are structured as follows: <code>vnetAAABBBBEEEE</code></p>
+<p>Since R2 is an IOL node, its interfaces are <code>0</code>, <code>16</code> (<code>0x10</code>), <code>32</code> (<code>0x20</code>) and <code>48</code> (<code>0x30</code>).</p>
+<p>Each interface can be part of a network implemented with a Linux bridge. The names of the Linux bridges are built as follows: <code>vnetAAABBBBEEEE</code>.</p>
 <p>Where:</p>
 <ul>
-<li><code>AAA</code>: Decimal execution space identifier</li>
-<li><code>BBBB</code>: Decimal POD identifier</li>
-<li><code>EEE</code>: Decimal network identifier</li>
+<li><code>AAA</code>: the decimal execution space identifier.</li>
+<li><code>BBBB</code>: the decimal POD identifier.</li>
+<li><code>EEEE</code>: the decimal network identifier.</li>
 </ul>
-<p>The network in our lab (execution space 3, POD 5, ID 4) is named: <code>vnet00300050004</code></p>
+<p>The network in our lab (execution space 3, POD 5, ID 4) is named <code>vnet00300050004</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>brctl<span class="w"> </span>show<span class="w"> </span>vnet00300050004
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>bridge<span class="w"> </span>name<span class="w">     </span>bridge<span class="w"> </span>id<span class="w">               </span>STP<span class="w"> </span>enabled<span class="w">     </span>interfaces
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>vnet00300050004<span class="w">         </span><span class="m">8000</span>.de24a99b6dc2<span class="w">       </span>no<span class="w">                      </span>vun003000500103
@@ -643,9 +643,9 @@ Everything here is free. If it helps you, you can
 </code></pre></div>
 <p>This network contains three interfaces:</p>
 <ul>
-<li><code>vun003000500103</code>: Execution space 3, POD 5, node 1 (<strong>R7, QEMU</strong>), interface <code>0x3</code> (<code>Gi0/3</code>)</li>
-<li>vun003000500220: Execution space 3, POD 5, node 2 (<strong>R2, IOL</strong>), interface <code>0x20</code> (<code>32</code>, <code>Eth0/2</code>)</li>
-<li>vun003000500520: Execution space 3, POD 5, node 5 (<strong>R5, IOL</strong>), interface <code>0x20</code> (<code>32</code>, <code>Eth0/2</code>)</li>
+<li><code>vun003000500103</code>: execution space 3, POD 5, node 1 (<strong>R7, QEMU</strong>), interface <code>0x3</code> (<code>Gi0/3</code>).</li>
+<li><code>vun003000500220</code>: execution space 3, POD 5, node 2 (<strong>R2, IOL</strong>), interface <code>0x20</code> (<code>32</code>, <code>Eth0/2</code>).</li>
+<li><code>vun003000500520</code>: execution space 3, POD 5, node 5 (<strong>R5, IOL</strong>), interface <code>0x20</code> (<code>32</code>, <code>Eth0/2</code>).</li>
 </ul>
 
 

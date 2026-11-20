@@ -468,6 +468,20 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:api" class="md-tag">api</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:firewall" class="md-tag">firewall</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:palo-alto-networks" class="md-tag">palo-alto-networks</a>
       
     
@@ -477,10 +491,10 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-06-28">28 June 2025</time></span></p>
 <h1 id="automating-palo-alto-firewall-via-rest-api">Automating Palo Alto Firewall via REST API<a class="headerlink" href="#automating-palo-alto-firewall-via-rest-api" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:api">api</a> <a class="md-tag" href="../../../tags/#tag:firewall">firewall</a> <a class="md-tag" href="../../../tags/#tag:palo-alto-networks">palo-alto-networks</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/paloalto-strata.png" /></p>
 <p>Palo Alto Networks firewalls were originally designed around XML APIs. The JSON-based REST APIs were introduced later, so their implementation is currently incomplete and, as we will see, prone to certain errors. As noted earlier, the API documentation is available directly on the firewall at <code>https://172.25.10.4/restapi-doc</code>.</p>
-<p>My recommendation is to use the REST API only for specific, well-tested tasks. In all other cases, it is preferable to rely on the XML API.</p>
+<p>My recommendation is to use the REST API only for specific, well-tested tasks. In all other cases, it is preferable to rely on the <a href="../../203automating-palo-alto-firewall-via-xml-api/automating-palo-alto-firewall-via-xml-api/">XML API</a>.</p>
 <h2 id="configuration-commands-via-rest-api">Configuration Commands via REST API<a class="headerlink" href="#configuration-commands-via-rest-api" title="Permanent link">&para;</a></h2>
 <p>Currently, we can use the REST APIs only for configuration tasks. All the other operations, including the commit, must still be performed with the XML API.</p>
 <p>Let's take the same example of the previous section and create the two DNS servers of Google on the firewall. The REST API documentation is more comprehensive, but it is sometimes incomplete and not always easy to interpret:</p>

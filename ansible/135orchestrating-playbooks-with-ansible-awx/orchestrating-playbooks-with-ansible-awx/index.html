@@ -544,15 +544,22 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:awx" class="md-tag">awx</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:docker" class="md-tag">docker</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-03-22">22 March 2025</time></span></p>
 <h1 id="orchestrating-playbooks-with-ansible-awx">Orchestrating playbooks with Ansible AWX<a class="headerlink" href="#orchestrating-playbooks-with-ansible-awx" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:awx">awx</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:awx">awx</a> <a class="md-tag" href="../../../tags/#tag:docker">docker</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/awx.png" /></p>
-<p><a href="https://github.com/ansible/awx">Ansible AWX</a> is the open-source project that the automation controller (formerly <a href="https://docs.ansible.com/ansible-tower/index.html">Ansible Tower</a>) is derived from. Both are orchestrators for Ansible playbooks: they manage playbooks in the form of projects, credentials, schedules and reports.</p>
+<p><a href="https://github.com/ansible/awx">Ansible AWX</a> is the open-source project that the automation controller (formerly <a href="https://docs.ansible.com/ansible-tower/index.html">Ansible Tower</a>) is derived from. Both are orchestrators for Ansible <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbooks</a>: they manage playbooks in the form of projects, credentials, schedules and reports.</p>
 <p>The installation of AWX is particularly complex and has changed several times over the years. Currently, it requires a <a href="https://kubernetes.io/">Kubernetes</a> environment, which we install on an Ubuntu Linux Server system.</p>
 <p>We need a system with the following specifications:</p>
 <ul>
@@ -675,7 +682,7 @@ Everything here is free. If it helps you, you can
 <ul>
 <li><code>dependencies/bindep.txt</code>: contains the list of RPM packages to install in the image.</li>
 <li><code>dependencies/requirements.txt</code>: contains the list of Python packages to install in the image.</li>
-<li><code>dependencies/requirements.yml</code>: contains the Ansible Galaxy collections to install in the image.</li>
+<li><code>dependencies/requirements.yml</code>: contains the <a href="../../136ansible-galaxy/ansible-galaxy/">Ansible Galaxy</a> collections to install in the image.</li>
 <li><code>execution-environment.yml</code>: defines how to create the image from a specific version of <code>awx-ee</code>, based on the dependencies defined above.</li>
 </ul>
 <p>Let's create the environment to build the image:</p>
@@ -692,7 +699,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>docker<span class="w"> </span>push<span class="w"> </span>dainok/awx-ee-pylibssh:latest
 </code></pre></div>
 <h2 id="bastion-host">Bastion Host<a class="headerlink" href="#bastion-host" title="Permanent link">&para;</a></h2>
-<p>We described the architecture of the bastion host in a previous lesson, and here we use the same architecture.</p>
+<p>We described the architecture of the <a href="../../117running-ansible-playbooks-through-a-bastion-host/running-ansible-playbooks-through-a-bastion-host/">bastion host</a> in a previous lesson, and here we use the same architecture.</p>
 <p>First, we copy the content of the <code>id_rsa.pub</code> file into the <code>authorized_keys</code> file of the bastion host. Then we make the private key <code>id_rsa</code> available to AWX:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>bastion-host-key<span class="w"> </span>-n<span class="w"> </span>awx<span class="w"> </span>--from-file<span class="o">=</span>ssh-privatekey<span class="o">=</span>.ssh/id_rsa
 </code></pre></div>
@@ -749,7 +756,7 @@ Everything here is free. If it helps you, you can
 <a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a><span class="w">    </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w"> </span><span class="c1"># The AWX user</span>
 <a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a><span class="w">    </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span><span class="w"> </span><span class="c1"># The AWX user</span>
 </code></pre></div>
-<p>Finally, in the inventory (<code>Resources</code> → <code>Inventories</code> → <code>Cisco Legacy Core-Access topology</code>), add the variables that force the use of the bastion host:</p>
+<p>Finally, in the <a href="../../104ansible-inventory/ansible-inventory/">inventory</a> (<code>Resources</code> → <code>Inventories</code> → <code>Cisco Legacy Core-Access topology</code>), add the variables that force the use of the bastion host:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">ansible_connection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible.netcommon.network_cli</span>
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nt">ansible_network_os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco.ios.ios</span>
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nt">ansible_network_cli_ssh_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">paramiko</span>

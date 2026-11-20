@@ -461,6 +461,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:intermediate" class="md-tag">intermediate</a>
       
     
@@ -477,69 +484,69 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2017-03-28">28 March 2017</time></span></p>
 <h1 id="automatic-network-discovery-and-documentation">Automatic network discovery and documentation<a class="headerlink" href="#automatic-network-discovery-and-documentation" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:netdoc">netdoc</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:netdoc">netdoc</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
-<p>NetBrain is a famous software that allows network discovery (and management). Let's focus now on network discovery and documentation: we want to automatically discover network devices, and how they're connected, and store everything into a version control repository (GIT/CVS).</p>
+<p>NetBrain is a well-known software for network discovery and management. Let's focus on network discovery and documentation: we want to discover network devices automatically, learn how they are connected, and store everything in a version control repository (<a href="../../../fundamentals/201git-fundamentals-for-developers-and-it-professionals/git-fundamentals-for-developers-and-it-professionals/">Git</a>/CVS).</p>
 <p>So we want to:</p>
 <ul>
-<li>discover all network devices;</li>
-<li>map how they're connected;</li>
-<li>track changes automatically;</li>
-<li>store everything into a version control repository (GIT/CVS);</li>
-<li>visualize any updated map with a simple browser.</li>
+<li>Discover all the network devices.</li>
+<li>Map how they are connected.</li>
+<li>Track changes automatically.</li>
+<li>Store everything in a version control repository (Git/CVS).</li>
+<li>Visualize any updated map with a simple browser.</li>
 </ul>
-<p>How we can solve the above problem:</p>
+<p>This is how we can solve the problem:</p>
 <ul>
-<li>we assume all devices by Cisco, so we can use CDP;</li>
-<li>we can get CDP data via SNMPv3;</li>
-<li>we can build a (source, destination) topology;</li>
-<li>we can store the topology into a revision control repository (GIT/CVS);</li>
-<li>we can use <a href="https://jsplumbtoolkit.com/">jsPlumb</a> to render the (source, destination) topology into a web page.</li>
+<li>We assume all devices are Cisco, so we can use CDP.</li>
+<li>We can get the CDP data via SNMPv3.</li>
+<li>We can build a (source, destination) topology.</li>
+<li>We can store the topology in a revision control repository (Git/CVS).</li>
+<li>We can use <a href="https://jsplumbtoolkit.com/">jsPlumb</a> to render the (source, destination) topology into a web page.</li>
 </ul>
 <h2 id="netdoc">NetDoc<a class="headerlink" href="#netdoc" title="Permanent link">&para;</a></h2>
 <p>NetDoc is the small experiment I wrote to solve the problem. It contains two Python scripts:</p>
 <ul>
-<li><code>netdiscover.py</code>: to discover network devices via SNMPv3 and generates two .ini files:</li>
-<li><code>discovered_nodes.ini</code>: contains all network devices with some additional information</li>
-<li><code>discovered_connections.ini</code>: contains all network connections with some additional information</li>
-<li><code>netplot.py</code>: to plot a web page from the above .ini files.</li>
+<li><code>netdiscover.py</code>: discovers network devices via SNMPv3 and generates two <code>.ini</code> files:</li>
+<li><code>discovered_nodes.ini</code>: contains all the network devices with some additional information.</li>
+<li><code>discovered_connections.ini</code>: contains all the network connections with some additional information.</li>
+<li><code>netplot.py</code>: plots a web page from the <code>.ini</code> files above.</li>
 </ul>
-<p><code>.ini</code> files can be stored in a revision control repository.</p>
+<p>The <code>.ini</code> files can be stored in a revision control repository.</p>
 <h2 id="running-netdoc">Running NetDoc<a class="headerlink" href="#running-netdoc" title="Permanent link">&para;</a></h2>
-<p>Currently, NetDoc is a POC script, so maybe it can work on your infrastructure, maybe it won't. To start it, run:</p>
+<p>NetDoc is currently a proof-of-concept script, so it may or may not work on your infrastructure. To start it, run:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>./netdiscover.py<span class="w"> </span>-u<span class="w"> </span>snmpv3user<span class="w"> </span>-p<span class="w"> </span>snmpv3password<span class="w"> </span>-h<span class="w"> </span><span class="m">10</span>.1.1.4<span class="w"> </span>-h<span class="w"> </span><span class="m">10</span>.1.1.5<span class="w"> </span>-h<span class="w"> </span><span class="m">10</span>.1.1.6
 </code></pre></div>
-<p>The <code>discovered_nodes.ini</code> file contains all CDP discovered devices in the following form:</p>
+<p>The <code>discovered_nodes.ini</code> file contains all the devices discovered via CDP in the following form:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[AccessServer]</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">AccessServer</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">router.svg</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">cisco 2610</span>
 </code></pre></div>
-<p>The title is the CDP neighbor ID (usually the hostname); other attributes are:</p>
+<p>The title is the CDP neighbor ID (usually the hostname). The other attributes are:</p>
 <ul>
-<li><code>id</code>: the CDP neighbor ID (usually the hostname)</li>
-<li><code>image</code>: an image used to display the node in the web page</li>
-<li><code>disabled</code>: <code>true</code> if missing during the last scan</li>
-<li><code>platform</code>: the CDP neighbor platform</li>
+<li><code>id</code>: the CDP neighbor ID (usually the hostname).</li>
+<li><code>image</code>: an image used to display the node in the web page.</li>
+<li><code>disabled</code>: <code>true</code> if the node was missing during the last scan.</li>
+<li><code>platform</code>: the CDP neighbor platform.</li>
 </ul>
-<p>The <code>discovered_connections.ini</code> file contains all CDP discovered connections in the following form:</p>
+<p>The <code>discovered_connections.ini</code> file contains all the connections discovered via CDP in the following form:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[AccessServer:e0/0-switch.example.com:gi2/0/46]</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">AccessServer</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">source_if</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">e0/0</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">swipd002.campus.infocert.it</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="na">destination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">switch.example.com</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">destination_if</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">gi2/0/46</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="na">disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
 </code></pre></div>
-<p>The title is the source and destination CDP neighbor ID with interface names; other attributes are:</p>
+<p>The title is the source and destination CDP neighbor IDs with the interface names. The other attributes are:</p>
 <ul>
-<li><code>source</code>: the source CDP neighbor ID</li>
-<li><code>source_if</code>: the source interface name</li>
-<li><code>destination</code>: the destination CDP neighbor ID</li>
-<li><code>destination_id</code>: the destination interface name</li>
-<li><code>disabled</code>: <code>true</code> if missing during the last scan</li>
+<li><code>source</code>: the source CDP neighbor ID.</li>
+<li><code>source_if</code>: the source interface name.</li>
+<li><code>destination</code>: the destination CDP neighbor ID.</li>
+<li><code>destination_if</code>: the destination interface name.</li>
+<li><code>disabled</code>: <code>true</code> if the connection was missing during the last scan.</li>
 </ul>
-<p>After a successful scan we can create the HTML page:</p>
+<p>After a successful scan, we can create the HTML page:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./netplot.py<span class="w"> </span>&gt;<span class="w"> </span>netdoc.html
 </code></pre></div>
 <p>And here we go, a draggable web page:</p>

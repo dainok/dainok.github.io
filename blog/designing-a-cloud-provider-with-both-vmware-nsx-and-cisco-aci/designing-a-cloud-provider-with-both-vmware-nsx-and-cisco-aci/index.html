@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#the-very-high-level-design-hld" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The very High-Level Design (HLD)
+        The Very High-Level Design (HLD)
       
     </span>
   </a>
@@ -443,7 +443,7 @@ Everything here is free. If it helps you, you can
   <a href="#distributed-firewall-with-vmware-nsx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Distributed firewall with VMware NSX
+        Distributed Firewall with VMware NSX
       
     </span>
   </a>
@@ -454,7 +454,7 @@ Everything here is free. If it helps you, you can
   <a href="#availability-zones-with-vmware-nsx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Availability zones with VMware NSX
+        Availability Zones with VMware NSX
       
     </span>
   </a>
@@ -487,7 +487,7 @@ Everything here is free. If it helps you, you can
   <a href="#physical-devices-attached-to-vmware-nsx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Physical devices attached to VMware NSX
+        Physical Devices Attached to VMware NSX
       
     </span>
   </a>
@@ -495,10 +495,10 @@ Everything here is free. If it helps you, you can
 </li>
         
           <li class="md-nav__item">
-  <a href="#conclusion-for-the-vmware-design" class="md-nav__link">
+  <a href="#conclusions-for-the-vmware-design" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion for the VMware design
+        Conclusions for the VMware Design
       
     </span>
   </a>
@@ -526,7 +526,7 @@ Everything here is free. If it helps you, you can
   <a href="#distributed-firewall-with-cisco-aci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Distributed firewall with Cisco ACI
+        Distributed Firewall with Cisco ACI
       
     </span>
   </a>
@@ -537,7 +537,7 @@ Everything here is free. If it helps you, you can
   <a href="#availability-zones-with-cisco-aci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Availability zones with Cisco ACI
+        Availability Zones with Cisco ACI
       
     </span>
   </a>
@@ -548,7 +548,7 @@ Everything here is free. If it helps you, you can
   <a href="#backup-disaster-recovery-and-onboarding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Backup, Disaster Recovery, and Onboarding
+        Backup, Disaster Recovery and Onboarding
       
     </span>
   </a>
@@ -559,7 +559,7 @@ Everything here is free. If it helps you, you can
   <a href="#physical-devices-attached-to-cisco-aci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Physical devices attached to Cisco ACI
+        Physical Devices Attached to Cisco ACI
       
     </span>
   </a>
@@ -567,10 +567,10 @@ Everything here is free. If it helps you, you can
 </li>
         
           <li class="md-nav__item">
-  <a href="#conclusion-for-the-cisco-aci-design" class="md-nav__link">
+  <a href="#conclusions-for-the-cisco-aci-design" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conclusion for the Cisco ACI design
+        Conclusions for the Cisco ACI Design
       
     </span>
   </a>
@@ -623,6 +623,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
       
     
@@ -633,141 +640,155 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:design" class="md-tag">design</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:firewall" class="md-tag">firewall</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:vmware" class="md-tag">vmware</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2018-09-19">19 September 2018</time></span></p>
 <h1 id="designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci">Designing a cloud provider with both VMware NSX and Cisco ACI<a class="headerlink" href="#designing-a-cloud-provider-with-both-vmware-nsx-and-cisco-aci" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:design">design</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:design">design</a> <a class="md-tag" href="../../../tags/#tag:firewall">firewall</a> <a class="md-tag" href="../../../tags/#tag:vmware">vmware</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ad.png" /></p>
-<p>A few months ago I had a chat with a customer about IAAS. The customer wanted to change its business model from an internal ICT only, to an IAAS style ICT, for both internal and external users.</p>
-<p>The prerequisites from the customer were:</p>
+<p>A few months ago I had a chat with a customer about IaaS. The customer wanted to change its business model from an internal-only ICT to an IaaS-style ICT, for both internal and external users.</p>
+<p>The customer's prerequisites were:</p>
 <ul>
-<li>infrastructure distributed into two data centers, 30km between them;</li>
-<li>able to transparent move workload between the two data centers;</li>
-<li>users should be able to do everything via a self-service portal.</li>
+<li>Infrastructure distributed across two data centers, 30 km apart.</li>
+<li>Ability to move workloads transparently between the two data centers.</li>
+<li>Users able to do everything through a self-service portal.</li>
 </ul>
-<p>Of course, the above prerequisites are not enough. Customers often don't know what they want. After an additional chat, we agreed on:</p>
+<p>These prerequisites are not enough, of course: customers often do not know what they want. After an additional chat, we agreed on:</p>
 <ul>
-<li>High Availability Zones: each data center must be designed to be completely independent. Data centers are interconnected with redundant 100GbE.</li>
-<li>Mobility: workload could be transparently moved from one data center to the other one. Tenants usually run on one data center only, except when moving. Latency is accepted because that's considered a temporary and planned event. The idea is: that users will get space in a data center, but they can be moved to the other one. Users cannot buy space in both data centers to deliver distributed applications.</li>
-<li>Physical devices: physical devices can be added to specific tenants. Examples are: ISP routers, Oracle Exadata, IBM AS 400, HSMs...</li>
-<li>Connectivity: each tenant can be reached from the external via remote access VPN and site-to-site VPN. Also, external connectivity could be used, like MPLS/VPLS/... Each tenant can rent some public IP addresses, or just use the assigned ones. Tenants could be interconnected together if they have non-overlapping IP addresses.</li>
-<li>Storage: fiber-channel storage is not stretched between data centers.</li>
-<li>Self Service Portal: users won't be able to do "everything" but only a set of defined actions.</li>
-<li>Backup and Disaster Recovery: users can buy backup (BaaS) and/or disaster recovery (DRaaS) features on a per VM basis.</li>
+<li><strong>High Availability Zones:</strong> each data center must be designed to be completely independent. The data centers are interconnected with redundant 100GbE links.</li>
+<li><strong>Mobility:</strong> workloads can be moved transparently from one data center to the other. Tenants usually run in one data center only, except when moving. Latency is accepted because moving is a temporary and planned event. The idea is that users get space in a data center, but they can be moved to the other one. Users cannot buy space in both data centers to deliver distributed applications.</li>
+<li><strong>Physical devices:</strong> physical devices can be added to specific tenants, for example ISP routers, Oracle Exadata, IBM AS/400 and HSMs.</li>
+<li><strong>Connectivity:</strong> each tenant can be reached from outside via remote access VPN and site-to-site VPN. External connectivity such as MPLS/VPLS can be used too. Each tenant can rent some public IP addresses or just use the assigned ones. Tenants can be interconnected if they have non-overlapping IP addresses.</li>
+<li><strong>Storage:</strong> Fibre Channel storage is not stretched between the data centers.</li>
+<li><strong>Self-Service Portal:</strong> users cannot do "everything", only a set of defined actions.</li>
+<li><strong>Backup and Disaster Recovery:</strong> users can buy backup (BaaS) and/or disaster recovery (DRaaS) features on a per-VM basis.</li>
 </ul>
-<h2 id="the-very-high-level-design-hld">The very High-Level Design (HLD)<a class="headerlink" href="#the-very-high-level-design-hld" title="Permanent link">&para;</a></h2>
-<p>The choice of technology should not be discussed at this level, but because every technology has its own prerequisites/features/limitations/peculiarities, we cannot go far without making assumptions.</p>
-<p>The "mobility" prerequisite is one of the most stringent: moving workloads without disruption (vMotion), means that LANs must be stretched. To stretch LANs, one of the following can be used:</p>
+<h2 id="the-very-high-level-design-hld">The Very High-Level Design (HLD)<a class="headerlink" href="#the-very-high-level-design-hld" title="Permanent link">&para;</a></h2>
+<p>We should not discuss the choice of technology at this level, but every technology has its own prerequisites, features, limitations and peculiarities, so we cannot go far without making assumptions.</p>
+<p>The "mobility" prerequisite is one of the most stringent: moving workloads without disruption (vMotion) means that LANs must be stretched. To stretch LANs, we can use one of the following:</p>
 <ul>
-<li>standard VXLAN</li>
-<li>Cisco ACI</li>
-<li>VMware NSX</li>
+<li>Standard VXLAN.</li>
+<li>Cisco <a href="../../../cisco/101introduction-to-cisco-aci/introduction-to-cisco-aci/">ACI</a>.</li>
+<li>VMware NSX.</li>
 </ul>
-<p>This post wants to focus on both VMware NSX and Cisco ACI, so the standard VXLAN will not be discussed. But the step between standard VLAN and Cisco ACI or VMware NSX is short.</p>
-<p>Let's start to design a big picture:</p>
+<p>This post focuses on VMware NSX and Cisco ACI, so I do not discuss standard VXLAN. The step between standard VLANs and Cisco ACI or VMware NSX is short, though.</p>
+<p>Let's start by designing a big picture:</p>
 <p><img alt="multi-dc-1" src="../images/multi-dc-1.png" /></p>
-<p>Each data center is connected to the Internet using one or more ISP, announcing via BGP the same prefixes from the border routers. The border routers are connected to the inside routers and then to a distributed router.</p>
-<p>Each tenant is isolated by a firewall, connected to the distributed router.</p>
-<p>The diagram is inspired by VMware NSX, so let's start to discuss it in detail.</p>
+<p>Each data center is connected to the Internet through one or more ISPs, announcing the same prefixes via BGP from the border routers. The border routers are connected to the inside routers and then to a distributed router.</p>
+<p>A firewall connected to the distributed router isolates each tenant.</p>
+<p>The diagram is inspired by VMware NSX, so let's discuss it in detail.</p>
 <h2 id="vmware-nsx">VMware NSX<a class="headerlink" href="#vmware-nsx" title="Permanent link">&para;</a></h2>
-<p>Let's see again the diagram:</p>
+<p>Let's look at the diagram again:</p>
 <p><img alt="multi-dc-2" src="../images/multi-dc-2.png" /></p>
-<p>Each border router is connected to one or more ISP routers. Both border routers are announcing the same prefixes with the same AS. In other ways, from the Internet, both data centers are seen as single data centers with two independent exits.</p>
-<p>Border routers will announce also users' prefixes directly. Because of NSX limitations (discussed below), BGP peering between tenants and border routers is not permitted.</p>
-<p>Both border routers are also running OSPF, each one peering with an edge router. An edge router (in the NSX world) is a clustered VM acting as a router with some additional features like NAT, firewall, load balancer, IPSec concentrator...</p>
+<p>Each border router is connected to one or more ISP routers. Both border routers announce the same prefixes with the same AS. In other words, from the Internet both data centers look like a single data center with two independent exits.</p>
+<p>The border routers also announce the prefixes of the users directly. Because of NSX limitations (discussed below), BGP peering between tenants and border routers is not permitted.</p>
+<p>Both border routers also run OSPF, each peering with an edge router. An edge router (in the NSX world) is a clustered VM that acts as a router with some additional features such as NAT, firewall, load balancer and IPsec concentrator.</p>
 <p>In this design, both edge routers are just routers, nothing more.</p>
-<p>Both edge routers are peering (OSPF) with a distributed logical router (DLR). A DLR is a router stretched on one or more physical servers running ESXi. On the other side, the DLR is connected to a stretched network.</p>
-<p>Each tenant has its gateway, implemented by a non-VMware firewall.</p>
-<p>Let's now discuss some VMware NSX limits and the above design choices. Mind that limits can now be changed, so feel free to add your opinion by commenting on this post.</p>
+<p>Both edge routers peer (OSPF) with a distributed logical router (DLR). A DLR is a router stretched across one or more physical servers running ESXi. On the other side, the DLR is connected to a stretched network.</p>
+<p>Each tenant has its own gateway, implemented by a non-VMware firewall.</p>
+<p>Let's discuss some VMware NSX limits and the design choices above. Note that the limits may have changed in the meantime, so feel free to add your opinion in the comments.</p>
 <ul>
-<li>The edge routers cannot be automatically moved (vMotion) between data centers: in other words, a workload cannot be moved from DC1 to DC2 without manual intervention. It's still possible to destroy a cluster of edge routers and recreate it in the other DC, using the old configuration, but obviously, this is a disruptive approach. Using non-VMware clustered firewalls allows moving one node at a time. Edge firewalls can also offer remote access VPNs, site-to-site IPSec VPNs... Because the firewall could be moved to the other data center without changing any IP address, the "outside" network must be stretched between data centers.</li>
-<li>The DLR cannot run OSPF facing the firewalls, so static routing is the only option. Each firewall uses the DLR as a default gateway, and the DLR forward packets destined to the public IP address assigned to each tenant. Also, the DLR cannot peer with border routers directly. That's why edge routers are used between DLR and border routers.</li>
-<li>Because the smaller network that can be announced to Interned is a <code>/24</code> network, we can assume that more tenants could share the same <code>/24</code> network. In this case, we should try to run all those tenants in the same DC. The nearest border router will announce a more specific network so all traffic will enter from the right link.</li>
+<li>The edge routers cannot be moved (vMotion) automatically between data centers: a workload cannot be moved from DC1 to DC2 without manual intervention. We can still destroy a cluster of edge routers and recreate it in the other DC using the old configuration, but this is obviously a disruptive approach. Using non-VMware clustered firewalls lets us move one node at a time. Edge firewalls can also offer remote access VPNs, site-to-site IPsec VPNs and so on. Because the firewall can be moved to the other data center without changing any IP address, the "outside" network must be stretched between data centers.</li>
+<li>The DLR cannot run OSPF facing the firewalls, so static routing is the only option. Each firewall uses the DLR as its default gateway, and the DLR forwards the packets destined to the public IP address assigned to each tenant. The DLR also cannot peer with the border routers directly. That is why edge routers are used between the DLR and the border routers.</li>
+<li>The smallest network that we can announce to the Internet is a <code>/24</code>, so we can assume that several tenants share the same <code>/24</code> network. In this case, we should try to run all those tenants in the same DC. The nearest border router announces a more specific network, so all the traffic enters from the right link.</li>
 </ul>
 <p><img alt="multi-dc-3" src="../images/multi-dc-3.png" /></p>
-<h3 id="distributed-firewall-with-vmware-nsx">Distributed firewall with VMware NSX<a class="headerlink" href="#distributed-firewall-with-vmware-nsx" title="Permanent link">&para;</a></h3>
-<p>VMware NSX provides a distributed firewall to implement micro-segmentation. It sounds great, but the distributed firewall policy is one, shared by all tenants. In a multi-tenant environment, having a single policy is not a great idea, because every user has specific needs, and the policy cannot grow forever.</p>
-<p>The distributed firewall wasn't included in the feature list, but I think that it is still a nice to have feature. How can we adapt a single policy firewall to a multi-tenant environment?</p>
+<h3 id="distributed-firewall-with-vmware-nsx">Distributed Firewall with VMware NSX<a class="headerlink" href="#distributed-firewall-with-vmware-nsx" title="Permanent link">&para;</a></h3>
+<p>VMware NSX provides a distributed firewall to implement micro-segmentation. It sounds great, but the distributed firewall policy is a single one, shared by all tenants. In a multi-tenant environment, a single policy is not a great idea: every user has specific needs, and the policy cannot grow forever.</p>
+<p>The distributed firewall was not in the feature list, but I think it is still a nice-to-have feature. How can we adapt a single-policy firewall to a multi-tenant environment?</p>
 <p>We could use tags. Each VM can be tagged and get specific firewall rules.</p>
-<p>Assume for example the following tag:</p>
+<p>Assume, for example, the following tags:</p>
 <ul>
-<li><code>server_HTTP</code></li>
-<li><code>server_HTTP_Proxy</code></li>
-<li><code>client_HTTP_Proxy</code></li>
-<li><code>allow_any</code></li>
+<li><code>server_HTTP</code>.</li>
+<li><code>server_HTTP_Proxy</code>.</li>
+<li><code>client_HTTP_Proxy</code>.</li>
+<li><code>allow_any</code>.</li>
 </ul>
 <p>We can write a policy like the following:</p>
 <ul>
-<li>VMs tagged with <code>allow_any</code> will receive any traffic.</li>
-<li>VMs tagged with <code>server_HTTP</code> will receive HTTP connections.</li>
-<li>VMs tagged with <code>server_HTTP_Proxy</code> will receive connections from <code>client_HTTP_Proxy</code> VMs only.</li>
+<li>VMs tagged with <code>allow_any</code> receive any traffic.</li>
+<li>VMs tagged with <code>server_HTTP</code> receive HTTP connections.</li>
+<li>VMs tagged with <code>server_HTTP_Proxy</code> receive connections from <code>client_HTTP_Proxy</code> VMs only.</li>
 </ul>
-<p>In this scenario, referred to distributed firewall only, not to the edge firewall, each user knows how the policies are, and tagging the VMs can honor or bypass the firewall.</p>
-<h3 id="availability-zones-with-vmware-nsx">Availability zones with VMware NSX<a class="headerlink" href="#availability-zones-with-vmware-nsx" title="Permanent link">&para;</a></h3>
-<p>Because one of the prerequisites is the independence of data centers, we must design the infrastructure to be alive even if an entire data center is lost.</p>
-<p>Please remind that users will be able to run VMs only from one data center at a time. Enabling users to run VMs from both data centers is not so difficult, but that's not part of the prerequisites.</p>
+<p>In this scenario, which refers to the distributed firewall only, not to the edge firewall, each user knows what the policies are, and tagging the VMs lets them honor or bypass the firewall.</p>
+<h3 id="availability-zones-with-vmware-nsx">Availability Zones with VMware NSX<a class="headerlink" href="#availability-zones-with-vmware-nsx" title="Permanent link">&para;</a></h3>
+<p>One of the prerequisites is the independence of the data centers, so we must design the infrastructure to stay alive even if an entire data center is lost.</p>
+<p>Remember that users can run VMs in one data center at a time. Letting users run VMs in both data centers is not so difficult, but it is not part of the prerequisites.</p>
 <p>In the VMware NSX world we have:</p>
 <ul>
-<li>NSX Manager: it's the management plane for the network. Each NSX manager is bound to a single vCenter.</li>
-<li>NSX Controllers: they are the control plane for the network. Three controllers must exist, two must be alive. If one or no controllers are alive, all VMs "should" run fine if nothing changes (i.e. no VMotion, no power on...).</li>
-<li>vCenter</li>
-<li>PSC</li>
-<li>Active Director</li>
-<li>vCloud Director / vRealize Automation</li>
+<li><strong>NSX Manager:</strong> the management plane of the network. Each NSX Manager is bound to a single vCenter.</li>
+<li><strong>NSX Controllers:</strong> the control plane of the network. Three controllers must exist, and two must be alive. If only one controller or none is alive, all VMs "should" run fine as long as nothing changes (no vMotion, no power-on...).</li>
+<li>vCenter.</li>
+<li>PSC.</li>
+<li>Active Directory.</li>
+<li>vCloud Director / vRealize Automation.</li>
 <li>...</li>
 </ul>
-<p>Because we need two independent data centers, we need one NSX Manager and three NSX Controller per data center. In this configuration, we must be sure we can move (vMotion) VMs between data centers. In other words, we must be able to move VMs between:</p>
+<p>Because we need two independent data centers, we need one NSX Manager and three NSX Controllers per data center. In this configuration, we must be sure that we can move (vMotion) VMs between data centers. In other words, we must be able to move VMs between:</p>
 <ul>
-<li>vCenters (that's fine)</li>
-<li>vCloud Director / vRealize Automation (probably we cannot do that, the best option we have is a disruptive export and import).</li>
+<li>vCenters (that is fine).</li>
+<li>vCloud Director / vRealize Automation instances (probably not possible: the best option is a disruptive export and import).</li>
 </ul>
-<p>Moreover, we have to define virtual networks as universal. In previous vCloud Director and vRealize Automation versions, users cannot create a universal virtual network. The universal virtual network must be manually created by an administrator.</p>
-<p>If we relax the prerequisite we can have a single stretched infrastructure, with one NSX Manager, three NSX Controllers, and one vCenter. In this case, VMs can be moved without issues but we must consider how to recover from a data center loss of all unique infrastructure VMs (NSX Manager, NSX Controllers, vCenter...).</p>
-<p>To be more specific, one data center will run two NSX Controllers, the other one will run just one NSX Controller. If the first data center is lost, the NSX Controllers cluster will lose the quorum. At this time, one NSX Controller must be manually redeployed in the surviving data center.</p>
+<p>Moreover, we have to define the virtual networks as universal. In previous vCloud Director and vRealize Automation versions, users cannot create a universal virtual network: an administrator must create it manually.</p>
+<p>If we relax the prerequisite, we can have a single stretched infrastructure with one NSX Manager, three NSX Controllers and one vCenter. In this case, VMs can be moved without issues, but we must consider how to recover from the loss of a data center containing unique infrastructure VMs (NSX Manager, NSX Controllers, vCenter...).</p>
+<p>To be more specific, one data center runs two NSX Controllers and the other runs just one. If the first data center is lost, the NSX Controllers cluster loses quorum. At that point, we must redeploy one NSX Controller manually in the surviving data center.</p>
 <h3 id="backup-and-disaster-recovery">Backup and Disaster Recovery<a class="headerlink" href="#backup-and-disaster-recovery" title="Permanent link">&para;</a></h3>
-<p>Backup VMs and mirroring them into the remote data center is not too difficult. The hardest part is to restore a backup or activate the VM in the remote data center.</p>
-<p>As I mentioned before, VM could be imported into vCloud Directory / vRealize Automation, but deep tests must be run to check if everything is going fine or not. I'm referring especially to tags, networks, service portal accounting...</p>
+<p>Backing up VMs and mirroring them to the remote data center is not too difficult. The hardest part is restoring a backup or activating the VM in the remote data center.</p>
+<p>As mentioned before, a VM can be imported into vCloud Director / vRealize Automation, but we must run deep tests to check whether everything works. I refer especially to tags, networks and service portal accounting.</p>
 <h3 id="onboarding">Onboarding<a class="headerlink" href="#onboarding" title="Permanent link">&para;</a></h3>
-<p>Onboarding service is usually omitted from many designs. As an architect, I can say that this is the most critical part for many users: how to migrate a physical and legacy data center to a cloud provider with minimal disruption? I should mention also that many enterprises don't know what is running in their data centers, and often they don't have the skills to plan a move. This can be a business opportunity and an enabler for the IaaS service.</p>
-<p>Referring to VMware, there is a lot of good software like Veeam, Zerto, and so on. All of them have cost, features, and compatibility lists.</p>
-<h3 id="physical-devices-attached-to-vmware-nsx">Physical devices attached to VMware NSX<a class="headerlink" href="#physical-devices-attached-to-vmware-nsx" title="Permanent link">&para;</a></h3>
-<p>Last but not least, VMware NSX allows extending L2 networks to a physical domain. High availability and convergence timers must be tested to be sure they are compatible with SLA.</p>
-<p>Even if this works fine, it seems to me they are not easy to maintain if the number increases a lot. Moreover, they probably must be manually configured because they are not part of the default vCloud Director / vRealize Automation scripts.</p>
-<h3 id="conclusion-for-the-vmware-design">Conclusion for the VMware design<a class="headerlink" href="#conclusion-for-the-vmware-design" title="Permanent link">&para;</a></h3>
-<p>I hope you know understand why this design is closely related to technological choice. If running the infrastructure can be more or less vendor-independent, when we add service portal, backup, disaster recovery, and onboarding... we must evaluate much software and check if and how they can work together.</p>
-<p>Also, deep customization can be an issue: if we develop scripts for any single action we need to give to users, what can we assure that all scripts will work after a release upgrade?</p>
+<p>The onboarding service is usually omitted from many designs. As an architect, I can say that this is the most critical part for many users: how do we migrate a physical, legacy data center to a cloud provider with minimal disruption? Many enterprises do not know what is running in their data centers, and they often do not have the skills to plan a move. This can be a business opportunity and an enabler for the IaaS service.</p>
+<p>For VMware, there is a lot of good software such as Veeam and Zerto. All of them have different costs, features and compatibility lists.</p>
+<h3 id="physical-devices-attached-to-vmware-nsx">Physical Devices Attached to VMware NSX<a class="headerlink" href="#physical-devices-attached-to-vmware-nsx" title="Permanent link">&para;</a></h3>
+<p>Last but not least, VMware NSX allows extending L2 networks to a physical domain. We must test high availability and convergence timers to be sure that they are compatible with the SLA.</p>
+<p>Even if this works fine, it seems to me that such connections are not easy to maintain if their number increases a lot. Moreover, they probably must be configured manually, because they are not part of the default vCloud Director / vRealize Automation scripts.</p>
+<h3 id="conclusions-for-the-vmware-design">Conclusions for the VMware Design<a class="headerlink" href="#conclusions-for-the-vmware-design" title="Permanent link">&para;</a></h3>
+<p>I hope you now understand why this design is closely tied to the technological choice. Running the infrastructure can be more or less vendor-independent, but when we add a service portal, backup, disaster recovery and onboarding, we must evaluate a lot of software and check whether and how it can work together.</p>
+<p>Deep customization can also be an issue: if we develop scripts for every single action we give to users, how can we make sure that all the scripts work after a release upgrade?</p>
 <h2 id="cisco-aci">Cisco ACI<a class="headerlink" href="#cisco-aci" title="Permanent link">&para;</a></h2>
-<p>Cisco ACI completely split the fabric configuration from the tenant configuration. Once the fabric has been deployed, each tenant can get its contracts, policies, and so on.</p>
-<p>If VMware has an edge gateway included (not used, however), Cisco ACI has no way to NAT addresses.</p>
-<p>Because of the VMware NSX (see above) and Cisco ACI limitations, the design is pretty similar:</p>
+<p>Cisco ACI completely separates the fabric configuration from the tenant configuration. Once the fabric is deployed, each tenant can get its own contracts, policies and so on.</p>
+<p>VMware has an edge gateway included (not used here), whereas Cisco ACI has no way to NAT addresses.</p>
+<p>Because of the VMware NSX limitations (see above) and the Cisco ACI limitations, the design is pretty similar:</p>
 <p><img alt="multi-dc-4" src="../images/multi-dc-4.png" /></p>
-<p>With Cisco ACI border routers can now peer with tenants also, so users can announce their prefixes by themselves.</p>
-<p>The edge routers are not needed anymore because ACI can peer with external routers directly. With this design, customer can announce their prefixes directly, but the border router must be configured admin transit AS for traffic sourced or destined to the users.</p>
-<p>Because Cisco ACI cannot NAT IP addresses, a gateway for each tenant is needed. Virtual or physical firewalls can be used, as we discussed before in the VMware NSX paragraph.</p>
-<p>If the infrastructure is relatively easy to design, the most critical part is once again related to the software: what should we use to virtualize VMs, implement a service portal...</p>
-<p>Once again VMware's suite is a good choice, but we can also use OpenStack, OpenNebula, CloudStack...</p>
-<p>If a 100% VMware suite can work mostly out of the box, we probably won't see a CloudStack + Cisco ACI service portal ready to be used.</p>
-<h3 id="distributed-firewall-with-cisco-aci">Distributed firewall with Cisco ACI<a class="headerlink" href="#distributed-firewall-with-cisco-aci" title="Permanent link">&para;</a></h3>
-<p>If the VMware NSX distributed firewall has a single policy, with Cisco ACI each tenant gets its own separated rules.</p>
-<h3 id="availability-zones-with-cisco-aci">Availability zones with Cisco ACI<a class="headerlink" href="#availability-zones-with-cisco-aci" title="Permanent link">&para;</a></h3>
-<p>To fully satisfy the prerequisites, a multi-site fabric must be deployed, with three APIC controllers per site.</p>
-<p>On the top, a Cisco ACI Multi-Site policy manager can be deployed to manage policies on both data centers from one location only. Of course, the policy manager must be recovered if one site goes completely offline.</p>
-<p>If we relax the prerequisite we can deploy a multi-pod fabric. Because each fabric must have at least two running controllers (I'm not discussing here how a five controller fabric works), once again one data center will get one controller only.</p>
-<p>But with Cisco ACI, the controller is the management plane. The fabric can work fine even without controllers. And we can add a fourth APIC with the standby role (I guess it's still a manual procedure turning it from standby to active).</p>
+<p>With Cisco ACI, the border routers can also peer with tenants, so users can announce their prefixes themselves.</p>
+<p>The edge routers are not needed anymore, because ACI can peer with the external routers directly. With this design, customers can announce their prefixes directly, but the border routers must be configured as transit AS for the traffic sourced from or destined to the users.</p>
+<p>Because Cisco ACI cannot NAT IP addresses, each tenant needs a gateway. We can use virtual or physical firewalls, as discussed in the VMware NSX section.</p>
+<p>The infrastructure is relatively easy to design. The most critical part is once again the software: what should we use to virtualize the VMs and implement a service portal?</p>
+<p>Once again, the VMware suite is a good choice, but we can also use OpenStack, OpenNebula or CloudStack.</p>
+<p>A 100% VMware suite can mostly work out of the box, but we probably will not see a CloudStack + Cisco ACI service portal ready to use.</p>
+<h3 id="distributed-firewall-with-cisco-aci">Distributed Firewall with Cisco ACI<a class="headerlink" href="#distributed-firewall-with-cisco-aci" title="Permanent link">&para;</a></h3>
+<p>The VMware NSX distributed firewall has a single policy. With Cisco ACI, each tenant gets its own separate rules.</p>
+<h3 id="availability-zones-with-cisco-aci">Availability Zones with Cisco ACI<a class="headerlink" href="#availability-zones-with-cisco-aci" title="Permanent link">&para;</a></h3>
+<p>To satisfy the prerequisites fully, we must deploy a multi-site fabric with three APIC controllers per site.</p>
+<p>On top, we can deploy a Cisco ACI Multi-Site policy manager to manage the policies of both data centers from a single location. Of course, we must recover the policy manager if one site goes completely offline.</p>
+<p>If we relax the prerequisite, we can deploy a multi-pod fabric. Because each fabric must have at least two running controllers (I do not discuss here how a five-controller fabric works), once again one data center gets only one controller.</p>
+<p>With Cisco ACI, however, the controller is the management plane: the fabric can work fine even without controllers. We can also add a fourth APIC with the standby role (I guess turning it from standby to active is still a manual procedure).</p>
 <p>If only one controller exists, the management can be read-only.</p>
-<h3 id="backup-disaster-recovery-and-onboarding">Backup, Disaster Recovery, and Onboarding<a class="headerlink" href="#backup-disaster-recovery-and-onboarding" title="Permanent link">&para;</a></h3>
-<p>We already discussed these topics in the VMware part. More or less with Cisco ACI, all the above considerations are still valid, but because Cisco is not providing a full suite, more development is probably required. That's not necessarily a bad thing.</p>
-<h3 id="physical-devices-attached-to-cisco-aci">Physical devices attached to Cisco ACI<a class="headerlink" href="#physical-devices-attached-to-cisco-aci" title="Permanent link">&para;</a></h3>
-<p>If interconnecting physical devices to a VMware NSX environment is an "exception" to the virtual world, Cisco ACI is entirely part of the game. In other words, the number of physical devices can increase a lot without any issue.</p>
-<h3 id="conclusion-for-the-cisco-aci-design">Conclusion for the Cisco ACI design<a class="headerlink" href="#conclusion-for-the-cisco-aci-design" title="Permanent link">&para;</a></h3>
-<p>If VMware offers a more complete suite to cover this design case, Cisco ACI offers a more flexible infrastructure without any additional software.</p>
-<p>Both solutions have strong limits, and both require to develop much integration.</p>
+<h3 id="backup-disaster-recovery-and-onboarding">Backup, Disaster Recovery and Onboarding<a class="headerlink" href="#backup-disaster-recovery-and-onboarding" title="Permanent link">&para;</a></h3>
+<p>We already discussed these topics in the VMware part. The considerations above are more or less still valid with Cisco ACI, but because Cisco does not provide a full suite, more development is probably required. That is not necessarily a bad thing.</p>
+<h3 id="physical-devices-attached-to-cisco-aci">Physical Devices Attached to Cisco ACI<a class="headerlink" href="#physical-devices-attached-to-cisco-aci" title="Permanent link">&para;</a></h3>
+<p>Interconnecting physical devices to a VMware NSX environment is an "exception" to the virtual world. In Cisco ACI, physical devices are entirely part of the game: their number can increase a lot without any issue.</p>
+<h3 id="conclusions-for-the-cisco-aci-design">Conclusions for the Cisco ACI Design<a class="headerlink" href="#conclusions-for-the-cisco-aci-design" title="Permanent link">&para;</a></h3>
+<p>VMware offers a more complete suite to cover this design case, while Cisco ACI offers a more flexible infrastructure without any additional software.</p>
+<p>Both solutions have strong limits, and both require a lot of integration development.</p>
 <h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
-<p>I wrote this post to share ideas and experiences made in the last few years. It cannot be completed and it probably is already outdated. Anyway, it should give you some details on where to start.</p>
-<p>Today there are no out-of-the-box solutions for this case, so more prerequisites should be relaxed. My opinion is that with a 100% virtual world, VMware is maybe the best solution nowadays. But with an important part of physical servers or devices, Cisco ACI is more flexible.</p>
+<p>I wrote this post to share the ideas and experiences of the last few years. It cannot be complete, and it is probably already outdated. It should still give you some details on where to start.</p>
+<p>Today there are no out-of-the-box solutions for this case, so some prerequisites should be relaxed. My opinion is that in a 100% virtual world, VMware is probably the best solution today. With an important part of physical servers or devices, Cisco ACI is more flexible.</p>
 
 
 

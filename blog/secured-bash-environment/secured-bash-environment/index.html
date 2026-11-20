@@ -431,6 +431,13 @@ Everything here is free. If it helps you, you can
       
       
       
+        <a href="../../../tags/#tag:blog" class="md-tag">blog</a>
+      
+    
+      
+      
+      
+      
         <a href="../../../tags/#tag:digital-self-defence" class="md-tag">digital-self-defence</a>
       
     
@@ -461,16 +468,16 @@ Everything here is free. If it helps you, you can
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2022-08-14">14 August 2022</time></span></p>
 <h1 id="secured-bash-environment">Secured Bash environment<a class="headerlink" href="#secured-bash-environment" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:blog">blog</a> <a class="md-tag" href="../../../tags/#tag:digital-self-defence">digital-self-defence</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:linux">linux</a> <a class="md-tag" href="../../../tags/#tag:security">security</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/linux.png" /></p>
-<p>I always need to set critical environment variables on my Bash (API tokens), and of course, it's a very bad idea to store them on <code>.bashrc</code>. I found a simple way to store them in an encrypted file loading it only when necessary:</p>
+<p>I often need to set critical environment variables in Bash (API tokens), and storing them in <code>.bashrc</code> is a very bad idea. I found a simple way to keep them in an encrypted file and load it only when necessary:</p>
 <ol>
-<li>Store critical variables under <code>.bash_secure</code> (you must <code>export</code> each variable).</li>
-<li>Encrypt it with <code>gpg -c .bash_secure</code>.</li>
-<li>Secure delete the clear text file with <code>shred -u .bash_secure</code>.</li>
-<li>Load secured environment only when needed <code>source &lt;(gpg -q -d ~/.bash_secure.gpg)</code></li>
+<li>Store the critical variables in <code>.bash_secure</code> (each variable must be exported with <code>export</code>).</li>
+<li>Encrypt the file with <code>gpg -c .bash_secure</code>.</li>
+<li>Securely delete the clear text file with <code>shred -u .bash_secure</code>.</li>
+<li>Load the secured environment only when needed with <code>source &lt;(gpg -q -d ~/.bash_secure.gpg)</code>.</li>
 </ol>
-<p>Don't put the load command into <code>.bashrc</code> because commands included in <code>.bashrc</code> must not emit output.</p>
+<p>Do not put the load command in <code>.bashrc</code>: commands included there must not produce output.</p>
 
 
 

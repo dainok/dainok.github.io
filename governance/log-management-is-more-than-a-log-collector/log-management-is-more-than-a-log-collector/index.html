@@ -420,7 +420,7 @@ Everything here is free. If it helps you, you can
   <a href="#why-do-we-collect-logs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why do we collect logs?
+        Why Do We Collect Logs?
       
     </span>
   </a>
@@ -431,7 +431,7 @@ Everything here is free. If it helps you, you can
   <a href="#how-do-we-collect-logs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do we collect logs?
+        How Do We Collect Logs?
       
     </span>
   </a>
@@ -442,7 +442,7 @@ Everything here is free. If it helps you, you can
   <a href="#what-do-we-do-with-logs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What do we do with logs?
+        What Do We Do with Logs?
       
     </span>
   </a>
@@ -519,67 +519,67 @@ Everything here is free. If it helps you, you can
 <h1 id="log-management-is-more-than-a-log-collector">Log management is more than a log collector<a class="headerlink" href="#log-management-is-more-than-a-log-collector" title="Permanent link">&para;</a></h1>
 <p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:governance">governance</a> <a class="md-tag" href="../../../tags/#tag:log-management">log-management</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/governance.png" /></p>
-<p>Many companies (hopefully) are collecting logs in a central system. The reason besides that is for compliance and sometimes for root cause analysis. In this post, I want to recap that log management is not just about log collections, and why and how the process should be designed.</p>
-<h2 id="why-do-we-collect-logs">Why do we collect logs?<a class="headerlink" href="#why-do-we-collect-logs" title="Permanent link">&para;</a></h2>
-<p>In short log management is about collecting logs, and storing them for analysis. By design any system is logging locally, so we need to clarify why we want a formal process for log management.</p>
-<p>Let's start from the compliance part: log management is mentioned in ISO 27001 Annex A 12.4.</p>
+<p>Many companies (hopefully) collect logs in a central system, for compliance and sometimes for root cause analysis. In this post, I want to recap that log management is not just about log collection, and why and how the process should be designed.</p>
+<h2 id="why-do-we-collect-logs">Why Do We Collect Logs?<a class="headerlink" href="#why-do-we-collect-logs" title="Permanent link">&para;</a></h2>
+<p>In short, log management is about collecting logs and storing them for analysis. By design, any system logs locally, so we need to clarify why we want a formal process for log management.</p>
+<p>Let's start with the compliance part: ISO 27001 mentions log management in Annex A 12.4.</p>
 <blockquote>
 <p>Event logs should be produced, retained, and regularly reviewed to record user activities, exceptions, defects, and information security events.</p>
 </blockquote>
-<p>Even if GDPR does not specifically mention log collection, Art.5 refers to the ability to demonstrate:</p>
+<p>The GDPR does not mention log collection specifically, but Art. 5 refers to the ability to demonstrate compliance:</p>
 <blockquote>
 <p>The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 ('accountability').</p>
 </blockquote>
-<p>Moreover in Italy, we have a special mention about logging (Amministratori di Sistema or AdS, and AGID minimal requirements):</p>
+<p>In Italy, we also have a specific mention of logging (Amministratori di Sistema or AdS, and the AGID minimal requirements):</p>
 <blockquote>
 <p>Caratteristiche di mantenimento dell´integrità dei dati raccolti dai sistemi di log sono in genere disponibili nei più diffusi sistemi operativi, o possono esservi agevolmente integrate con apposito software. Il requisito può essere ragionevolmente soddisfatto con la strumentazione software in dotazione, nei casi più semplici, e con l´eventuale esportazione periodica dei dati di log su supporti di memorizzazione non riscrivibili. In casi più complessi i titolari potranno ritenere di adottare sistemi più sofisticati, quali i log server centralizzati e "certificati".
 Tuttavia il provvedimento del Garante non affronta questi aspetti, prevedendo soltanto, come forma minima di documentazione dell´uso di un sistema informativo, la generazione del log degli "accessi" (login) e la loro archiviazione per almeno sei mesi in condizioni di ragionevole sicurezza e con strumenti adatti, in base al contesto in cui avviene il trattamento, senza alcuna pretesa di instaurare in modo generalizzato, e solo con le prescrizioni del provvedimento, un regime rigoroso di registrazione degli usage data dei sistemi informativi.
 Le misure minime sono un importante supporto metodologico, oltre che un mezzo attraverso il quale le Amministrazioni, soprattutto quelle più piccole e che hanno meno possibilità di avvalersi di professionalità specifiche, possono verificare autonomamente la propria situazione e avviare un percorso di monitoraggio e miglioramento.</p>
 </blockquote>
-<p>Even if the mention is specific to Italian companies, it makes sense: we all should be able to review systems and users' activities regularly or during an incident analysis. Being able to demonstrate what is happened in an incident, means we have our infrastructures (and data) under control. That's the GDPR accountability principle.</p>
-<h2 id="how-do-we-collect-logs">How do we collect logs?<a class="headerlink" href="#how-do-we-collect-logs" title="Permanent link">&para;</a></h2>
-<p>We know that any well-designed system and application implements local logging by default. Having dozens, hundreds, or thousands of log sources means we must collect logs in a central location. Otherwise, we will spend days just correlating events between different systems. Moreover, if a system is compromised, logs are probably compromised too.</p>
-<p>So we need:</p>
+<p>The mention is specific to Italian companies, but it makes sense: we should all be able to review the activity of systems and users regularly, or during an incident analysis. Being able to demonstrate what happened in an incident means that we have our infrastructures (and data) under control. That is the GDPR accountability principle.</p>
+<h2 id="how-do-we-collect-logs">How Do We Collect Logs?<a class="headerlink" href="#how-do-we-collect-logs" title="Permanent link">&para;</a></h2>
+<p>Any well-designed system and application implements local logging by default. With dozens, hundreds or thousands of log sources, we must collect logs in a central location. Otherwise, we spend days just correlating events between different systems. Moreover, if a system is compromised, its logs are probably compromised too.</p>
+<p>So we need to:</p>
 <ul>
-<li>to collect logs from multiple sources in central storage;</li>
-<li>that timestamps are coherent;</li>
-<li>categorize logs based on the content (debug logs, administrative events, errors...);</li>
-<li>set retention based on log category (we probably want to discard debug logs after a few days, whereas we want to maintain administrative logs for months);</li>
-<li>preserve CIA attributes (Confidentiality, Integrity, Availability);</li>
-<li>to normalize and correlate logs based on usernames, IP addresses, timestamp, source...</li>
+<li>Collect logs from multiple sources in a central storage.</li>
+<li>Keep timestamps coherent.</li>
+<li>Categorize logs based on their content (debug logs, administrative events, errors...).</li>
+<li>Set the retention based on the log category (we probably want to discard debug logs after a few days, whereas we want to keep administrative logs for months).</li>
+<li>Preserve the CIA attributes (Confidentiality, Integrity, Availability).</li>
+<li>Normalize and correlate logs based on usernames, IP addresses, timestamps, sources...</li>
 </ul>
-<p>And we probably want to collect logs from:</p>
+<p>We probably want to collect logs from:</p>
 <ul>
-<li>security appliances and applications (firewall, EDR, WAF, NAC, IDS/IPS...);</li>
-<li>ingress and egress web gateways (load balancer, web proxy...);</li>
-<li>authentication systems (LDAP, Active Directory, remote access, servers, endpoints, appliances...);</li>
-<li>network services (DHCP, DNS...);</li>
-<li>application;</li>
+<li>Security appliances and applications (firewall, EDR, WAF, <a href="../../../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/">NAC</a>, IDS/IPS...).</li>
+<li>Ingress and egress web gateways (load balancer, web proxy...).</li>
+<li>Authentication systems (LDAP, Active Directory, remote access, servers, endpoints, appliances...).</li>
+<li>Network services (DHCP, DNS...).</li>
+<li>Applications.</li>
 <li>...</li>
 </ul>
-<h2 id="what-do-we-do-with-logs">What do we do with logs?<a class="headerlink" href="#what-do-we-do-with-logs" title="Permanent link">&para;</a></h2>
-<p>We are collecting logs, not for compliance, but because they have a value. We can use them to:</p>
+<h2 id="what-do-we-do-with-logs">What Do We Do with Logs?<a class="headerlink" href="#what-do-we-do-with-logs" title="Permanent link">&para;</a></h2>
+<p>We collect logs not for compliance, but because they have value. We can use them to:</p>
 <ul>
-<li>analyze application errors (new bugs after a software release);</li>
-<li>highlight anomalies (potential attacks, data exfiltration);</li>
-<li>review activities (verify administrator logs for permission abuse);</li>
-<li>analyze root cause (problem management);</li>
-<li>threat hunting (find ongoing attacks);</li>
-<li>activate automatic alerting and reporting.</li>
+<li>Analyze application errors (new bugs after a software release).</li>
+<li>Highlight anomalies (potential attacks, data exfiltration).</li>
+<li>Review activities (verify administrator logs for permission abuse).</li>
+<li>Analyze root causes (problem management).</li>
+<li>Hunt threats (find ongoing attacks).</li>
+<li>Activate automatic alerting and reporting.</li>
 </ul>
-<p>We are realizing that maybe we don't need a simple log collector, maybe we need a SIEM because most of the tasks we expect to are about security management (threat hunting, finding users abusing permissions...). The answer is yes: we do log analysis because of security purposes. We are also collecting application logs for debugging, but they serve for security too.</p>
-<p>Even so, we probably want to evaluate log collectors because:</p>
+<p>We may realize that we do not need a simple log collector but a <a href="../../../blog/siem-ready-applications/siem-ready-applications/">SIEM</a>, because most of the tasks we expect are about security management (threat hunting, finding users who abuse permissions...). The answer is yes: we analyze logs for security purposes. We also collect application logs for debugging, but they serve security too.</p>
+<p>We should still evaluate log collectors because:</p>
 <ul>
-<li>we have to review user activities (GDPR requisite);</li>
-<li>we want to debug applications and network issues (they are security incidents too, but rarely managed by SOC).</li>
-<li>SIEM solutions are usually more expensive and many companies have to decide which logs must be discarded.</li>
+<li>We have to review user activities (a GDPR requirement).</li>
+<li>We want to debug application and network issues (they are security incidents too, but rarely managed by the SOC).</li>
+<li>SIEM solutions are usually more expensive, and many companies have to decide which logs to discard.</li>
 </ul>
 <p>Ideally, the log management process should be almost fully automated:</p>
 <p><img alt="log-management" src="../../../diagrams/log-management.png" /></p>
 <h2 id="conclusions">Conclusions<a class="headerlink" href="#conclusions" title="Permanent link">&para;</a></h2>
-<p>I am convinced that there is no distinction between incidents and security incidents. Because of the GDPR, any event impacting CIA attributes of personal data is a data violation (or data breach). Based on that most events are security potentially security events (we can discards debug and maybe informational events). With this idea any SOC should be able to identify cyber threats as well as network and application issues.</p>
-<p>But the real world works differently and I know I'm an idealist.</p>
-<p>Besides that, we need to collect logs and improve alerting and reporting to obtain a resilient infrastructure. And this is part of the log management process.</p>
+<p>I am convinced that there is no distinction between incidents and security incidents. Because of the GDPR, any event impacting the CIA attributes of personal data is a data violation (or data breach). Based on that, most events are potentially security events (we can discard debug and maybe informational events). With this idea, any SOC should be able to identify cyber threats as well as network and application issues.</p>
+<p>The real world works differently, and I know I am an idealist.</p>
+<p>Besides that, we need to collect logs and improve alerting and reporting to obtain a resilient infrastructure. This is part of the log management process.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://gdpr-info.eu/art-5-gdpr/" title="Art. 5 GDPR Principles relating to processing of personal data">Art. 5 GDPR Principles relating to processing of personal data</a></li>

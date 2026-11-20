@@ -544,13 +544,20 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:cisco" class="md-tag">cisco</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:compliance" class="md-tag">compliance</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-01-22">22 January 2025</time></span></p>
 <h1 id="automating-configuration-compliance-verification-for-cisco-switches">Automating configuration compliance verification for Cisco Switches<a class="headerlink" href="#automating-configuration-compliance-verification-for-cisco-switches" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:catalyst-center">catalyst-center</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:catalyst-center">catalyst-center</a> <a class="md-tag" href="../../../tags/#tag:cisco">cisco</a> <a class="md-tag" href="../../../tags/#tag:compliance">compliance</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/cisco.png" /></p>
 <p>This article stems from a colleague's request to automate the configuration compliance checks of hundreds of switches spread across the globe.</p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
@@ -601,7 +608,7 @@ Everything here is free. If it helps you, you can
 <li>Retrieve the <code>running-config</code> via the Catalyst Center APIs.</li>
 <li>Retrieve the <code>running-config</code> via the Catalyst Center SDK.</li>
 </ul>
-<p>SSH requires downloading the <code>running-config</code> and storing it locally. We can do this, for example, with Netmiko or Ansible. We have already covered this approach in previous articles, so we do not discuss it here. If you choose this path, make sure you obtain the <code>running-config</code> of all the devices locally.</p>
+<p>SSH requires downloading the <code>running-config</code> and storing it locally. We can do this, for example, with <a href="../../../fundamentals/110gathering-structured-network-data-with-netmiko-and-ntc-templates/gathering-structured-network-data-with-netmiko-and-ntc-templates/">Netmiko</a> or <a href="../../../ansible/103introduction-to-ansible-automation/introduction-to-ansible-automation/">Ansible</a>. We have already covered this approach in previous articles, so we do not discuss it here. If you choose this path, make sure you obtain the <code>running-config</code> of all the devices locally.</p>
 <p>The Catalyst Center APIs are well <a href="https://developer.cisco.com/docs/dna-center/the-trend-analytics-data-for-the-network-device-in-the-specified-time-range/">documented</a>. There is also a <a href="https://dnacentersdk.readthedocs.io/en/latest/">Python SDK</a>, though its documentation is somewhat sparse.</p>
 <p>When an SDK is available, I prefer to try it first and see whether it suits my needs. The advantage of an SDK is that it should handle challenges such as rate limiting (HTTP 429 errors) and pagination. However, I found that this SDK has some limitations that matter to me, such as the inability to work through a proxy server.</p>
 <p>Whatever approach we choose, we need to obtain:</p>

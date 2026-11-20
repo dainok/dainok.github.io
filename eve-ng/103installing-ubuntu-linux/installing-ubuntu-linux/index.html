@@ -501,33 +501,33 @@ Everything here is free. If it helps you, you can
 <h2 id="virtual-environment">Virtual Environment<a class="headerlink" href="#virtual-environment" title="Permanent link">&para;</a></h2>
 <p>In a virtual environment, typically VMware vSphere, I suggest creating a virtual machine with the following specifications:</p>
 <ul>
-<li>Guest OS family: Linux</li>
-<li>Guest OS version: Ubuntu Linux (64-bit)</li>
-<li>CPU: 4</li>
-<li>Hardware virtualization: Expose hardware assisted virtualization to the guest OS</li>
-<li>Memory: 8 GB</li>
-<li>Hard disk: 50 GB</li>
-<li>CD/DVD Drive: select the ISO file of Ubuntu Linux Server 20.04 LTS previously uploaded to the ESXi server</li>
+<li>Guest OS family: Linux.</li>
+<li>Guest OS version: Ubuntu Linux (64-bit).</li>
+<li>CPU: 4.</li>
+<li>Hardware virtualization: expose hardware-assisted virtualization to the guest OS.</li>
+<li>Memory: 8 GB.</li>
+<li>Hard disk: 50 GB.</li>
+<li>CD/DVD drive: the ISO file of Ubuntu Linux Server 20.04 LTS, previously uploaded to the ESXi server.</li>
 </ul>
 <p><img alt="vm-hardware-settings" src="../images/vm-hardware-settings.png" /></p>
-<p>Pay special attention to advanced CPU features: the hardware virtualization option must be enabled.</p>
+<p>Pay special attention to the advanced CPU features: the hardware virtualization option must be enabled.</p>
 <p><img alt="vm-cpu-settings" src="../images/vm-cpu-settings.png" /></p>
 <h2 id="physical-environment">Physical Environment<a class="headerlink" href="#physical-environment" title="Permanent link">&para;</a></h2>
-<p>Similar to what was explained for the virtual environment, in a physical environment, you need to enable assisted virtualization. This feature is found in the BIOS configuration, and the specific setting may vary from computer to computer.</p>
+<p>As in the virtual environment, in a physical environment we need to enable hardware-assisted virtualization. This feature is in the BIOS configuration, and the specific setting may vary from computer to computer.</p>
 <p><img alt="enable-bios-virtualization" src="../images/enable-bios-virtualization.png" /></p>
 <h2 id="ubuntu-linux">Ubuntu Linux<a class="headerlink" href="#ubuntu-linux" title="Permanent link">&para;</a></h2>
-<p>Next, boot up and start the installation. In order, you'll be prompted to configure:</p>
+<p>Next, we boot the system and start the installation. In order, we are prompted to configure:</p>
 <ul>
-<li>Language: English</li>
-<li>Layout: select the keyboard layout you're using</li>
-<li>Installation: Ubuntu Server</li>
-<li>Network connection: configure the network card according to your environment</li>
-<li>Disk: use the entire disk with LVM</li>
-<li>Profile: set up a user with a password</li>
-<li>Hostname: eve-ng</li>
-<li>Install OpenSSH server</li>
+<li>Language: English.</li>
+<li>Layout: the keyboard layout we use.</li>
+<li>Installation: Ubuntu Server.</li>
+<li>Network connection: configure the network card according to our environment.</li>
+<li>Disk: use the entire disk with LVM.</li>
+<li>Profile: set up a user with a password.</li>
+<li>Hostname: <code>eve-ng</code>.</li>
+<li>Install the OpenSSH server.</li>
 </ul>
-<p>Confirm the defaults for all other settings and wait for the system to finish the installation. Once done, restart the system.</p>
+<p>We confirm the defaults for all the other settings and wait for the system to finish the installation. Once done, we restart the system.</p>
 
 
 

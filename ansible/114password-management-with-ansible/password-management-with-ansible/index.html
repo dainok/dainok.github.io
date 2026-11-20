@@ -482,18 +482,25 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:intermediate" class="md-tag">intermediate</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:passwords" class="md-tag">passwords</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2024-12-25">25 December 2024</time></span></p>
 <h1 id="password-management-with-ansible">Password Management with Ansible<a class="headerlink" href="#password-management-with-ansible" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a> <a class="md-tag" href="../../../tags/#tag:intermediate">intermediate</a> <a class="md-tag" href="../../../tags/#tag:passwords">passwords</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
 <p>Password management is one of the topics that should be analyzed during the design phase, i.e., before starting to write code. For learning purposes, however, I prefer to postpone it until you have some basic knowledge.</p>
-<p>In general, I discourage any approach that stores credentials in plain text in files or playbooks. Where possible, I recommend named credentials, entered manually during playbook execution.</p>
+<p>In general, I discourage any approach that stores credentials in plain text in files or <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbooks</a>. Where possible, I recommend named credentials, entered manually during playbook execution.</p>
 <p>Orchestrators such as <a href="https://docs.ansible.com/ansible-tower/">Ansible Tower</a> (now the automation controller) or <a href="https://github.com/ansible/awx">AWX</a> might make it preferable to choose a particular vault, i.e., an encrypted password database accessible via API. In my opinion, using a vault when playbooks are executed manually makes little sense, because it simply shifts the problem: the credentials are in the vault, but the token that gives the playbook access to the vault must be saved somewhere.</p>
-<p>Finally, as we saw earlier, dynamic inventories might make it preferable to keep the credentials in the inventory itself, which, being generated dynamically, leaves no trace except in RAM. Once again, however, we are shifting the problem: the script that generates the inventory must somehow authenticate itself.</p>
+<p>Finally, as we saw earlier, dynamic <a href="../../104ansible-inventory/ansible-inventory/">inventories</a> might make it preferable to keep the credentials in the inventory itself, which, being generated dynamically, leaves no trace except in RAM. Once again, however, we are shifting the problem: the script that generates the inventory must somehow authenticate itself.</p>
 <p>Let's see two examples, knowing that each environment requires specific considerations about the security and confidentiality of credentials. Let's open the <strong>Simple Network Lab</strong> and start R1.</p>
 <h2 id="named-credentials">Named Credentials<a class="headerlink" href="#named-credentials" title="Permanent link">&para;</a></h2>
 <p>The simplest and safest way to manage credentials is to provide them on the command line at each execution:</p>

@@ -530,17 +530,24 @@ Everything here is free. If it helps you, you can
         <a href="../../../tags/#tag:advanced" class="md-tag">advanced</a>
       
     
+      
+      
+      
+      
+        <a href="../../../tags/#tag:ansible" class="md-tag">ansible</a>
+      
+    
   </nav>
 
 
 
 <p class="article-date"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.11 0 2-.89 2-2V5a2 2 0 0 0-2-2m0 16H5V9h14zm0-12H5V5h14z"/></svg></span> <time datetime="2025-04-19">19 April 2025</time></span></p>
 <h1 id="event-driven-ansible">Event-Driven Ansible<a class="headerlink" href="#event-driven-ansible" title="Permanent link">&para;</a></h1>
-<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a></span></p>
+<p class="byline"><span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m0 7c2.67 0 8 1.33 8 4v3H4v-3c0-2.67 5.33-4 8-4m0 1.9c-2.97 0-6.1 1.46-6.1 2.1v1.1h12.2V17c0-.64-3.13-2.1-6.1-2.1"/></svg></span> Andrea Dainese</span> <span class="byline__item"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.41 11.58-9-9A2 2 0 0 0 11 2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 .59 1.42l9 9A2 2 0 0 0 13 22a2 2 0 0 0 1.41-.59l7-7A2 2 0 0 0 22 13a2 2 0 0 0-.59-1.42M13 20l-9-9V4h7l9 9M6.5 5A1.5 1.5 0 1 1 5 6.5 1.5 1.5 0 0 1 6.5 5"/></svg></span> <a class="md-tag" href="../../../tags/#tag:advanced">advanced</a> <a class="md-tag" href="../../../tags/#tag:ansible">ansible</a></span></p>
 <p><img alt="" class="page-cover" loading="lazy" src="../../../images/covers/ansible.png" /></p>
-<p>Event-Driven Ansible (EDA) triggers the execution of an Ansible playbook when a specific event occurs.</p>
+<p>Event-Driven Ansible (EDA) triggers the execution of an Ansible <a href="../../107ansible-playbooks-and-variables/ansible-playbooks-and-variables/">playbook</a> when a specific event occurs.</p>
 <p><img alt="ansible-eda" src="../images/ansible-eda.png" /></p>
-<p>This capability greatly expands the potential of Ansible, turning it into a tool that automates processes based on events: troubleshooting, threat intelligence, IoCs, data collection and general analysis. These activities can be partially or fully automated.</p>
+<p>This capability greatly expands the potential of Ansible, turning it into a tool that automates processes based on events: troubleshooting, threat intelligence, IoCs, data <a href="../../136ansible-galaxy/ansible-galaxy/">collection</a> and general analysis. These activities can be partially or fully automated.</p>
 <p>Many security vendors have released specific modules. For instance, <a href="https://www.linkedin.com/company/palo-alto-networks/">Palo Alto Networks</a> has developed a plugin that analyzes firewall logs and triggers <a href="https://github.com/PaloAltoNetworks/pan-os-ansible/tree/develop/extensions/eda/plugins/event_source">initial automated diagnostics</a> in case of SSL decryption errors.</p>
 <h2 id="rulebook">Rulebook<a class="headerlink" href="#rulebook" title="Permanent link">&para;</a></h2>
 <p>An Ansible <a href="https://ansible.readthedocs.io/projects/rulebook/en/stable/rulebooks.html">Rulebook</a> is a set of rules that EDA uses to execute specific actions. A rulebook can:</p>
@@ -555,7 +562,7 @@ Everything here is free. If it helps you, you can
 <ul>
 <li><strong>Event Bus Plugins</strong>: listen to a stream of events from a source, where the connection is established by the plugin itself (e.g., the Kafka and AWS SQS Queue plugins).</li>
 <li><strong>Scraper Plugins</strong>: connect to a source and scrape data from it, usually at predefined intervals (e.g., the URL Check and Watchdog plugins).</li>
-<li><strong>Callback Plugins</strong>: provide a callback endpoint that the event source calls when data is available (e.g., the Webhook and Alertmanager plugins). Callback plugins are the least reliable, because they depend on the event source calling the endpoint and are highly susceptible to data loss.</li>
+<li><strong><a href="../../115enhancing-ansible-output/enhancing-ansible-output/">Callback Plugins</a></strong>: provide a callback endpoint that the event source calls when data is available (e.g., the Webhook and Alertmanager plugins). Callback plugins are the least reliable, because they depend on the event source calling the endpoint and are highly susceptible to data loss.</li>
 </ul>
 <p>When an Event Source Plugin detects an event, EDA uses <strong>rules</strong> to decide which action to take. If an event matches a rule, EDA executes the specified actions. Actions can include:</p>
 <ul>
