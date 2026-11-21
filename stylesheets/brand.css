@@ -283,3 +283,10 @@
 .md-typeset .patreon {
   text-align: center;
 }
+
+/* Link to the Markdown source, shown under the article */
+.markdown-source {
+  margin-top: 2rem;
+  font-size: .8rem;
+  opacity: .75;
+}
