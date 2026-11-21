@@ -31,7 +31,7 @@ Thousands of people around the world used UNetLab every month. It gave me immens
 
 In 2015, because I had limited spare time, a group of enthusiasts forked UNetLab, and [EVE-NG](https://www.eve-ng.net/) was released on January 5th, 2017. I am not part of the [[Introduction to EVE-NG platform|EVE-NG]] team.
 
-![[uentlab-complex-topology.png]]
+![[unetlab-complex-topology.png]]
 
 In 2014, I had an interesting chat with a member of the Cisco VIRL team during CLEUR 2014 in Milan.
 
