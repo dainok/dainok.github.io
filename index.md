@@ -15,7 +15,7 @@ Network automation, security and OT/ICS: series, notes and labs.
 
 ## Topics
 
-[governance](tags/index.md#governance) (31) · [digital-self-defence](tags/index.md#digital-self-defence) (21) · [aci](tags/index.md#aci) (22) · [ansible](tags/index.md#ansible) (40) · [cisco](tags/index.md#cisco) (35) · [iec62443](tags/index.md#iec62443) (11) · [ot-ics](tags/index.md#ot-ics) (28)
+[governance](tags/index.md#governance) (33) · [digital-self-defence](tags/index.md#digital-self-defence) (22) · [aci](tags/index.md#aci) (22) · [ansible](tags/index.md#ansible) (40) · [cisco](tags/index.md#cisco) (35) · [iec62443](tags/index.md#iec62443) (13) · [ot-ics](tags/index.md#ot-ics) (30)
 
 ## Most read series
 
@@ -29,9 +29,9 @@ Network automation, security and OT/ICS: series, notes and labs.
 
 ## Latest posts
 
-- 2026-11-24 — [Partitioning the SUC into zones and conduits](ot-ics/311partitioning-the-suc-into-zones-and-conduits/partitioning-the-suc-into-zones-and-conduits/index.md)
+- 2026-12-01 — [From threats to the target SL (ZCR5)](ot-ics/313from-threats-to-the-target-sl-zcr5/from-threats-to-the-target-sl-zcr5/index.md)
+- 2026-11-26 — [Threats and vulnerabilities (ZCR4-5)](ot-ics/312threats-and-vulnerabilities-zcr4-5/threats-and-vulnerabilities-zcr4-5/index.md)
+- 2026-11-24 — [Partitioning the SUC into zones and conduits (ZCR3)](ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
+- 2026-11-24 — [Back up only your own data with Time Machine](blog/back-up-only-your-own-data-with-time-machine/back-up-only-your-own-data-with-time-machine/index.md)
 - 2026-11-21 — [A local HashiCorp Vault server in ten minutes](blog/a-local-hashicorp-vault-server-in-ten-minutes/a-local-hashicorp-vault-server-in-ten-minutes/index.md)
 - 2026-11-20 — [Using pyVmomi behind an authenticated proxy](blog/using-pyvmomi-behind-an-authenticated-proxy/using-pyvmomi-behind-an-authenticated-proxy/index.md)
-- 2026-11-18 — [The initial risk assessment (ZCR2)](ot-ics/310the-initial-risk-assessment/the-initial-risk-assessment-zcr2/index.md)
-- 2026-11-17 — [Mandate, perimeter (SUC) and inventory (ZCR1)](ot-ics/309mandate-perimeter-suc-and-inventory/mandate-perimeter-suc-and-inventory-zcr1/index.md)
-- 2026-10-17 — [The IEC 62443 map](ot-ics/308the-iec-62443-map/the-iec-62443-map/index.md)

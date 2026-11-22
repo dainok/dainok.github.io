@@ -27,8 +27,6 @@ It is not a generic "more secure / less secure" scale. The standard ties each le
 
 SL0 also exists, but only as a value: it means no specific requirement or protection. You will see it later in the vector.
 
-A small trap for the exam: the SL talks about the *attacker you protect against*, not about the *damage* you want to avoid. The damage enters the picture in the [[The initial risk assessment (ZCR2)|risk assessment]], which is how you choose the target.
-
 ## Two consequences
 
 **First**: going up one level means designing countermeasures built to resist an adversary with more resources and more competence. It is not "the same plus a bit more". The cost and the effort do not grow linearly, and some measures that are fine at SL2 are simply not enough at SL3.

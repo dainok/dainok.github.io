@@ -41,7 +41,7 @@ The question to ask is always the same: **is the acceptable risk of these assets
 
 ## A zone with no network: the laptop and the USB stick
 
-If you come from network security, a zone looks like a VLAN or a subnet. Something with an IP range and a firewall in front. So a zone made of a USB stick sounds strange. It is not, and the standard asks for it ([[Partitioning the SUC into zones and conduits|ZCR 3.4]], in 3-2): devices that make **temporary connections** to the system should be grouped into a separate zone.
+If you come from network security, a zone looks like a VLAN or a subnet. Something with an IP range and a firewall in front. So a zone made of a USB stick sounds strange. It is not, and the standard asks for it ([[Partitioning the SUC into zones and conduits (ZCR3)|ZCR 3.4]], in 3-2): devices that make **temporary connections** to the system should be grouped into a separate zone.
 
 Think of the engineering laptop of a maintenance technician. In one week it is on the office network to read email, in the vendor's lab to download a firmware, on the hotel Wi-Fi during a business trip. Then it goes into the plant and gets plugged into the control network to modify a PLC program. With a USB stick carrying the project files, going back and forth.
 
@@ -59,7 +59,7 @@ The standard also gives an exception worth knowing: a handheld device that is us
 
 Between one zone and another you need **conduits**: the controlled communication channels that let data through without compromising it.
 
-A very common mistake is to think that a conduit is a cable. It is not. A conduit is **the set of measures that govern that connection**: a firewall, a VPN, an authentication system, the protocols you allow and the ones you block. The cable is only part of it. And this is important for the exam: a conduit has its own security level, just like a zone.
+A very common mistake is to think that a conduit is a cable. It is not. A conduit is **the set of measures that govern that connection**: a firewall, a VPN, an authentication system, the protocols you allow and the ones you block. The cable is only part of it. **A conduit has its own security level, just like a zone.**
 
 ## Who draws it, and greenfield vs brownfield
 

@@ -9,8 +9,6 @@ tags:
 ---
 I recently finished the ISA IC32 course, the first module of the IEC 62443 certification path. I liked it. Some modules were explained really well, but overall it was not enough to understand the standard thoroughly and to face the exam. So I decided to write a short series of articles: to fix the concepts in my own head first, and hopefully to help you do the same.
 
-The plan is simple: refresh the concepts, walk step by step through a sensible IEC 62443 strategy, and prepare for the exam if that is your goal.
-
 ![[aic-priority.png]]
 
 ## IT and OT Are Different. But Why?

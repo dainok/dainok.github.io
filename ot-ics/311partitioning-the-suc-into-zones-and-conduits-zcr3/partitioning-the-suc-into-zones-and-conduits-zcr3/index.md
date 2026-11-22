@@ -15,11 +15,11 @@ We have the SUC and the worst case. Now the system has to be divided into zones 
 
 The organization shall group IACS and related assets into zones or conduits as [[The initial risk assessment (ZCR2)|determined by risk]]. The grouping shall be based on the results of the initial cyber security risk assessment, or on other criteria:
 
-- criticality of assets
-- operational function
-- physical or logical location
-- required access (for example, least privilege)
-- responsible organization
+* criticality of assets
+* operational function
+* physical or logical location
+* required access (for example, least privilege)
+* responsible organization
 
 The intention, as the standard puts it, is to identify the assets that share common security requirements, so that common security measures can be defined for them.
 
@@ -33,11 +33,11 @@ The standard gives an example. First **divide the facility into operational area
 
 ZCR 3.2 to 3.6 give guidance based on best practice. The standard says explicitly that this is not an exhaustive list.
 
-- **ZCR 3.2, business vs IACS**: IACS assets shall be in zones logically or physically **separated from business or enterprise assets**. They are different systems, with different functions, owners, locations and impact on health, safety and environment.
-- **ZCR 3.3, safety**: **safety related assets shall be separated** from non-safety assets. If they cannot be separated, the entire zone shall be identified as safety related. Safety zones typically need higher protection.
-- **ZCR 3.4, temporary devices**: maintenance laptops, portable equipment, USB devices **should be in a separate zone**. They face a wider variety of threats and may connect to other networks. An exception: a handheld that never leaves a single zone may be included in it.
-- **ZCR 3.5, wireless**: wireless devices should be in zones **separated from wired ones**. A wireless access point is typically modelled as the conduit between the two, and may need extra controls such as a firewall.
-- **ZCR 3.6, external networks**: remote access is outside the physical boundary of the SUC, so it should be modelled **as separate zones** with its own security requirements. Think of employees, suppliers and partners connecting for maintenance, optimization or reporting.
+* **ZCR 3.2, business vs IACS**: IACS assets shall be in zones logically or physically **separated from business or enterprise assets**. They are different systems, with different functions, owners, locations and impact on health, safety and environment.
+* **ZCR 3.3, safety**: **safety related assets shall be separated** from non-safety assets. If they cannot be separated, the entire zone shall be identified as safety related. Safety zones typically need higher protection.
+* **ZCR 3.4, temporary devices**: maintenance laptops, portable equipment, USB devices **should be in a separate zone**. They face a wider variety of threats and may connect to other networks. An exception: a handheld that never leaves a single zone may be included in it.
+* **ZCR 3.5, wireless**: wireless devices should be in zones **separated from wired ones**. A wireless access point is typically modelled as the conduit between the two, and may need extra controls such as a firewall.
+* **ZCR 3.6, external networks**: remote access is outside the physical boundary of the SUC, so it should be modelled **as separate zones** with its own security requirements. Think of employees, suppliers and partners connecting for maintenance, optimization or reporting.
 
 Note the verbs. ZCR 3.2 and 3.3 say "shall". ZCR 3.4, 3.5 and 3.6 say "should". It is the kind of detail that shows up in exam questions.
 
@@ -61,11 +61,11 @@ Right now the SL-T field stays empty. It is filled in after the detailed risk as
 
 ## Typical mistakes
 
-- One big zone for "the plant". It is easy to draw and it protects nothing.
-- A zone for every device. It cannot be maintained.
-- Forgetting remote access, the maintenance laptop or the wireless network because they are "not part of the system".
-- Mixing safety and non-safety assets without declaring the whole zone as safety related.
-- Drawing a conduit as a cable. A conduit is a logical grouping of the communication channels and the measures that protect them.
+* One big zone for "the plant". It is easy to draw and it protects nothing.
+* A zone for every device. It cannot be maintained.
+* Forgetting remote access, the maintenance laptop or the wireless network because they are "not part of the system".
+* Mixing safety and non-safety assets without declaring the whole zone as safety related.
+* Drawing a conduit as a cable. A conduit is a logical grouping of the communication channels and the measures that protect them.
 
 ## How to build the three outputs
 
@@ -75,13 +75,13 @@ The standard asks for two things in the cyber security requirements specificatio
 
 Don't start from a blank page. Take the network diagram from step zero and draw the zones on top of it.
 
-- Draw the SUC perimeter first, dashed, with all the access points you identified.
-- One box per zone, with an identifier (Z-01, Z-02) and a name that says what is inside, not where it is.
-- One line per conduit, with an identifier (C-01, C-02) and the measures written on it: "firewall", "VPN with MFA", "check-in station". If you cannot write a measure on it, you have drawn a cable, not a conduit.
-- Mark the safety related zones in a different colour, so nobody has to look for them.
-- Show the zones outside the perimeter too: remote access, temporary devices, wireless.
-- Keep one overview page that a non-specialist can read. Detail goes on separate pages, one per zone if needed.
-- Put a date, a version and an owner on it. A drawing that nobody maintains is wrong within a year.
+* Draw the SUC perimeter first, dashed, with all the access points you identified.
+* One box per zone, with an identifier (Z-01, Z-02) and a name that says what is inside, not where it is.
+* One line per conduit, with an identifier (C-01, C-02) and the measures written on it: "firewall", "VPN with MFA", "check-in station". If you cannot write a measure on it, you have drawn a cable, not a conduit.
+* Mark the safety related zones in a different colour, so nobody has to look for them.
+* Show the zones outside the perimeter too: remote access, temporary devices, wireless.
+* Keep one overview page that a non-specialist can read. Detail goes on separate pages, one per zone if needed.
+* Put a date, a version and an owner on it. A drawing that nobody maintains is wrong within a year.
 
 ![[iec62443-suc-partitioning.png]]
 
@@ -105,9 +105,9 @@ This is the inventory from step zero with one more column: the zone. A small exa
 
 Three checks that take ten minutes and find real problems:
 
-- The number of assets in this table is the same as in the inventory. If not, someone is missing.
-- Every asset is in exactly one zone or conduit. None in zero, none in two.
-- Every conduit connects exactly two zones, and every zone has at least one conduit.
+* The number of assets in this table is the same as in the inventory. If not, someone is missing.
+* Every asset is in exactly one zone or conduit. None in zero, none in two.
+* Every conduit connects exactly two zones, and every zone has at least one conduit.
 
 Most of the arguments in a workshop happen on the rows with a note in the last column. That is fine: write the note and the decision.
 

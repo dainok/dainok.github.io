@@ -1,4 +1,4 @@
-226 posts
+229 posts
 
 ## A
 
@@ -53,6 +53,7 @@
 
 ## B
 
+- [Back up only your own data with Time Machine](../blog/back-up-only-your-own-data-with-time-machine/back-up-only-your-own-data-with-time-machine/index.md)
 - [Boosting Ansible performance](../ansible/116boosting-ansible-performance/boosting-ansible-performance/index.md)
 - [Breaking the facial recognition](../digital-self-defence/breaking-the-facial-recognition/breaking-the-facial-recognition/index.md)
 - [Building an IoT testing lab](../blog/building-an-iot-testing-lab/building-an-iot-testing-lab/index.md)
@@ -112,6 +113,7 @@
 - [First Approach to Cisco ACI APIs](../cisco/106first-approach-to-cisco-aci-apis/first-approach-to-cisco-aci-apis/index.md)
 - [Frameworks for Projects with Cisco ACI and NDO](../cisco/113frameworks-for-projects-with-cisco-aci-and-ndo/frameworks-for-projects-with-cisco-aci-and-ndo/index.md)
 - [From Single-Site to Multi-Site with NDO](../cisco/111from-single-site-to-multi-site-with-ndo/from-single-site-to-multi-site-with-ndo/index.md)
+- [From threats to the target SL (ZCR5)](../ot-ics/313from-threats-to-the-target-sl-zcr5/from-threats-to-the-target-sl-zcr5/index.md)
 
 ## G
 
@@ -173,7 +175,7 @@
 - [Managing a brownfield Cisco ACI fabric with NaC and Terraform](../cisco/124managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/managing-a-brownfield-cisco-aci-fabric-with-nac-and-terraform/index.md)
 - [Managing Cisco NDO Limitations from the APIC](../cisco/115managing-cisco-ndo-limitations-from-the-apic/managing-cisco-ndo-limitations-from-the-apic/index.md)
 - [Managing CLI prompts with Ansible](../ansible/131managing-cli-prompts-with-ansible/managing-cli-prompts-with-ansible/index.md)
-- [Mandate, perimeter (SUC) and inventory (ZCR1)](../ot-ics/309mandate-perimeter-suc-and-inventory/mandate-perimeter-suc-and-inventory-zcr1/index.md)
+- [Mandate, perimeter (SUC) and inventory (ZCR1)](../ot-ics/309mandate-perimeter-suc-and-inventory-zcr1/mandate-perimeter-suc-and-inventory-zcr1/index.md)
 - [MITM on wired 802.1x with a Raspberry PI](../blog/mitm-on-wired-8021x-with-a-raspberry-pi/mitm-on-wired-8021x-with-a-raspberry-pi/index.md)
 - [Modifying an object in Strata Cloud Manager](../palo-alto-networks/305modifying-an-object-in-strata-cloud-manager/modifying-an-object-in-strata-cloud-manager/index.md)
 - [Monetizing personal data: the new form of prostitution](../digital-self-defence/monetizing-personal-data-the-new-form-of-prostitution/monetizing-personal-data-the-new-form-of-prostitution/index.md)
@@ -201,7 +203,7 @@
 - [Pagination with Cisco ACI](../cisco/110pagination-with-cisco-aci/pagination-with-cisco-aci/index.md)
 - [Palo Alto Firewall as Code](../blog/palo-alto-firewall-as-code/palo-alto-firewall-as-code/index.md)
 - [Parsing text with TextFSM](../fundamentals/104parsing-text-with-textfsm/parsing-text-with-textfsm/index.md)
-- [Partitioning the SUC into zones and conduits](../ot-ics/311partitioning-the-suc-into-zones-and-conduits/partitioning-the-suc-into-zones-and-conduits/index.md)
+- [Partitioning the SUC into zones and conduits (ZCR3)](../ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
 - [Password Management with Ansible](../ansible/114password-management-with-ansible/password-management-with-ansible/index.md)
 - [Patching the Proxmox kernel](../unetlab/107patching-the-proxmox-kernel/patching-the-proxmox-kernel/index.md)
 - [Personal digital protection](../digital-self-defence/personal-digital-protection/personal-digital-protection/index.md)
@@ -255,9 +257,10 @@
 - [The IEC 62443 map](../ot-ics/308the-iec-62443-map/the-iec-62443-map/index.md)
 - [The IEC 62443 roles](../ot-ics/303the-iec-62443-roles/the-iec-62443-roles/index.md)
 - [The importance of the CISO](../governance/the-importance-of-the-ciso/the-importance-of-the-ciso/index.md)
-- [The initial risk assessment (ZCR2)](../ot-ics/310the-initial-risk-assessment/the-initial-risk-assessment-zcr2/index.md)
+- [The initial risk assessment (ZCR2)](../ot-ics/310the-initial-risk-assessment-zcr2/the-initial-risk-assessment-zcr2/index.md)
 - [The value of a Risk Based VA](../governance/the-value-of-a-risk-based-va/the-value-of-a-risk-based-va/index.md)
 - [Theft and recovery of a Facebook account](../digital-self-defence/theft-and-recovery-of-a-facebook-account/theft-and-recovery-of-a-facebook-account/index.md)
+- [Threats and vulnerabilities (ZCR4-5)](../ot-ics/312threats-and-vulnerabilities-zcr4-5/threats-and-vulnerabilities-zcr4-5/index.md)
 - [Top management security](../governance/top-management-security/top-management-security/index.md)
 - [Training in managing cyber attacks](../governance/training-in-managing-cyber-attacks/training-in-managing-cyber-attacks/index.md)
 - [Troubleshooting EVE-NG nodes that fail to start](../eve-ng/108troubleshooting-eve-ng-nodes-that-fail-to-start/troubleshooting-eve-ng-nodes-that-fail-to-start/index.md)
