@@ -15,7 +15,7 @@ Network automation, security and OT/ICS: series, notes and labs.
 
 ## Topics
 
-[governance](tags/index.md#governance) (33) · [digital-self-defence](tags/index.md#digital-self-defence) (22) · [aci](tags/index.md#aci) (22) · [ansible](tags/index.md#ansible) (40) · [cisco](tags/index.md#cisco) (35) · [iec62443](tags/index.md#iec62443) (13) · [ot-ics](tags/index.md#ot-ics) (30)
+[governance](tags/index.md#governance) (34) · [digital-self-defence](tags/index.md#digital-self-defence) (22) · [aci](tags/index.md#aci) (22) · [ansible](tags/index.md#ansible) (40) · [cisco](tags/index.md#cisco) (35) · [iec62443](tags/index.md#iec62443) (14) · [ot-ics](tags/index.md#ot-ics) (31)
 
 ## Most read series
 
@@ -29,9 +29,9 @@ Network automation, security and OT/ICS: series, notes and labs.
 
 ## Latest posts
 
+- 2026-12-04 — [Patch or compensate OT/ICS vulnerabilities?](ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 - 2026-12-01 — [From threats to the target SL (ZCR5)](ot-ics/313from-threats-to-the-target-sl-zcr5/from-threats-to-the-target-sl-zcr5/index.md)
 - 2026-11-26 — [Threats and vulnerabilities (ZCR4-5)](ot-ics/312threats-and-vulnerabilities-zcr4-5/threats-and-vulnerabilities-zcr4-5/index.md)
 - 2026-11-24 — [Partitioning the SUC into zones and conduits (ZCR3)](ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
 - 2026-11-24 — [Back up only your own data with Time Machine](blog/back-up-only-your-own-data-with-time-machine/back-up-only-your-own-data-with-time-machine/index.md)
 - 2026-11-21 — [A local HashiCorp Vault server in ten minutes](blog/a-local-hashicorp-vault-server-in-ten-minutes/a-local-hashicorp-vault-server-in-ten-minutes/index.md)
-- 2026-11-20 — [Using pyVmomi behind an authenticated proxy](blog/using-pyvmomi-behind-an-authenticated-proxy/using-pyvmomi-behind-an-authenticated-proxy/index.md)

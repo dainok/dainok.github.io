@@ -1,6 +1,6 @@
 - [802-1x](#802-1x) (1)
 - [aci](#aci) (22)
-- [advanced](#advanced) (100)
+- [advanced](#advanced) (101)
 - [ai](#ai) (2)
 - [android](#android) (2)
 - [ansible](#ansible) (40)
@@ -29,9 +29,9 @@
 - [fundamentals](#fundamentals) (32)
 - [git](#git) (7)
 - [gitlab](#gitlab) (3)
-- [governance](#governance) (33)
+- [governance](#governance) (34)
 - [iac](#iac) (8)
-- [iec62443](#iec62443) (13)
+- [iec62443](#iec62443) (14)
 - [incident-management](#incident-management) (3)
 - [installation](#installation) (1)
 - [intermediate](#intermediate) (47)
@@ -55,7 +55,7 @@
 - [ntc-templates](#ntc-templates) (3)
 - [oauth](#oauth) (3)
 - [osint](#osint) (1)
-- [ot-ics](#ot-ics) (30)
+- [ot-ics](#ot-ics) (31)
 - [palo-alto-networks](#palo-alto-networks) (18)
 - [passwords](#passwords) (5)
 - [pexpect](#pexpect) (2)
@@ -67,7 +67,7 @@
 - [rfid](#rfid) (1)
 - [risk-assessment](#risk-assessment) (6)
 - [scm](#scm) (6)
-- [security](#security) (20)
+- [security](#security) (21)
 - [servicenow](#servicenow) (5)
 - [siem](#siem) (1)
 - [snmp](#snmp) (2)
@@ -82,6 +82,7 @@
 - [vault](#vault) (1)
 - [vmware](#vmware) (3)
 - [vulnerability-management](#vulnerability-management) (4)
+- [vulnnerability-management](#vulnnerability-management) (1)
 - [ztp](#ztp) (1)
 
 ## 802-1x
@@ -186,6 +187,7 @@
 - [Palo Alto Firewall as Code](../blog/palo-alto-firewall-as-code/palo-alto-firewall-as-code/index.md)
 - [Parsing text with TextFSM](../fundamentals/104parsing-text-with-textfsm/parsing-text-with-textfsm/index.md)
 - [Partitioning the SUC into zones and conduits (ZCR3)](../ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
+- [Patch or compensate OT/ICS vulnerabilities?](../ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 - [Patching the Proxmox kernel](../unetlab/107patching-the-proxmox-kernel/patching-the-proxmox-kernel/index.md)
 - [Pexpect as a tool of last resort](../fundamentals/107pexpect-as-a-tool-of-last-resort/pexpect-as-a-tool-of-last-resort/index.md)
 - [Post-mortem account security](../digital-self-defence/post-mortem-account-security/post-mortem-account-security/index.md)
@@ -644,6 +646,7 @@
 - [Log management is more than a log collector](../governance/log-management-is-more-than-a-log-collector/log-management-is-more-than-a-log-collector/index.md)
 - [Mandate, perimeter (SUC) and inventory (ZCR1)](../ot-ics/309mandate-perimeter-suc-and-inventory-zcr1/mandate-perimeter-suc-and-inventory-zcr1/index.md)
 - [Partitioning the SUC into zones and conduits (ZCR3)](../ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
+- [Patch or compensate OT/ICS vulnerabilities?](../ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 - [Secure critical infrastructure "by design" and "by default"](../governance/secure-critical-infrastructure-by-design-and-by-default/secure-critical-infrastructure-by-design-and-by-default/index.md)
 - [Securing user authentication under IEC 62443](../governance/securing-user-authentication-under-iec-62443/securing-user-authentication-under-iec-62443/index.md)
 - [Security Level as a Vector](../ot-ics/307security-level-as-a-vector/security-level-as-a-vector/index.md)
@@ -681,6 +684,7 @@
 - [How IEC 62443 is organized](../ot-ics/302how-iec-62443-is-organized/how-iec-62443-is-organized/index.md)
 - [Mandate, perimeter (SUC) and inventory (ZCR1)](../ot-ics/309mandate-perimeter-suc-and-inventory-zcr1/mandate-perimeter-suc-and-inventory-zcr1/index.md)
 - [Partitioning the SUC into zones and conduits (ZCR3)](../ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
+- [Patch or compensate OT/ICS vulnerabilities?](../ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 - [Security Level as a Vector](../ot-ics/307security-level-as-a-vector/security-level-as-a-vector/index.md)
 - [Security level: target, capability, achieved](../ot-ics/306security-level-target-capability-achieved/security-level-target-capability-achieved/index.md)
 - [Security Levels](../ot-ics/305security-levels/security-levels/index.md)
@@ -906,6 +910,7 @@
 - [Introduction to OT/ICS](../ot-ics/101introduction-to-ot-ics/introduction-to-ot-ics/index.md)
 - [Mandate, perimeter (SUC) and inventory (ZCR1)](../ot-ics/309mandate-perimeter-suc-and-inventory-zcr1/mandate-perimeter-suc-and-inventory-zcr1/index.md)
 - [Partitioning the SUC into zones and conduits (ZCR3)](../ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
+- [Patch or compensate OT/ICS vulnerabilities?](../ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 - [Secure critical infrastructure "by design" and "by default"](../governance/secure-critical-infrastructure-by-design-and-by-default/secure-critical-infrastructure-by-design-and-by-default/index.md)
 - [Securing user authentication under IEC 62443](../governance/securing-user-authentication-under-iec-62443/securing-user-authentication-under-iec-62443/index.md)
 - [Security Level as a Vector](../ot-ics/307security-level-as-a-vector/security-level-as-a-vector/index.md)
@@ -1018,6 +1023,7 @@
 - [MITM on wired 802.1x with a Raspberry PI](../blog/mitm-on-wired-8021x-with-a-raspberry-pi/mitm-on-wired-8021x-with-a-raspberry-pi/index.md)
 - [Off-Path firewall with Traffic Engineering](../blog/off-path-firewall-with-traffic-engineering/off-path-firewall-with-traffic-engineering/index.md)
 - [Partitioning the SUC into zones and conduits (ZCR3)](../ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
+- [Patch or compensate OT/ICS vulnerabilities?](../ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 - [Secured Bash environment](../blog/secured-bash-environment/secured-bash-environment/index.md)
 - [Security Level as a Vector](../ot-ics/307security-level-as-a-vector/security-level-as-a-vector/index.md)
 - [Security level: target, capability, achieved](../ot-ics/306security-level-target-capability-achieved/security-level-target-capability-achieved/index.md)
@@ -1125,6 +1131,10 @@
 - [The value of a Risk Based VA](../governance/the-value-of-a-risk-based-va/the-value-of-a-risk-based-va/index.md)
 - [VA scanners for patch management: good or bad?](../governance/va-scanners-for-patch-management-good-or-bad/va-scanners-for-patch-management-good-or-bad/index.md)
 - [Vulnerability Management](../governance/vulnerability-management/vulnerability-management/index.md)
+
+## vulnnerability-management
+
+- [Patch or compensate OT/ICS vulnerabilities?](../ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 
 ## ztp
 

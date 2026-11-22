@@ -26,3 +26,4 @@ No prior knowledge of the standard is needed, only some curiosity about how plan
 11. [[Partitioning the SUC into zones and conduits (ZCR3)]]
 12. [[Threats and vulnerabilities (ZCR4-5)]]
 13. [[From threats to the target SL (ZCR5)]]
+14. [[Patch or compensate vulnerabilities]]

@@ -1,4 +1,4 @@
-229 posts
+230 posts
 
 ## A
 
@@ -205,6 +205,7 @@
 - [Parsing text with TextFSM](../fundamentals/104parsing-text-with-textfsm/parsing-text-with-textfsm/index.md)
 - [Partitioning the SUC into zones and conduits (ZCR3)](../ot-ics/311partitioning-the-suc-into-zones-and-conduits-zcr3/partitioning-the-suc-into-zones-and-conduits-zcr3/index.md)
 - [Password Management with Ansible](../ansible/114password-management-with-ansible/password-management-with-ansible/index.md)
+- [Patch or compensate OT/ICS vulnerabilities?](../ot-ics/314patch-or-compensate-vulnerabilities/patch-or-compensate-vulnerabilities/index.md)
 - [Patching the Proxmox kernel](../unetlab/107patching-the-proxmox-kernel/patching-the-proxmox-kernel/index.md)
 - [Personal digital protection](../digital-self-defence/personal-digital-protection/personal-digital-protection/index.md)
 - [Pexpect as a tool of last resort](../fundamentals/107pexpect-as-a-tool-of-last-resort/pexpect-as-a-tool-of-last-resort/index.md)
