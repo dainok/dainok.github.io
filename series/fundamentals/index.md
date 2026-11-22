@@ -1,5 +1,6 @@
 ---
 cover: fundamentals
+icon: material-school-outline
 tags:
 - fundamentals
 - summary

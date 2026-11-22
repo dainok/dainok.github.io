@@ -1,5 +1,6 @@
 ---
 cover: cisco
+icon: simple-cisco
 tags:
 - cisco
 - summary

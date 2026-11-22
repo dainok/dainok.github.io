@@ -1,5 +1,6 @@
 ---
 cover: ot-ics
+icon: material-robot-industrial
 tags:
 - ot-ics
 - summary

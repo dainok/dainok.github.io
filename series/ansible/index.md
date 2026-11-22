@@ -1,5 +1,6 @@
 ---
 cover: ansible
+icon: simple-ansible
 tags:
 - ansible
 - summary

@@ -1,5 +1,6 @@
 ---
 cover: threat-intelligence
+icon: material-database-cog-outline
 tags:
 - summary
 - threat-intelligence

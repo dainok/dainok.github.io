@@ -1,5 +1,6 @@
 ---
 cover: unetlab
+icon: material-network
 tags:
 - summary
 - unetlab

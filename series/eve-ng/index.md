@@ -1,5 +1,6 @@
 ---
 cover: eve-ng
+icon: material-network
 tags:
 - eve-ng
 - summary

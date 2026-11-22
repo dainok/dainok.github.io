@@ -1,5 +1,6 @@
 ---
 cover: nautobot
+icon: material-application-cog-outline
 tags:
 - nautobot
 - summary

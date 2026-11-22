@@ -1,5 +1,6 @@
 ---
 cover: ot-ics
+icon: material-robot-industrial
 tags:
 - governance
 - iec62443

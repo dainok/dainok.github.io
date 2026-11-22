@@ -1,5 +1,6 @@
 ---
 cover: paloalto
+icon: simple-paloaltonetworks
 tags:
 - palo-alto-networks
 - summary
