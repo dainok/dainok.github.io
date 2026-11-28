@@ -33,17 +33,20 @@ We can read the same list from the command line:
 $ defaults read /Library/Preferences/com.apple.TimeMachine SkipPaths
 (
     "/Users/dainese/Applications",
+    "/Users/dainese/Library/Caches",
     "/System",
     "/Users/dainese/.local",
     "/opt",
     "/Users/dainese/.ollama",
     "/Users/dainese/.cache",
     "/Library",
-    "/lUsers/dainese/.Trash",
+    "/Users/dainese/.Trash",
     "/Applications",
-    "/Users/dainese/Library",
+    "/Users/dainese/Library/CloudStorage",
     "/cores",
-    "/private"
+    "/Users/dainese/Library/Containers",
+    "/private",
+    "/Users/dainese/Library/iTunes"
 )
 ```
 
@@ -65,7 +68,7 @@ The consequence is simple: a folder can be excluded and not appear in any list. 
 The `Settings` route often did not behave as I expected. Recently I found an alternative, more practical way to exclude directories: one command, with all the paths:
 
 ```bash
-sudo tmutil addexclusion -p /Applications /Library /System /cores /opt /private /Users/$(whoami)/.cache /Users/$(whoami)/.local /Users/$(whoami)/.ollama /Users/$(whoami)/.Trash /Users/$(whoami)/Applications /Users/$(whoami)/Library
+sudo tmutil addexclusion -p /Applications /Library /System /cores /opt /private /Users/$(whoami)/.cache /Users/$(whoami)/.local /Users/$(whoami)/.ollama /Users/$(whoami)/.Trash /Users/$(whoami)/Applications /Users/$(whoami)/Library/Caches /Users/$(whoami)/Library/CloudStorage /Users/$(whoami)/Library/Containers /Users/$(whoami)/Library/iTunes
 ```
 
 The command adds a fixed-path exclusion for each path, the same kind that `Settings` creates. `sudo` is required by `-p`. `$(whoami)` is replaced by the current user, so the command works on any account without editing.
@@ -75,7 +78,7 @@ The command adds a fixed-path exclusion for each path, the same kind that `Setti
 We can verify which folders are included or excluded, including the ones that matter to me:
 
 ```bash
-$ tmutil isexcluded /Applications /Library /System /cores /opt /private /Users/$(whoami)/.cache /Users/$(whoami)/.local /Users/$(whoami)/.Trash /Users/$(whoami)/Applications /Users/$(whoami)/Library /Users/$(whoami)/Desktop /Users/$(whoami)/Documents /Users/$(whoami)/Music /Users/$(whoami)/Pictures /Users/$(whoami)/src
+$ tmutil isexcluded /Applications /Library /System /cores /opt /private /Users/$(whoami)/.cache /Users/$(whoami)/.local /Users/$(whoami)/.Trash /Users/$(whoami)/Applications /Users/dainese/Library/Application\ Support/MobileSync /Users/dainese/Library/Caches /Users/$(whoami)/Desktop /Users/$(whoami)/Documents /Users/$(whoami)/Music /Users/$(whoami)/Pictures /Users/$(whoami)/src
 [Excluded]  /Applications
 [Excluded]  /Library
 [Excluded]  /System
@@ -86,7 +89,8 @@ $ tmutil isexcluded /Applications /Library /System /cores /opt /private /Users/$
 [Excluded]  /Users/dainese/.local
 [Excluded]  /Users/dainese/.Trash
 [Excluded]  /Users/dainese/Applications
-[Excluded]  /Users/dainese/Library
+[Included]  /Users/dainese/Library/Application Support/MobileSync
+[Excluded]  /Users/dainese/Library/Caches
 [Included]  /Users/dainese/Desktop
 [Included]  /Users/dainese/Documents
 [Included]  /Users/dainese/Music
